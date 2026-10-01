@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>[hidden]{display:none!important}img{max-width:100%}</style>
+<title>Working with AI, Step by Step</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,700;1,6..72,500&display=swap">
+<style>
+:root {
+  --ground: #F4F1EA;
+  --surface: #FFFDF8;
+  --ink: #2A1C18;
+  --muted: #6B5D55;
+  --line: #E0D8C8;
+  --cardinal: #990000;
+  --cardinal-soft: #F5E0DC;
+  --gold: #FFCC00;
+  --gold-soft: #FFF3C4;
+  --trigger: #5E534D;
+  --trigger-soft: #ECE7DF;
+  --you: #2E6F9E;
+  --you-soft: #DDE9F2;
+  --ai: #D97B29;
+  --ai-soft: #F9E5D3;
+  --display: Georgia, "Newsreader", "Times New Roman", serif;
+  --body: Calibri, "Atkinson Hyperlegible", Carlito, "Trebuchet MS", system-ui, sans-serif;
+  --shadow: 0 1px 2px rgba(60,30,20,.06), 0 4px 14px rgba(60,30,20,.08);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --ground: #1C1512; --surface: #261D19; --ink: #F3EAE2; --muted: #B3A197; --line: #43342C;
+    --cardinal: #F07A6E; --cardinal-soft: #3D211D; --gold: #E8B84A; --gold-soft: #3A2F16;
+    --trigger: #B8ACA4; --trigger-soft: #2F2724; --you: #86B7DD; --you-soft: #1B2B38; --ai: #EDA066; --ai-soft: #3A2616;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 4px 14px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ground: #1C1512; --surface: #261D19; --ink: #F3EAE2; --muted: #B3A197; --line: #43342C;
+  --cardinal: #F07A6E; --cardinal-soft: #3D211D; --gold: #E8B84A; --gold-soft: #3A2F16;
+  --trigger: #B8ACA4; --trigger-soft: #2F2724; --you: #86B7DD; --you-soft: #1B2B38; --ai: #EDA066; --ai-soft: #3A2616;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 4px 14px rgba(0,0,0,.25);
+}
+
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body {
+  margin: 0; background: var(--ground); color: var(--ink);
+  font-family: var(--body); font-size: 22px; line-height: 1.4;
+  padding-inline: 20px; padding-block: 0;
+  display: flex; flex-direction: column;
+}
+h1, h2 { font-family: var(--display); font-weight: 700; line-height: 1.12; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+button, a.btn { font: inherit; }
+:focus-visible { outline: 3px solid var(--you); outline-offset: 3px; }
+
+.gingham {
+  height: 16px; margin-inline: -20px; flex: none;
+  background-color: var(--surface);
+  background-image: linear-gradient(90deg, rgba(153,0,0,.42) 50%, transparent 50%), linear-gradient(rgba(153,0,0,.42) 50%, transparent 50%);
+  background-size: 16px 16px;
+}
+.bar {
+  width: 100%; max-width: 1240px; margin: 0 auto; flex: none;
+  display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+  padding-block: 10px; border-bottom: 1px solid var(--line); font-size: 17px;
+}
+.brand { background: none; border: 0; padding: 4px 6px; margin-left: -6px; border-radius: 6px; color: var(--ink); cursor: pointer; display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 700; font-size: 19px; }
+.brand img { width: 32px; height: 32px; }
+.legend { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.legend[hidden] { display: none; }
+
+/* Type tags: one shape, color and icon per type, same everywhere */
+.tag {
+  display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+  font-size: 15px; font-weight: 700; padding: 3px 10px 3px 7px; border-radius: 4px; color: #fff;
+}
+.tag svg { width: 16px; height: 16px; flex: none; }
+.tag.t { background: var(--trigger); }
+.tag.a { background: var(--ai); }
+.tag.y { background: var(--you); }
+.tag.c { background: var(--cardinal); box-shadow: 0 0 0 2px var(--gold); }
+
+.stage {
+  flex: 1; width: 100%; max-width: 1240px; margin: 0 auto;
+  display: flex; flex-direction: column;
+  padding-block: 22px; cursor: pointer;
+}
+.stage > .scene { margin-block: auto; }
+.scene { display: grid; gap: 20px; }
+.scene h2 { font-size: clamp(34px, 4.2vw, 52px); font-style: italic; }
+.eyebrow { font-size: 16px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: var(--cardinal); }
+.def { font-size: clamp(22px, 2.3vw, 28px); max-width: 52ch; }
+.def b { color: var(--cardinal); }
+.bi { opacity: 0; transform: translateY(10px); transition: opacity .45s ease, transform .45s ease; }
+.bi.on { opacity: 1; transform: none; }
+
+/* Title */
+.title { text-align: center; display: grid; gap: 22px; justify-items: center; }
+.title h1 { font-size: clamp(44px, 7vw, 86px); font-style: italic; }
+.title p { font-size: clamp(24px, 2.7vw, 32px); color: var(--muted); max-width: 34ch; }
+.title .mini { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 8px; }
+
+/* Workflow rows */
+.wf { display: grid; gap: 7px; position: relative; max-width: 1000px; }
+.row {
+  display: grid; grid-template-columns: 150px 1fr; gap: 14px; align-items: center;
+  padding: 9px 16px; border-radius: 8px; border-left: 7px solid var(--you); background: var(--you-soft);
+  font-size: clamp(19px, 1.8vw, 22px);
+}
+.row .tag { justify-self: start; }
+.row.t { border-left-color: var(--trigger); background: var(--trigger-soft); border: 2px dashed var(--trigger); border-left: 7px solid var(--trigger); font-style: italic; }
+.row.a { border-left-color: var(--ai); background: var(--ai-soft); }
+.row.y { border-left-color: var(--you); background: var(--you-soft); }
+.row.c {
+  border: 3px solid var(--cardinal); border-left-width: 7px; background: var(--surface);
+  box-shadow: 0 0 0 4px var(--gold-soft), var(--shadow); font-weight: 700;
+}
+.row.c.on { animation: glow 2.6s ease-in-out 1; }
+@keyframes glow { 0% { box-shadow: 0 0 0 0 var(--gold), var(--shadow); } 40% { box-shadow: 0 0 0 9px var(--gold), var(--shadow); } 100% { box-shadow: 0 0 0 4px var(--gold-soft), var(--shadow); } }
+.row .qmark { font-family: var(--display); font-size: 40px; line-height: 1; color: var(--cardinal); }
+.takeaway {
+  display: grid; gap: 4px; padding: 14px 20px; border-left: 6px solid var(--gold); background: var(--gold-soft); border-radius: 4px;
+  font-family: var(--display); font-size: clamp(21px, 2.1vw, 26px); font-style: italic; max-width: 1000px;
+}
+.loopwrap { position: relative; max-width: 1000px; padding-right: 58px; }
+.loop { position: absolute; right: 8px; top: 20px; bottom: 20px; width: 40px; border: 3px solid var(--muted); border-left: 0; border-radius: 0 16px 16px 0; }
+.loop::before { content: ""; position: absolute; left: -2px; top: -9.5px; border: 8px solid transparent; border-right: 12px solid var(--muted); border-left: 0; }
+.loop-label { justify-self: end; font-weight: 700; color: var(--muted); font-size: 19px; margin-right: 58px; }
+
+/* Four types (Scene 3) */
+.types { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.type {
+  display: grid; gap: 10px; align-content: start; padding: 18px; border-radius: 10px; background: var(--surface);
+  border: 2px solid var(--line); border-top: 8px solid var(--you); box-shadow: var(--shadow);
+}
+.type .tag { font-size: 18px; padding: 5px 12px 5px 9px; justify-self: start; }
+.type .tag svg { width: 20px; height: 20px; }
+.type p { font-size: clamp(20px, 2vw, 24px); }
+.type.t { border-top-color: var(--trigger); }
+.type.a { border-top-color: var(--ai); }
+.type.c { border: 3px solid var(--cardinal); border-top-width: 8px; box-shadow: 0 0 0 5px var(--gold-soft), var(--shadow); }
+.type.c p { font-weight: 700; }
+
+/* Scene 8: four strips */
+.strips { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: start; }
+.strip { display: grid; gap: 5px; align-content: start; }
+.strip h3 { font-family: var(--display); font-size: 21px; margin: 0 0 4px; }
+.chip { display: grid; grid-template-columns: 92px 1fr; align-items: center; gap: 8px; padding: 3px 8px 3px 3px; border-radius: 5px; font-size: 16px; line-height: 1.2; transition: opacity .7s ease, background .7s ease, box-shadow .7s ease; }
+.chip .ct { display: flex; align-items: center; gap: 5px; padding: 3px 7px; border-radius: 3px; font-size: 13px; font-weight: 700; color: #fff; white-space: nowrap; }
+.chip svg { width: 13px; height: 13px; flex: none; }
+.chip .cp { color: var(--ink); }
+.chip.t { background: var(--trigger-soft); } .chip.t .ct { background: var(--trigger); }
+.chip.a { background: var(--ai-soft); } .chip.a .ct { background: var(--ai); }
+.chip.y { background: var(--you-soft); } .chip.y .ct { background: var(--you); }
+.chip.c { background: var(--surface); box-shadow: 0 0 0 2px var(--cardinal), 0 0 0 4px var(--gold-soft); } .chip.c .ct { background: var(--cardinal); } .chip.c .cp { font-weight: 700; }
+.strips.nocheck .chip.c { box-shadow: none; outline: 2px dashed var(--muted); outline-offset: -2px; opacity: .4; }
+.strips.nocheck .chip.c .ct { background: var(--muted); }
+.strips.nocheck .chip.c .lbl, .strips.nocheck .chip.c .cp { text-decoration: line-through; }
+.slip { margin-top: 8px; padding: 10px 12px; border-radius: 6px; background: var(--cardinal-soft); border: 2px solid var(--cardinal); font-size: 17px; line-height: 1.3; }
+.slip b { display: block; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--cardinal); margin-bottom: 3px; }
+.q { display: grid; gap: 6px; padding: 16px 22px; border-radius: 10px; border: 2px solid var(--ink); background: var(--surface); }
+.q p:first-child { font-family: var(--display); font-size: clamp(24px, 2.6vw, 32px); font-weight: 700; }
+.q .small { font-size: 19px; color: var(--muted); }
+
+/* Hand-off */
+.handoff p.body { font-size: clamp(21px, 2.1vw, 26px); max-width: 60ch; }
+.btn {
+  display: inline-flex; align-items: center; gap: 14px; text-decoration: none; cursor: pointer; justify-self: start;
+  padding: 12px 28px 12px 18px; border-radius: 8px; border: 2px solid var(--cardinal);
+  background: var(--cardinal); color: #fff; font-weight: 700; font-size: 24px;
+}
+.btn:active { transform: translateY(1px); }
+.pot { position: relative; width: 56px; height: 56px; display: inline-block; }
+.pot-svg { width: 56px; height: 56px; display: block; transform-origin: 50% 90%; animation: simmer 1.6s ease-in-out infinite; }
+.steam { position: absolute; left: 0; right: 0; top: -14px; height: 22px; display: flex; justify-content: center; gap: 7px; }
+.steam i { display: block; width: 6px; height: 14px; border-radius: 50%; background: currentColor; opacity: 0; animation: steam 2.1s ease-out infinite; }
+.steam i:nth-child(2) { animation-delay: .7s; } .steam i:nth-child(3) { animation-delay: 1.4s; }
+@keyframes simmer { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-4deg) translateY(-1px); } 75% { transform: rotate(4deg) translateY(-1px); } }
+@keyframes steam { 0% { opacity: 0; transform: translateY(10px) scale(.6); } 30% { opacity: .75; } 100% { opacity: 0; transform: translateY(-14px) scale(1.2) translateX(3px); } }
+
+/* Controls */
+.controls {
+  width: 100%; max-width: 1240px; margin: 0 auto; flex: none;
+  display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding-block: 10px 14px; border-top: 1px solid var(--line); font-size: 17px;
+  position: sticky; bottom: 0; background: var(--ground); z-index: 5;
+}
+.nav { display: flex; gap: 8px; }
+.nav button { padding: 8px 16px; border-radius: 6px; border: 1.5px solid var(--ink); background: var(--surface); color: var(--ink); font-weight: 700; cursor: pointer; }
+.nav button[disabled] { opacity: .4; cursor: default; }
+.counter { font-variant-numeric: tabular-nums; color: var(--muted); display: flex; gap: 14px; align-items: center; }
+.dots { display: flex; gap: 5px; flex-wrap: wrap; }
+.dots i { width: 9px; height: 9px; border-radius: 50%; background: var(--line); }
+.dots i.on { background: var(--cardinal); }
+kbd { font-family: inherit; font-size: 14px; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 0 6px; background: var(--surface); }
+
+@media (max-width: 900px) {
+  .types, .strips { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  body { font-size: 19px; }
+  .row { grid-template-columns: 1fr; gap: 6px; }
+  .types, .strips { grid-template-columns: 1fr; }
+  .stage { cursor: default; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .bi { transform: none; }
+}
+</style>
+
+<div class="gingham" aria-hidden="true"></div>
+<div class="bar">
+  <button type="button" class="brand" id="home" title="Back to the first page"><img src="image/web/13-chef-hat.png" alt="" onerror="this.hidden=true"><span>Before the kitchen</span></button>
+  <div class="legend" id="legend" hidden aria-label="Legend"></div>
+</div>
+<main class="stage" id="stage" aria-live="polite"></main>
+<div class="controls">
+  <div class="counter"><span id="counter">1 / 7</span><span class="dots" id="dots" aria-hidden="true"></span><span><kbd>←</kbd> <kbd>→</kbd> or click</span></div>
+  <div class="nav"><button type="button" id="prev">← Back</button><button type="button" id="next">Next →</button></div>
+</div>
+
+<script>
+(function () {
+  const KITCHEN_URL = "https://claude.ai/artifact/3DCw4S1H3TqB6pkE2mfCyK";
+  const ICONS = {
+    t: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M9.5 1L3 9h4.2L6 15l7-8.2H8.6z" fill="currentColor"/></svg>',
+    a: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1l1.6 4.4L14 7 9.6 8.6 8 13 6.4 8.6 2 7l4.4-1.6z" fill="currentColor"/></svg>',
+    y: '<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5" r="3" fill="currentColor"/><path d="M2.5 15c0-3.2 2.5-5.5 5.5-5.5s5.5 2.3 5.5 5.5z" fill="currentColor"/></svg>',
+    c: '<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.6" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M10.4 10.4L14.5 14.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>'
+  };
+  const LABEL = { t: "Trigger", a: "AI does", y: "You do", c: "Check" };
+  const POT_SVG = `<svg class="pot-svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false"> <path style="fill:#5B7A7F;" d="M503.916,304.505v10.779c0,8.929-7.239,16.168-16.168,16.168H24.253 c-8.929,0-16.168-7.239-16.168-16.168v-10.779c0-8.929,7.239-16.168,16.168-16.168h463.495 C496.677,288.337,503.916,295.576,503.916,304.505z M202.78,155.604l107.38-9.394l-2.819-32.214 c-1.038-11.86-11.494-20.634-23.355-19.597l-64.428,5.636c-11.861,1.038-20.634,11.494-19.597,23.355L202.78,155.604z"/> <path style="fill:#769CA5;" d="M436.872,279.703l-11.422,114.224c-4.409,44.082-41.502,77.652-85.804,77.652H172.354 c-44.301,0-81.395-33.57-85.804-77.652L75.128,279.703C73.859,267.012,83.825,256,96.579,256h318.841 C428.175,256,438.14,267.012,436.872,279.703z"/> <path style="fill:#90B5BF;" d="M436.872,279.703l-11.422,114.224c-4.409,44.082-41.502,77.652-85.804,77.652h-68.019 c-44.301,0-81.395-33.57-85.804-77.652L174.4,279.703C173.131,267.012,183.097,256,195.851,256h219.569 C428.175,256,438.14,267.012,436.872,279.703z M451.161,150.104c-1.297-14.826-14.367-25.794-29.194-24.496L89.092,154.731 c-14.826,1.298-25.793,14.367-24.496,29.194l0,0c1.297,14.825,14.367,25.793,29.193,24.496l332.877-29.123 C441.492,178,452.458,164.93,451.161,150.104z"/> <path style="fill:#769CA5;" d="M451.161,150.104c1.297,14.826-9.67,27.896-24.496,29.194L93.79,208.421 c-14.826,1.297-27.896-9.67-29.194-24.496l0,0c-0.52-5.942,0.935-11.6,3.814-16.334c5.16,8.479,14.822,13.777,25.38,12.853 l332.875-29.123c8.884-0.777,16.378-5.784,20.683-12.859C449.435,141.89,450.789,145.835,451.161,150.104z"/> <path style="fill:#FFA233;" d="M363.789,245.221c5.953,0,10.779,4.826,10.779,10.779v86.232c0,12.167-10.079,21.98-22.344,21.544 c-11.682-0.415-20.772-10.372-20.772-22.06v-13.17c-3.739,2.165-8.174,3.264-12.905,2.804 c-11.122-1.082-19.432-10.769-19.432-21.945V256c0-5.953,4.826-10.779,10.779-10.779h21.558h10.779H363.789z"/> <path style="fill:#FFC248;" d="M353.01,309.895L353.01,309.895c-11.906,0-21.558-9.651-21.558-21.558v-43.116h32.337 c5.953,0,10.779,4.826,10.779,10.779v32.337C374.568,300.243,364.917,309.895,353.01,309.895z"/> <path d="M344.926,83.537V8.084c0-4.466,3.618-8.084,8.084-8.084c4.466,0,8.084,3.618,8.084,8.084v75.453 c0,4.466-3.618,8.084-8.084,8.084C348.545,91.621,344.926,88.003,344.926,83.537z M385.347,91.621c4.466,0,8.084-3.618,8.084-8.084 V8.084c0-4.466-3.618-8.084-8.084-8.084s-8.084,3.618-8.084,8.084v75.453C377.263,88.003,380.882,91.621,385.347,91.621z M512,304.505v10.779c0,13.372-10.88,24.253-24.253,24.253H460.8c-4.466,0-8.084-3.618-8.084-8.084c0-4.466,3.618-8.084,8.084-8.084 h26.947c4.458,0,8.084-3.626,8.084-8.084v-10.779c0-4.458-3.626-8.084-8.084-8.084h-44.423l-9.83,98.31 c-4.842,48.419-45.189,84.932-93.848,84.932H172.354c-48.66,0-89.006-36.513-93.848-84.932l-9.83-98.31H24.253 c-4.458,0-8.084,3.626-8.084,8.084v10.779c0,4.458,3.626,8.084,8.084,8.084H51.2c4.466,0,8.084,3.618,8.084,8.084 c0,4.466-3.618,8.084-8.084,8.084H24.253C10.88,339.537,0,328.657,0,315.284v-10.779c0-13.372,10.88-24.253,24.253-24.253H67.06 c-0.751-8.232,1.99-16.45,7.541-22.584c5.608-6.198,13.619-9.753,21.978-9.753h170.2c4.466,0,8.084,3.618,8.084,8.084 s-3.618,8.084-8.084,8.084h-170.2c-3.855,0-7.403,1.575-9.99,4.432c-2.587,2.859-3.801,6.546-3.417,10.382l11.422,114.224 c4.011,40.118,37.441,70.371,77.759,70.371h167.29c40.319,0,73.748-30.253,77.76-70.371l10.552-105.519 c0.005-0.055,0.011-0.109,0.017-0.163l0.854-8.542c0.384-3.836-0.83-7.523-3.417-10.382c-2.586-2.857-6.134-4.432-9.99-4.432 h-32.768v78.147c0,8.117-3.216,15.693-9.059,21.33c-5.84,5.636-13.517,8.565-21.657,8.292c-16.02-0.569-28.569-13.809-28.569-30.139 v-2.3c-1.846,0.17-3.722,0.164-5.602-0.019c-15.243-1.484-26.735-14.378-26.735-29.991V256c0-10.401,8.463-18.863,18.863-18.863 h53.895c7.511,0,14.009,4.412,17.043,10.779h34.59c8.359,0,16.37,3.555,21.978,9.753c5.551,6.133,8.292,14.352,7.541,22.584h42.806 C501.12,280.253,512,291.133,512,304.505z M366.484,256c0-1.486-1.208-2.695-2.695-2.695h-53.895c-1.486,0-2.695,1.208-2.695,2.695 v53.404c0,7.131,5.329,13.237,12.132,13.899c2.824,0.273,5.614-0.332,8.069-1.754c1.253-0.725,2.653-1.089,4.052-1.089 c1.394,0,2.787,0.36,4.038,1.08c2.503,1.444,4.046,4.113,4.046,7.004v13.17c0,7.455,5.821,13.727,12.975,13.982 c3.706,0.121,7.2-1.206,9.854-3.768c2.656-2.563,4.119-6.007,4.119-9.697V256z M450.021,495.832H51.2 c-4.466,0-8.084,3.618-8.084,8.084S46.734,512,51.2,512h398.821c4.466,0,8.084-3.618,8.084-8.084S454.487,495.832,450.021,495.832z M56.542,184.629c-0.815-9.323,2.048-18.404,8.063-25.572c6.015-7.168,14.461-11.565,23.783-12.381l104.695-9.16l-1.175-13.422 c-1.424-16.282,10.664-30.688,26.946-32.113l64.427-5.636c16.253-1.416,30.688,10.664,32.113,26.945l1.174,13.423l104.696-9.16 c19.242-1.687,36.267,12.603,37.952,31.845c1.684,19.244-12.603,36.267-31.845,37.953L94.494,216.474 c-1.033,0.091-2.061,0.135-3.08,0.135C73.466,216.609,58.137,202.839,56.542,184.629z M72.649,183.219 c0.439,5.019,2.807,9.567,6.667,12.806c3.86,3.238,8.754,4.779,13.768,4.34l332.877-29.123 c10.361-0.907,18.054-10.075,17.147-20.436c-0.907-10.361-10.059-18.044-20.436-17.147l-165.969,14.521 c-4.445,0.39-8.369-2.901-8.758-7.349c-0.388-4.447,2.901-8.369,7.349-8.758l45.166-3.952l-1.175-13.423 c-0.649-7.402-7.193-12.891-14.597-12.247l-64.427,5.636c-3.585,0.314-6.834,2.004-9.147,4.761c-2.313,2.757-3.414,6.25-3.1,9.836 l1.174,13.422l13.769-1.205c4.436-0.377,8.369,2.902,8.758,7.349c0.388,4.447-2.901,8.369-7.349,8.758l-21.763,1.905 c-0.019,0.001-0.039,0.003-0.059,0.005c-0.019,0.001-0.038,0.003-0.058,0.004l-112.691,9.86c-5.019,0.439-9.567,2.807-12.806,6.667 C73.75,173.31,72.21,178.2,72.649,183.219z"/> </svg>`;
+  const tag = (k, label) => `<span class="tag ${k}">${ICONS[k]}<span class="lbl">${label || LABEL[k]}</span></span>`;
+  document.getElementById("legend").innerHTML = ["t", "a", "y", "c"].map(k => tag(k)).join("");
+
+  const EXAMPLES = [
+    { eyebrow: "Example 1 (simple)", title: "Replying to a work email with AI", short: "Email",
+      trigger: "An email arrives asking you for something.", tshort: "Email arrives",
+      steps: [["a", "Summarize the email and flag what needs an answer", "Summarize the email"], ["y", "Decide what you want to say", "Decide what to say"], ["a", "Draft the reply in a warm, clear tone", "Draft the reply"], ["c", "Check the facts, the tone, and anything you’re promising", "Facts, tone, promises"], ["y", "Send it", "Send"]],
+      take: "AI can write the words, but only you know what’s true in this situation and what you can promise.",
+      slip: "A promise you can’t keep, sent in your name." },
+    { eyebrow: "Example 2", title: "Vibe coding a classroom game", short: "Classroom game", loop: "Revise and play again",
+      trigger: "You want a quick review game for Friday’s class.", tshort: "Game for Friday",
+      steps: [["y", "Describe the goal, your students, and the rules of the game", "Describe goal and rules"], ["a", "Build a first working version", "Build a first version"], ["c", "Play it yourself: do the questions, answers, and scoring actually work?", "Play-test it yourself"], ["a", "Fix bugs and adjust the difficulty", "Fix bugs, adjust difficulty"], ["c", "Check that the content is accurate and that the game follows the UDL guidelines, so every student can use it", "Accuracy and UDL"], ["y", "Run it with students and watch how they react and interact with it", "Run it, watch students"], ["y", "Gather students’ feedback and revise the design", "Gather feedback, revise"]],
+      take: "AI can build the game in minutes. It can’t see your students playing it.",
+      slip: "A wrong answer key, played by the whole class." },
+    { eyebrow: "Example 3 (complex)", title: "Designing a curriculum unit", short: "Curriculum unit", loop: "Revise and teach again",
+      trigger: "You’re building a new unit for next term.", tshort: "New unit",
+      steps: [["y", "Set the goals and describe who your learners are", "Set goals, describe learners"], ["a", "Draft learning objectives aligned to your standards", "Draft objectives"], ["c", "Check that the objectives match your goals and your learners", "Objectives fit?"], ["a", "Suggest activities and assessments", "Suggest activities"], ["c", "Check for accuracy, bias, and fit for your students", "Accuracy, bias, fit"], ["y", "Choose, sequence, and adapt what you’ll actually teach", "Choose and adapt"], ["y", "Teach it and gather how students responded", "Teach, gather responses"], ["a", "Summarize patterns in student feedback", "Summarize feedback"], ["c", "Check what the patterns really mean before you revise", "What do patterns mean?"]],
+      take: "The bigger the workflow, the more places AI can help, and the more checks it needs.",
+      slip: "Inaccurate or biased content that reaches students for a whole term." }
+  ];
+
+  const row = (k, text, b, label) => `<div class="row ${k}${b != null ? " bi" : ""}"${b != null ? ` data-b="${b}"` : ""}>${tag(k, label)}<span>${text}</span></div>`;
+
+  function exampleScene(ex) {
+    const n = ex.steps.length;
+    const rows = row("t", ex.trigger, 0) + ex.steps.map((s, i) => row(s[0], s[1], i + 1)).join("");
+    const takeB = ex.loop ? n + 2 : n + 1;
+    return {
+      builds: takeB + 1, legend: true,
+      html: () => `<div class="scene">
+        <div><div class="eyebrow">${ex.eyebrow}</div><h2>${ex.title}</h2></div>
+        ${ex.loop ? `<div class="loopwrap"><div class="wf">${rows}</div><div class="loop bi" data-b="${n + 1}" aria-hidden="true"></div></div><div class="loop-label bi" data-b="${n + 1}">↻ ${ex.loop}</div>` : `<div class="wf">${rows}</div>`}
+        <p class="takeaway bi" data-b="${takeB}">${ex.take}</p>
+      </div>`
+    };
+  }
+
+  const SCENES = [
+    { builds: 1, legend: false, html: () => `
+      <div class="scene title">
+        <h1>Working with AI, Step by Step</h1>
+        <p>Where does AI help in our workflows, and where do we still need to check?</p>
+        <div class="mini" aria-hidden="true">${["t", "a", "y", "c"].map(k => tag(k)).join("")}</div>
+      </div>` },
+    { builds: 7, legend: false, html: () => `
+      <div class="scene">
+        <div class="eyebrow">What is a workflow?</div>
+        <p class="def">A <b>workflow</b> is the series of steps that takes a piece of work from start to finish. Each step has someone responsible for it, something going in, something coming out, and often a check along the way.</p>
+        <div class="eyebrow bi" data-b="1">Example: Answering a work email (no AI yet)</div>
+        <div class="wf">
+          ${row("y", "An email arrives asking you for something", 1, "Person")}
+          ${row("y", "Read it and figure out what they’re asking", 2, "Person")}
+          ${row("y", "Decide what to say", 3, "Person")}
+          ${row("y", "Write the reply", 4, "Person")}
+          ${row("c", "Reread it before sending", 5)}
+          ${row("y", "Send it", 6, "Person")}
+        </div>
+      </div>` },
+    { builds: 5, legend: false, html: () => `
+      <div class="scene">
+        <h2>When AI joins a workflow</h2>
+        <p class="def">When we bring AI into a workflow, four questions help us take it apart.</p>
+        <div class="types">
+          <div class="type t bi" data-b="1">${tag("t")}<p>What starts the workflow?</p></div>
+          <div class="type a bi" data-b="2">${tag("a")}<p>Which steps does AI take on?</p></div>
+          <div class="type y bi" data-b="3">${tag("y")}<p>Which steps stay with a person?</p></div>
+          <div class="type c bi" data-b="4">${tag("c")}<p>Where does a person look closely before the work moves on?</p></div>
+        </div>
+      </div>` },
+    exampleScene(EXAMPLES[0]),
+    exampleScene(EXAMPLES[1]),
+    exampleScene(EXAMPLES[2]),
+    { builds: 6, legend: true, html: () => `
+      <div class="scene">
+        <h2>What if the checks disappear?</h2>
+        <div class="strips" id="strips">
+          ${EXAMPLES.map((ex, i) => `<div class="strip"><h3>${ex.short}</h3>
+            <div class="chip t"><span class="ct">${ICONS.t}<span class="lbl">Trigger</span></span><span class="cp">${ex.tshort}</span></div>
+            ${ex.steps.map(s => `<div class="chip ${s[0]}"><span class="ct">${ICONS[s[0]]}<span class="lbl">${LABEL[s[0]]}</span></span><span class="cp">${s[2]}</span></div>`).join("")}
+            <div class="slip bi" data-b="${i + 2}"><b>Could slip through</b>${ex.slip}</div>
+          </div>`).join("")}
+        </div>
+        <div class="q bi" data-b="5"><p>When we use AI to enhance our workflows, we need to make sure a person checks AI’s work before it moves on.</p><p class="small">Those checks are where bluff, skew, and flatter from last week get caught.</p></div>
+      </div>` }
+  ];
+
+  const stage = document.getElementById("stage");
+  let sc = 0, b = 0;
+
+  function apply() {
+    stage.querySelectorAll("[data-b]").forEach(el => el.classList.toggle("on", b >= +el.dataset.b));
+    if (sc === 6) document.getElementById("strips").classList.toggle("nocheck", b >= 1);
+    const newest = [...stage.querySelectorAll("[data-b]")].filter(el => +el.dataset.b === b).pop();
+    if (newest && b > 0 && newest.scrollIntoView) newest.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    document.getElementById("counter").textContent = `${sc + 1} / ${SCENES.length}`;
+    document.getElementById("dots").innerHTML = SCENES[sc].builds > 1 ? Array.from({ length: SCENES[sc].builds }, (_, i) => `<i class="${i <= b ? "on" : ""}"></i>`).join("") : "";
+    document.getElementById("prev").disabled = sc === 0 && b === 0;
+    document.getElementById("next").disabled = sc === SCENES.length - 1 && b === SCENES[sc].builds - 1;
+  }
+  function render() {
+    stage.innerHTML = SCENES[sc].html();
+    document.getElementById("legend").hidden = !SCENES[sc].legend;
+    stage.querySelectorAll("[data-b]").forEach(el => { if (+el.dataset.b <= b) el.classList.add("on"); });
+    apply();
+    window.scrollTo(0, 0);
+  }
+  function next() {
+    if (b < SCENES[sc].builds - 1) { b++; apply(); }
+    else if (sc < SCENES.length - 1) { sc++; b = 0; render(); }
+  }
+  function prev() {
+    if (b > 0) { b--; apply(); }
+    else if (sc > 0) { sc--; b = SCENES[sc].builds - 1; render(); }
+  }
+  document.getElementById("home").addEventListener("click", () => { sc = 0; b = 0; render(); });
+  document.getElementById("next").addEventListener("click", e => { e.stopPropagation(); next(); });
+  document.getElementById("prev").addEventListener("click", e => { e.stopPropagation(); prev(); });
+  stage.addEventListener("click", e => {
+    if (e.target.closest("a, button")) return;
+    if (window.matchMedia("(max-width: 600px)").matches) return;
+    next();
+  });
+  document.addEventListener("keydown", e => {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    const k = e.key;
+    const onControl = e.target.closest && e.target.closest("a, button");
+    if (k === "ArrowRight" || k === "PageDown" || (k === " " && !onControl)) { e.preventDefault(); next(); }
+    else if (k === "ArrowLeft" || k === "PageUp") { e.preventDefault(); prev(); }
+    else if (k === "Home") { sc = 0; b = 0; render(); }
+  });
+  render();
+})();
+</script>
