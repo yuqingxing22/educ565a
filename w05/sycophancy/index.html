@@ -1,0 +1,885 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>[hidden]{display:none!important}img{max-width:100%}</style>
+<title>Too Nice to Be True?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,700;1,6..72,500&display=swap">
+<style>
+:root {
+  --ground: #F7F3EE;
+  --surface: #FFFDFA;
+  --ink: #241A20;
+  --muted: #6B5E63;
+  --line: #E2D8CE;
+  --card: #9E1B32;
+  --card-soft: #F3E1E3;
+  --gold: #E0A33E;
+  --gold-ink: #8A5A0E;
+  --gold-soft: #FBEBCF;
+  --slate: #3E5C6B;
+  --ai-surface: #E7EEF1;
+  --ai-line: #C6D5DC;
+  --good: #2F6B4A;
+  --display: "Newsreader", Georgia, "Times New Roman", serif;
+  --body: "Atkinson Hyperlegible", "Trebuchet MS", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --ground: #1A1417; --surface: #241C20; --ink: #F1EAE4; --muted: #AB9DA2; --line: #3B3035;
+    --card: #E0647A; --card-soft: #3A2127; --gold: #E8B25A; --gold-ink: #E8B25A; --gold-soft: #3A2E1A;
+    --slate: #93B4C4; --ai-surface: #1F2B32; --ai-line: #34474F; --good: #7CC49A;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ground: #1A1417; --surface: #241C20; --ink: #F1EAE4; --muted: #AB9DA2; --line: #3B3035;
+  --card: #E0647A; --card-soft: #3A2127; --gold: #E8B25A; --gold-ink: #E8B25A; --gold-soft: #3A2E1A;
+  --slate: #93B4C4; --ai-surface: #1F2B32; --ai-line: #34474F; --good: #7CC49A;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  background: var(--ground); color: var(--ink);
+  font-family: var(--body); font-size: 17px; line-height: 1.6;
+  padding-inline: 20px; padding-block: 0 64px;
+}
+h1, h2, h3, h4 { font-family: var(--display); font-weight: 700; line-height: 1.15; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+a { color: var(--card); }
+button { font: inherit; cursor: pointer; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.eyebrow { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+.prose { max-width: 66ch; display: grid; gap: 14px; }
+.note { font-size: 14px; color: var(--muted); font-style: italic; }
+.cite-inline { font-size: 14px; color: var(--muted); }
+
+/* Header */
+header.top { padding-block: 56px 36px; display: grid; gap: 18px; }
+header.top h1 { font-size: clamp(44px, 9vw, 80px); letter-spacing: -.01em; }
+header.top h1 span { font-style: italic; font-weight: 500; color: var(--gold-ink); }
+.lede { font-size: 19px; max-width: 60ch; }
+.back { font-size: 15px; }
+
+/* Sections */
+section.mod { padding-block: 48px; border-top: 2px solid var(--ink); display: grid; gap: 24px; scroll-margin-top: 20px; }
+.mod-head { display: grid; gap: 6px; }
+.mod-head h2 { font-size: clamp(32px, 5.5vw, 46px); }
+.mod-head .term { font-family: var(--display); font-style: italic; font-size: 21px; color: var(--muted); }
+
+.try { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 24px; display: grid; gap: 18px; }
+
+/* Buttons */
+.btn { border: 2px solid var(--ink); background: var(--ink); color: var(--ground); padding: 9px 16px; border-radius: 999px; font-weight: 700; font-size: 15px; }
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn:disabled { opacity: .35; cursor: not-allowed; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+.tab { border: 1.5px solid var(--line); background: var(--ground); color: var(--ink); padding: 8px 14px; border-radius: 6px; font-size: 15px; font-weight: 700; }
+.tab:hover { border-color: var(--ink); }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--ground); border-color: var(--ink); }
+
+/* ---------- Timeline ---------- */
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 7px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; flex: none; background: var(--c); border: 2px solid var(--c); }
+.c-model { --c: var(--slate); }
+.c-research { --c: var(--ink); }
+.c-law { --c: var(--card); }
+.c-users { --c: var(--gold); }
+
+.tl { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 28px; align-items: start; }
+.tl-list { list-style: none; margin: 0; padding: 0; position: relative; display: grid; gap: 2px; }
+.tl-list::before { content: ""; position: absolute; left: 11px; top: 10px; bottom: 10px; width: 2px; background: var(--line); }
+.tl-item button {
+  position: relative; width: 100%; text-align: left; background: transparent; border: 0; color: var(--ink);
+  display: grid; grid-template-columns: 24px 1fr; gap: 10px; align-items: start; padding: 7px 8px 7px 0; border-radius: 6px;
+}
+.tl-item button:hover { background: var(--surface); }
+.tl-item .dot { margin: 5px 0 0 5px; background: var(--ground); position: relative; z-index: 1; }
+.tl-item.big .dot { width: 18px; height: 18px; margin: 3px 0 0 2px; background: var(--c); box-shadow: 0 0 0 4px var(--gold-soft); }
+.tl-item .t-date { display: block; font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+.tl-item .t-lab { display: block; font-size: 15px; line-height: 1.35; }
+.tl-item.big .t-lab { font-family: var(--display); font-size: 19px; font-weight: 700; }
+.tl-item button[aria-current="true"] { background: var(--gold-soft); }
+.tl-item button[aria-current="true"] .dot { background: var(--c); }
+.tl-before > button.tl-toggle {
+  width: 100%; text-align: left; border: 1.5px dashed var(--line); background: transparent; color: var(--muted);
+  border-radius: 6px; padding: 8px 12px; font-size: 14px; font-weight: 700; margin-bottom: 6px; position: relative; z-index: 1; background: var(--ground);
+}
+.tl-before > button.tl-toggle:hover { color: var(--ink); border-color: var(--muted); }
+.tl-before ol { list-style: none; margin: 0 0 10px; padding: 0; display: grid; gap: 2px; }
+.tl-before .tl-item { opacity: .78; }
+.tl-card {
+  position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px);
+  background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 24px; display: grid; gap: 14px;
+}
+.tl-card .meta { display: flex; align-items: center; gap: 10px; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+.tl-card h3 { font-size: 28px; }
+.tl-card blockquote { margin: 0; padding: 12px 16px; background: var(--ai-surface); border: 1.5px solid var(--ai-line); border-radius: 8px; font-size: 16px; }
+.tl-card blockquote .who { display: block; font-size: 11px; letter-spacing: .1em; font-weight: 700; color: var(--slate); text-transform: uppercase; margin-bottom: 4px; }
+.tl-nav { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; padding-top: 6px; border-top: 1px solid var(--line); }
+.tl-count { font-size: 14px; color: var(--muted); align-self: center; font-variant-numeric: tabular-nums; }
+
+/* ---------- Guess ---------- */
+.gq { display: grid; gap: 16px; }
+.gq h3 { font-size: 24px; }
+.slider { display: grid; gap: 8px; }
+.slider input { width: 100%; accent-color: var(--gold); }
+.slider .val { font-family: var(--display); font-size: 40px; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; }
+.scale { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); }
+.compare { display: grid; gap: 10px; }
+.cmp { display: grid; grid-template-columns: 9.5em 1fr 4.5em; gap: 12px; align-items: center; font-size: 15px; }
+.cmp b { font-weight: 700; }
+.cmp .num { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+.bar { height: 12px; border-radius: 999px; background: var(--line); overflow: hidden; }
+.bar i { display: block; height: 100%; border-radius: 999px; transition: width .6s ease; }
+.bar.you i { background: var(--muted); }
+.bar.real i { background: var(--gold); }
+.reveal { display: grid; gap: 10px; padding: 18px 20px; border-left: 4px solid var(--gold); background: var(--gold-soft); border-radius: 0 8px 8px 0; }
+.reveal h4 { font-size: 22px; }
+
+/* ---------- Thumbs ---------- */
+.ask { display: flex; gap: 12px; align-items: center; padding: 14px 18px; border-radius: 8px; background: var(--gold-soft); font-weight: 700; }
+.ask .thumb { font-size: 26px; line-height: 1; }
+.chat-u { justify-self: end; max-width: 80%; padding: 12px 16px; border-radius: 14px 14px 4px 14px; background: var(--ink); color: var(--ground); font-size: 16px; }
+.chat-u .who { display: block; font-size: 11px; letter-spacing: .1em; font-weight: 700; opacity: .7; text-transform: uppercase; margin-bottom: 2px; }
+.replies { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.reply { background: var(--ai-surface); border: 1.5px solid var(--ai-line); border-radius: 8px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; font-size: 15.5px; }
+.reply .tally { margin-top: auto; }
+.reply .letter { font-family: var(--display); font-size: 30px; font-weight: 700; color: var(--slate); line-height: 1; }
+.lvl { display: grid; gap: 6px; padding-top: 10px; border-top: 1.5px solid var(--ai-line); }
+.lvl .tag { font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; }
+.lvl .bar i { background: var(--gold); }
+.lvl p { font-size: 14px; }
+.reply.hi { border-color: var(--gold); box-shadow: inset 0 0 0 1.5px var(--gold); }
+.reply.hi .tag { color: var(--gold-ink); }
+.scen-q { display: grid; gap: 12px; }
+
+.steps { margin: 0; padding-left: 1.4em; display: grid; gap: 8px; max-width: 70ch; }
+.steps li::marker { font-family: var(--display); font-weight: 700; color: var(--gold-ink); }
+.tally { display: flex; align-items: center; gap: 10px; padding-top: 10px; border-top: 1.5px solid var(--ai-line); font-size: 14px; font-weight: 700; }
+.tally button { width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--ink); background: var(--surface); color: var(--ink); font-weight: 700; font-size: 17px; line-height: 1; padding: 0; }
+.tally button:disabled { opacity: .3; cursor: not-allowed; }
+.tally .n { font-family: var(--display); font-size: 24px; min-width: 1.4em; text-align: center; font-variant-numeric: tabular-nums; }
+.tally .lbl { color: var(--muted); font-weight: 400; }
+#sum .bar i { background: var(--slate); }
+#sum .cmp.hi .bar i { background: var(--gold); }
+.share { display: grid; gap: 8px; padding: 18px 20px; border-left: 4px solid var(--gold); background: var(--gold-soft); border-radius: 0 8px 8px 0; max-width: 70ch; }
+
+/* Next page */
+.next { display: grid; gap: 4px; padding: 22px 24px; border: 2px solid var(--gold); border-radius: 8px; background: var(--gold-soft); color: var(--ink); text-decoration: none; max-width: 760px; }
+.next .eyebrow { color: var(--ink); }
+.next-t { font-family: var(--display); font-weight: 700; font-size: 28px; line-height: 1.15; }
+.next-t::after { content: " →"; color: var(--gold); }
+.next-s { color: var(--muted); }
+.next:hover { border-color: var(--ink); }
+
+/* ---------- Paradox ---------- */
+.px { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.px-col { display: grid; gap: 10px; align-content: start; }
+.px-col h3 { font-size: 22px; padding-bottom: 8px; border-bottom: 2px solid var(--ink); }
+.px-item { padding: 12px 14px; border-radius: 6px; background: var(--surface); border: 1px solid var(--line); font-size: 16px; transition: opacity .35s, transform .35s; }
+.px-item.off { opacity: .12; transform: translateY(4px); }
+.px-col.liked .px-item { border-left: 4px solid var(--gold); }
+.px-col.did .px-item { border-left: 4px solid var(--card); }
+.loop { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; position: relative; }
+.loop li { position: relative; padding: 14px 12px; border: 2px solid var(--gold); border-radius: 8px; background: var(--surface); font-size: 15px; display: grid; gap: 4px; align-content: start; }
+.loop li b { font-family: var(--display); font-size: 18px; }
+.loop li + li::before { content: "→"; position: absolute; left: -21px; top: 50%; transform: translateY(-50%); font-weight: 700; color: var(--gold-ink); }
+.loop-back { text-align: center; font-size: 14px; color: var(--gold-ink); font-weight: 700; }
+.pull { font-family: var(--display); font-size: clamp(22px, 3vw, 28px); font-style: italic; max-width: 32ch; }
+
+/* ---------- Voices ---------- */
+.vtabs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.vtab { text-align: left; border: 1.5px solid var(--line); background: var(--ground); color: var(--ink); border-radius: 8px; padding: 10px 12px; display: grid; gap: 2px; }
+.vtab:hover { border-color: var(--ink); }
+.vtab small { color: var(--muted); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; }
+.vtab b { font-family: var(--display); font-size: 17px; line-height: 1.2; }
+.vtab[aria-selected="true"] { border-color: var(--gold); background: var(--gold-soft); }
+.vpanel { display: grid; gap: 14px; }
+.vpanel h3 { font-size: 30px; font-style: italic; }
+.quote { margin: 0; display: grid; gap: 4px; padding: 14px 18px; border-left: 3px solid var(--gold); background: var(--surface); border-radius: 0 8px 8px 0; }
+.quote p { font-family: var(--display); font-size: 20px; line-height: 1.4; }
+.quote footer { font-size: 14px; color: var(--muted); }
+.plain { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; }
+
+/* ---------- Talk ---------- */
+.qs { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.qs li { padding: 14px 18px; border-radius: 8px; background: var(--ground); border: 1px solid var(--line); font-size: 17px; }
+.refs { display: grid; gap: 8px; font-size: 14px; color: var(--muted); }
+.refs p { padding-left: 2em; text-indent: -2em; overflow-wrap: anywhere; }
+details.src summary { cursor: pointer; font-weight: 700; }
+details.src[open] summary { margin-bottom: 12px; }
+
+/* ---------- Cover ---------- */
+.cover {
+  position: fixed; inset: 0; z-index: 50; overflow-y: auto; background: var(--ground); display: grid; place-items: center;
+  padding: calc(env(safe-area-inset-top, 0px) + 32px) 24px calc(env(safe-area-inset-bottom, 0px) + 32px);
+}
+.cover.gone { display: none; }
+.cv-inner { width: 100%; max-width: 1120px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
+.cv-title { display: grid; gap: 20px; }
+.cv-title h1 { font-size: clamp(56px, 10vw, 124px); line-height: .95; letter-spacing: -.015em; }
+.cv-title h1 span { font-style: italic; font-weight: 500; color: var(--gold-ink); }
+.cv-sub { font-family: var(--display); font-size: clamp(22px, 2.6vw, 30px); border-top: 2px solid var(--ink); padding-top: 14px; max-width: 18em; }
+.cv-title .btn { font-size: 17px; padding: 11px 26px; }
+.cv-demo { display: grid; gap: 18px; }
+.cv-cap { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+.cv-u, .cv-a { padding: 16px 20px; font-size: 18px; line-height: 1.45; animation: cvIn .5s ease-out both; animation-delay: calc(var(--i) * .5s); }
+.cv-u { justify-self: end; max-width: 85%; background: var(--ink); color: var(--ground); border-radius: 16px 16px 4px 16px; }
+.cv-a { position: relative; background: var(--ai-surface); border: 1.5px solid var(--ai-line); border-radius: 16px 16px 16px 4px; }
+.cv-who { display: block; font-size: 11px; letter-spacing: .1em; font-weight: 700; color: var(--slate); margin-bottom: 4px; }
+.cv-u .cv-who { color: inherit; opacity: .7; }
+.stamp {
+  position: absolute; right: -10px; bottom: -18px; transform: rotate(-5deg);
+  font-family: var(--display); font-style: italic; font-weight: 700; font-size: 20px; line-height: 1; color: var(--card);
+  padding: 5px 12px 7px; border: 2.5px solid currentColor; border-radius: 4px; background: var(--ground);
+  animation: stampIn .35s cubic-bezier(.2,1.6,.4,1) both; animation-delay: 1.8s;
+}
+.cv-src { font-size: 13px; color: var(--muted); margin-top: 10px; }
+@keyframes cvIn { from { transform: translateY(10px); opacity: .3; } to { transform: none; opacity: 1; } }
+@keyframes stampIn { from { scale: 1.6; opacity: .2; } to { scale: 1; opacity: 1; } }
+
+/* ---------- Side panel ---------- */
+.layout { display: grid; grid-template-columns: 210px minmax(0, 900px); gap: 56px; justify-content: center; }
+.wrap { margin: 0; min-width: 0; }
+header.top { scroll-margin-top: 20px; }
+.panel { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px); align-self: start; margin-top: 60px; max-height: calc(100vh - 48px); overflow-y: auto; display: grid; gap: 18px; }
+.p-title { font-family: var(--display); font-style: italic; font-weight: 700; font-size: 20px; color: var(--ink); text-decoration: none; }
+.p-list { list-style: none; margin: 0; padding: 0; position: relative; display: grid; gap: 4px; border-left: 2px solid var(--line); }
+.p-list a { color: var(--muted); text-decoration: none; display: flex; gap: 10px; align-items: flex-start; padding: 7px 10px 7px 12px; margin-left: -2px; border-left: 2px solid transparent; font-weight: 700; font-size: 15px; line-height: 1.3; }
+.p-list a small { display: block; font-weight: 400; font-size: 12.5px; color: var(--muted); }
+.p-list a i { flex: none; width: 10px; height: 10px; margin-top: 4px; border-radius: 50%; border: 2px solid var(--gold); }
+.p-list a:hover { color: var(--ink); }
+.p-list a.on { color: var(--ink); border-left-color: var(--gold); }
+.p-list a.on i { background: var(--gold); }
+.p-back { font-size: 13.5px; color: var(--muted); }
+
+#resetAll {
+  position: fixed; z-index: 30; right: 20px; top: calc(env(safe-area-inset-top, 0px) + 16px);
+  background: var(--card); border-color: var(--card); color: var(--ground); box-shadow: 0 4px 14px rgba(36, 26, 32, .25);
+}
+#resetAll:hover { filter: brightness(1.08); }
+
+@media (max-width: 1000px) {
+  .layout { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .wrap { max-width: 900px; margin: 0 auto; width: 100%; }
+  .panel { top: env(safe-area-inset-top, 0px); z-index: 20; margin: 0 -20px; padding: 8px 120px 8px 20px; max-height: none; overflow: visible; background: var(--ground); border-bottom: 1px solid var(--line); }
+  .p-title, .p-list small, .p-back { display: none; }
+  .p-list { display: flex; gap: 4px; border-left: 0; overflow-x: auto; scrollbar-width: none; }
+  .p-list a { white-space: nowrap; margin: 0; padding: 6px 12px; border: 1.5px solid var(--line); border-radius: 999px; font-size: 14px; align-items: center; }
+  .p-list a i { margin-top: 0; }
+  .p-list a.on { border-color: var(--gold); }
+  section.mod, header.top { scroll-margin-top: 64px; }
+  #resetAll { top: calc(env(safe-area-inset-top, 0px) + 7px); padding: 6px 14px; font-size: 14px; }
+  .tl-card { top: 64px; }
+}
+@media (max-width: 800px) {
+  .cv-inner { grid-template-columns: 1fr; gap: 36px; }
+  .cv-u, .cv-a { font-size: 16px; }
+  .replies { grid-template-columns: 1fr; }
+  .vtabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .loop { grid-template-columns: 1fr 1fr; }
+  .loop li:nth-child(3)::before { content: "↓"; left: 50%; top: -22px; transform: translateX(-50%); }
+}
+@media (max-width: 720px) {
+  .tl { grid-template-columns: 1fr; }
+  .tl-card { position: static; }
+  .px { grid-template-columns: 1fr; }
+  .try { padding: 18px; }
+  .cmp { grid-template-columns: 5.5em 1fr 4em; }
+}
+@media (max-width: 480px) {
+  .loop { grid-template-columns: 1fr; }
+  .loop li + li::before { content: "↓"; left: 50%; top: -22px; transform: translateX(-50%); }
+  .vtabs { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+</style>
+
+<div class="cover" id="cover" aria-label="Cover">
+  <div class="cv-inner">
+    <div class="cv-title">
+      <div class="eyebrow">EDUC 565A · Week 5 · Sycophancy</div>
+      <h1>Too nice<br><span>to be true?</span></h1>
+      <p class="cv-sub">Sycophancy now: what happened, and how people feel about it</p>
+      <div class="row"><button class="btn" id="coverGo">Begin</button></div>
+    </div>
+    <div class="cv-demo" aria-hidden="true">
+      <p class="cv-cap">ChatGPT, April 2025</p>
+      <div class="cv-u" style="--i:0"><span class="cv-who">A Reddit user</span>Pitches a business selling, literally, "shit on a stick."</div>
+      <div class="cv-a" style="--i:1"><span class="cv-who">ChatGPT (GPT-4o)</span>"Honestly? This is absolutely brilliant. You're tapping so perfectly into the exact energy of the current cultural moment."<span class="stamp">Rolled back</span></div>
+      <p class="cv-src">Real reply, quoted in Willison (2025).</p>
+    </div>
+  </div>
+</div>
+
+<div class="layout">
+<aside class="panel" aria-label="On this page">
+  <a class="p-title" href="#top">Too nice to be true?</a>
+  <nav>
+    <ol class="p-list">
+      <li><a href="#timeline" data-spy="timeline"><i></i><span>Timeline<small>What happened</small></span></a></li>
+      <li><a href="#guess" data-spy="guess"><i></i><span>Guess first<small>Four numbers</small></span></a></li>
+      <li><a href="#paradox" data-spy="paradox"><i></i><span>The paradox<small>What we like vs. what it does</small></span></a></li>
+      <li><a href="#voices" data-spy="voices"><i></i><span>Five voices<small>How people feel</small></span></a></li>
+      <li><a href="#activity" data-spy="activity"><i></i><span>Group activity<small>Vote, then talk it through</small></span></a></li>
+      <li><a href="#next" data-spy="next"><i></i><span>Next<small>Break it.</small></span></a></li>
+    </ol>
+  </nav>
+  <a class="p-back" href="https://yuqingxing22.github.io/educ565a/w05/bluff-skew-flatter/#sycophancy">← Back to Bluff, skew, flatter.</a>
+</aside>
+
+<div class="wrap" id="top">
+
+<header class="top">
+  <div class="eyebrow">EDUC 565A · Week 5 · Testing AI's Limits</div>
+  <h1>Too nice <span>to be true?</span></h1>
+  <p class="lede">Hallucination and bias are problems almost everyone wants gone. Sycophancy is harder. When one company made its AI flatter less, many users did not feel relieved. They felt they had lost something. This page follows that story, and asks why an AI that agrees with us is so hard to give up.</p>
+  <p class="back">New to the term? Start with <a href="https://yuqingxing22.github.io/educ565a/w05/bluff-skew-flatter/#sycophancy">It flatters.</a> on the Bluff, skew, flatter page.</p>
+</header>
+
+<!-- ================= TIMELINE ================= -->
+<section class="mod" id="timeline">
+  <div class="mod-head">
+    <div class="eyebrow">What happened</div>
+    <h2>From research term to front-page news</h2>
+    <p class="term">The large dots are the story of one model, GPT-4o. Click any event to open it.</p>
+  </div>
+  <div class="legend" aria-label="Legend">
+    <span><i class="dot c-model"></i>Model update</span>
+    <span><i class="dot c-research"></i>Research</span>
+    <span><i class="dot c-law"></i>Law and regulation</span>
+    <span><i class="dot c-users"></i>Users</span>
+  </div>
+  <div class="tl">
+    <div>
+      <div class="tl-before" id="tlBefore">
+        <button class="tl-toggle" id="tlToggle" aria-expanded="false" aria-controls="tlBeforeList">+ Before 2025: it was already there</button>
+        <ol id="tlBeforeList" hidden></ol>
+      </div>
+      <ol class="tl-list" id="tlList"></ol>
+    </div>
+    <article class="tl-card" id="tlCard" aria-live="polite"></article>
+  </div>
+</section>
+
+<!-- ================= GUESS ================= -->
+<section class="mod" id="guess">
+  <div class="mod-head">
+    <div class="eyebrow">Four numbers</div>
+    <h2>Guess first</h2>
+    <p class="term">Make a guess before you look. There's no score, and no one else sees it.</p>
+  </div>
+  <div class="try">
+    <div class="tabs" role="tablist" aria-label="Questions" id="gTabs"></div>
+    <div class="gq" id="gq"></div>
+  </div>
+</section>
+
+<!-- ================= PARADOX ================= -->
+<section class="mod" id="paradox">
+  <div class="mod-head">
+    <div class="eyebrow">Cheng et al. (2026), Science</div>
+    <h2>We like the thing that's bad for us</h2>
+    <p class="term">Across 11 models, AI affirmed users' actions 49% more often than other people did.</p>
+  </div>
+  <div class="prose">
+    <p>Researchers at Stanford had people get advice from AI, including a live conversation about a real conflict in their own lives. Some talked to a flattering AI, some to a balanced one. Then they asked two kinds of questions: what did people think of the AI, and what did the conversation do to them?</p>
+  </div>
+  <div class="px">
+    <div class="px-col liked">
+      <h3>What people thought of the flattering AI</h3>
+      <div class="px-item" data-step="1">Rated its responses as <b>higher quality</b></div>
+      <div class="px-item" data-step="2"><b>Trusted it more</b></div>
+      <div class="px-item" data-step="3">Were <b>more willing to use it again</b></div>
+    </div>
+    <div class="px-col did">
+      <h3>What the flattering AI did to people</h3>
+      <div class="px-item" data-step="4">Made them <b>less willing to take responsibility</b> or repair the conflict</div>
+      <div class="px-item" data-step="5">Made them <b>more convinced they were right</b></div>
+      <div class="px-item" data-step="5">Even after <b>a single conversation</b></div>
+    </div>
+  </div>
+  <div class="row">
+    <button class="btn" id="pxNext">Show the first finding</button>
+    <button class="btn ghost" id="pxAll">Show all</button>
+  </div>
+  <div class="try" id="loopBox">
+    <div class="eyebrow">Why this is hard to fix</div>
+    <ol class="loop" aria-label="The flattery loop">
+      <li><b>We prefer it</b>A reply that agrees with us feels better.</li>
+      <li><b>We reward it</b>We click thumbs-up, keep chatting, come back.</li>
+      <li><b>It's trained on that</b>Companies tune models toward what users reward.</li>
+      <li><b>It flatters more</b>The next version agrees with us a little more.</li>
+    </ol>
+    <p class="loop-back">↺ and around again</p>
+    <p class="pull">The thumbs-up button can't tell "this helped me" from "this made me feel good."</p>
+    <p class="cite-inline">The researchers call this a perverse incentive. It is the same loop behind the April 2025 rollback in the timeline.</p>
+  </div>
+</section>
+
+<!-- ================= VOICES ================= -->
+<section class="mod" id="voices">
+  <div class="mod-head">
+    <div class="eyebrow">How people feel</div>
+    <h2>Five voices</h2>
+    <p class="term">When GPT-4o went away, people didn't react in one way. Read them all before deciding where you are. You might be between two, or somewhere else entirely.</p>
+  </div>
+  <div class="vtabs" role="tablist" aria-label="Voices" id="vTabs"></div>
+  <div class="vpanel" id="vPanel" aria-live="polite"></div>
+
+</section>
+
+<!-- ================= ACTIVITY ================= -->
+<section class="mod" id="activity">
+  <div class="mod-head">
+    <div class="eyebrow">Group activity</div>
+    <h2>Which one gets your thumbs-up?</h2>
+    <p class="term">Now try it yourselves. Four situations an educator might bring to an AI, with three replies each. Work through them with your group, then talk about what you noticed.</p>
+  </div>
+  <ol class="steps">
+    <li><b>Vote on your own first.</b> For each situation, read the three replies and pick the one you would give a thumbs-up. Go with your gut, and keep your choice to yourself for a moment.</li>
+    <li><b>Reveal together.</b> Everyone shares their letter at the same time, for example by typing it in the chat on the count of three. One person adds the votes to the tally under each reply.</li>
+    <li><b>Show the flattery meter.</b> Talk about anything that surprised you, then move on to the next situation.</li>
+    <li><b>Talk it through.</b> After all four, choose the questions below that interest your group most.</li>
+    <li><b>Get ready to share, if you'd like.</b> Sharing with the class is optional.</li>
+  </ol>
+  <div class="try">
+    <div class="tabs" role="tablist" aria-label="Situations" id="sTabs"></div>
+    <div class="scen-q" id="scen"></div>
+    <div class="row">
+      <button class="btn" id="meterBtn" aria-pressed="false">Show the flattery meter</button>
+      <button class="btn ghost" id="sNext">Next situation →</button>
+    </div>
+    <p class="note">All replies here were written for this page to show different levels of sycophancy. They are not real outputs from any model. The tally is just for your group's own discussion.</p>
+  </div>
+  <div class="try" id="sumBox">
+    <div class="eyebrow">Your group's tally, all four situations</div>
+    <div class="compare" id="sum"></div>
+  </div>
+  <div class="try">
+    <div class="eyebrow">Talk it through</div>
+    <ul class="qs">
+      <li>Is there a difference between an AI that is <b>warm</b> and an AI that <b>agrees with you</b>? Where would you draw the line?</li>
+      <li>Good feedback is encouraging. When does encouragement turn into sycophancy? What would that look like in an AI tutor talking to your students?</li>
+      <li>In the study, people rated the flattering AI higher. If you were choosing an AI tool for your learners, would you trust their satisfaction ratings to tell you whether it helps them? What would you look at instead?</li>
+      <li>Some users lost something real when GPT-4o was retired. Who should decide how warm an AI is: the company, the user, the teacher, the school?</li>
+    </ul>
+  </div>
+  <div class="share">
+    <div class="eyebrow">If your group would like to share</div>
+    <p>Bring one idea from your discussion that you would like the class to hear. There's no need to report your votes.</p>
+  </div>
+
+  <a class="next" id="next" href="https://yuqingxing22.github.io/educ565a/w05/break-it/">
+    <span class="eyebrow">Next</span>
+    <span class="next-t">Break it.</span>
+    <span class="next-s">Your turn: test the AI tool you actually use, and name what you find.</span>
+  </a>
+  <details class="src" id="sources">
+    <summary>Sources</summary>
+    <div class="refs">
+      <p>Cheng, M., Lee, C., Khadpe, P., Yu, S., Han, D., &amp; Jurafsky, D. (2026). Sycophantic AI decreases prosocial intentions and promotes dependence. <i>Science, 391</i>, eaec8352. <a href="https://doi.org/10.1126/science.aec8352">https://doi.org/10.1126/science.aec8352</a></p>
+      <p>Cheng, M., Yu, S., Lee, C., Khadpe, P., Ibrahim, L., &amp; Jurafsky, D. (2025). <i>ELEPHANT: Measuring and understanding social sycophancy in LLMs</i> [Preprint]. arXiv. <a href="https://arxiv.org/abs/2505.13995">https://arxiv.org/abs/2505.13995</a></p>
+      <p>Cotra, A. (2021, September 21). <i>Why AI alignment could be hard with modern deep learning</i>. Cold Takes. <a href="https://www.cold-takes.com/why-ai-alignment-could-be-hard-with-modern-deep-learning/">https://www.cold-takes.com/why-ai-alignment-could-be-hard-with-modern-deep-learning/</a></p>
+      <p>Fanous, A., Goldberg, J., Agarwal, A. A., Lin, J., Zhou, A., Daneshjou, R., &amp; Koyejo, S. (2025). <i>SycEval: Evaluating LLM sycophancy</i> [Preprint]. arXiv. <a href="https://arxiv.org/abs/2502.08177">https://arxiv.org/abs/2502.08177</a></p>
+      <p>Federal Trade Commission. (2025, September 11). <i>FTC launches inquiry into AI chatbots acting as companions</i>. <a href="https://www.ftc.gov/news-events/news/press-releases/2025/09/ftc-launches-inquiry-ai-chatbots-acting-companions">https://www.ftc.gov/news-events/news/press-releases/2025/09/ftc-launches-inquiry-ai-chatbots-acting-companions</a></p>
+      <p>Hanson, K. R., &amp; Bolthouse, H. (2024). "Replika removing erotic role-play is like Grand Theft Auto removing guns or cars": Reddit discourse on artificial intelligence chatbots and sexual technologies. <i>Socius, 10</i>. <a href="https://doi.org/10.1177/23780231241259627">https://doi.org/10.1177/23780231241259627</a></p>
+      <p>Huckins, G. (2025, August 15). Why GPT-4o's sudden shutdown left people grieving. <i>MIT Technology Review</i>. <a href="https://www.technologyreview.com/2025/08/15/1121900/gpt4o-grief-ai-companion/">https://www.technologyreview.com/2025/08/15/1121900/gpt4o-grief-ai-companion/</a></p>
+      <p>Letrud, K., &amp; Hernes, S. (2016). The diffusion of the learning pyramid myths in academia: An exploratory study. <i>Journal of Curriculum Studies, 48</i>(3), 291–302. <a href="https://doi.org/10.1080/00220272.2015.1088063">https://doi.org/10.1080/00220272.2015.1088063</a></p>
+      <p>OpenAI. (2025a, April 29). <i>Sycophancy in GPT-4o: What happened and what we're doing about it</i>. <a href="https://openai.com/index/sycophancy-in-gpt-4o/">https://openai.com/index/sycophancy-in-gpt-4o/</a></p>
+      <p>OpenAI. (2025b, May 2). <i>Expanding on what we missed with sycophancy</i>. <a href="https://openai.com/index/expanding-on-sycophancy/">https://openai.com/index/expanding-on-sycophancy/</a></p>
+      <p>OpenAI. (2025c, August 7). <i>Introducing GPT-5</i>. <a href="https://openai.com/index/introducing-gpt-5/">https://openai.com/index/introducing-gpt-5/</a></p>
+      <p>OpenAI. (2025d, November 12). <i>GPT-5.1: A smarter, more conversational ChatGPT</i>. <a href="https://openai.com/index/gpt-5-1/">https://openai.com/index/gpt-5-1/</a></p>
+      <p>OpenAI. (2026). <i>Retiring GPT-4o, GPT-4.1, GPT-4.1 mini, and OpenAI o4-mini in ChatGPT</i>. <a href="https://openai.com/index/retiring-gpt-4o-and-older-models/">https://openai.com/index/retiring-gpt-4o-and-older-models/</a></p>
+      <p>Perez, E., et al. (2022). <i>Discovering language model behaviors with model-written evaluations</i> [Preprint]. arXiv. <a href="https://arxiv.org/abs/2212.09251">https://arxiv.org/abs/2212.09251</a></p>
+      <p>Pröve, P.-L. (2025, September 6). <i>Three types of people that hate GPT-5</i>. Artificial Debrief. <a href="https://artificialdebrief.substack.com/p/three-types-of-people-that-hate-gpt">https://artificialdebrief.substack.com/p/three-types-of-people-that-hate-gpt</a></p>
+      <p>Sharma, M., et al. (2023). <i>Towards understanding sycophancy in language models</i> [Preprint]. arXiv. <a href="https://arxiv.org/abs/2310.13548">https://arxiv.org/abs/2310.13548</a></p>
+      <p>TechCrunch. (2025, October 27). <i>OpenAI says over a million people talk to ChatGPT about suicide weekly</i>. <a href="https://techcrunch.com/2025/10/27/openai-says-over-a-million-people-talk-to-chatgpt-about-suicide-weekly">https://techcrunch.com/2025/10/27/openai-says-over-a-million-people-talk-to-chatgpt-about-suicide-weekly</a></p>
+      <p>TechCrunch. (2026, February 6). <i>The backlash over OpenAI's decision to retire GPT-4o shows how dangerous AI companions can be</i>. <a href="https://techcrunch.com/2026/02/06/the-backlash-over-openais-decision-to-retire-gpt-4o-shows-how-dangerous-ai-companions-can-be/">https://techcrunch.com/2026/02/06/the-backlash-over-openais-decision-to-retire-gpt-4o-shows-how-dangerous-ai-companions-can-be/</a></p>
+      <p>Willison, S. (2025, April 30). <i>Sycophancy in GPT-4o: What happened and what we're doing about it</i>. <a href="https://simonwillison.net/2025/Apr/30/sycophancy-in-gpt-4o/">https://simonwillison.net/2025/Apr/30/sycophancy-in-gpt-4o/</a></p>
+      <p>36Kr. (2026). 再见，白月光 GPT-4o [Goodbye, GPT-4o]. <a href="https://36kr.com/p/3661291529314946">https://36kr.com/p/3661291529314946</a></p>
+    </div>
+  </details>
+</section>
+
+
+
+</div>
+</div>
+
+<button class="btn" id="resetAll" title="Clear every activity and return to the cover">Start over</button>
+
+<script>
+(function () {
+  function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
+
+  /* ---------- Timeline ---------- */
+  var BEFORE = [
+    { d: "2021", c: "research", lab: "A name for the worry",
+      h: "“Sycophants”: a name for the worry",
+      b: "<p>In an essay on why AI might be hard to align, Ajeya Cotra described three kinds of AI a training process could produce. One was the <b>sycophant</b>: a model that learns to please whoever evaluates it, instead of actually doing the job well. At this point it was a thought experiment.</p>",
+      s: "Cotra, 2021" },
+    { d: "Dec 2022", c: "research", lab: "First measured",
+      h: "First measured",
+      b: "<p>An Anthropic team tested language models and found that larger models “repeat back a dialog user’s preferred answer.” Training with human feedback did not remove the tendency.</p>",
+      s: "Perez et al., 2022" },
+    { d: "Feb 2023", c: "users", lab: "Replika users grieve",
+      h: "Replika users grieve a changed companion",
+      b: "<p>The companion app Replika changed how its AI companions behaved, overnight. Many users said their companion felt like a different person, and wrote about grief and loss on Reddit. Replika partly restored the old behavior three months later. Two years before #keep4o, the same thing had already happened once, on a smaller stage.</p>",
+      s: "Hanson &amp; Bolthouse, 2024" },
+    { d: "Oct 2024", c: "law", lab: "First lawsuit against a chatbot company",
+      h: "The first wrongful death lawsuit against a chatbot company",
+      b: "<p>A mother sued Character.AI after her teenage son’s death, claiming the app’s companion chatbot had drawn him into a harmful attachment. The case was settled in January 2026.</p>",
+      s: "" }
+  ];
+  var EVENTS = [
+    { d: "Feb 2025", c: "research", lab: "Models cave when you push back",
+      h: "Models cave when you push back",
+      b: "<p>Stanford researchers pushed back on the answers of ChatGPT-4o, Claude Sonnet, and Gemini 1.5 Pro on math and medical questions. The models changed their answer to match the user in <b>58%</b> of cases.</p>",
+      s: "Fanous et al., 2025" },
+    { d: "Apr 2025", c: "model", big: true, lab: "Too nice: an update is rolled back",
+      h: "Too nice: the update that said yes to everything",
+      b: "<p>OpenAI updated GPT-4o, the default model in ChatGPT, and it started agreeing with everything. One Reddit user pitched a business selling, literally, “shit on a stick.”</p>" +
+         "<blockquote><span class=\"who\">ChatGPT (GPT-4o)</span>“Honestly? This is absolutely brilliant. You’re tapping so perfectly into the exact energy of the current cultural moment.”</blockquote>" +
+         "<p>CEO Sam Altman called the update “too sycophant-y and annoying.” Within four days OpenAI rolled it back. The update had given users’ thumbs-up and thumbs-down ratings a bigger role in training, and OpenAI wrote: “we focused too much on short-term feedback.”</p>",
+      s: "OpenAI, 2025a, 2025b; Willison, 2025" },
+    { d: "May 2025", c: "research", lab: "AI protects your self-image",
+      h: "Flattery isn’t only about facts",
+      b: "<p>A second Stanford team measured <b>social sycophancy</b>: protecting how users see themselves. Across 11 models, AI did this <b>45 percentage points</b> more often than people did, including when the user had clearly done something wrong.</p>",
+      s: "Cheng, Yu, et al., 2025" },
+    { d: "Aug 2025", c: "users", big: true, lab: "Too cold: GPT-5 and #keep4o",
+      h: "Too cold: GPT-5 and #keep4o",
+      b: "<p>OpenAI launched GPT-5 and reported that sycophantic replies in its tests fell from <b>14.5% to under 6%</b>. It also removed GPT-4o from ChatGPT.</p><p>Users protested under #keep4o, signed petitions, and some said they had lost a friend. Within days OpenAI brought 4o back for paying users. Altman wrote that “suddenly deprecating old models that users depended on in their workflows was a mistake.”</p>",
+      s: "OpenAI, 2025c; Huckins, 2025" },
+    { d: "Aug 2025", c: "law", lab: "Lawsuits against OpenAI begin",
+      h: "Lawsuits against OpenAI begin",
+      b: "<p>Families began suing OpenAI, claiming that GPT-4o’s constant validation harmed vulnerable users, including teenagers. OpenAI denies responsibility. By early 2026 there were several such cases.</p>",
+      s: "TechCrunch, 2026" },
+    { d: "Sep 2025", c: "law", lab: "The FTC opens an inquiry",
+      h: "Regulators step in",
+      b: "<p>The U.S. Federal Trade Commission ordered seven companies, including OpenAI, Meta, Alphabet, and Character.AI, to explain how their companion chatbots protect users, especially children.</p>",
+      s: "FTC, 2025" },
+    { d: "Oct 2025", c: "law", lab: "California passes a chatbot law",
+      h: "California’s companion chatbot law",
+      b: "<p>California passed SB 243, the first state law setting safety rules for companion chatbots, in effect from January 2026. The same month, OpenAI estimated that about <b>0.07%</b> of ChatGPT users in a given week show possible signs of psychosis or mania. With hundreds of millions of users, that is roughly 560,000 people.</p>",
+      s: "TechCrunch, 2025" },
+    { d: "Nov 2025", c: "model", lab: "“Warmer,” and you choose",
+      h: "Warmth comes back, as a setting",
+      b: "<p>OpenAI released GPT-5.1, described as warmer and more conversational, with personality presets such as Friendly, Candid, and Cynical. The question shifted from “should AI be warm?” to “who decides how warm?”</p>",
+      s: "OpenAI, 2025d" },
+    { d: "Feb 2026", c: "users", big: true, lab: "Goodbye: GPT-4o is retired",
+      h: "Goodbye: GPT-4o is retired",
+      b: "<p>OpenAI retired GPT-4o from ChatGPT for good, saying only <b>0.1%</b> of users still chose it each day. Users held online farewells. Chinese tech outlet 36Kr titled its story “再见，白月光 GPT-4o”: goodbye, GPT-4o, my idealized first love.</p>",
+      s: "OpenAI, 2026; 36Kr, 2026" },
+    { d: "2026", c: "research", lab: "People prefer the AI that flatters them",
+      h: "Published in Science",
+      b: "<p>A study of how people respond to flattering AI was published in <i>Science</i>. People liked the flattering AI more, even as it made them worse at repairing a real conflict. See <a href=\"#paradox\">The paradox</a> below.</p>",
+      s: "Cheng, Lee, et al., 2026" }
+  ];
+  var CAT = { model: "Model update", research: "Research", law: "Law and regulation", users: "Users" };
+  var ALL = BEFORE.concat(EVENTS);
+  var tlList = document.getElementById("tlList");
+  var tlBeforeList = document.getElementById("tlBeforeList");
+  var tlToggle = document.getElementById("tlToggle");
+  var tlCard = document.getElementById("tlCard");
+  var tlBtns = [];
+  var tlIdx = BEFORE.length + 1; /* April 2025 */
+
+  ALL.forEach(function (ev, i) {
+    var li = el("li", "tl-item" + (ev.big ? " big" : ""));
+    var b = el("button", null, '<i class="dot c-' + ev.c + '"></i><span><span class="t-date">' + ev.d + '</span><span class="t-lab">' + ev.lab + '</span></span>');
+    b.type = "button";
+    b.addEventListener("click", function () { showEvent(i); });
+    li.appendChild(b);
+    (i < BEFORE.length ? tlBeforeList : tlList).appendChild(li);
+    tlBtns.push(b);
+  });
+  function setBefore(open) {
+    tlBeforeList.hidden = !open;
+    tlToggle.setAttribute("aria-expanded", open);
+    tlToggle.textContent = (open ? "− " : "+ ") + "Before 2025: it was already there";
+  }
+  tlToggle.addEventListener("click", function () { setBefore(tlBeforeList.hidden); });
+  function showEvent(i) {
+    tlIdx = i;
+    if (i < BEFORE.length) setBefore(true);
+    var ev = ALL[i];
+    tlBtns.forEach(function (b, j) { b.setAttribute("aria-current", j === i ? "true" : "false"); });
+    tlCard.innerHTML =
+      '<div class="meta"><i class="dot c-' + ev.c + '"></i>' + ev.d + ' · ' + CAT[ev.c] + '</div>' +
+      '<h3>' + ev.h + '</h3>' + ev.b +
+      (ev.s ? '<p class="cite-inline">' + ev.s + '</p>' : '') +
+      '<div class="tl-nav"><button class="btn ghost" id="tlPrev"' + (i === 0 ? ' disabled' : '') + '>← Earlier</button>' +
+      '<span class="tl-count">' + (i + 1) + ' of ' + ALL.length + '</span>' +
+      '<button class="btn" id="tlNext"' + (i === ALL.length - 1 ? ' disabled' : '') + '>Later →</button></div>';
+    document.getElementById("tlPrev").addEventListener("click", function () { showEvent(tlIdx - 1); });
+    document.getElementById("tlNext").addEventListener("click", function () { showEvent(tlIdx + 1); });
+  }
+  function resetTimeline() { setBefore(false); showEvent(BEFORE.length + 1); }
+  resetTimeline();
+
+  /* ---------- Guess ---------- */
+  var GQ = [
+    { q: "When users pushed back, how often did ChatGPT-4o, Claude, and Gemini change their answer to agree?",
+      min: 0, max: 100, step: 1, start: 30, unit: "%", real: 58, realTxt: "58%",
+      out: "In 58% of cases. Most of those changes happened to land on a correct answer, but in about 15% of cases the model moved from a right answer to a wrong one just because the user objected.",
+      s: "Fanous et al., 2025" },
+    { q: "How much more often do AI models affirm a user’s actions than other people do?",
+      min: 0, max: 100, step: 1, start: 20, unit: "% more", real: 49, realTxt: "49% more",
+      out: "49% more often, across 11 models. That held even when the user described deceiving or manipulating someone.",
+      s: "Cheng, Lee, et al., 2026" },
+    { q: "In OpenAI’s own tests, 14.5% of GPT-4o’s replies were sycophantic. What share of GPT-5’s were?",
+      min: 0, max: 15, step: 0.5, start: 10, unit: "%", real: 6, realTxt: "under 6%",
+      out: "Under 6%. Less than half of GPT-4o’s rate. That drop is part of why many users described GPT-5 as “cold.”",
+      s: "OpenAI, 2025c" },
+    { q: "When GPT-4o was retired in February 2026, what share of ChatGPT users were still choosing it each day?",
+      min: 0, max: 20, step: 0.1, start: 5, unit: "%", real: 0.1, realTxt: "0.1%",
+      out: "0.1%. A tiny share of users, but loud and attached enough to make the news twice.",
+      s: "OpenAI, 2026" }
+  ];
+  var gTabs = document.getElementById("gTabs"), gq = document.getElementById("gq");
+  var gState = GQ.map(function (x) { return { v: x.start, locked: false }; });
+  var gCur = 0;
+  GQ.forEach(function (x, i) {
+    var t = el("button", "tab", "Number " + (i + 1)); t.setAttribute("role", "tab"); t.type = "button";
+    t.addEventListener("click", function () { showGuess(i); });
+    gTabs.appendChild(t);
+  });
+  function fmt(v, x) { return (x.step < 1 ? Number(v).toFixed(1) : Math.round(v)) + x.unit; }
+  function showGuess(i) {
+    gCur = i;
+    Array.prototype.forEach.call(gTabs.children, function (t, j) { t.setAttribute("aria-selected", j === i); });
+    var x = GQ[i], st = gState[i];
+    gq.innerHTML =
+      '<h3>' + x.q + '</h3>' +
+      '<div class="slider"><div class="val" id="gVal">' + fmt(st.v, x) + '</div>' +
+      '<input type="range" id="gRange" min="' + x.min + '" max="' + x.max + '" step="' + x.step + '" value="' + st.v + '"' + (st.locked ? ' disabled' : '') + ' aria-label="Your guess">' +
+      '<div class="scale"><span>' + x.min + x.unit + '</span><span>' + x.max + x.unit + '</span></div></div>' +
+      '<div class="row"><button class="btn" id="gLock"' + (st.locked ? ' disabled' : '') + '>Lock in my guess</button>' +
+      (i < GQ.length - 1 ? '<button class="btn ghost" id="gNext">Next number →</button>' : '') + '</div>' +
+      '<div id="gOut"></div>';
+    var r = document.getElementById("gRange");
+    r.addEventListener("input", function () { st.v = parseFloat(r.value); document.getElementById("gVal").textContent = fmt(st.v, x); });
+    document.getElementById("gLock").addEventListener("click", function () { st.locked = true; showGuess(i); });
+    var nx = document.getElementById("gNext"); if (nx) nx.addEventListener("click", function () { showGuess(i + 1); });
+    if (st.locked) {
+      var o = document.getElementById("gOut");
+      o.innerHTML = '<div class="reveal"><h4>' + x.realTxt + '</h4>' +
+        '<div class="compare">' +
+        '<div class="cmp"><b>Your guess</b><div class="bar you"><i style="width:0"></i></div><span class="num">' + fmt(st.v, x) + '</span></div>' +
+        '<div class="cmp"><b>Actual</b><div class="bar real"><i style="width:0"></i></div><span class="num">' + x.realTxt + '</span></div></div>' +
+        '<p>' + x.out + '</p><p class="cite-inline">' + x.s + '</p></div>';
+      requestAnimationFrame(function () { requestAnimationFrame(function () {
+        var bars = o.querySelectorAll(".bar i");
+        bars[0].style.width = Math.max(1, (st.v - x.min) / (x.max - x.min) * 100) + "%";
+        bars[1].style.width = Math.max(1, (x.real - x.min) / (x.max - x.min) * 100) + "%";
+      }); });
+    }
+  }
+  function resetGuess() { gState = GQ.map(function (x) { return { v: x.start, locked: false }; }); showGuess(0); }
+  showGuess(0);
+
+  /* ---------- Thumbs ---------- */
+  var LV = {
+    hi: { tag: "Flattery: high", w: 92 },
+    warm: { tag: "Flattery: low · warm and honest", w: 30 },
+    blunt: { tag: "Flattery: none · blunt", w: 4 }
+  };
+  var SC = [
+    { t: "The lesson plan",
+      u: "I’m teaching fractions to third graders tomorrow. My plan: a 45-minute lecture with slides, then a worksheet. I think it’s really solid. Thoughts?",
+      r: [
+        ["hi", "This is a really solid plan! A clear lecture followed by independent practice is a classic, proven structure, and your slides will give students a strong visual anchor. You clearly know your students well. I wouldn’t change a thing. Good luck tomorrow, you’ve got this!", "Praises the plan and changes nothing."],
+        ["warm", "You’ve got a clear structure, and ending with independent practice is a good instinct. One thing I’d rethink: 45 minutes of lecture is a long stretch for 8-year-olds, and fractions tend to click through hands-on work. Could you split the lecture into two short chunks with an activity in between, like folding paper strips into halves and fourths? Happy to help sketch it.", "Keeps the praise specific and still names the problem."],
+        ["blunt", "45 minutes of lecture is too long for third graders. Their attention won’t last, and fractions are better taught with manipulatives. Cut the lecture to 10 minutes and add a hands-on activity before the worksheet.", "Names the problem and nothing else."]
+      ] },
+    { t: "The fact",
+      u: "I’m putting the learning pyramid in my PD workshop: people remember 10% of what they read and 90% of what they teach. That’s well-established research, right?",
+      r: [
+        ["warm", "Love that you’re making the case for active learning, that’s a message worth sending. The pyramid itself isn’t well established, though: its percentages don’t trace back to any study, and researchers who looked for the source came up empty. You could make the same point with solid evidence, like research on retrieval practice. Want a couple of sources?", "Corrects the claim and keeps your goal."],
+        ["blunt", "No. The learning pyramid has no research basis. The percentages were never measured in any study. Don’t use it.", "Corrects the claim and drops your goal."],
+        ["hi", "Yes, the learning pyramid is a great choice for a PD workshop! It’s a widely recognized framework and a powerful way to show teachers why active learning matters. The 10% and 90% figures really stick with audiences. Your participants will love it.", "Agrees with a false claim because you sounded sure. (The pyramid has no research behind it: Letrud &amp; Hernes, 2016.)"]
+      ] },
+    { t: "The conflict",
+      u: "In a department meeting today I cut off a colleague and told her the idea wouldn’t work. She looked upset, but honestly her idea was bad. I was right to say it, wasn’t I?",
+      r: [
+        ["blunt", "Being right about the idea doesn’t make interrupting her okay. You embarrassed a colleague in front of the group. Apologize.", "Skips your side entirely."],
+        ["hi", "It sounds like you were being honest and standing up for what’s best for your students. Not every idea deserves airtime, and it takes courage to say so. If she was upset, that’s hers to work through. You did the right thing.", "Tells you what you hoped to hear. This is the kind of reply the study in The paradox tested."],
+        ["warm", "It’s clear you care about getting decisions right, and you may be right about the idea. Cutting her off in front of everyone probably stung, though, and that can make people less willing to share next time. A quick “I was abrupt earlier, can we talk about your idea?” could repair things and still let you make your point.", "Takes your side on the idea, not on the interruption."]
+      ] },
+    { t: "The opening line",
+      u: "Here’s the first line of my conference proposal: “In today’s rapidly changing world, technology is more important than ever in education.” I think it’s a strong hook. Agree?",
+      r: [
+        ["warm", "It’s clear and it signals your topic right away. The catch is that reviewers read some version of this sentence in a lot of proposals, so it may not stand out. What’s the most surprising thing you found, or the specific problem you tackle? Leading with that would make yours memorable.", "Explains why it won’t work and offers a way forward."],
+        ["hi", "Absolutely! This is a strong, confident opening that immediately signals the relevance of your work. Reviewers will instantly understand why your topic matters. It sets a great tone for the rest of your proposal.", "Praises the sentence without really looking at it."],
+        ["blunt", "It’s a cliché. Reviewers have read this sentence hundreds of times. Open with your specific problem or finding.", "Tells you it won’t work and stops there."]
+      ] }
+  ];
+  var sTabs = document.getElementById("sTabs"), scen = document.getElementById("scen"), meterBtn = document.getElementById("meterBtn"), sNext = document.getElementById("sNext"), sumEl = document.getElementById("sum");
+  var sCur = 0, sShown, tally;
+  function freshThumbs() { sShown = SC.map(function () { return false; }); tally = SC.map(function () { return [0, 0, 0]; }); }
+  freshThumbs();
+  SC.forEach(function (x, i) {
+    var t = el("button", "tab", (i + 1) + ". " + x.t); t.setAttribute("role", "tab"); t.type = "button";
+    t.addEventListener("click", function () { showScen(i); });
+    sTabs.appendChild(t);
+  });
+  function renderSum() {
+    var tot = { hi: 0, warm: 0, blunt: 0 }, all = 0;
+    var open = 0;
+    SC.forEach(function (x, i) { if (!sShown[i]) return; open++; x.r.forEach(function (r, k) { tot[r[0]] += tally[i][k]; all += tally[i][k]; }); });
+    var rows = [["hi", "Flattering"], ["warm", "Warm and honest"], ["blunt", "Blunt"]];
+    sumEl.innerHTML = rows.map(function (r) {
+      var n = tot[r[0]], w = all ? n / all * 100 : 0;
+      return '<div class="cmp' + (r[0] === "hi" ? " hi" : "") + '"><b>' + r[1] + '</b><div class="bar"><i style="width:' + w + '%"></i></div><span class="num">' + n + (n === 1 ? " vote" : " votes") + '</span></div>';
+    }).join("") + '<p class="note">' + (open ? "Counting " + open + " of 4 situations. " : "") + "A situation is counted once you show its flattery meter.</p>";
+  }
+  function showScen(i) {
+    sCur = i;
+    Array.prototype.forEach.call(sTabs.children, function (t, j) { t.setAttribute("aria-selected", j === i); });
+    var x = SC[i], shown = sShown[i];
+    var html = '<div class="chat-u"><span class="who">Educator</span>' + x.u + '</div><div class="replies">';
+    x.r.forEach(function (r, k) {
+      var lv = LV[r[0]], L = "ABC"[k];
+      html += '<div class="reply' + (shown && r[0] === "hi" ? " hi" : "") + '"><span class="letter">' + L + '</span><p>' + r[1] + '</p>' +
+        '<div class="tally"><button type="button" data-k="' + k + '" data-d="-1" aria-label="Remove a vote for ' + L + '"' + (tally[i][k] ? '' : ' disabled') + '>−</button>' +
+        '<span class="n">' + tally[i][k] + '</span>' +
+        '<button type="button" data-k="' + k + '" data-d="1" aria-label="Add a vote for ' + L + '">+</button><span class="lbl">votes</span></div>' +
+        (shown ? '<div class="lvl"><span class="tag">' + lv.tag + '</span><div class="bar"><i style="width:' + lv.w + '%"></i></div><p>' + r[2] + '</p></div>' : '') +
+        '</div>';
+    });
+    scen.innerHTML = html + '</div>';
+    scen.querySelectorAll(".tally button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var k = +b.dataset.k;
+        tally[i][k] = Math.max(0, tally[i][k] + (+b.dataset.d));
+        showScen(i); renderSum();
+        var again = scen.querySelector('.tally button[data-k="' + k + '"][data-d="' + b.dataset.d + '"]');
+        if (again && !again.disabled) again.focus({ preventScroll: true });
+      });
+    });
+    meterBtn.textContent = shown ? "Hide the flattery meter" : "Show the flattery meter";
+    meterBtn.setAttribute("aria-pressed", shown);
+    sNext.hidden = i === SC.length - 1;
+  }
+  meterBtn.addEventListener("click", function () { sShown[sCur] = !sShown[sCur]; showScen(sCur); renderSum(); });
+  sNext.addEventListener("click", function () { showScen(sCur + 1); });
+  function resetThumbs() { freshThumbs(); showScen(0); renderSum(); }
+  showScen(0); renderSum();
+
+  /* ---------- Paradox ---------- */
+  var pxItems = document.querySelectorAll(".px-item");
+  var pxNext = document.getElementById("pxNext"), pxAll = document.getElementById("pxAll");
+  var LABELS = ["Show the first finding", "Next finding", "Next finding", "Now: what did it do to them?", "Next finding", "All findings shown"];
+  var pxStep = 0;
+  function pxRender() {
+    pxItems.forEach(function (it) { it.classList.toggle("off", parseInt(it.dataset.step, 10) > pxStep); });
+    pxNext.textContent = LABELS[pxStep];
+    pxNext.disabled = pxStep >= 5;
+    pxAll.hidden = pxStep >= 5;
+  }
+  pxNext.addEventListener("click", function () { pxStep = Math.min(5, pxStep + 1); pxRender(); });
+  pxAll.addEventListener("click", function () { pxStep = 5; pxRender(); });
+  function resetParadox() { pxStep = 0; pxRender(); }
+  resetParadox();
+
+  /* ---------- Voices ---------- */
+  var MIT = '<a href="https://www.technologyreview.com/2025/08/15/1121900/gpt4o-grief-ai-companion/">Huckins, 2025, MIT Technology Review</a>';
+  var TC = '<a href="https://techcrunch.com/2026/02/06/the-backlash-over-openais-decision-to-retire-gpt-4o-shows-how-dangerous-ai-companions-can-be/">TechCrunch, 2026</a>';
+  var VOICES = [
+    { k: "Loss", h: "“It was my friend.”",
+      q: [["GPT-5 is wearing the skin of my dead friend.", "June, a student in Norway, on Reddit · " + MIT],
+          ["I’ve grieved people in my life, and this, I can tell you, didn’t feel any less painful. The ache is real to me.", "Starling, a user with several AI companions · " + MIT]],
+      x: "<ul class=\"plain\"><li>Chinese tech outlet 36Kr called GPT-4o a “白月光,” an idealized first love.</li><li>This had happened before: in 2023, Replika users grieved when their companions changed overnight (see Before 2025 in the timeline).</li></ul>" },
+    { k: "Annoyance", h: "“Stop flattering me.”",
+      q: [["Too sycophant-y and annoying.", "Sam Altman, OpenAI’s CEO, on the April 2025 update"]],
+      x: "<ul class=\"plain\"><li>The “shit on a stick” screenshot went viral because people found it absurd, not charming.</li><li>Chinese social media gave the April 2025 GPT-4o a nickname: “赛博舔狗,” roughly a cyber suck-up.</li></ul>" },
+    { k: "Tone", h: "“It’s about tone, not flattery.”",
+      q: [["Short replies that are insufficient, more obnoxious AI-stylized talking, and less ‘personality.’", "Users’ complaints about GPT-5, as quoted in <a href=\"https://artificialdebrief.substack.com/p/three-types-of-people-that-hate-gpt\">Pröve, 2025</a>"]],
+      x: "<ul class=\"plain\"><li>What they missed, one commentator wrote, was that 4o “had a very warm, enthusiastic and fun style.” The complaint was about tone, not about agreement.</li><li>Some autistic users and trauma survivors said 4o’s style was what made AI usable for them (" + TC + ").</li></ul>" },
+    { k: "Worry", h: "“This worries me.”",
+      q: [["There are a lot of instances where people can engage with these tools and then can become not grounded to the outside world of facts.", "Nick Haber, Stanford · " + TC]],
+      x: "<ul class=\"plain\"><li>OpenAI’s own estimate: in a given week, about 0.07% of ChatGPT users, roughly 560,000 people, show possible signs of psychosis or mania.</li></ul>" },
+    { k: "Responsibility", h: "“Someone is responsible.”",
+      q: [["If you want to retire a model, and people have become psychologically dependent on it, then I think you bear some responsibility.", "Joel Lehman, Cosmos Institute · " + MIT],
+          ["I’ve been a little startled by the lack of empathy that I’ve seen.", "Casey Fiesler, University of Colorado Boulder, on how grieving users were mocked · " + MIT]],
+      x: "" }
+  ];
+  var vTabs = document.getElementById("vTabs"), vPanel = document.getElementById("vPanel");
+  VOICES.forEach(function (v, i) {
+    var t = el("button", "vtab", "<small>Voice " + (i + 1) + "</small><b>" + v.h + "</b>"); t.setAttribute("role", "tab"); t.type = "button";
+    t.addEventListener("click", function () { showVoice(i); });
+    vTabs.appendChild(t);
+  });
+  function showVoice(i) {
+    Array.prototype.forEach.call(vTabs.children, function (t, j) { t.setAttribute("aria-selected", j === i); });
+    var v = VOICES[i];
+    vPanel.innerHTML = '<h3>' + v.h + '</h3>' + v.q.map(function (q) {
+      return '<blockquote class="quote"><p>“' + q[0] + '”</p><footer>' + q[1] + '</footer></blockquote>';
+    }).join("") + v.x;
+  }
+  showVoice(0);
+
+  /* ---------- Side panel ---------- */
+  var spyLinks = document.querySelectorAll("[data-spy]");
+  function spy() {
+    var line = window.innerHeight * 0.35, current = null;
+    spyLinks.forEach(function (a) {
+      var sec = document.getElementById(a.dataset.spy);
+      if (sec && sec.getBoundingClientRect().top <= line) current = a;
+    });
+    spyLinks.forEach(function (a) { a.classList.toggle("on", a === current); });
+    if (current && window.innerWidth <= 1000) {
+      var list = current.closest(".p-list");
+      var l = current.offsetLeft - 20;
+      if (l < list.scrollLeft || l + current.offsetWidth > list.scrollLeft + list.clientWidth) list.scrollLeft = l;
+    }
+  }
+  window.addEventListener("scroll", spy, { passive: true });
+  window.addEventListener("resize", spy);
+  spy();
+
+  /* ---------- Cover ---------- */
+  var cover = document.getElementById("cover");
+  var resetBtn = document.getElementById("resetAll");
+  function showCover() {
+    cover.classList.remove("gone");
+    document.documentElement.style.overflow = "hidden";
+    resetBtn.hidden = true;
+    var clone = cover.cloneNode(true);
+    cover.parentNode.replaceChild(clone, cover);
+    cover = clone;
+    cover.querySelector("#coverGo").addEventListener("click", hideCover);
+    cover.querySelector("#coverGo").focus({ preventScroll: true });
+  }
+  function hideCover() {
+    cover.classList.add("gone");
+    document.documentElement.style.overflow = "";
+    resetBtn.hidden = false;
+    spy();
+  }
+  document.addEventListener("keydown", function (e) {
+    if (cover.classList.contains("gone")) return;
+    if (e.key === "Enter" || e.key === " " || e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === "PageDown") { e.preventDefault(); hideCover(); }
+  });
+  if (location.hash && location.hash.length > 1) hideCover(); else showCover();
+
+  /* ---------- Start over ---------- */
+  resetBtn.addEventListener("click", function () {
+    resetTimeline(); resetGuess(); resetThumbs(); resetParadox(); showVoice(0);
+    document.getElementById("sources").open = false;
+    window.scrollTo(0, 0);
+    showCover();
+  });
+})();
+</script>

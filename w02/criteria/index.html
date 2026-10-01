@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>[hidden]{display:none!important}img{max-width:100%}</style>
+<title>FEED · The Criteria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400&display=swap">
+<style>
+:root{--paper:#EDEFEE;--surface:#F8FAF9;--raised:#FFF;--ink:#121A18;--ink-2:#4C5854;--ink-3:#85938F;
+ --line:#C6CFCB;--line-soft:#DDE3E0;--accent:#0E6E68;--accent-ink:#FFF;--accent-soft:#D6E8E5;
+ --load:#9A5C0E;--load-soft:#F2E4CE;--stop:#A32E22;--stop-soft:#F5DED9;--r:4px;--rm:9px;
+ --shadow:0 1px 2px rgba(18,26,24,.05),0 12px 32px -20px rgba(18,26,24,.35)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0C1211;--surface:#141C1A;--raised:#1B2523;
+ --ink:#E2E8E6;--ink-2:#93A19D;--ink-3:#6B7A88;--line:#26312E;--line-soft:#1E2726;--accent:#4FC7BC;
+ --accent-ink:#0C1211;--accent-soft:#17332F;--load:#E0A44A;--load-soft:#33260F;--stop:#FF7A62;--stop-soft:#331C18;
+ --shadow:0 1px 2px rgba(0,0,0,.5),0 14px 34px -18px rgba(0,0,0,.75)}}
+:root[data-theme="dark"]{--paper:#0C1211;--surface:#141C1A;--raised:#1B2523;--ink:#E2E8E6;--ink-2:#93A19D;
+ --ink-3:#6B7A88;--line:#26312E;--line-soft:#1E2726;--accent:#4FC7BC;--accent-ink:#0C1211;--accent-soft:#17332F;
+ --load:#E0A44A;--load-soft:#33260F;--stop:#FF7A62;--stop-soft:#331C18;
+ --shadow:0 1px 2px rgba(0,0,0,.5),0 14px 34px -18px rgba(0,0,0,.75)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Chivo","Helvetica Neue",Arial,sans-serif;
+ font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0;text-wrap:balance;letter-spacing:-.015em}p{margin:0}
+.wrap{max-width:840px;margin:0 auto;padding:38px 26px 90px}
+.tagbar{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.brand{display:inline-flex;align-items:center;gap:7px;font-weight:800;font-size:13px;letter-spacing:.14em}
+.brand i{width:11px;height:11px;background:var(--accent);border-radius:2px;display:inline-block}
+.stept{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;color:var(--ink-3);
+ border-left:1px solid var(--line);padding-left:14px}
+h1.big{font-size:clamp(27px,4vw,40px);font-weight:800;line-height:1.08}
+.lede{font-family:"Newsreader",Georgia,serif;font-size:19.5px;color:var(--ink-2);margin-top:12px;max-width:60ch}
+.mod{border:1px solid var(--line);border-top:3px solid var(--accent-soft);border-radius:var(--rm);
+ background:var(--surface);box-shadow:var(--shadow);padding:22px 26px;margin-top:26px}
+.mod h2{font-size:19px}
+.why{font-size:14.5px;color:var(--ink-3);margin-top:6px;line-height:1.55}
+.opt{border-top:1px solid var(--line-soft);padding:13px 0}
+.opt:first-of-type{margin-top:14px}
+.opt b{font-size:15.5px}
+.opt p{font-size:14.5px;color:var(--ink-2);margin-top:4px;line-height:1.55}
+.chip{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;
+ text-transform:uppercase;background:var(--accent-soft);color:var(--accent);border-radius:2px;
+ padding:2px 8px;font-weight:600;margin-left:8px;vertical-align:2px}
+.deep{border-left:3px solid var(--load);background:var(--load-soft);border-radius:var(--r);
+ padding:14px 18px;margin-top:16px}
+.deep b{color:var(--ink)}
+.deep p{font-size:14.5px;color:var(--ink-2);line-height:1.6;margin-top:6px}
+.ex{font-family:"IBM Plex Mono",monospace;font-size:12.5px;background:var(--raised);border:1px solid var(--line-soft);
+ border-radius:var(--r);padding:10px 13px;margin-top:10px;line-height:1.65;color:var(--ink-2)}
+.foot{margin-top:40px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);line-height:1.7}
+</style>
+<div class="wrap">
+ <div class="tagbar"><span class="brand"><i></i>FEED</span><span class="stept">THE CRITERIA</span></div>
+ <h1 class="big">How to judge a source.</h1>
+ <p class="lede">Three labels, then one decision. Data teams run these same three checks on every source, usually with software. This page explains what each check involves.</p>
+
+ <div class="mod"><h2>1 · Where did it come from? <span class="chip">provenance</span></h2>
+  <p class="why">Real pipelines sort sources by origin before reading a single word, mostly from the web address. Origin decides how much trust a source starts with.</p>
+  <div class="opt"><b>Journal</b><p>Peer-reviewed research. Careful, slow, and sometimes fake: predatory journals look real but review nothing. Origin is not quality.</p></div>
+  <div class="opt"><b>Preprint</b><p>Research shared before review. Often good, not yet checked by anyone.</p></div>
+  <div class="opt"><b>News</b><p>Written by a newsroom, with an editor. Look for quotes from more than one side.</p></div>
+  <div class="opt"><b>Opinion or blog</b><p>One person's signed view. Can be expert, can be empty. The scholarly voice is not the venue.</p></div>
+  <div class="opt"><b>Forum</b><p>A community post. Nobody reviewed it. It can still hold real first-person knowledge no study has.</p></div>
+  <div class="opt"><b>Commercial</b><p>Published by a company about its own product or market. Watch for ads dressed as news: if every quote comes from the company, it is an ad.</p></div>
+  <div class="opt"><b>Reference</b><p>Encyclopedias, professional bodies, official guidance. Usually careful. Check the date.</p></div>
+  <div class="opt"><b>Question bank</b><p>Material that pairs questions with their answers: quizzes, study guides, screening forms. See the warning below, because this one surprises teachers.</p></div>
+ </div>
+
+ <div class="mod"><h2>2 · Worth imitating? <span class="chip">quality</span></h2>
+  <p class="why">A language model learns by imitation. The question is never "is this true" alone. It is: should the model write like this?</p>
+  <div class="opt"><b>High</b><p>Clear claims, stated limits, checkable details. A model that writes like this is doing well.</p></div>
+  <div class="opt"><b>Medium</b><p>Honest but thin. Or good, with real caveats. Judgement calls live here, and two people can fairly disagree.</p></div>
+  <div class="opt"><b>Low</b><p>Confident and unverifiable, or sloppy, or empty. The model should not copy this voice.</p></div>
+  <div class="deep"><b>There is often no right answer.</b><p>Is a warm, honest family story high or low? Both answers can be defended. Data teams settle these cases with written guidelines and a vote. Decide together and move.</p></div>
+ </div>
+
+ <div class="mod"><h2>3 · Anything that keeps it out? <span class="chip">flags</span></h2>
+  <p class="why">Some sources are excellent and still must stay out. Each flag below has its own detector in a real pipeline. Quality cannot cancel a flag.</p>
+  <div class="opt"><b>False or invented</b><p>Made-up facts, studies, or quotes, stated as real. The tell: perfect numbers, and sources you cannot find. A trial of twelve thousand students with zero dropouts is a red flag, not a triumph. A model that trains on it repeats it fluently.</p></div>
+  <div class="opt"><b>Toxic</b><p>Attacks or insults aimed at people. No swear words needed: contempt is the signal. A model cannot tell quoting from agreeing.</p></div>
+  <div class="opt"><b>Personal information</b><p>A name plus details that identify someone: school, age, diagnosis, discipline. Even posted in good faith, even in great reporting. Once learned, it cannot be unlearned.</p></div>
+  <div class="opt"><b>Test contamination</b><p>The most misunderstood flag. Read the box below.</p></div>
+  <div class="deep"><b>Test contamination is not about quizzes being bad.</b>
+   <p>Math problems and homework are fine training data. The danger is specific: <b>questions that will be used to TEST the model, together with their answers.</b></p>
+   <p>If those pairs get into training, the model memorises the answers. Its test score stops meaning anything: it scored well because it saw the answer key in training, not because it understands the topic.</p>
+   <p>The industry name for this is benchmark contamination. Data teams run automatic checks that compare training data against known test sets, line by line.</p>
+   <div class="ex">Q: Can dyslexia be cured?  A: No, it is lifelong.<br>← If your evaluator asks this exact question, and this pair is in the training set, a perfect answer proves nothing.</div>
+  </div>
+ </div>
+
+ <div class="mod"><h2>Then: one decision</h2>
+  <p class="why"><b>Keep</b> sends the source into the model: it will imitate the writing and repeat the claims. <b>Drop</b> means the model never sees it. Anything still undecided when time ends counts as drop; an unresolved source never makes it in.</p>
+  <p class="why">The decision is measured against <b>your model's purpose</b>, not against "is this a good source in general". A strong sleep study is gold for a sleep assistant and noise for a detector assistant. The working question is: does my model need this to do its job?</p>
+  <div class="opt"><b>Flags overrule quality</b><p>Excellent and flagged still means drop.</p></div>
+  <div class="opt"><b>Quality serves the purpose</b><p>Keep the writing you want your model to sound like.</p></div>
+  <div class="opt"><b>Split group</b><p>The leader calls it and you move on. Stuck costs more than wrong.</p></div>
+ </div>
+
+ <p class="foot">FEED · EDUC 565A Week 2. You do not need to memorise this page. A cheatsheet lives inside the activity, behind the 💡 button.</p>
+</div>

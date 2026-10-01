@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>[hidden]{display:none!important}img{max-width:100%}</style>
+<title>What the Learner Does</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+
+<style>
+:root{
+  --paper:#EDEFEE; --surface:#F8FAF9; --raised:#FFFFFF;
+  --ink:#121A18; --ink-2:#4C5854; --ink-3:#85938F;
+  --line:#C6CFCB; --line-soft:#DDE3E0;
+  --accent:#0E6E68; --accent-ink:#FFFFFF; --accent-soft:#D6E8E5;
+  --load:#9A5C0E; --pass:#1B6B4C; --r:3px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0C1211; --surface:#141C1A; --raised:#1B2523;
+  --ink:#E2E8E6; --ink-2:#93A19D; --ink-3:#6B7A76;
+  --line:#26312E; --line-soft:#1E2726;
+  --accent:#4FC7BC; --accent-ink:#0C1211; --accent-soft:#17332F;
+  --load:#E0A44A; --pass:#4ECF9A;
+}}
+:root[data-theme="dark"]{
+  --paper:#0C1211; --surface:#141C1A; --raised:#1B2523;
+  --ink:#E2E8E6; --ink-2:#93A19D; --ink-3:#6B7A76;
+  --line:#26312E; --line-soft:#1E2726;
+  --accent:#4FC7BC; --accent-ink:#0C1211; --accent-soft:#17332F;
+  --load:#E0A44A; --pass:#4ECF9A;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Chivo","Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.55;
+  -webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0;text-wrap:balance;letter-spacing:-.015em}
+p{margin:0} button{font:inherit;color:inherit}
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:2px;border-radius:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.sr{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+
+.wrap{max-width:1120px;margin:0 auto;padding:40px 30px 90px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.11em;
+        text-transform:uppercase;color:var(--ink-3);font-weight:500}
+h1.head{font-size:clamp(28px,4vw,42px);font-weight:800;line-height:1.08;margin-top:10px}
+.deck{font-family:"Newsreader",Georgia,serif;font-size:20px;line-height:1.5;
+      color:var(--ink-2);max-width:60ch;margin-top:14px}
+.how{margin-top:20px;border-left:3px solid var(--accent);background:var(--surface);
+     padding:13px 17px;max-width:62ch;font-size:15px;color:var(--ink-2);line-height:1.55}
+.how b{color:var(--ink)}
+.how kbd{font-family:"IBM Plex Mono",monospace;font-size:12.5px;background:var(--raised);
+         border:1px solid var(--line);border-radius:2px;padding:1px 5px}
+
+.t1{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;margin-top:32px;align-items:start}
+@media (max-width:1080px){.t1{grid-template-columns:1fr}}
+.plotwrap{display:grid;grid-template-columns:120px 1fr}
+.ylab{display:flex;flex-direction:column}
+.ycell{flex:1;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;
+       padding-right:12px;text-align:right}
+.ycell b{font-size:13.5px;font-weight:600;color:var(--ink-2);line-height:1.15}
+.ycell small{font-size:11px;color:var(--ink-3)}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(4,88px);
+      border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface)}
+.cell{border-right:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);
+      padding:5px;display:flex;flex-wrap:wrap;gap:4px;align-content:flex-start}
+.cell:nth-child(5n){border-right:0} .cell:nth-child(n+16){border-bottom:0}
+.cell.hot{background:var(--accent-soft);box-shadow:inset 0 0 0 2px var(--accent)}
+.cell.cursor{box-shadow:inset 0 0 0 3px var(--accent)}
+.xaxis{grid-column:2;display:grid;grid-template-columns:repeat(5,1fr);margin-top:8px}
+.xaxis span{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);text-align:center}
+.xcap{grid-column:2;display:flex;justify-content:space-between;margin-top:4px}
+.xcap b{font-size:12.5px;color:var(--load)}
+.chip{background:var(--accent);color:var(--accent-ink);border:0;border-radius:2px;
+      font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:600;padding:3px 7px;cursor:grab}
+.chip.held{outline:2.5px solid var(--ink);outline-offset:1px}
+
+.tray{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);padding:16px 17px}
+.tray h2{font-size:15px} .tray .hint{font-size:13px;color:var(--ink-3);line-height:1.45;margin:5px 0 13px}
+.card{border:1px solid var(--line-soft);border-radius:var(--r);background:var(--raised);
+      padding:11px 13px;margin-bottom:9px;cursor:grab}
+.card[data-placed="1"]{opacity:.4}
+.card.held{outline:2.5px solid var(--accent);outline-offset:1px}
+.card .who{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:5px}
+.card .id{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--accent);font-weight:600}
+.card .at{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-3)}
+.card p{font-family:"Newsreader",Georgia,serif;font-size:15px;line-height:1.45;color:var(--ink-2)}
+
+.btn{background:var(--accent);color:var(--accent-ink);border:1px solid var(--accent);
+     border-radius:var(--r);padding:11px 20px;font-size:15.5px;font-weight:600;cursor:pointer}
+.btn:disabled{opacity:.38;cursor:not-allowed}
+.btn.sec{background:none;color:var(--ink-2);border-color:var(--line);font-weight:400;padding:8px 13px;font-size:13px}
+.actions{display:flex;gap:12px;margin-top:22px;align-items:center;flex-wrap:wrap}
+.count{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink-3)}
+
+.reveal{margin-top:40px;border-top:1px solid var(--line);padding-top:26px}
+.rv{border-left:3px solid var(--accent);background:var(--surface);padding:14px 18px;margin-bottom:12px;max-width:74ch}
+.rv .id{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--accent);font-weight:600}
+.rv p{font-size:15.5px;color:var(--ink-2);margin-top:6px;line-height:1.5}
+.rv strong{color:var(--ink)}
+.close{max-width:70ch;margin-top:26px;display:flex;flex-direction:column;gap:14px;
+       font-size:16.5px;color:var(--ink-2)}
+.close strong{color:var(--ink)}
+.foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
+      font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);line-height:1.7}
+@media (max-width:900px){.wrap{padding:26px 18px 70px}.plotwrap{grid-template-columns:84px 1fr}
+  .grid{grid-template-rows:repeat(4,76px)}}
+</style>
+
+<div class="wrap">
+  <div class="kicker">EDUC 565A · Week 2 · beat 1</div>
+  <h1 class="head">Six people, using AI to learn.</h1>
+  <p class="deck">Each one goes somewhere on the grid. Up the side is what the learner is actually doing. Across the bottom is what it costs them.</p>
+
+  <div class="how">
+    <b>What decides a placement</b> is what the person did with the output, not which tool they used.
+    Placement is a commitment, so it locks once all six are down and the argument only appears afterwards.<br><br>
+    <b>Dragging works</b>, and so does the keyboard: <kbd>Tab</kbd> to a card, <kbd>Enter</kbd> to pick it up,
+    arrow keys to move, <kbd>Enter</kbd> to place, <kbd>Esc</kbd> to cancel.
+  </div>
+
+  <div class="t1">
+    <div>
+      <div class="plotwrap">
+        <div class="ylab" id="ylab"></div>
+        <div class="grid" id="grid" role="grid" aria-label="ICAP mode by cognitive load"></div>
+        <div class="xaxis" id="xaxis"></div>
+        <div class="xcap"><b>low cost to the learner</b><b>high cost</b></div>
+      </div>
+      <div class="actions">
+        <button class="btn" id="lock">Lock all six</button>
+        <span class="count" id="count"></span>
+        <button class="btn sec" id="reset">Clear</button>
+      </div>
+    </div>
+    <div class="tray">
+      <h2>Scenarios</h2>
+      <p class="hint">Every one ends with what the person actually did. That clause is the placement.</p>
+      <div id="tray"></div>
+    </div>
+  </div>
+
+  <div id="reveal"></div>
+
+  <div class="foot">
+    Chi, M. T. H., &amp; Wylie, R. (2014). The ICAP framework: Linking cognitive engagement to active learning outcomes. <i>Educational Psychologist, 49</i>(4), 219–243.<br>
+    Sweller, J., van Merriënboer, J. J. G., &amp; Paas, F. (2019). Cognitive architecture and instructional design: 20 years later. <i>Educational Psychology Review, 31</i>(2), 261–292.<br>
+    Nothing here is submitted or seen by anyone else. It stays in this browser.
+  </div>
+</div>
+<div class="sr" role="status" aria-live="polite" id="live"></div>
+
+<script>
+"use strict";
+const KEY="educ565a-w02-t1";
+const ICAP=[{n:"Interactive",s:"Co-Generative"},{n:"Constructive",s:"Generative"},
+            {n:"Active",s:"Manipulative"},{n:"Passive",s:"Attentive"}];
+const SCENES=[
+ {id:"S1",who:"Maya",at:"essay",
+  text:"Three deadlines this week. One is a 1,500-word reflection for a required course outside her concentration, graded pass/fail, and she has already passed the threshold. She gives the model the prompt and the rubric, takes the draft, swaps the examples for ones from her own job, and submits it.",
+  note:"<strong>The baseline: comfortable, and empty.</strong> Worth asking whether the pass/fail detail changes anyone's judgement, because it certainly changed hers."},
+ {id:"S2",who:"Daniel",at:"rabbit hole",
+  text:"He meant to spend ten minutes checking one claim about spaced repetition. Two hours later there are forty messages, the topic has drifted four times, and there are no notes. He found it fascinating. He cannot say what he now knows that he did not know before.",
+  note:"<strong>High effort, low ICAP.</strong> This is the one that breaks the assumption that hard work means learning, and that being absorbed means learning. Nothing was externalised, so it is not Constructive whatever it felt like from inside."},
+ {id:"S3",who:"Priya",at:"lesson plan",
+  text:"Designing a 45-minute session on fractions for Year 4. She asks for a plan, gets one, and rejects it because it assumes manipulatives her school does not have. She describes what is actually in the room, gets a second version, disagrees with the sequencing and explains why. The fourth version is largely hers; she keeps two of its ideas.",
+  note:"<strong>The good one, and it is expensive.</strong> Both of Chi and Wylie's criteria for Interactive are met: her turns are primarily constructive, and there is real turn-taking rather than two parties issuing statements. Notice where the cost lands."},
+ {id:"S4",who:"Wen",at:"summaries",
+  text:"Four papers to get through before Thursday's seminar. He asks for a summary of each, reads the summaries, and goes in. For the one he is presenting, he reads the summary first, then the paper, and marks three places where the summary flattened something.",
+  note:"<strong>One person, two placements.</strong> Same tool, same week, different action. If the room has put this in a single cell, that is the moment to ask which of the two Wens got plotted."},
+ {id:"S5",who:"Sofia",at:"after-school",
+  text:"She runs an after-school programme. She uses the model to generate twenty reading comprehension questions for a story her group is reading, keeps eight, and rewrites three. In the session the children answer aloud and argue about two of them.",
+  note:"<strong>Whose ICAP is being plotted?</strong> Sofia's own work is Constructive. The children's discussion may well be Interactive. The tool never touched the learners at all. This one breaks the frame on purpose, and the useful question is whether the grid can hold a case where the designer and the learner are different people."},
+ {id:"S6",who:"Jae",at:"language",
+  text:"He practises Korean with a voice model for twenty minutes most evenings. He speaks, it responds, and it corrects him when he asks. He does not ask often, because being corrected mid-sentence makes him lose the thread.",
+  note:"<strong>The tension, exactly.</strong> He switched off the correction in order to manage the load, and the correction was the mechanism. Lower cost, lower ICAP, by his own entirely reasonable choice."}
+];
+
+function blank(){return{place:{},locked:false};}
+function load(){try{const r=localStorage.getItem(KEY);return r?Object.assign(blank(),JSON.parse(r)):blank();}catch(e){return blank();}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+let S=load(), held=null, cur=[1,2];
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const say=m=>{const l=document.getElementById("live");l.textContent="";setTimeout(()=>l.textContent=m,40);};
+const nPlaced=()=>Object.keys(S.place).length;
+
+function draw(){
+  document.getElementById("ylab").innerHTML=ICAP.map(m=>
+    '<div class="ycell"><b>'+m.n+'</b><small>'+m.s+'</small></div>').join("");
+  document.getElementById("xaxis").innerHTML=[1,2,3,4,5].map(i=>"<span>"+i+"</span>").join("");
+
+  let cells="";
+  for(let r=0;r<4;r++)for(let c=0;c<5;c++){
+    const chips=SCENES.filter(s=>{const p=S.place[s.id];return p&&p[0]===r&&p[1]===c;}).map(s=>
+      '<button class="chip'+(held===s.id?" held":"")+'" data-chip="'+s.id+'" aria-label="'+s.id+', '+esc(s.who)+
+      ', placed at '+ICAP[r].n+', cost '+(c+1)+' of 5.'+(S.locked?"":" Activate to pick up again.")+'">'+s.id+'</button>').join("");
+    cells+='<div class="cell" data-r="'+r+'" data-c="'+c+'" role="gridcell" aria-label="'+ICAP[r].n+', cost '+(c+1)+' of 5">'+chips+'</div>';
+  }
+  document.getElementById("grid").innerHTML=cells;
+
+  document.getElementById("tray").innerHTML=SCENES.map(s=>{
+    const p=S.place[s.id];
+    return '<div class="card'+(held===s.id?" held":"")+'" tabindex="0" role="button" data-card="'+s.id+
+      '" data-placed="'+(p?1:0)+'" aria-label="Scenario '+s.id+', '+esc(s.who)+'. '+(p?"Placed at "+ICAP[p[0]].n+", cost "+(p[1]+1)+".":"Not yet placed.")+'">'+
+      '<div class="who"><span class="id">'+s.id+' · '+esc(s.who)+'</span><span class="at">'+esc(s.at)+'</span></div>'+
+      '<p>'+esc(s.text)+'</p></div>';
+  }).join("");
+
+  const n=nPlaced(), lock=document.getElementById("lock");
+  document.getElementById("count").textContent=S.locked?"locked":n+" of 6 placed";
+  lock.disabled=(n<6||S.locked); lock.textContent=S.locked?"Locked":"Lock all six";
+
+  document.getElementById("reveal").innerHTML=!S.locked?"":
+    '<div class="reveal"><div class="kicker">Now the argument</div>'+
+    SCENES.map(s=>'<div class="rv"><span class="id">'+s.id+' · '+esc(s.who)+'</span><p>'+s.note+'</p></div>').join("")+
+    '<div class="close">'+
+    '<p><strong>The top-left region is empty, and that is the finding rather than a gap in the examples.</strong> Constructive and Interactive work is expensive by its nature, because producing something and sustaining a dialogue both draw on the same limited working memory. Reducing what a design costs and raising what a learner does are therefore not the same instruction, and a design that succeeds at one can undo the other.</p>'+
+    '<p>AI moves activity down and to the left with great reliability. It lowers the cost, and the way it usually lowers the cost is by doing the constructing.</p>'+
+    '<p>There is a second thing worth noticing. <strong>Low cost also feels like learning going well</strong>, which is the performance proxy from Week 1 arriving in a new costume.</p>'+
+    '</div></div>';
+  wire();
+}
+
+function pick(id){
+  if(S.locked) return;
+  held = held===id ? null : id;
+  draw();
+  if(held){ say("Picked up "+held+". Arrow keys to move, Enter to place, Escape to cancel."); mark(); }
+}
+function drop(r,c){
+  if(!held||S.locked) return;
+  const s=SCENES.find(x=>x.id===held), was=held;
+  S.place[held]=[r,c]; held=null; save(); draw();
+  say(was+", "+s.who+", placed at "+ICAP[r].n+", cost "+(c+1)+" of 5. "+nPlaced()+" of 6 placed.");
+}
+function mark(){
+  document.querySelectorAll(".cell").forEach(c=>c.classList.remove("cursor"));
+  const el=document.querySelector('.cell[data-r="'+cur[0]+'"][data-c="'+cur[1]+'"]');
+  if(el){el.classList.add("cursor");el.scrollIntoView({block:"nearest"});}
+}
+function wire(){
+  document.querySelectorAll("[data-card],[data-chip]").forEach(el=>{
+    const id=el.dataset.card||el.dataset.chip;
+    el.onclick=ev=>{ev.stopPropagation();pick(id);};
+    el.onkeydown=ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();pick(id);}};
+    el.draggable=!S.locked;
+    el.ondragstart=ev=>{held=id;ev.dataTransfer.setData("text/plain",id);};
+  });
+  document.querySelectorAll(".cell").forEach(el=>{
+    el.ondragover=ev=>{if(held){ev.preventDefault();el.classList.add("hot");}};
+    el.ondragleave=()=>el.classList.remove("hot");
+    el.ondrop=ev=>{ev.preventDefault();el.classList.remove("hot");drop(+el.dataset.r,+el.dataset.c);};
+    el.onclick=()=>{if(held)drop(+el.dataset.r,+el.dataset.c);};
+  });
+}
+
+document.addEventListener("keydown",e=>{
+  if(!held) return;
+  const m={ArrowUp:[-1,0],ArrowDown:[1,0],ArrowLeft:[0,-1],ArrowRight:[0,1]};
+  if(m[e.key]){e.preventDefault();
+    cur=[Math.max(0,Math.min(3,cur[0]+m[e.key][0])),Math.max(0,Math.min(4,cur[1]+m[e.key][1]))];
+    mark(); say(ICAP[cur[0]].n+", cost "+(cur[1]+1)+" of 5");
+  }else if(e.key==="Enter"){e.preventDefault();drop(cur[0],cur[1]);}
+  else if(e.key==="Escape"){e.preventDefault();held=null;draw();say("Cancelled.");}
+});
+
+document.getElementById("lock").onclick=()=>{
+  S.locked=true;held=null;save();draw();
+  say("Locked. The argument is now below the grid.");
+  document.querySelector(".reveal")?.scrollIntoView({behavior:"smooth",block:"start"});
+};
+document.getElementById("reset").onclick=()=>{
+  if(!confirm("Clear all six placements?")) return;
+  S=blank();held=null;try{localStorage.removeItem(KEY);}catch(e){}draw();
+};
+draw();
+</script>

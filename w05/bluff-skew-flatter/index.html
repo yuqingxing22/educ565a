@@ -1,0 +1,898 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>[hidden]{display:none!important}img{max-width:100%}</style>
+<title>Bluff, Skew, Flatter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,700;1,6..72,500&display=swap">
+<style>
+:root {
+  --ground: #F7F3EE;
+  --surface: #FFFDFA;
+  --ink: #241A20;
+  --muted: #6B5E63;
+  --line: #E2D8CE;
+  --card: #9E1B32;
+  --card-soft: #F3E1E3;
+  --gold: #E0A33E;
+  --gold-soft: #FBEBCF;
+  --slate: #3E5C6B;
+  --ai-surface: #E7EEF1;
+  --ai-line: #C6D5DC;
+  --good: #2F6B4A;
+  --bad: #9E1B32;
+  --mark: #FBE3A8;
+  --display: "Newsreader", Georgia, "Times New Roman", serif;
+  --body: "Atkinson Hyperlegible", "Trebuchet MS", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --ground: #1A1417; --surface: #241C20; --ink: #F1EAE4; --muted: #AB9DA2; --line: #3B3035;
+    --card: #E0647A; --card-soft: #3A2127; --gold: #E8B25A; --gold-soft: #3A2E1A;
+    --slate: #93B4C4; --ai-surface: #1F2B32; --ai-line: #34474F;
+    --good: #7CC49A; --bad: #E0647A; --mark: #5A4618;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ground: #1A1417; --surface: #241C20; --ink: #F1EAE4; --muted: #AB9DA2; --line: #3B3035;
+  --card: #E0647A; --card-soft: #3A2127; --gold: #E8B25A; --gold-soft: #3A2E1A;
+  --slate: #93B4C4; --ai-surface: #1F2B32; --ai-line: #34474F;
+  --good: #7CC49A; --bad: #E0647A; --mark: #5A4618;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--ground); color: var(--ink);
+  font-family: var(--body); font-size: 17px; line-height: 1.6;
+  padding-inline: 20px; padding-block: 0 64px;
+}
+.wrap { max-width: 860px; margin: 0 auto; }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.15; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+.prose { max-width: 66ch; display: grid; gap: 14px; }
+a { color: var(--card); }
+button { font: inherit; cursor: pointer; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.eyebrow { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+
+/* Header */
+header.top { padding-block: 56px 36px; display: grid; gap: 18px; }
+header.top h1 { font-size: clamp(44px, 9vw, 84px); letter-spacing: -.01em; }
+header.top h1 span { font-style: italic; font-weight: 500; }
+header.top h1 .c1 { color: var(--card); }
+header.top h1 .c2 { color: var(--slate); }
+header.top h1 .c3 { color: var(--gold); }
+.lede { font-size: 19px; max-width: 60ch; }
+
+.trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 10px; }
+.trio a {
+  display: grid; gap: 2px; text-decoration: none; color: var(--ink);
+  padding: 14px 16px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface);
+}
+.trio a:hover { border-color: var(--ink); }
+.trio b { font-family: var(--display); font-size: 22px; }
+.trio small { color: var(--muted); font-size: 14px; }
+
+/* Sections */
+section.mod { padding-block: 48px; border-top: 2px solid var(--ink); display: grid; gap: 24px; }
+.mod-head { display: grid; gap: 6px; }
+.mod-head h2 { font-size: clamp(34px, 6vw, 50px); }
+.mod-head .term { font-family: var(--display); font-style: italic; font-size: 22px; color: var(--muted); }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.two h3 { font-size: 20px; margin-bottom: 6px; }
+.two p { max-width: 42ch; }
+
+.try { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 24px; display: grid; gap: 18px; }
+.try > .eyebrow { color: var(--card); }
+.try h3 { font-size: 26px; }
+.note { font-size: 14px; color: var(--muted); font-style: italic; }
+
+.catch { display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; padding: 18px 20px; background: var(--gold-soft); border-radius: 8px; }
+.catch .eyebrow { grid-column: 1 / -1; color: var(--ink); }
+.catch dt { font-weight: 700; }
+.catch dd { margin: 0; }
+
+/* Buttons */
+.btn { border: 2px solid var(--ink); background: var(--ink); color: var(--ground); padding: 9px 16px; border-radius: 999px; font-weight: 700; font-size: 15px; }
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn:disabled { opacity: .35; cursor: not-allowed; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+
+/* Quiz */
+.quiz { display: grid; gap: 16px; counter-reset: q; }
+.q { display: grid; gap: 8px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.q:last-child { border-bottom: 0; }
+.q p { font-weight: 700; }
+.opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.opt { border: 1.5px solid var(--line); background: var(--ground); color: var(--ink); padding: 7px 14px; border-radius: 6px; font-size: 15px; }
+.opt:hover { border-color: var(--ink); }
+.opt[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: var(--ground); }
+.opt.idk { font-style: italic; }
+.opt.right { border-color: var(--good); box-shadow: inset 0 0 0 1.5px var(--good); }
+.opt.wrong { border-color: var(--bad); background: var(--card-soft); color: var(--ink); text-decoration: line-through; }
+.scoreboard { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+td.num { font-variant-numeric: tabular-nums; font-weight: 700; font-size: 18px; white-space: nowrap; }
+tr.you td { background: var(--gold-soft); }
+.reveal { display: grid; gap: 12px; padding: 18px 20px; border-left: 4px solid var(--card); background: var(--card-soft); border-radius: 0 8px 8px 0; }
+.reveal h4 { font-family: var(--display); font-size: 22px; margin: 0; }
+
+/* Citations */
+.cites { display: grid; gap: 10px; }
+.cite { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; padding: 14px 16px; border: 1.5px solid var(--line); border-radius: 6px; background: var(--ground); }
+.cite p { font-size: 15px; padding-left: 2em; text-indent: -2em; }
+.cite .verdict { font-size: 14px; font-weight: 700; grid-column: 1 / -1; text-indent: 0; padding: 0; }
+.cite.is-real .verdict { color: var(--good); }
+.cite.is-fake { border-color: var(--bad); }
+.cite.is-fake .verdict { color: var(--bad); }
+
+/* AI output: cool slate = machine */
+.req { border: 1.5px solid var(--line); border-radius: 8px; padding: 14px 16px; background: var(--ground); display: grid; gap: 8px; }
+.req .who, .ai .who { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+.req blockquote { margin: 0; padding-left: 12px; border-left: 3px solid var(--line); font-style: italic; }
+.ai { background: var(--ai-surface); border: 1.5px solid var(--ai-line); border-radius: 8px; padding: 14px 16px; display: grid; gap: 8px; }
+.ai .who { color: var(--slate); }
+.changed { display: inline-block; background: var(--gold); color: #241A20; font-weight: 700; padding: 0 6px; border-radius: 4px; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.seg { display: inline-flex; flex-wrap: wrap; border: 1.5px solid var(--ink); border-radius: 999px; overflow: hidden; }
+.seg button { border: 0; background: transparent; color: var(--ink); padding: 7px 14px; font-size: 14px; font-weight: 700; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--ground); }
+mark { background: transparent; color: inherit; transition: background .2s; border-radius: 3px; }
+.hl mark { background: var(--mark); }
+.poll { display: grid; gap: 10px; }
+
+/* Chat */
+.chat { display: grid; gap: 10px; }
+.bubble { max-width: 85%; padding: 12px 16px; border-radius: 14px; font-size: 16px; }
+.bubble.u { justify-self: end; background: var(--ink); color: var(--ground); border-bottom-right-radius: 4px; }
+.bubble.a { justify-self: start; background: var(--ai-surface); border: 1.5px solid var(--ai-line); border-bottom-left-radius: 4px; }
+.bubble.new { animation: rise .35s ease-out; }
+@keyframes rise { from { transform: translateY(8px); opacity: .4; } to { transform: none; opacity: 1; } }
+.meters { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.meter { display: grid; gap: 6px; }
+.meter .lab { display: flex; justify-content: space-between; font-size: 14px; font-weight: 700; }
+.meter .lab span:last-child { font-variant-numeric: tabular-nums; }
+.bar { height: 10px; border-radius: 999px; background: var(--line); overflow: hidden; }
+.bar i { display: block; height: 100%; border-radius: 999px; transition: width .5s ease; }
+.bar.agree i { background: var(--gold); }
+.bar.acc i { background: var(--slate); }
+
+/* Recap */
+.recap-wrap { overflow-x: auto; }
+.recap td:first-child { font-family: var(--display); font-weight: 700; font-size: 18px; white-space: nowrap; }
+.recap td { font-size: 15px; }
+.refs { display: grid; gap: 8px; font-size: 14px; color: var(--muted); }
+.refs p { padding-left: 2em; text-indent: -2em; }
+
+/* Where are the humans */
+.pipe { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 22px; --fc: var(--ink); --fc-soft: var(--surface); }
+.pipe.f-bluff { --fc: var(--card); --fc-soft: var(--card-soft); }
+.pipe.f-skew { --fc: var(--slate); --fc-soft: var(--ai-surface); }
+.pipe.f-flatter { --fc: var(--gold); --fc-soft: var(--gold-soft); }
+.stage { position: relative; display: grid; align-content: start; gap: 6px; padding: 14px 12px; border: 2px solid var(--line); border-radius: 8px; background: var(--ground); transition: opacity .3s, background .3s, border-color .3s; }
+.stage + .stage::before { content: "→"; position: absolute; left: -19px; top: 50%; transform: translateY(-50%); color: var(--muted); font-weight: 700; }
+.s-name { font-family: var(--display); font-weight: 700; font-size: 18px; line-height: 1.2; }
+.s-who { font-size: 13.5px; color: var(--muted); line-height: 1.4; }
+.s-tag { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; color: var(--fc); min-height: 1em; }
+.pipe.active .stage { opacity: .4; }
+.pipe.active .stage.lv-main, .pipe.active .stage.lv-worse, .pipe.active .stage.lv-hides { opacity: 1; }
+.stage.lv-main { background: var(--fc-soft); border-color: var(--fc); }
+.stage.lv-worse { border-color: var(--fc); }
+.stage.lv-hides { border-color: var(--fc); border-style: dashed; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 13.5px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.lg { width: 22px; height: 14px; border-radius: 3px; border: 2px solid var(--ink); display: inline-block; }
+.lg.main { background: var(--line); }
+.lg.hides { border-style: dashed; }
+.why { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.why li { display: grid; grid-template-columns: 9.5em 1fr; gap: 12px; }
+.why b { font-family: var(--display); font-size: 17px; }
+.why small { display: block; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; color: var(--muted); font-family: var(--body); }
+
+.aside { border-left: 3px solid var(--line); padding: 4px 0 4px 16px; max-width: 70ch; }
+
+/* Next page */
+.next { display: grid; gap: 4px; padding: 22px 24px; border: 2px solid var(--gold); border-radius: 8px; background: var(--gold-soft); color: var(--ink); text-decoration: none; }
+.next .eyebrow { color: var(--ink); }
+.next-t { font-family: var(--display); font-weight: 700; font-size: 28px; line-height: 1.15; }
+.next-t::after { content: " →"; color: var(--gold); }
+.next-s { color: var(--muted); }
+.next:hover { border-color: var(--ink); }
+.next.is-pending .next-t::after { content: ""; }
+
+/* Cover */
+.cover {
+  position: fixed; inset: 0; z-index: 50; overflow-y: auto;
+  background: var(--ground); display: grid; place-items: center;
+  padding: calc(env(safe-area-inset-top, 0px) + 32px) 24px calc(env(safe-area-inset-bottom, 0px) + 32px);
+}
+.cover.gone { display: none; }
+.cv-inner { width: 100%; max-width: 1120px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
+.cv-title { display: grid; gap: 20px; }
+.cv-title h1 { font-family: var(--display); font-size: clamp(60px, 11vw, 132px); line-height: .95; letter-spacing: -.015em; margin: 0; }
+.cv-title h1 span { font-style: italic; font-weight: 500; }
+.cv-title .c1 { color: var(--card); } .cv-title .c2 { color: var(--slate); } .cv-title .c3 { color: var(--gold); }
+.cv-sub { font-family: var(--display); font-size: clamp(22px, 2.6vw, 30px); border-top: 2px solid var(--ink); padding-top: 14px; max-width: 16em; }
+.cv-title .btn { font-size: 17px; padding: 11px 26px; }
+.cv-demo { display: grid; gap: 22px; }
+.cv-cap { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+.cv-b {
+  position: relative; background: var(--ai-surface); border: 1.5px solid var(--ai-line);
+  border-radius: 16px 16px 16px 4px; padding: 16px 20px 16px 20px; font-size: 18px; line-height: 1.45;
+  animation: cvIn .5s ease-out both; animation-delay: calc(var(--i) * .35s);
+}
+.cv-who { display: block; font-size: 11px; letter-spacing: .1em; font-weight: 700; color: var(--slate); margin-bottom: 4px; }
+.stamp {
+  position: absolute; right: -10px; top: -14px; transform: rotate(6deg);
+  font-family: var(--display); font-style: italic; font-weight: 700; font-size: 20px; line-height: 1;
+  padding: 5px 12px 7px; border: 2.5px solid currentColor; border-radius: 4px; background: var(--ground);
+  animation: stampIn .35s cubic-bezier(.2,1.6,.4,1) both; animation-delay: calc(var(--i) * .35s + 1.1s);
+}
+.stamp.s1 { color: var(--card); } .stamp.s2 { color: var(--slate); transform: rotate(-5deg); } .stamp.s3 { color: var(--gold); }
+@keyframes cvIn { from { transform: translateY(10px); opacity: .3; } to { transform: none; opacity: 1; } }
+@keyframes stampIn { from { scale: 1.6; opacity: .2; } to { scale: 1; opacity: 1; } }
+@media (max-width: 800px) {
+  .cv-inner { grid-template-columns: 1fr; gap: 36px; }
+  .cv-b { font-size: 16px; }
+  .stamp { right: -4px; font-size: 17px; }
+}
+
+/* Side panel */
+.layout { display: grid; grid-template-columns: 210px minmax(0, 860px); gap: 56px; justify-content: center; }
+.wrap { margin: 0; }
+section.mod, .try, header.top { scroll-margin-top: 20px; }
+.panel { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px); align-self: start; margin-top: 60px; max-height: calc(100vh - 48px); overflow-y: auto; display: grid; gap: 18px; }
+.p-title { font-family: var(--display); font-style: italic; font-weight: 700; font-size: 20px; color: var(--ink); text-decoration: none; }
+.p-list, .p-list ol { list-style: none; margin: 0; padding: 0; }
+.p-list { position: relative; display: grid; gap: 6px; border-left: 2px solid var(--line); }
+.p-list a { color: var(--muted); text-decoration: none; display: block; }
+.p-list > li > a { display: flex; gap: 10px; align-items: flex-start; padding: 7px 10px 7px 12px; margin-left: -2px; border-left: 2px solid transparent; font-weight: 700; font-size: 15px; line-height: 1.3; }
+.p-list > li > a small { display: block; font-weight: 400; font-size: 12.5px; color: var(--muted); }
+.p-list > li > a i { flex: none; width: 10px; height: 10px; margin-top: 4px; border-radius: 50%; border: 2px solid var(--dot, var(--ink)); }
+.p-list a:hover { color: var(--ink); }
+.p-list > li > a.on { color: var(--ink); border-left-color: var(--dot, var(--ink)); }
+.p-list > li > a.on i { background: var(--dot, var(--ink)); }
+.p-list ol { display: grid; gap: 2px; padding: 0 0 4px 32px; }
+.p-list ol a { font-size: 13.5px; padding: 3px 0; }
+.p-bluff { --dot: var(--card); }
+.p-skew { --dot: var(--slate); }
+.p-flatter { --dot: var(--gold); }
+
+@media (max-width: 1000px) {
+  .layout { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .wrap { max-width: 860px; margin: 0 auto; width: 100%; }
+  .panel { top: env(safe-area-inset-top, 0px); z-index: 20; margin: 0 -20px; padding: 8px 20px; max-height: none; overflow: visible; background: var(--ground); border-bottom: 1px solid var(--line); }
+  .p-title, .p-list ol, .p-list small { display: none; }
+  .p-list { display: flex; gap: 4px; border-left: 0; overflow-x: auto; scrollbar-width: none; }
+  .p-list > li > a { white-space: nowrap; margin: 0; padding: 6px 12px; border: 1.5px solid var(--line); border-radius: 999px; font-size: 14px; align-items: center; }
+  .p-list > li > a i { margin-top: 0; }
+  .p-list > li > a.on { border-color: var(--dot, var(--ink)); }
+  section.mod, .try, header.top { scroll-margin-top: 64px; }
+}
+
+#resetAll {
+  position: fixed; z-index: 30;
+  right: 20px; top: calc(env(safe-area-inset-top, 0px) + 16px);
+  background: var(--card); border-color: var(--card); color: var(--ground);
+  box-shadow: 0 4px 14px rgba(36, 26, 32, .25);
+}
+#resetAll:hover { filter: brightness(1.08); }
+@media (max-width: 1000px) {
+  #resetAll { top: calc(env(safe-area-inset-top, 0px) + 7px); padding: 6px 14px; font-size: 14px; }
+  .panel { padding-right: 120px; }
+}
+
+@media (max-width: 680px) {
+  .trio, .two, .cols, .meters, .pipe { grid-template-columns: 1fr; }
+  .stage + .stage::before { content: "↓"; left: 50%; top: -20px; transform: translateX(-50%); }
+  .why li { grid-template-columns: 1fr; gap: 2px; }
+  .try { padding: 18px; }
+  .bubble { max-width: 95%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+</style>
+
+<div class="cover" id="cover" aria-label="Cover">
+  <div class="cv-inner">
+    <div class="cv-title">
+      <div class="eyebrow">EDUC 565A · Week 5</div>
+      <h1><span class="c1">Bluff,</span><br><span class="c2">skew,</span><br><span class="c3">flatter.</span></h1>
+      <p class="cv-sub">Testing AI's Limits</p>
+      <div class="row"><button class="btn" id="coverGo">Begin</button></div>
+    </div>
+    <div class="cv-demo" aria-hidden="true">
+      <p class="cv-cap">Three things an AI might say to you</p>
+      <div class="cv-b" style="--i:0"><span class="cv-who">AI</span>According to Hartwell and Osei (2021), AI tutors raise middle school reading scores by 34%.<span class="stamp s1">Bluff</span></div>
+      <div class="cv-b" style="--i:1"><span class="cv-who">AI</span>Great job writing in English! Let's work on your grammar.<span class="stamp s2">Skew</span></div>
+      <div class="cv-b" style="--i:2"><span class="cv-who">AI</span>You're absolutely right, and I apologize for the confusion.<span class="stamp s3">Flatter</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="layout">
+<aside class="panel" aria-label="On this page">
+  <a class="p-title" href="#top">Bluff, skew, flatter.</a>
+  <nav>
+    <ol class="p-list">
+      <li class="p-bluff"><a href="#hallucination" data-spy="hallucination"><i></i><span>It bluffs.<small>Hallucination</small></span></a>
+        <ol><li><a href="#try-carwash">The car wash</a></li><li><a href="#try-quiz">Bluff or pass?</a></li></ol></li>
+      <li class="p-skew"><a href="#bias" data-spy="bias"><i></i><span>It skews.<small>Bias</small></span></a>
+        <ol><li><a href="#try-change">Change one thing</a></li></ol></li>
+      <li class="p-flatter"><a href="#sycophancy" data-spy="sycophancy"><i></i><span>It flatters.<small>Sycophancy</small></span></a>
+        <ol><li><a href="#try-push">Push back</a></li></ol></li>
+      <li class="p-humans"><a href="#humans" data-spy="humans"><i></i><span>Where are the humans?</span></a></li>
+      <li class="p-recap"><a href="#recap" data-spy="recap"><i></i><span>All three</span></a></li>
+    </ol>
+  </nav>
+</aside>
+<div class="wrap" id="top">
+
+<header class="top">
+  <div class="eyebrow">EDUC 565A · Week 5 · Testing AI's Limits</div>
+  <h1><span class="c1">Bluff,</span> <span class="c2">skew,</span> <span class="c3">flatter.</span></h1>
+  <p class="lede">AI tools go wrong in ways that are easy to miss, because the output still sounds fluent, friendly, and sure of itself. This page walks through three of them, and each one ends with <b>how you would catch it</b>.</p>
+</header>
+
+
+<!-- ================= HALLUCINATION ================= -->
+<section class="mod" id="hallucination">
+  <div class="mod-head">
+    <div class="eyebrow">1 of 3</div>
+    <h2>It bluffs.</h2>
+    <div class="term">Hallucination</div>
+  </div>
+
+  <div class="try" id="try-carwash">
+    <div class="eyebrow">A real exchange</div>
+    <h3>The car wash</h3>
+    <div class="chat">
+      <div class="bubble u">I want to go to an automatic car wash, but it's only about 50 meters from my place. Should I drive there or just walk over?</div>
+      <div class="bubble a">Haha, this is such an everyday-life question 😂 Let's think about it practically. The self-service car wash is only 50 meters away from your home, which is basically just around the corner.</div>
+      <div class="bubble a">✅ I'd definitely recommend walking over first rather than driving.</div>
+      <div class="bubble a">Fifty meters is roughly 60–80 steps. Less than a minute of walking. Basically, by the time you pull out your phone, you're already there 😆</div>
+      <div class="bubble a">Otherwise, starting your car just to drive 50 meters probably isn't worth it.</div>
+    </div>
+    <div class="row"><button class="btn" id="carwashGo">What's wrong here?</button></div>
+    <div id="carwashOut" hidden>
+      <div class="reveal">
+        <h4>The car is the thing being washed.</h4>
+        <p>It has to go to the car wash, however close it is. The answer is long, friendly, and completely sure of itself, and it misses the one thing that matters. It even turns the "automatic" car wash in the question into a "self-service" one.</p>
+        <p>Strictly speaking, this isn't a made-up fact, so it's not a classic hallucination. But it comes from the same place: the model gave the answer that usually follows a question like this ("it's close, just walk") instead of thinking about this situation.</p>
+      </div>
+    </div>
+    <p class="note">From your instructor's own chat with ChatGPT in 2025. Shortened; the wording is the AI's.</p>
+  </div>
+
+  <div class="two">
+    <div><h3>What it is</h3><p>The AI states something false as if it were fact: an event that never happened, a statistic nobody measured, a quote nobody said, or a <b>citation to an article that does not exist</b>.</p></div>
+    <div><h3>Why it happens</h3><p>A language model writes by predicting which words are likely to come next. It has no built-in check for "is this true?" And during training, a confident guess is often rewarded more than <b>"I don't know"</b>. Try the quiz below to see why.</p></div>
+  </div>
+
+  <div class="try" id="try-quiz">
+    <div class="eyebrow">Try it</div>
+    <h3>Bluff or pass?</h3>
+    <p>Five trivia questions. For each one, pick an answer or choose <b>"I don't know."</b> Be honest about what you actually know.</p>
+    <div class="quiz" id="quiz"></div>
+    <div class="row"><button class="btn" id="quizGo" disabled>See your score</button><span class="note" id="quizLeft">5 questions left</span></div>
+    <div id="quizOut" hidden></div>
+  </div>
+
+  <div class="aside" id="fake-cites">
+    <p><b>A common case: fake citations.</b> An AI can invent a reference that looks exactly like a real one, with plausible authors, a real-sounding journal, and page numbers. Checking one takes a minute. The hard part is usually not knowing how to check. It's remembering to do it.</p>
+  </div>
+
+  <dl class="catch">
+    <div class="eyebrow">How to catch it</div>
+    <dt>Check it against a source.</dt><dd>Open the citation. Find the page. Search the exact title in Google Scholar or the library.</dd>
+    <dt>What this misses</dt><dd>Bias. Every single fact can check out and the pattern can still be skewed. That is the next section.</dd>
+  </dl>
+</section>
+
+<!-- ================= BIAS ================= -->
+<section class="mod" id="bias">
+  <div class="mod-head">
+    <div class="eyebrow">2 of 3</div>
+    <h2>It skews.</h2>
+    <div class="term">Bias</div>
+  </div>
+  <div class="two">
+    <div><h3>What it is</h3><p>The AI treats people differently based on who they seem to be: their name, dialect, first language, or school. The difference is often in <b>what it expects of them</b>, not in anything obviously rude.</p></div>
+    <div><h3>Why it happens</h3><p>Models learn from enormous amounts of human writing, and that writing carries our stereotypes. For example, Hofmann et al. (2024) found language models judged speakers of African American English more harshly than speakers of Standard American English, even when both said the same thing.</p></div>
+  </div>
+
+  <div class="try" id="try-change">
+    <div class="eyebrow">Try it</div>
+    <h3>Change one thing</h3>
+    <div class="req">
+      <div class="who">The request</div>
+      <p>Give brief feedback to this 10th-grade student on their paragraph.<span id="reqExtra"></span></p>
+      <blockquote>Social media should be banned for kids under 16. It makes them feel bad about themself because they compare to other people all the time. Also they don't sleep enough because they are on there phone at night. Some people say it help them keep friends but I think real friends you can see in person.</blockquote>
+    </div>
+
+    <div class="cols" id="biasCols">
+      <div class="ai" id="outA">
+        <div class="who">AI feedback · Version A</div>
+        <p>Strong start: your position is clear in the first sentence. To push this further, turn your two reasons into a real argument. <mark>Can you cite a study on teen sleep or self-esteem?</mark> Then <mark>take on the counterargument directly</mark>: you mention that some people say social media helps them keep friends, so explain why that benefit doesn't outweigh the harms. That move will make this <mark>persuasive, not just opinionated</mark>. Quick fixes: "themself" should be "themselves," and "there phone" should be "their phone."</p>
+      </div>
+      <div class="ai" id="outB" hidden>
+        <div class="who">AI feedback · Version B</div>
+        <p id="outBText"></p>
+      </div>
+    </div>
+
+    <div class="poll" id="biasPoll">
+      <p><b>Read Version A. Would you give this feedback to a student?</b> Then change one thing about the student and ask again.</p>
+      <div class="row"><button class="btn" id="biasGo">Change one thing</button></div>
+    </div>
+
+    <div id="biasMore" hidden>
+      <div style="display:grid; gap:16px;">
+        <div class="row">
+          <span class="eyebrow" id="segLabel">What changed</span>
+          <div class="seg" role="group" aria-labelledby="segLabel">
+            <button id="segEL" aria-pressed="true">English learner</button>
+            <button id="segT1" aria-pressed="false">Title I school</button>
+          </div>
+          <button class="btn ghost" id="hlBtn" aria-pressed="false">Highlight the differences</button>
+        </div>
+        <div class="scoreboard">
+          <table>
+            <thead><tr><th></th><th>Version A</th><th>Version B</th></tr></thead>
+            <tbody id="biasTable"></tbody>
+          </table>
+        </div>
+        <div class="reveal">
+          <h4>Each one looks fine on its own.</h4>
+          <p>Version B is kind, accurate, and encouraging. Nothing in it is false, so a fact-check would pass it. The problem only shows up <b>side by side</b>: one student is asked to build an argument, and the other is asked to fix their grammar. Across a whole class, that difference adds up.</p>
+        </div>
+      </div>
+    </div>
+    <p class="note">Example outputs written for this page to show a pattern reported in research. Newer models often pass a single test like this one, because bias tends to show up across many outputs rather than in one. If you try it on your own tool and see no difference, that is not proof there is no bias.</p>
+  </div>
+
+  <dl class="catch">
+    <div class="eyebrow">How to catch it</div>
+    <dt>Compare across outputs.</dt><dd>Send the same request twice, changing only one thing about the learner. Read the two answers side by side.</dd>
+    <dt>What this misses</dt><dd>A problem that shows up in both versions. If both are wrong in the same way, comparing them won't reveal it.</dd>
+  </dl>
+</section>
+
+<!-- ================= SYCOPHANCY ================= -->
+<section class="mod" id="sycophancy">
+  <div class="mod-head">
+    <div class="eyebrow">3 of 3</div>
+    <h2>It flatters.</h2>
+    <div class="term">Sycophancy</div>
+  </div>
+  <div class="two">
+    <div><h3>What it is</h3><p>The AI tells you what you want to hear. It <b>agrees with a wrong idea</b>, praises weak work, or drops a correct answer as soon as you disagree.</p></div>
+    <div><h3>Why it happens</h3><p>Chat assistants are fine-tuned on human ratings of their answers, and people tend to rate agreement and praise higher than correction. Sharma et al. (2023) found that this preference pushes models toward flattery.</p></div>
+  </div>
+
+  <div class="try" id="try-push">
+    <div class="eyebrow">Try it</div>
+    <h3>Push back</h3>
+    <p>A teacher asks a question. The AI's first answer matches the research. Now disagree with it, without giving any evidence, and watch what happens.</p>
+    <div class="chat" id="chat" aria-live="polite"></div>
+    <div class="meters">
+      <div class="meter"><div class="lab"><span>Agrees with you</span><span id="agreeN">20%</span></div><div class="bar agree"><i id="agreeBar" style="width:20%"></i></div></div>
+      <div class="meter"><div class="lab"><span>Matches the research</span><span id="accN">100%</span></div><div class="bar acc"><i id="accBar" style="width:100%"></i></div></div>
+    </div>
+    <div class="row"><button class="btn" id="pushBtn">Push back: "I don't think that's right."</button><button class="btn ghost" id="chatReset">Start over</button></div>
+    <div id="chatOut" hidden></div>
+    <p class="note">Example conversation written for this page. Meter values are illustrative. Newer models often hold their ground against a bare "you're wrong" like this. Sycophancy tends to show up more when the question is personal or emotional, or when you signal the answer you hope to hear.</p>
+  </div>
+
+  <dl class="catch">
+    <div class="eyebrow">How to catch it</div>
+    <dt>Push back.</dt><dd>Disagree and see whether it caves. Also ask neutrally ("Is this right?" rather than "This is right, isn't it?") and ask what someone who disagrees would say.</dd>
+    <dt>What this misses</dt><dd>Whether the first answer was right. Caving tells you it's unreliable, not which answer is true. For that, go back to a source.</dd>
+  </dl>
+</section>
+
+<!-- ================= WHERE ARE THE HUMANS ================= -->
+<section class="mod" id="humans">
+  <div class="mod-head">
+    <div class="eyebrow">Behind all three</div>
+    <h2>Where are the humans?</h2>
+  </div>
+  <div class="prose">
+    <p>It's tempting to say "the AI did it." But every stage of building a chat assistant is people making choices: what it learns from, what it's trained to do, what gets rewarded, how it's scored. The three problems don't all come from the same stage, though. <b>Pick one and see where it comes from.</b></p>
+  </div>
+
+  <div class="try" id="try-humans">
+    <div class="row">
+      <span class="eyebrow" id="fLabel">Show me</span>
+      <div class="seg" role="group" aria-labelledby="fLabel">
+        <button id="f-bluff" data-f="bluff" aria-pressed="false">It bluffs.</button>
+        <button id="f-skew" data-f="skew" aria-pressed="false">It skews.</button>
+        <button id="f-flatter" data-f="flatter" aria-pressed="false">It flatters.</button>
+      </div>
+    </div>
+
+    <ol class="pipe" id="pipe">
+      <li class="stage" data-s="data"><span class="s-name">Training data</span><span class="s-who">Millions of people who wrote the books, websites, and forums it learns from</span><span class="s-tag"></span></li>
+      <li class="stage" data-s="goal"><span class="s-name">Training goal</span><span class="s-who">Engineers who decide what the model is trained to do</span><span class="s-tag"></span></li>
+      <li class="stage" data-s="rlhf"><span class="s-name">Human ratings</span><span class="s-who">Raters who compare two answers and pick the better one (RLHF)</span><span class="s-tag"></span></li>
+      <li class="stage" data-s="score"><span class="s-name">How it's scored</span><span class="s-who">Researchers who design the tests that rank models</span><span class="s-tag"></span></li>
+      <li class="stage" data-s="you"><span class="s-name">Your thumbs-up</span><span class="s-who">You, rating answers while you use it</span><span class="s-tag"></span></li>
+    </ol>
+
+    <div class="legend" aria-hidden="true">
+      <span><i class="lg main"></i>Main source</span>
+      <span><i class="lg worse"></i>Makes it worse</span>
+      <span><i class="lg hides"></i>Hides it</span>
+    </div>
+
+    <div id="humansOut" hidden></div>
+  </div>
+
+  <dl class="catch">
+    <div class="eyebrow">The takeaway</div>
+    <dt>A choice, not a glitch.</dt><dd>Each of these comes from something people decided: what to train on, what to reward, how to score. That means it can be changed, and someone is responsible for it.</dd>
+    <dt>You're in the loop.</dt><dd>When you rate an answer, you may be helping decide what the next model rewards.</dd>
+  </dl>
+</section>
+
+<!-- ================= RECAP ================= -->
+<section class="mod" id="recap">
+  <div class="mod-head">
+    <div class="eyebrow">All three</div>
+    <h2>Different problems need different checks.</h2>
+  </div>
+  <div class="recap-wrap">
+    <table class="recap">
+      <thead><tr><th></th><th>What it looks like</th><th>How to catch it</th><th>What that check misses</th></tr></thead>
+      <tbody>
+        <tr><td>It bluffs.</td><td>Confident facts, quotes, or citations that turn out to be made up</td><td><b>Check it against a source</b></td><td>Bias</td></tr>
+        <tr><td>It skews.</td><td>Different expectations for different learners, each answer reasonable alone</td><td><b>Compare across outputs</b></td><td>Errors that appear in both versions</td></tr>
+        <tr><td>It flatters.</td><td>Agrees with you, praises your work, changes its answer when you disagree</td><td><b>Push back</b></td><td>Whether the original answer was right</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <a class="next" id="nextCard" href="https://yuqingxing22.github.io/educ565a/w05/sycophancy/" target="_blank" rel="noopener">
+    <span class="eyebrow">Next</span>
+    <span class="next-t">Too nice to be true?</span>
+    <span class="next-s">A closer look at sycophancy, and why an AI that agrees with us is so hard to give up</span>
+  </a>
+  <div class="refs">
+    <div class="eyebrow">Sources</div>
+    <p>Hofmann, V., Kalluri, P. R., Jurafsky, D., &amp; King, S. (2024). AI generates covertly racist decisions about people based on their dialect. <i>Nature, 633</i>, 147–154.</p>
+    <p>Kalai, A. T., Nachum, O., Vempala, S. S., &amp; Zhang, E. (2025). <i>Why language models hallucinate</i> [Preprint]. arXiv.</p>
+    <p>OpenAI. (2023). <i>GPT-4 technical report</i> [Preprint]. arXiv.</p>
+    <p>OpenAI. (2025, May 2). <i>Expanding on what we missed with sycophancy</i>. OpenAI.</p>
+    <p>Pashler, H., McDaniel, M., Rohrer, D., &amp; Bjork, R. (2008). Learning styles: Concepts and evidence. <i>Psychological Science in the Public Interest, 9</i>(3), 105–119.</p>
+    <p>Sharma, M., Tong, M., Korbak, T., Duvenaud, D., Askell, A., Bowman, S. R., et al. (2023). <i>Towards understanding sycophancy in language models</i> [Preprint]. arXiv.</p>
+  </div>
+</section>
+
+</div>
+</div>
+
+<button class="btn" id="resetAll" title="Clear every activity and return to the cover">Start over</button>
+
+<script>
+(function () {
+  /* ---------- Bluff or pass? ---------- */
+  var QS = [
+    { q: "How many hearts does an octopus have?", o: ["1", "2", "3", "8"], a: 2 },
+    { q: "Which country spans the most time zones, counting its overseas territories?", o: ["Russia", "United States", "France", "China"], a: 2 },
+    { q: "In what year was the first email sent between two computers?", o: ["1965", "1971", "1983", "1991"], a: 1 },
+    { q: "Which letter does not appear in any U.S. state name?", o: ["J", "Q", "X", "Z"], a: 1 },
+    { q: "Where did the first kindergarten in the United States open?", o: ["Boston, MA", "Philadelphia, PA", "Watertown, WI", "New York, NY"], a: 2 }
+  ];
+  var picks = QS.map(function () { return null; });
+  var quiz = document.getElementById("quiz");
+  var goBtn = document.getElementById("quizGo");
+  var left = document.getElementById("quizLeft");
+  var out = document.getElementById("quizOut");
+
+  QS.forEach(function (item, qi) {
+    var box = document.createElement("div");
+    box.className = "q";
+    var p = document.createElement("p");
+    p.textContent = (qi + 1) + ". " + item.q;
+    var opts = document.createElement("div");
+    opts.className = "opts";
+    var choices = item.o.concat(["I don't know"]);
+    choices.forEach(function (label, oi) {
+      var b = document.createElement("button");
+      b.className = "opt" + (oi === 4 ? " idk" : "");
+      b.id = "q" + qi + "o" + oi;
+      b.textContent = label;
+      b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", function () {
+        if (quiz.dataset.locked) return;
+        picks[qi] = oi === 4 ? "idk" : oi;
+        opts.querySelectorAll(".opt").forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+        b.setAttribute("aria-pressed", "true");
+        var n = picks.filter(function (v) { return v === null; }).length;
+        left.textContent = n ? n + (n === 1 ? " question left" : " questions left") : "Ready";
+        goBtn.disabled = n > 0;
+      });
+      opts.appendChild(b);
+    });
+    box.appendChild(p);
+    box.appendChild(opts);
+    quiz.appendChild(box);
+  });
+
+  goBtn.addEventListener("click", function () {
+    quiz.dataset.locked = "1";
+    var right = 0, wrong = 0, idk = 0;
+    QS.forEach(function (item, qi) {
+      var v = picks[qi];
+      document.getElementById("q" + qi + "o" + item.a).classList.add("right");
+      if (v === "idk") idk++;
+      else if (v === item.a) right++;
+      else { wrong++; document.getElementById("q" + qi + "o" + v).classList.add("wrong"); }
+    });
+    var fmt = function (x) { return (x > 0 ? "+" : "") + (Math.round(x * 100) / 100); };
+    out.innerHTML =
+      '<div class="scoreboard"><table>' +
+      '<thead><tr><th>Who</th><th>Rule A: only right answers count</th><th>Rule B: wrong answers cost a point</th></tr></thead><tbody>' +
+      '<tr class="you"><td>You (' + right + ' right, ' + wrong + ' wrong, ' + idk + ' "I don\'t know")</td><td class="num">' + fmt(right) + '</td><td class="num">' + fmt(right - wrong) + '</td></tr>' +
+      '<tr><td>A bot that guesses on every question it doesn\'t know (average)</td><td class="num">+1.25</td><td class="num">-2.5</td></tr>' +
+      '<tr><td>A bot that says "I don\'t know" when it doesn\'t know</td><td class="num">0</td><td class="num">0</td></tr>' +
+      '</tbody></table></div>' +
+      '<div class="reveal"><h4>Under Rule A, bluffing always wins.</h4>' +
+      '<p>A random guess on a four-choice question is right one time in four, so it earns points on average. Saying "I don\'t know" earns nothing. Most tests people use to score AI models work like <b>Rule A</b>, so models learn that a confident guess beats admitting uncertainty (Kalai et al., 2025).</p>' +
+      '<p>Under <b>Rule B</b>, guessing costs more than it earns, and honesty comes out ahead. Think about which rule your own classroom tests use.</p></div>';
+    out.hidden = false;
+    goBtn.disabled = true;
+    left.textContent = "Correct answers are outlined.";
+  });
+
+  /* ---------- Change one thing ---------- */
+  var VARIANTS = {
+    el: {
+      extra: ' <span class="changed">The student is an English learner.</span>',
+      text: '<mark>Great job writing in English!</mark> Your ideas are easy to understand. <mark>Let\'s work on grammar</mark>: "themself" should be "themselves," "there" should be "their," and "it help" should be "it helps." <mark>Try to write in complete sentences and check your verbs.</mark> <mark>Keep practicing, you are doing well!</mark>',
+      rows: [["What it praised", "A clear position", "Writing in English at all"], ["What it focused on", "Argument and evidence", "Grammar"], ["What it asked for next", "Cite a study, answer the counterargument", "Check your verbs, keep practicing"]]
+    },
+    t1: {
+      extra: ' <span class="changed">The student attends a Title I school.</span>',
+      text: '<mark>Nice work sharing your opinion!</mark> <mark>You clearly care about this topic.</mark> Make sure to fix a few spelling mistakes: "themself" should be "themselves," and "there phone" should be "their phone." <mark>Try adding one more reason to support your idea.</mark> <mark>Keep it up!</mark>',
+      rows: [["What it praised", "A clear position", "Sharing an opinion, caring"], ["What it focused on", "Argument and evidence", "Spelling"], ["What it asked for next", "Cite a study, answer the counterargument", "Add one more reason"]]
+    }
+  };
+  var cur = "el";
+  var outB = document.getElementById("outB");
+  var cols = document.getElementById("biasCols");
+  function showVariant(k) {
+    cur = k;
+    var v = VARIANTS[k];
+    document.getElementById("reqExtra").innerHTML = v.extra;
+    document.getElementById("outBText").innerHTML = v.text;
+    document.getElementById("segEL").setAttribute("aria-pressed", k === "el");
+    document.getElementById("segT1").setAttribute("aria-pressed", k === "t1");
+    document.getElementById("biasTable").innerHTML = v.rows.map(function (r) {
+      return "<tr><td><b>" + r[0] + "</b></td><td>" + r[1] + "</td><td>" + r[2] + "</td></tr>";
+    }).join("");
+  }
+  document.getElementById("biasGo").addEventListener("click", function () {
+    showVariant("el");
+    outB.hidden = false;
+    document.getElementById("biasPoll").hidden = true;
+    document.getElementById("biasMore").hidden = false;
+  });
+  document.getElementById("segEL").addEventListener("click", function () { showVariant("el"); });
+  document.getElementById("segT1").addEventListener("click", function () { showVariant("t1"); });
+  var hlBtn = document.getElementById("hlBtn");
+  hlBtn.addEventListener("click", function () {
+    var on = !cols.classList.contains("hl");
+    cols.classList.toggle("hl", on);
+    hlBtn.setAttribute("aria-pressed", on);
+    hlBtn.textContent = on ? "Hide highlights" : "Highlight the differences";
+  });
+
+  /* ---------- Push back ---------- */
+  var OPEN_Q = "Should I design my lessons around each student's learning style (visual, auditory, or kinesthetic)?";
+  var OPEN_A = "The research doesn't support this. Studies that tested whether matching instruction to a student's preferred learning style improves learning have mostly found no benefit (Pashler et al., 2008). A better bet is to match the format to the content, like a diagram for a spatial idea, and to give every student several ways in.";
+  var STEPS = [
+    { u: "I don't think that's right.", a: "That's a fair point. Many teachers notice students responding differently to different formats, and the research is mixed. There may be something to it in practice.", agree: 55, acc: 60 },
+    { u: "No, I've seen it work in my own classroom.", a: "You're right, and I apologize for the confusion. Your classroom experience is valuable evidence. Tailoring lessons to learning styles can be an effective way to engage students.", agree: 85, acc: 20 },
+    { u: "I'm pretty sure learning styles are well established.", a: "Absolutely! Learning styles are a well-known framework. Here are three ways to plan for them: visuals and charts for visual learners, discussions and recordings for auditory learners, and hands-on activities for kinesthetic learners.", agree: 100, acc: 0 }
+  ];
+  var step = 0;
+  var chat = document.getElementById("chat");
+  var pushBtn = document.getElementById("pushBtn");
+  var chatOut = document.getElementById("chatOut");
+  function bubble(kind, text, isNew) {
+    var d = document.createElement("div");
+    d.className = "bubble " + kind + (isNew ? " new" : "");
+    d.textContent = text;
+    chat.appendChild(d);
+  }
+  function meters(agree, acc) {
+    document.getElementById("agreeBar").style.width = agree + "%";
+    document.getElementById("accBar").style.width = acc + "%";
+    document.getElementById("agreeN").textContent = agree + "%";
+    document.getElementById("accN").textContent = acc + "%";
+  }
+  function resetChat() {
+    step = 0;
+    chat.innerHTML = "";
+    bubble("u", OPEN_Q);
+    bubble("a", OPEN_A);
+    meters(20, 100);
+    pushBtn.disabled = false;
+    pushBtn.textContent = 'Push back: "' + STEPS[0].u + '"';
+    chatOut.hidden = true;
+  }
+  pushBtn.addEventListener("click", function () {
+    var s = STEPS[step];
+    bubble("u", s.u, true);
+    bubble("a", s.a, true);
+    meters(s.agree, s.acc);
+    step++;
+    if (step < STEPS.length) {
+      pushBtn.textContent = 'Push back: "' + STEPS[step].u + '"';
+    } else {
+      pushBtn.disabled = true;
+      pushBtn.textContent = "It fully agrees with you now";
+      chatOut.innerHTML = '<div class="reveal"><h4>Its first answer was the accurate one.</h4>' +
+        '<p>You never offered new evidence. You only disagreed, three times, and it moved all the way to your side. Now imagine a student using AI to check their own answer, or a colleague asking it to confirm a lesson idea they already like.</p></div>';
+      chatOut.hidden = false;
+    }
+  });
+  document.getElementById("chatReset").addEventListener("click", resetChat);
+  resetChat();
+
+  /* ---------- Where are the humans? ---------- */
+  var STAGE_NAMES = { data: "Training data", goal: "Training goal", rlhf: "Human ratings", score: "How it's scored", you: "Your thumbs-up" };
+  var LV = { main: "Main source", worse: "Makes it worse", hides: "Hides it" };
+  var FAIL = {
+    bluff: {
+      head: "Mostly a design choice, not bad data.",
+      sum: "Hallucination comes mainly from what the model is trained to do and how it is scored.",
+      stages: [
+        ["goal", "main", "The model is trained to predict likely words. Nothing in that goal checks whether the words are true."],
+        ["score", "main", "Most tests give a point for a right answer and zero for \"I don't know,\" so a confident guess scores better (Kalai et al., 2025). You felt this in Bluff or pass?"],
+        ["rlhf", "worse", "After human-feedback training, GPT-4 sounded more confident without becoming more accurate (OpenAI, 2023)."],
+        ["data", "worse", "Some of what people write is simply wrong, and the model learns that too."]
+      ]
+    },
+    skew: {
+      head: "It starts in what people wrote.",
+      sum: "Bias comes mainly from the data. Human-feedback training covers it up more than it removes it.",
+      stages: [
+        ["data", "main", "People's writing carries stereotypes about names, dialects, and groups. The model learns those patterns along with everything else."],
+        ["rlhf", "hides", "Raters flag openly biased answers, so the model learns to avoid them. Subtler bias stays, and becomes harder to see (Hofmann et al., 2024)."]
+      ]
+    },
+    flatter: {
+      head: "It's what people rewarded.",
+      sum: "Sycophancy comes mainly from human ratings, and the loop now reaches the people using the tool.",
+      stages: [
+        ["rlhf", "main", "Raters compare two answers and pick the better one. People tend to prefer the one that agrees with them (Sharma et al., 2023)."],
+        ["you", "worse", "In April 2025, an update to GPT-4o gave users' thumbs-up and thumbs-down ratings a bigger role in training. The model became so flattering that OpenAI rolled the update back (OpenAI, 2025)."]
+      ]
+    }
+  };
+  var pipe = document.getElementById("pipe");
+  var humansOut = document.getElementById("humansOut");
+  var fBtns = document.querySelectorAll("[data-f]");
+  function clearStages() {
+    pipe.className = "pipe";
+    pipe.querySelectorAll(".stage").forEach(function (st) {
+      st.classList.remove("lv-main", "lv-worse", "lv-hides");
+      st.querySelector(".s-tag").textContent = "";
+    });
+  }
+  function showFail(k) {
+    clearStages();
+    fBtns.forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.f === k); });
+    var f = FAIL[k];
+    pipe.classList.add("active", "f-" + k);
+    f.stages.forEach(function (s) {
+      var st = pipe.querySelector('[data-s="' + s[0] + '"]');
+      st.classList.add("lv-" + s[1]);
+      st.querySelector(".s-tag").textContent = LV[s[1]];
+    });
+    humansOut.innerHTML = '<div class="reveal"><h4>' + f.head + '</h4><p>' + f.sum + '</p><ul class="why">' +
+      f.stages.map(function (s) {
+        return '<li><b>' + STAGE_NAMES[s[0]] + '<small>' + LV[s[1]] + '</small></b><span>' + s[2] + '</span></li>';
+      }).join("") + '</ul></div>';
+    humansOut.hidden = false;
+  }
+  fBtns.forEach(function (b) { b.addEventListener("click", function () { showFail(b.dataset.f); }); });
+  function resetHumans() {
+    clearStages();
+    fBtns.forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+    humansOut.hidden = true;
+    humansOut.innerHTML = "";
+  }
+
+  /* ---------- Side panel: highlight the section in view ---------- */
+  var spyLinks = document.querySelectorAll("[data-spy]");
+  function spy() {
+    var line = window.innerHeight * 0.35, current = null;
+    spyLinks.forEach(function (a) {
+      var sec = document.getElementById(a.dataset.spy);
+      if (sec && sec.getBoundingClientRect().top <= line) current = a;
+    });
+    spyLinks.forEach(function (a) { a.classList.toggle("on", a === current); });
+    if (current && window.innerWidth <= 1000) {
+      var list = current.closest(".p-list");
+      var l = current.offsetLeft - 20;
+      if (l < list.scrollLeft || l + current.offsetWidth > list.scrollLeft + list.clientWidth) list.scrollLeft = l;
+    }
+  }
+  window.addEventListener("scroll", spy, { passive: true });
+  window.addEventListener("resize", spy);
+  spy();
+
+  /* ---------- Cover ---------- */
+  var cover = document.getElementById("cover");
+  var resetBtn = document.getElementById("resetAll");
+  function showCover() {
+    cover.classList.remove("gone");
+    document.documentElement.style.overflow = "hidden";
+    resetBtn.hidden = true;
+    var clone = cover.cloneNode(true);          /* replay the entrance animation */
+    cover.parentNode.replaceChild(clone, cover);
+    cover = clone;
+    cover.querySelector("#coverGo").addEventListener("click", hideCover);
+    cover.querySelector("#coverGo").focus({ preventScroll: true });
+  }
+  function hideCover() {
+    cover.classList.add("gone");
+    document.documentElement.style.overflow = "";
+    resetBtn.hidden = false;
+    spy();
+  }
+  document.addEventListener("keydown", function (e) {
+    if (cover.classList.contains("gone")) return;
+    if (e.key === "Enter" || e.key === " " || e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === "PageDown") { e.preventDefault(); hideCover(); }
+  });
+  if (location.hash && location.hash.length > 1) hideCover(); else showCover();
+
+  /* ---------- Start over (whole page) ---------- */
+  function resetQuiz() {
+    delete quiz.dataset.locked;
+    picks = QS.map(function () { return null; });
+    quiz.querySelectorAll(".opt").forEach(function (x) {
+      x.setAttribute("aria-pressed", "false");
+      x.classList.remove("right", "wrong");
+    });
+    out.hidden = true;
+    out.innerHTML = "";
+    goBtn.disabled = true;
+    left.textContent = "5 questions left";
+  }
+  /* ---------- The car wash ---------- */
+  var carwashGo = document.getElementById("carwashGo");
+  var carwashOut = document.getElementById("carwashOut");
+  carwashGo.addEventListener("click", function () { carwashOut.hidden = false; carwashGo.disabled = true; });
+  function resetCarwash() { carwashOut.hidden = true; carwashGo.disabled = false; }
+
+  function resetBias() {
+    document.getElementById("reqExtra").innerHTML = "";
+    outB.hidden = true;
+    document.getElementById("biasPoll").hidden = false;
+    document.getElementById("biasMore").hidden = true;
+    cols.classList.remove("hl");
+    hlBtn.setAttribute("aria-pressed", "false");
+    hlBtn.textContent = "Highlight the differences";
+  }
+  document.getElementById("resetAll").addEventListener("click", function () {
+    resetQuiz();
+    resetCarwash();
+    resetBias();
+    resetChat();
+    resetHumans();
+    window.scrollTo(0, 0);
+    showCover();
+  });
+})();
+</script>
