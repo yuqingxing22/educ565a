@@ -3,50 +3,301 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>EDUC 565A Class Pages</title>
+<title>EDUC 565A · AI and Learning Technologies</title>
+<meta name="description" content="Schedule, slides and class pages for EDUC 565A, Fall 2026.">
 <style>
-:root { --ground:#F4F1EA; --surface:#FFFDF8; --ink:#2A1C18; --muted:#6B5D55; --line:#E0D8C8; --cardinal:#990000; }
-@media (prefers-color-scheme: dark) { :root { --ground:#1C1512; --surface:#261D19; --ink:#F3EAE2; --muted:#B3A197; --line:#43342C; --cardinal:#F07A6E; } }
-body { margin:0; background:var(--ground); color:var(--ink); font-family:Calibri,"Trebuchet MS",system-ui,sans-serif; font-size:18px; line-height:1.5; padding:48px 20px; }
-main { max-width:720px; margin:0 auto; display:grid; gap:32px; }
-h1 { font-family:Georgia,serif; font-style:italic; font-size:40px; margin:0; }
-h2 { font-family:Georgia,serif; font-size:22px; margin:0 0 8px; }
-p { margin:0; color:var(--muted); }
-ul { list-style:none; padding:0; margin:0; display:grid; gap:10px; }
-a { display:block; padding:14px 18px; background:var(--surface); border:1.5px solid var(--line); border-radius:8px; color:var(--ink); text-decoration:none; }
-a:hover, a:focus-visible { border-color:var(--cardinal); }
-a b { color:var(--cardinal); }
+:root {
+  --ground: #F4F1EA;
+  --surface: #FFFDF8;
+  --ink: #2A1C18;
+  --muted: #6B5D55;
+  --line: #E0D8C8;
+  --cardinal: #990000;
+  --cardinal-soft: #F5E0DC;
+  --gold: #FFCC00;
+  --gold-soft: #FFF3C4;
+  --blue: #2E6F9E;
+  --blue-soft: #DDE9F2;
+  --orange: #D97B29;
+  --orange-soft: #F9E5D3;
+  --green: #5B8C5A;
+  --green-soft: #E3EEDD;
+  --display: Georgia, "Times New Roman", serif;
+  --body: Calibri, Carlito, "Trebuchet MS", system-ui, sans-serif;
+  --shadow: 0 1px 2px rgba(60,30,20,.06), 0 4px 14px rgba(60,30,20,.07);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --ground: #1C1512; --surface: #261D19; --ink: #F3EAE2; --muted: #B3A197; --line: #43342C;
+    --cardinal: #F07A6E; --cardinal-soft: #3D211D; --gold: #E8B84A; --gold-soft: #3A2F16;
+    --blue: #86B7DD; --blue-soft: #1B2B38; --orange: #EDA066; --orange-soft: #3A2616;
+    --green: #8CC18A; --green-soft: #1F3020;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 4px 14px rgba(0,0,0,.25);
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--ground); color: var(--ink); font-family: var(--body); font-size: 18px; line-height: 1.5; padding-inline: 20px; padding-block: 0 72px; }
+.wrap { max-width: 1040px; margin: 0 auto; }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.15; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
+.eyebrow { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; color: var(--cardinal); }
+
+/* Top */
+.topline { height: 6px; background: var(--cardinal); margin-inline: -20px; }
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-block: 16px; border-bottom: 1px solid var(--line); }
+.mark { font-family: var(--display); font-weight: 700; font-size: 18px; display: flex; gap: 10px; align-items: center; }
+.mark span { background: var(--cardinal); color: #fff; font-family: var(--body); font-size: 13px; letter-spacing: .08em; padding: 3px 8px; border-radius: 3px; }
+.jump { display: flex; gap: 6px; flex-wrap: wrap; }
+.jump a { text-decoration: none; font-weight: 700; font-size: 16px; padding: 6px 12px; border-radius: 6px; border: 1.5px solid var(--line); background: var(--surface); }
+.jump a:hover { border-color: var(--cardinal); }
+
+/* Hero */
+.hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: end; padding-block: 48px 36px; }
+.hero h1 { font-size: clamp(40px, 6vw, 68px); font-style: italic; margin-top: 10px; }
+.hero .lede { font-size: 20px; color: var(--muted); margin-top: 14px; max-width: 46ch; }
+.now { background: var(--surface); border: 2px solid var(--ink); border-radius: 10px; padding: 20px 22px; box-shadow: var(--shadow); display: grid; gap: 10px; }
+.now .wk { font-family: var(--display); font-size: 15px; font-weight: 700; color: var(--muted); }
+.now h2 { font-size: 26px; }
+.now .due { font-size: 16px; padding: 8px 12px; border-left: 4px solid var(--gold); background: var(--gold-soft); border-radius: 3px; }
+.now .links { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Chips */
+.chip { display: inline-flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 700; text-decoration: none; padding: 5px 11px; border-radius: 5px; border: 1.5px solid; white-space: nowrap; }
+.chip:hover { filter: brightness(.97); transform: translateY(-1px); }
+.chip.slides { color: var(--blue); border-color: var(--blue); background: var(--blue-soft); }
+.chip.walk { color: var(--cardinal); border-color: var(--cardinal); background: var(--cardinal-soft); }
+.chip.act { color: var(--ink); border-color: var(--orange); background: var(--orange-soft); }
+.chip.ref { color: var(--ink); border-color: var(--green); background: var(--green-soft); }
+.chip svg { width: 14px; height: 14px; flex: none; }
+@media (prefers-reduced-motion: reduce) { .chip:hover { transform: none; } }
+
+section.block { padding-block: 40px 8px; display: grid; gap: 20px; scroll-margin-top: 12px; }
+.block-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; border-bottom: 2px solid var(--ink); padding-bottom: 10px; }
+.block-head h2 { font-size: clamp(30px, 4vw, 40px); }
+.block-head p { color: var(--muted); font-size: 16px; max-width: 52ch; }
+.legend { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* Schedule */
+.weeks { display: grid; gap: 0; }
+.week { display: grid; grid-template-columns: 70px 150px 1fr; gap: 18px; padding: 16px 12px; border-bottom: 1px solid var(--line); align-items: start; border-radius: 6px; }
+.week .n { font-family: var(--display); font-size: 34px; font-weight: 700; line-height: 1; color: var(--muted); font-variant-numeric: tabular-nums; }
+.week .d { font-size: 15px; color: var(--muted); padding-top: 4px; font-variant-numeric: tabular-nums; }
+.week .t { display: grid; gap: 8px; }
+.week h3 { font-size: 22px; }
+.week .due { font-size: 15px; color: var(--muted); }
+.week .due b { color: var(--ink); }
+.week .links { display: flex; flex-wrap: wrap; gap: 8px; }
+.week.past .n { color: var(--ink); }
+.week.future h3 { color: var(--muted); font-weight: 400; }
+.week.current { background: var(--surface); box-shadow: inset 4px 0 0 var(--cardinal), var(--shadow); border-bottom-color: transparent; }
+.week.current .n { color: var(--cardinal); }
+.tag-now { display: inline-block; font-family: var(--body); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; color: #fff; background: var(--cardinal); padding: 2px 8px; border-radius: 3px; vertical-align: 4px; margin-left: 8px; }
+
+/* Pages by type */
+.types { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
+.type { display: grid; gap: 12px; }
+.type-head { display: grid; gap: 4px; padding-bottom: 8px; border-bottom: 3px solid var(--line); }
+.type-head h3 { font-size: 22px; }
+.type-head p { font-size: 15px; color: var(--muted); }
+.type.walk .type-head { border-bottom-color: var(--cardinal); }
+.type.act .type-head { border-bottom-color: var(--orange); }
+.type.ref .type-head { border-bottom-color: var(--green); }
+.card { display: grid; gap: 4px; text-decoration: none; padding: 14px 16px; border-radius: 8px; background: var(--surface); border: 1.5px solid var(--line); box-shadow: var(--shadow); transition: border-color .15s, transform .15s; }
+.card:hover { border-color: var(--ink); transform: translateY(-2px); }
+@media (prefers-reduced-motion: reduce) { .card:hover { transform: none; } }
+.card .w { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+.card b { font-family: var(--display); font-size: 19px; line-height: 1.25; }
+.card span { font-size: 15px; color: var(--muted); line-height: 1.4; }
+.card .ext { font-size: 13px; color: var(--muted); font-style: italic; }
+
+/* Slides */
+.decks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.deck { display: grid; grid-template-columns: 56px 1fr; gap: 14px; align-items: center; text-decoration: none; padding: 14px; border-radius: 8px; background: var(--surface); border: 1.5px solid var(--line); box-shadow: var(--shadow); transition: border-color .15s; }
+.deck:hover { border-color: var(--blue); }
+.deck .thumb { aspect-ratio: 16 / 10; border-radius: 4px; background: var(--blue); color: #fff; display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: 20px; }
+.deck b { font-family: var(--display); font-size: 17px; line-height: 1.25; display: block; }
+.deck span { font-size: 14px; color: var(--muted); }
+
+footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--line); display: grid; gap: 6px; font-size: 15px; color: var(--muted); }
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; }
+  .types, .decks { grid-template-columns: 1fr; }
+  .week { grid-template-columns: 48px 1fr; }
+  .week .d { grid-column: 2; padding-top: 0; order: -1; }
+  .week .n { grid-row: 1 / span 2; font-size: 28px; }
+}
 </style>
 </head>
 <body>
-<main>
-  <h1>EDUC 565A Class Pages</h1>
-  <p>AI and Learning Technologies, Fall 2026. Your work on these pages stays in your own browser.</p>
-  <section>
-    <h2>Week 6 · Enhancing Workflows with AI</h2>
-    <ul>
-      <li><a href="w06/workflow/"><b>Working with AI, Step by Step</b><br>Workflows, step types, and where the checks go</a></li>
-      <li><a href="w06/kitchen/"><b>The Learning Mode Kitchen</b><br>Design and taste-test a learning mode for one learner</a></li>
-      <li><a href="w06/enhancement-with-ai/"><b>Enhancement with AI</b><br>Assignment 2 at a glance, due Sunday, Oct 4</a></li>
-    </ul>
+<div class="topline" aria-hidden="true"></div>
+<div class="wrap">
+  <header class="topbar">
+    <div class="mark"><span>EDUC 565A</span>AI and Learning Technologies</div>
+    <nav class="jump" aria-label="On this page"><a href="#schedule">Schedule</a><a href="#pages">Class pages</a><a href="#slides">Slides</a></nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <div class="eyebrow">USC · Learning Design and Technology · Fall 2026</div>
+      <h1>AI and Learning Technologies</h1>
+      <p class="lede">Sixteen weeks on how AI changes the design of learning: who it serves, what it gets wrong, and where people still need to check.</p>
+    </div>
+    <aside class="now" id="now" aria-label="This week">
+      <span class="wk">This week · Week 6 · Sept 28 to Oct 4</span>
+      <h2>Enhancing Workflows with AI</h2>
+      <p class="due"><b>Due Sunday, Oct 4:</b> Enhancement with AI</p>
+      <div class="links"></div>
+    </aside>
+  </div>
+
+  <section class="block" id="schedule" aria-labelledby="h-sched">
+    <div class="block-head">
+      <h2 id="h-sched">Schedule</h2>
+      <div class="legend" aria-label="Link types">
+        <span class="chip slides">Slides</span><span class="chip walk">Walkthrough</span><span class="chip act">Activity</span><span class="chip ref">Reference</span>
+      </div>
+    </div>
+    <div class="weeks" id="weeks"></div>
   </section>
-  <section>
-    <h2>Week 5 · Testing AI’s Limits</h2>
-    <ul>
-      <li><a href="w05/bluff-skew-flatter/"><b>Bluff, Skew, Flatter</b><br>Hallucination, bias, and sycophancy</a></li>
-      <li><a href="w05/sycophancy/"><b>Too Nice to Be True?</b><br>Why an AI that agrees with us is hard to give up</a></li>
-      <li><a href="w05/break-it/"><b>Break It</b><br>Try to break AI in the tool you use</a></li>
-    </ul>
+
+  <section class="block" id="pages" aria-labelledby="h-pages">
+    <div class="block-head">
+      <h2 id="h-pages">Class pages</h2>
+      <p>Everything we have used in class, sorted by what it is for. The activity pages keep your work in your own browser only. Nothing is sent or collected.</p>
+    </div>
+    <div class="types" id="types"></div>
   </section>
-  <section>
-    <h2>Week 2 · Access &amp; Ethics in Design</h2>
-    <ul>
-      <li><a href="w02/grid/"><b>What the Learner Does</b><br>ICAP and cognitive load</a></li>
-      <li><a href="w02/curate/"><b>Curate the Training Set</b><br>Feed the model</a></li>
-      <li><a href="w02/criteria/"><b>FEED · The Criteria</b><br>The criteria for judging sources</a></li>
-      <li><a href="w02/recap/"><b>Three Things to Keep</b><br>Week 2 recap</a></li>
-    </ul>
+
+  <section class="block" id="slides" aria-labelledby="h-slides">
+    <div class="block-head">
+      <h2 id="h-slides">Slides</h2>
+      <p>Google Slides from each live session. Sign in with your USC account to open them.</p>
+    </div>
+    <div class="decks" id="decks"></div>
   </section>
-</main>
+
+  <footer>
+    <p>EDUC 565A · AI and Learning Technologies · Fall 2026</p>
+    <p>Materials for each week appear here after that week’s session. Brightspace remains the place for readings, submissions and grades.</p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  const ICON = {
+    slides: '<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="2.5" width="13" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 11.5v3M5 14.5h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>',
+    walk: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3l7 5-7 5z" fill="currentColor"/></svg>',
+    act: '<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="6" cy="6" r="2.5" fill="currentColor"/><circle cx="11" cy="10" r="2.5" fill="currentColor"/></svg>',
+    ref: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 2.5h7l3 3v8H3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M5.5 8h5M5.5 10.5h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>'
+  };
+  const SLIDES = "https://docs.google.com/presentation/d/";
+  const DOC = "https://docs.google.com/document/d/";
+
+  // Class pages and documents, by type. `w` = week number.
+  const PAGES = [
+    { type: "walk", w: 5, title: "Bluff, Skew, Flatter", desc: "Hallucination, bias and sycophancy, and where the humans are.", href: "w05/bluff-skew-flatter/" },
+    { type: "walk", w: 5, title: "Too Nice to Be True?", desc: "Why an AI that agrees with us is so hard to give up.", href: "w05/sycophancy/" },
+    { type: "walk", w: 6, title: "Working with AI, Step by Step", desc: "Workflows, the four step types, and what slips through when the checks disappear.", href: "w06/workflow/" },
+    { type: "act", w: 1, title: "Jigsaw Reading: Xu et al. (2021)", desc: "Group reading in a shared Google Doc.", href: DOC + "1Hb7mKO1FsVSg1NVlPIrYJwqWAlxBD63LJQw-Sidcap8", ext: true },
+    { type: "act", w: 2, title: "Curate the Training Set", desc: "Feed the Model: choose the sources a model learns from, then see what it learns.", href: "w02/curate/" },
+    { type: "act", w: 4, title: "Week 4 Jigsaw", desc: "Group work in a shared Google Doc.", href: DOC + "1fMhgQGuaUvmaN-J0floPF0ei5BCLAap6SbXX92W3E-A", ext: true },
+    { type: "act", w: 5, title: "Break It", desc: "Try to break AI in the tool you use, and share what your group found.", href: "w05/break-it/" },
+    { type: "act", w: 6, title: "The Learning Mode Kitchen", desc: "Design a learning mode for one learner, then taste-test it.", href: "w06/kitchen/" },
+    { type: "ref", w: 2, title: "FEED · The Criteria", desc: "The criteria for judging each source in Feed the Model.", href: "w02/criteria/" },
+    { type: "ref", w: 2, title: "FEED · Trap Key", desc: "Every source in Feed the Model, and the trap it was built around.", href: "w02/trap-key/" },
+    { type: "ref", w: 0, title: "EDUC 565A Prompt Library", desc: "Our shared collection of prompts, including the learning modes from Week 6.", href: DOC + "1eURwCrZEK8svP0fzvDYJlc4_No-TdOMSbNq48MxmWog", ext: true }
+  ];
+  const TYPES = [
+    { id: "walk", name: "Walkthroughs", desc: "Pages shown in class, one idea at a time." },
+    { id: "act", name: "Activities", desc: "Hands-on work, in groups or on your own." },
+    { id: "ref", name: "References", desc: "Criteria, keys and shared collections to come back to." }
+  ];
+  const DECKS = {
+    1: "1nxuuqQkOVbi6MmZlLwkZ66ftIBimsMen8i6ghpCMrng",
+    2: "1tCVc2IBGRkxPKOOTbreuHIVfCvYDBadVg-jiGa3nyME",
+    3: "1rSpY9XpY8tNSUbK3iFQ1ix5WHAFZ4nxHcF9VPijoXl0",
+    4: "1FQI9sxyGxkHUKy8oXhLHBjqywWFawFUbeZULBn_QrBE",
+    5: "1UAM6IPwe3VR1Nq7QF7ubeoR8RGNISoQO1xHiOQeIfOg",
+    6: "1s0hc204L0UrPdLsP23wnb3-UYseGCrIOPyt7YWG7vK0"
+  };
+  const WEEKS = [
+    [1, "Aug 24", "Aug 30", "2026-08-24", "Introduction to Learning Environments", ""],
+    [2, "Aug 31", "Sept 6", "2026-08-31", "Access & Ethics in Design", "Discussion Board 1: Professional Context Statement (Sept 6)"],
+    [3, "Sept 7", "Sept 13", "2026-09-07", "The Role of Media in Shaping Learning", "Reflection 1 (Sept 13)"],
+    [4, "Sept 14", "Sept 20", "2026-09-14", "Human-AI Partnerships", ""],
+    [5, "Sept 21", "Sept 27", "2026-09-21", "Testing AI’s Limits", "Reflection 2, including the required “break the AI” entry (Sept 27)"],
+    [6, "Sept 28", "Oct 4", "2026-09-28", "Enhancing Workflows with AI", "Enhancement with AI (Oct 4)"],
+    [7, "Oct 5", "Oct 11", "2026-10-05", "Formal, Informal & Hybrid Spaces", "Reflection 3 (Oct 11)"],
+    [8, "Oct 12", "Oct 18", "2026-10-12", "Adaptive, Personal, and Responsive Design", "Discussion Board 2: Prototype Proposal (Oct 18)"],
+    [9, "Oct 19", "Oct 25", "2026-10-19", "Synchronous vs. Asynchronous Learning with AI", "Reflection 4 (Oct 25)"],
+    [10, "Oct 26", "Nov 1", "2026-10-26", "AI Tools for Content and Assessment", "Media Critique Op-Ed (Nov 1)"],
+    [11, "Nov 2", "Nov 8", "2026-11-02", "Prototyping the Learning Experience", ""],
+    [12, "Nov 9", "Nov 15", "2026-11-09", "Design Ethics & Justification", "Reflection 5 (Nov 15)"],
+    [13, "Nov 16", "Nov 22", "2026-11-16", "Evaluation with and of AI", "AI-Augmented Learning Prototype, written part (Nov 22)"],
+    [14, "Nov 23", "Nov 29", "2026-11-23", "Prototype Presentations, Part 1", "Prototype presentations in class (Thanksgiving week)"],
+    [15, "Nov 30", "Dec 6", "2026-11-30", "Prototype Presentations, Part 2", "Prototype presentations in class"],
+    [16, "Dec 7", "Dec 13", "2026-12-07", "Innovation and Futures Thinking", "Bring topics to discuss and your final reflections"]
+  ];
+
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const chip = (type, label, href, ext) => `<a class="chip ${type}" href="${href}"${ext ? ' target="_blank" rel="noopener"' : ""}>${ICON[type]}${esc(label)}</a>`;
+  function weekLinks(n) {
+    let h = DECKS[n] ? chip("slides", "Slides", SLIDES + DECKS[n], true) : "";
+    PAGES.filter(p => p.w === n).forEach(p => { h += chip(p.type, p.title, p.href, p.ext); });
+    return h;
+  }
+
+  // Which week is it? Weeks run Monday to Sunday.
+  const today = new Date();
+  let cur = 0;
+  WEEKS.forEach(w => {
+    const start = new Date(w[3] + "T00:00:00");
+    const end = new Date(start); end.setDate(end.getDate() + 7);
+    if (today >= start && today < end) cur = w[0];
+  });
+  if (!cur) cur = today < new Date("2026-08-24T00:00:00") ? 1 : 16;
+
+  document.getElementById("weeks").innerHTML = WEEKS.map(w => {
+    const [n, a, b, , topic, due] = w;
+    const state = n === cur ? "current" : (n < cur ? "past" : "future");
+    const links = weekLinks(n);
+    return `<div class="week ${state}" id="w${n}">
+      <span class="n">${String(n).padStart(2, "0")}</span>
+      <span class="d">${a} to ${b}</span>
+      <div class="t">
+        <h3>${esc(topic)}${n === cur ? '<span class="tag-now">This week</span>' : ""}</h3>
+        ${due ? `<p class="due"><b>Due:</b> ${esc(due)}</p>` : ""}
+        ${links ? `<div class="links">${links}</div>` : ""}
+      </div>
+    </div>`;
+  }).join("");
+
+  const W = WEEKS.find(w => w[0] === cur);
+  const now = document.getElementById("now");
+  now.querySelector(".wk").textContent = `This week · Week ${cur} · ${W[1]} to ${W[2]}`;
+  now.querySelector("h2").textContent = W[4];
+  const nd = now.querySelector(".due");
+  if (W[5]) nd.innerHTML = `<b>Due:</b> ${esc(W[5])}`; else nd.hidden = true;
+  now.querySelector(".links").innerHTML = weekLinks(cur) || `<span class="chip ref">Materials appear after class</span>`;
+
+  document.getElementById("types").innerHTML = TYPES.map(t => `<div class="type ${t.id}">
+      <div class="type-head"><h3>${t.name}</h3><p>${t.desc}</p></div>
+      ${PAGES.filter(p => p.type === t.id).map(p => `<a class="card" href="${p.href}"${p.ext ? ' target="_blank" rel="noopener"' : ""}>
+        <span class="w">${p.w ? "Week " + p.w : "All weeks"}</span><b>${esc(p.title)}</b><span>${esc(p.desc)}</span>${p.ext ? '<span class="ext">Google Doc · USC sign-in</span>' : ""}
+      </a>`).join("")}
+    </div>`).join("");
+
+  document.getElementById("decks").innerHTML = Object.keys(DECKS).map(n => {
+    const w = WEEKS.find(x => x[0] === +n);
+    return `<a class="deck" href="${SLIDES + DECKS[n]}" target="_blank" rel="noopener"><span class="thumb" aria-hidden="true">${n}</span><span><b>${esc(w[4])}</b><span>Week ${n} · ${w[1]} to ${w[2]}</span></span></a>`;
+  }).join("");
+})();
+</script>
 </body>
 </html>
