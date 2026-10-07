@@ -1,0 +1,1427 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>[hidden]{display:none!important}img{max-width:100%}</style>
+<meta charset="utf-8">
+<title>My Learning Ecology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,700;1,6..72,500&display=swap">
+<style>
+/* Layout: a question card on the left (about 40%) and the live garden on the right (about 60%). Part B result and the share card use the full width. On phones the garden folds into a "Show my garden" strip and Next sticks to the bottom. Palette and type follow the W06 pages; the garden is drawn on canvas from the illustration set. */
+:root {
+  --ground: #F4F1EA;
+  --surface: #FFFDF8;
+  --ink: #2A1C18;
+  --muted: #6B5D55;
+  --line: #E0D8C8;
+  --cardinal: #990000;
+  --cardinal-soft: #F5E0DC;
+  --gold: #FFCC00;
+  --gold-soft: #FFF3C4;
+  --green: #4F7F4E;
+  --green-soft: #E3EEDD;
+  --blue: #2E6F9E;
+  --blue-soft: #DDE9F2;
+  --orange: #C26A1E;
+  --orange-soft: #F9E5D3;
+  --orange-text: #9E5212;
+  --display: Georgia, "Newsreader", "Times New Roman", serif;
+  --body: Calibri, "Atkinson Hyperlegible", Carlito, "Trebuchet MS", system-ui, sans-serif;
+  --shadow: 0 1px 2px rgba(60,30,20,.06), 0 4px 14px rgba(60,30,20,.07);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --ground: #1C1512; --surface: #261D19; --ink: #F3EAE2; --muted: #B3A197; --line: #43342C;
+    --cardinal: #F07A6E; --cardinal-soft: #3D211D; --gold: #E8B84A; --gold-soft: #3A2F16;
+    --green: #8CC18A; --green-soft: #1F3020; --blue: #86B7DD; --blue-soft: #1B2B38;
+    --orange: #EDA066; --orange-soft: #3A2616; --orange-text: #EDA066;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 4px 14px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ground: #1C1512; --surface: #261D19; --ink: #F3EAE2; --muted: #B3A197; --line: #43342C;
+  --cardinal: #F07A6E; --cardinal-soft: #3D211D; --gold: #E8B84A; --gold-soft: #3A2F16;
+  --green: #8CC18A; --green-soft: #1F3020; --blue: #86B7DD; --blue-soft: #1B2B38;
+  --orange: #EDA066; --orange-soft: #3A2616; --orange-text: #EDA066;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 4px 14px rgba(0,0,0,.25);
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  background: var(--ground); color: var(--ink);
+  font-family: var(--body); font-size: 19px; line-height: 1.55;
+  margin: 0; padding-inline: 20px; padding-block: 0 48px;
+}
+.wrap { max-width: 1280px; margin: 0 auto; }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.15; margin: 0; }
+h1 { font-size: 2.2em; }
+h2 { font-size: 1.45em; }
+h3 { font-size: 1.12em; }
+p { margin: 0; }
+button, input, textarea, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+.muted { color: var(--muted); }
+a { color: var(--blue); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding-block: 14px; border-bottom: 1px solid var(--line); }
+.brand { font-family: var(--display); font-weight: 700; font-size: 1.1em; }
+.brand small { font-family: var(--body); font-weight: 400; color: var(--muted); font-size: .85em; margin-left: 8px; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 20px; border-radius: 8px; border: 1.5px solid var(--ink); background: var(--surface); font-weight: 700; }
+.btn:active { transform: translateY(1px); }
+.btn.primary { background: var(--cardinal); border-color: var(--cardinal); color: var(--surface); }
+.btn.small { padding: 6px 12px; font-size: .88em; }
+.btn.ghost { border-color: var(--line); }
+.btn[disabled] { opacity: .45; cursor: not-allowed; }
+
+/* start */
+.hero { position: relative; margin-top: 18px; border-radius: 14px; overflow: hidden; background: #cfe0b6; }
+.hero img { display: block; width: 100%; height: clamp(220px, 34vw, 380px); object-fit: cover; object-position: center 62%; }
+.hero .hero-title { position: absolute; left: 20px; top: 20px; right: 20px; display: inline-block; max-width: max-content; background: rgba(255,253,248,.92); color: #2A1C18; border-radius: 12px; padding: 10px 20px; box-shadow: var(--shadow); }
+.start-body { padding-block: 22px 8px; display: grid; gap: 14px; }
+.privacy { background: var(--green-soft); border-radius: 10px; padding: 10px 16px; font-size: .96em; }
+.start-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
+
+/* progress */
+.progress { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.progress button { width: 100%; text-align: left; border: 1.5px solid var(--line); background: var(--surface); border-radius: 10px; padding: 8px 12px; font-weight: 700; display: grid; gap: 0; }
+.progress button small { font-weight: 400; color: var(--muted); font-size: .8em; }
+.progress button[aria-current="step"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.progress button[aria-current="step"] small { color: var(--surface); opacity: .8; }
+.progress button.done { border-color: var(--green); }
+.progress button[disabled] { opacity: .5; cursor: not-allowed; }
+@media (max-width: 560px) { .progress { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* main two columns */
+.main { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 24px; margin-top: 18px; align-items: start; }
+.main.full { grid-template-columns: minmax(0, 1fr); }
+@media (max-width: 900px) { .main { grid-template-columns: minmax(0, 1fr); } }
+.qcard { background: var(--surface); border: 1.5px solid var(--line); border-radius: 14px; padding: 20px 22px; box-shadow: var(--shadow); min-width: 0; display: grid; gap: 14px; align-content: start; }
+.qcard .kicker { font-size: .82em; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.qcard h2 { font-size: 1.4em; }
+.qcard h2:focus { outline: none; }
+.qcard .help { color: var(--muted); font-size: .96em; }
+.qcard .note { background: var(--gold-soft); border-radius: 8px; padding: 8px 12px; font-size: .94em; }
+.qcard .body { display: grid; gap: 12px; }
+.fieldlbl { font-weight: 700; font-size: .95em; display: block; margin-bottom: 4px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { position: relative; }
+.chip input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.chip span { display: inline-block; border: 1.5px solid var(--line); border-radius: 999px; padding: 6px 14px; background: var(--ground); line-height: 1.3; }
+.chip input:checked + span { background: var(--green-soft); border-color: var(--green); font-weight: 700; }
+.chip input:focus-visible + span { outline: 3px solid var(--blue); outline-offset: 2px; }
+.chip.block { display: block; }
+.chip.block span { display: block; border-radius: 10px; padding: 10px 14px; }
+.chip.block small { display: block; font-weight: 400; color: var(--muted); font-size: .88em; }
+.chip.count span::after { content: attr(data-count); margin-left: 8px; background: var(--ink); color: var(--surface); border-radius: 999px; padding: 0 8px; font-size: .85em; }
+input[type=text], textarea { width: 100%; padding: 9px 12px; border: 1.5px solid var(--line); border-radius: 8px; background: var(--ground); }
+textarea { min-height: 84px; resize: vertical; }
+input[type=text]:focus, textarea:focus { border-color: var(--blue); }
+.addrow { display: flex; gap: 8px; }
+.addrow input { flex: 1 1 auto; min-width: 0; }
+.people-rows { display: grid; gap: 8px; }
+.prow { display: grid; grid-template-columns: 46px minmax(0, 1fr) auto; gap: 10px; align-items: center; border: 1.5px solid var(--line); border-radius: 10px; padding: 6px 10px; background: var(--ground); }
+.prow img { width: 40px; height: 40px; object-fit: contain; }
+.prow .who { font-weight: 700; font-size: .92em; display: block; }
+.pair-list { display: grid; gap: 6px; }
+.qnav { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+.qnav .right { display: flex; gap: 10px; flex-wrap: wrap; }
+@media (max-width: 900px) {
+  .qnav { position: sticky; bottom: 0; background: var(--surface); padding: 10px 0 calc(10px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); margin-inline: -4px; padding-inline: 4px; z-index: 5; }
+}
+
+/* piece cards (part B) */
+.piece { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 14px; align-items: center; background: var(--ground); border-radius: 12px; padding: 10px 14px; }
+.piece img { width: 88px; height: 88px; object-fit: contain; }
+.piece .pname { font-family: var(--display); font-weight: 700; font-size: 1.2em; }
+.piece .pkind { color: var(--muted); font-size: .9em; }
+.bed-icon { width: 88px; height: 56px; border-radius: 50%; background: radial-gradient(ellipse at 50% 40%, #7a5a3c, #4d3623); border: 3px solid #3b2a1a; }
+.marks { display: grid; gap: 8px; }
+.mark { position: relative; display: block; }
+.mark input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.mark span { display: block; border: 1.5px solid var(--line); border-radius: 10px; padding: 8px 14px; background: var(--ground); }
+.mark span b { display: block; }
+.mark span small { color: var(--muted); font-size: .9em; }
+.mark input:checked + span { border-color: var(--ink); background: var(--gold-soft); }
+.mark input:focus-visible + span { outline: 3px solid var(--blue); outline-offset: 2px; }
+
+/* garden panel */
+.gpanel { background: var(--surface); border: 1.5px solid var(--line); border-radius: 14px; padding: 12px; box-shadow: var(--shadow); min-width: 0; position: sticky; top: 8px; }
+.gpanel canvas, .cmp canvas { width: 100%; display: block; border-radius: 10px; background: #cfe0b6; }
+.gstrip > summary { cursor: pointer; font-weight: 700; padding: 6px 8px; list-style: none; }
+.gstrip > summary::-webkit-details-marker { display: none; }
+.gstrip > summary::before { content: "＋ "; content: "＋ " / ""; color: var(--cardinal); }
+.gstrip[open] > summary::before { content: "－ "; content: "－ " / ""; }
+@media (min-width: 901px) { .gstrip > summary { display: none; } }
+@media (max-width: 900px) { .gpanel { position: static; padding: 6px; order: -1; } }
+.gcap { font-size: .9em; color: var(--muted); margin-top: 8px; }
+details.legend { margin-top: 8px; font-size: .94em; }
+details.legend summary { cursor: pointer; font-weight: 700; }
+details.legend ul { margin: 8px 0 0; padding-left: 1.2em; display: grid; gap: 4px; }
+
+/* compare */
+.cmp { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 14px; align-items: start; }
+@media (max-width: 760px) { .cmp { grid-template-columns: minmax(0, 1fr); } }
+.note-wrap { display: grid; gap: 4px; }
+.cmp figure { margin: 0; background: var(--surface); border: 1.5px solid var(--line); border-radius: 14px; padding: 10px 10px 12px; box-shadow: var(--shadow); }
+.cmp figcaption { font-family: var(--display); font-weight: 700; font-size: 1.15em; margin-bottom: 8px; }
+.folded { margin-top: 10px; display: grid; gap: 6px; font-size: .95em; }
+.folded .fl { font-weight: 700; }
+.folded ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.folded li { display: inline-flex; align-items: center; gap: 6px; background: var(--ground); border: 1.5px solid var(--line); border-radius: 999px; padding: 3px 12px 3px 6px; }
+.folded li img { width: 26px; height: 26px; object-fit: contain; }
+.folded li .dot { width: 26px; height: 16px; border-radius: 50%; background: #6a4d31; border: 2px solid #3b2a1a; }
+.counts { width: 100%; max-width: 700px; border-collapse: collapse; margin-top: 16px; font-variant-numeric: tabular-nums; font-size: .98em; }
+.counts th, .counts td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+.counts th { color: var(--muted); font-size: .85em; letter-spacing: .05em; text-transform: uppercase; }
+.reflect { margin-top: 18px; background: var(--surface); border: 1.5px solid var(--line); border-radius: 14px; padding: 16px 20px; display: grid; gap: 10px; }
+
+/* share */
+.report { margin-top: 14px; background: var(--surface); border: 1.5px solid var(--line); border-radius: 14px; padding: 18px 22px; display: grid; gap: 18px; box-shadow: var(--shadow); }
+.report h3 { font-size: 1.1em; padding-bottom: 6px; border-bottom: 1.5px solid var(--line); margin-bottom: 8px; }
+.report dl { margin: 0; display: grid; grid-template-columns: minmax(160px, 260px) minmax(0, 1fr); gap: 6px 18px; }
+.report dt { font-weight: 700; color: var(--muted); font-size: .95em; }
+.report dd { margin: 0; overflow-wrap: anywhere; }
+@media (max-width: 640px) { .report dl { grid-template-columns: minmax(0, 1fr); } .report dt { margin-top: 6px; } }
+.report .tw { overflow-x: auto; }
+.report table { width: 100%; border-collapse: collapse; font-size: .96em; }
+.report th, .report td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+.report th { color: var(--muted); font-size: .85em; letter-spacing: .05em; text-transform: uppercase; }
+.report > div { min-width: 0; }
+.report td.ch { white-space: nowrap; font-weight: 700; }
+@media (max-width: 640px) { .report td.ch { white-space: normal; } .report th, .report td { padding: 6px 6px; } }
+.report .tag-replace { color: var(--orange-text, #9E5212); } .report .tag-stronger { color: var(--green); } .report .tag-cannot { color: var(--blue); }
+#rep-text { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .85em; }
+.sharebox { margin-top: 18px; display: grid; gap: 14px; }
+.sharebox canvas { width: 100%; max-width: 1100px; display: block; border-radius: 12px; border: 1.5px solid var(--line); box-shadow: var(--shadow); background: #cfe0b6; }
+.sharebtns { display: flex; gap: 10px; flex-wrap: wrap; }
+.status { font-size: .95em; color: var(--muted); min-height: 1.4em; }
+.fsov { position: fixed; inset: 0; background: rgba(20,14,10,.94); z-index: 50; display: grid; grid-template-rows: auto minmax(0, 1fr); padding: 14px; padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }
+.fsov .bar { display: flex; justify-content: flex-end; padding-bottom: 8px; }
+.fsov canvas { width: 100%; height: 100%; object-fit: contain; border-radius: 10px; }
+.fsov .holder { min-height: 0; display: grid; place-items: center; }
+.fsov canvas { max-width: 100%; max-height: 100%; width: auto; height: auto; }
+.preview img { width: 100%; max-width: 1100px; height: auto; display: block; border-radius: 10px; border: 1px solid var(--line); }
+
+footer.sources { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--line); font-size: .88em; color: var(--muted); }
+footer.sources h2 { font-size: 1em; margin-bottom: 8px; }
+.sources-list { padding-left: 1.2em; display: grid; gap: 8px; margin: 0; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand">EDUC 565A · Week 7<small>My Learning Ecology</small></div>
+    <button class="btn small ghost" id="startover" type="button" hidden>Start over</button>
+  </div>
+
+  <!-- START -->
+  <section id="screen-start">
+    <div class="hero">
+      <img id="hero-img" src="image/w07-garden/web/03-hero-garden-gate.webp" alt="A garden gate standing open onto a sunny garden, with a fox and a rabbit peeking out beside it.">
+      <div class="hero-title"><h1>My Learning Ecology</h1></div>
+    </div>
+    <div class="start-body">
+      <p>Barron (2006) describes a learning ecology as “the set of contexts found in physical or virtual spaces that provide opportunities for learning” (p. 195). In this activity you will map the ecology behind something you learned well, then imagine learning it again today with AI at hand, and finally think about your own learners. You will answer one question at a time, and your map will grow as you go. There are no right answers, and you can skip anything you would rather not share.</p>
+      <p class="privacy">Nothing you type leaves your browser. Your answers are saved only on this device.</p>
+      <div class="start-actions">
+        <button class="btn primary" id="btn-start" type="button">Start my map</button>
+        <button class="btn" id="btn-continue" type="button" hidden>Continue where I left off</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTIVITY -->
+  <section id="screen-app" hidden>
+    <p class="status" id="store-note" hidden style="margin-top:10px">Your browser is not letting this page save. Your answers will be lost if you close it, so please use the report to keep a copy.</p>
+    <ol class="progress" id="progress" aria-label="Progress"></ol>
+
+    <div class="main" id="main">
+      <div class="qcard" id="qcard"></div>
+      <div class="gpanel" id="gpanel">
+        <details class="gstrip" id="gstrip" open>
+          <summary>Show my garden</summary>
+          <canvas id="garden" width="1400" height="900" role="img" aria-label="Your learning ecology drawn as a garden"></canvas>
+          <p class="gcap" id="gcap"></p>
+          <details class="legend" id="legend"><summary>What is in my garden</summary><ul id="legend-list"></ul></details>
+        </details>
+      </div>
+    </div>
+
+    <!-- compare screen -->
+    <div id="compare" hidden>
+      <h2 style="margin-top:18px">Here are your two gardens</h2>
+      <p class="muted" style="margin-top:6px">Each piece you marked “AI could replace this” has folded into the glass greenhouse, and the paths that ran through it have faded. These are your own judgments, not a score. People in the same class often see this very differently, and that is a good thing to talk about.</p>
+      <div class="cmp">
+        <figure><figcaption>My ecology</figcaption><canvas id="cmp-mine" width="1400" height="900" role="img" aria-label="My ecology, as a garden"></canvas></figure>
+        <figure><figcaption>With AI at hand</figcaption><canvas id="cmp-ai" width="1400" height="900" role="img" aria-label="My ecology with AI at hand, as a garden"></canvas><div class="folded" id="folded"></div></figure>
+      </div>
+      <table class="counts" id="counts"></table>
+      <p class="gcap" id="counts-note" style="max-width:none"></p>
+      <div class="qnav" id="cmp-nav"></div>
+    </div>
+
+    <!-- share screen -->
+    <div id="share" hidden>
+      <h2 style="margin-top:18px">Your share card and report</h2>
+      <div class="sharebox">
+        <canvas id="share-canvas" width="1600" height="900" role="img" aria-label="Your share card: two small gardens, what AI would do to your ecology, and one design move"></canvas>
+        <div class="sharebtns">
+          <button class="btn primary" id="share-full" type="button">Show full screen</button>
+          <button class="btn" id="share-save" type="button">Save as image</button>
+          <button class="btn ghost" id="share-edit" type="button">Edit my answers</button>
+        </div>
+        <p class="status" id="share-status" aria-live="polite"></p>
+        <div class="preview" id="share-preview" hidden>
+          <img id="share-preview-img" alt="Your share card as a picture">
+          <p class="muted" style="font-size:.9em;margin-top:6px">If nothing downloads, press and hold the picture (or right-click it) to save or copy it.</p>
+        </div>
+        <p>In your breakout room, you might each share your card and talk about what AI would leave out of your maps.</p>
+      </div>
+      <h2 style="margin-top:30px">My report</h2>
+      <p class="muted" style="margin-top:6px">Everything you answered, with the reasons you gave in Part B. You can share your screen, copy it, or save it as a text file.</p>
+      <div class="report" id="report"></div>
+      <div class="sharebtns" style="margin-top:12px">
+        <button class="btn primary" id="rep-copy" type="button">Copy report</button>
+        <button class="btn" id="rep-save" type="button">Save report as text</button>
+      </div>
+      <p class="status" id="rep-status" aria-live="polite"></p>
+      <details class="legend" id="rep-details"><summary>Plain text version</summary><textarea id="rep-text" readonly rows="12" style="margin-top:8px"></textarea></details>
+    </div>
+  </section>
+
+  <footer class="sources">
+    <h2>Sources</h2>
+    <ul class="sources-list">
+<li>Barron, B. (2006). Interest and self-sustained learning as catalysts of development: A learning ecology perspective. <em>Human Development, 49</em>(4), 193–224. <a href="https://doi.org/10.1159/000094368" target="_blank" rel="noopener">https://doi.org/10.1159/000094368</a></li>
+<li>Bronfenbrenner, U. (1979). <em>The ecology of human development: Experiments by nature and design</em>. Harvard University Press.</li>
+<li>Hidi, S., &amp; Renninger, K. A. (2006). The four-phase model of interest development. <em>Educational Psychologist, 41</em>(2), 111–127. <a href="https://doi.org/10.1207/s15326985ep4102_4" target="_blank" rel="noopener">https://doi.org/10.1207/s15326985ep4102_4</a></li>
+</ul>
+    <p style="margin-top:10px">The five strategies are the ones in Table 1 of Barron (2006, p. 203). The garden is a metaphor: every picture in it has a label saying which idea it stands for.</p>
+  </footer>
+</div>
+
+<div class="fsov" id="fsov" role="dialog" aria-modal="true" aria-label="Share card, full screen" hidden>
+  <div class="bar"><button class="btn" id="fs-close" type="button">Close</button></div>
+  <div class="holder"><canvas id="fs-canvas" width="1600" height="900"></canvas></div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ================= content ================= */
+  var IMG_BASE = "image/w07-garden/web/";
+  var IMG_KEYS = {
+    day: "01-garden-backdrop-day", night: "02-garden-backdrop-night",
+    sprout: "04-tree-sprout", sapling: "05-tree-sapling", young: "06-tree-young", bloom: "07-tree-bloom", resting: "08-tree-resting",
+    sun: "09-sunbeam", can: "10-watering-can",
+    rabbit: "11-animal-rabbit", fox: "12-animal-fox", owl: "13-animal-owl", badger: "14-animal-badger", raccoon: "15-animal-raccoon", birds: "16-animal-birds", hedgehog: "17-animal-hedgehog",
+    squirrel: "18-broker-squirrel-wheelbarrow", shed: "19-garden-shed",
+    book: "20-tool-book", trowel: "21-tool-trowel", magnifier: "22-tool-magnifier", classroom: "23-tool-classroom", bees: "24-tool-bees",
+    greenhouse: "25-ai-greenhouse", flower: "26-badge-flower"
+  };
+
+  var A1_OPTS = ["cooking", "a language", "a musical instrument", "a sport or fitness", "a craft or DIY", "photography or video", "a game", "gardening", "coding", "caring for someone", "something from my work"];
+  var A2_OPTS = ["someone showed me or did it with me", "a book, video, or show", "a class or assignment", "a game or app", "a need at home or at work", "a trip, event, or new place", "I honestly don’t remember"];
+  var A3_OPTS = ["someone to do it with", "a class, club, or regular schedule", "small wins I could see", "a project or goal I cared about", "praise or recognition", "it was part of my job or responsibilities", "I was simply curious"];
+  var A4_OPTS = ["home", "school or university", "work", "a club, class, or community space", "online communities", "friends’ or family members’ homes", "while traveling"];
+  var ROLES = [
+    { id: "family", label: "a parent or family member", short: "Family member", animal: "rabbit" },
+    { id: "friend", label: "a friend", short: "Friend", animal: "fox" },
+    { id: "teacher", label: "a teacher or instructor", short: "Teacher", animal: "owl" },
+    { id: "coworker", label: "a coworker", short: "Coworker", animal: "raccoon" },
+    { id: "mentor", label: "a mentor or coach", short: "Mentor", animal: "badger" },
+    { id: "online", label: "an online community", short: "Online community", animal: "birds" },
+    { id: "expert", label: "an expert I found", short: "Expert", animal: "hedgehog" }
+  ];
+  var A6_OPTS = [["yes", "yes, someone did"], ["self", "I was my own broker"], ["no", "not really"]];
+  var STRATS = [
+    { n: 1, name: "Finds text-based information", desc: "books, magazines, websites", img: "book" },
+    { n: 2, name: "Creates interactive activities", desc: "tutorials, new projects, starting a business", img: "trowel" },
+    { n: 3, name: "Explores media", desc: "experimenting with programs, analyzing others’ designs", img: "magnifier" },
+    { n: 4, name: "Seeks out structured learning", desc: "signs up for courses, joins a club", img: "classroom" },
+    { n: 5, name: "Builds knowledge networks", desc: "special interest groups, mentors, conversations with peers or relatives", img: "bees" }
+  ];
+  var PHASES = [
+    { v: "1", label: "something catches your attention", tree: "sprout" },
+    { v: "2", label: "the task or setting keeps you engaged", tree: "sapling" },
+    { v: "3", label: "you start coming back on your own", tree: "young" },
+    { v: "4", label: "you sustain it yourself and seek out new challenges", tree: "bloom" },
+    { v: "moved", label: "I have moved on from it", tree: "resting" }
+  ];
+  var MARKS = [
+    { v: "replace", title: "AI could replace this", desc: "I would probably get this from AI instead" },
+    { v: "stronger", title: "AI would make this stronger", desc: "AI would add to it, and it would still be there" },
+    { v: "cannot", title: "AI could not give me this", desc: "this needs a person, a place, or an experience" },
+    { v: "unsure", title: "Not sure", desc: "" }
+  ];
+  var C1_OPTS = ["K–12 students", "college or graduate students", "adult learners", "employees or trainees", "patients or clients", "community members"];
+  var C2_OPTS = [
+    { v: "spark", label: "something that sparks their interest" },
+    { v: "early", label: "someone or something that keeps them going early on" },
+    { v: "broker", label: "a learning broker" },
+    { v: "places", label: "more than one place where they learn it" },
+    { v: "links", label: "links between those places" },
+    { v: "peers", label: "peers who share the interest" }
+  ];
+  var C4_OPTS = ["yes, AI could provide it", "AI could help, but a person is still needed", "no, it needs a person or a place", "not sure"];
+  var C5_OPTS = [
+    "connect what happens in class to learners’ homes or workplaces",
+    "invite a mentor or community into the learning",
+    "give learners a project they can carry beyond the course",
+    "point learners to communities that share their interest",
+    "use AI to point learners outward to people and opportunities, not only back into the chat",
+    "act as a learning broker myself"
+  ];
+
+  /* ================= state ================= */
+  var STORE_KEY = "w07-my-learning-ecology-v1";
+  var S;
+  function freshState() {
+    return {
+      v: 1, started: false, step: "A1", reached: { A: true, B: false, C: false, S: false }, uid: 1,
+      A: { topicChoice: "", topicText: "", spark: { choice: "", text: "" }, kept: { choices: [], text: "" }, places: [], people: [], noPeople: false,
+           broker: { choice: "", text: "" }, strategies: [], links: [], phase: "" },
+      B: { marks: {}, notes: {} },
+      C: { learners: { choices: [], text: "" }, has: [], missing: "", aiHelp: "", aiWhy: "", moveChoice: -1, moveText: "" }
+    };
+  }
+  function loadState() {
+    try {
+      var raw = localStorage.getItem(STORE_KEY);
+      if (raw) { var o = JSON.parse(raw); if (o && o.v === 1 && o.A && o.B && o.C) { if (!o.B.notes) o.B.notes = {}; return o; } }
+    } catch (e) {}
+    return null;
+  }
+  function saveState() { try { localStorage.setItem(STORE_KEY, JSON.stringify(S)); } catch (e) { var n = document.getElementById("store-note"); if (n) n.hidden = false; } }
+
+  function $(id) { return document.getElementById(id); }
+  function nextUid() { return "u" + (S.uid++); }
+  function topicOf() { return (S.A.topicText || "").trim() || S.A.topicChoice || ""; }
+  function topicShow() { return topicOf() || "my topic"; }
+  function short(t, n) { t = (t || "").replace(/\s+/g, " ").trim(); return t.length > n ? t.slice(0, n - 1).trim() + "…" : t; }
+  function roleOf(id) { for (var i = 0; i < ROLES.length; i++) if (ROLES[i].id === id) return ROLES[i]; return ROLES[0]; }
+  function sparkText() { var s = S.A.spark; return (s.text || "").trim() || s.choice || ""; }
+  function hasSpark() { return !!sparkText(); }
+  function hasCan() { return S.A.kept.choices.length > 0 || !!(S.A.kept.text || "").trim(); }
+  function hasBroker() { return S.A.broker.choice === "yes" || S.A.broker.choice === "self"; }
+  function brokerLabel() { return S.A.broker.choice === "self" ? "me" : (short(S.A.broker.text, 24) || "someone"); }
+  function keptList() { var l = S.A.kept.choices.slice(); var t = (S.A.kept.text || "").trim(); if (t) l.push(t); return l; }
+  function phaseObj() { for (var i = 0; i < PHASES.length; i++) if (PHASES[i].v === S.A.phase) return PHASES[i]; return null; }
+
+  /* ================= steps ================= */
+  function pieceList() {
+    var p = [];
+    if (hasSpark()) p.push({ id: "spark", kind: "spark", name: "The spark", detail: sparkText(), img: "sun" });
+    S.A.places.forEach(function (pl) { p.push({ id: "place:" + pl.id, kind: "place", name: pl.label, detail: "a place", img: null }); });
+    S.A.people.forEach(function (pe) {
+      var r = roleOf(pe.role);
+      p.push({ id: "person:" + pe.id, kind: "person", name: (pe.label ? pe.label + " (" + r.short.toLowerCase() + ")" : r.short), detail: "a person in my ecology", img: r.animal });
+    });
+    if (hasBroker()) p.push({ id: "broker", kind: "broker", name: "Learning broker: " + brokerLabel(), detail: "someone who finds opportunities and connects you to them", img: "squirrel" });
+    S.A.strategies.forEach(function (n) { var st = STRATS[n - 1]; p.push({ id: "strat:" + n, kind: "strategy", name: st.name, detail: "one of Barron’s five strategies", img: st.img }); });
+    return p;
+  }
+  function stepList() {
+    var s = ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "Aend", "Bintro"];
+    pieceList().forEach(function (p) { s.push("B:" + p.id); });
+    s.push("Bres", "Cintro", "C1", "C2", "C3", "C4", "C5", "Share");
+    return s;
+  }
+  function partOf(id) { return id.charAt(0) === "A" ? "A" : id.charAt(0) === "B" ? "B" : id.charAt(0) === "C" ? "C" : "S"; }
+  function stepIndex() { var l = stepList(), i = l.indexOf(S.step); return i < 0 ? 0 : i; }
+  function goStep(id) {
+    S.step = id; var p = partOf(id); S.reached[p] = true; saveState(); renderAll();
+    window.scrollTo(0, 0);
+    focusHeading();
+  }
+  function focusHeading() {
+    var box = !$("main").hidden ? $("qcard") : !$("compare").hidden ? $("compare") : $("share"), t = box ? box.querySelector("h2") : null;
+    if (t) { t.setAttribute("tabindex", "-1"); try { t.focus({ preventScroll: true }); } catch (e) {} }
+  }
+  function goNext() { var l = stepList(), i = stepIndex(); if (i < l.length - 1) goStep(l[i + 1]); }
+  function goBack() { var l = stepList(), i = stepIndex(); if (i > 0) goStep(l[i - 1]); }
+
+  /* ================= small DOM helpers ================= */
+  function h(tag, props, kids) {
+    var e = document.createElement(tag);
+    if (props) for (var k in props) {
+      if (k === "text") e.textContent = props[k];
+      else if (k === "html") e.innerHTML = props[k];
+      else if (k.indexOf("on") === 0) e.addEventListener(k.slice(2), props[k]);
+      else if (props[k] !== null && props[k] !== undefined && props[k] !== false) e.setAttribute(k, props[k] === true ? "" : props[k]);
+    }
+    (kids || []).forEach(function (c) { if (c) e.appendChild(typeof c === "string" ? document.createTextNode(c) : c); });
+    return e;
+  }
+  var gid = 0;
+  function chip(type, name, value, label, checked, onChange, cls) {
+    var id = "c" + (gid++);
+    var inp = h("input", { type: type, name: name, id: id, value: value, checked: !!checked });
+    inp.addEventListener("change", function () { onChange(inp.checked, value); });
+    return h("label", { class: "chip" + (cls ? " " + cls : ""), for: id }, [inp, h("span", { text: label })]);
+  }
+  function textField(id, label, value, placeholder, maxlength, onInput, multiline) {
+    var inp = multiline ? h("textarea", { id: id, maxlength: maxlength, placeholder: placeholder || "" }) : h("input", { type: "text", id: id, maxlength: maxlength, placeholder: placeholder || "", autocomplete: "off" });
+    inp.value = value || "";
+    inp.addEventListener("input", function () { onInput(inp.value); });
+    return h("div", null, [label ? h("label", { class: "fieldlbl", for: id, text: label }) : null, inp]);
+  }
+
+  /* ================= question card ================= */
+  function card(kicker, title, help, bodyNodes, note) {
+    var q = $("qcard"); q.innerHTML = "";
+    q.appendChild(h("div", { class: "kicker", text: kicker }));
+    q.appendChild(h("h2", { text: title }));
+    if (help) q.appendChild(h("p", { class: "help", text: help }));
+    q.appendChild(h("div", { class: "body" }, bodyNodes));
+    if (note) q.appendChild(h("p", { class: "note", text: note }));
+  }
+  function nav(nextLabel, opts) {
+    opts = opts || {};
+    var i = stepIndex();
+    var row = h("div", { class: "qnav" });
+    var back = h("button", { class: "btn", type: "button", text: "Back", onclick: goBack });
+    if (i === 0) back.disabled = true;
+    row.appendChild(back);
+    var right = h("div", { class: "right" });
+    (opts.extra || []).forEach(function (b) { right.appendChild(b); });
+    if (nextLabel) right.appendChild(h("button", { class: "btn primary", type: "button", text: nextLabel, onclick: opts.onNext || goNext }));
+    row.appendChild(right);
+    $("qcard").appendChild(row);
+  }
+
+  function singleWithOther(opts, name, selected, otherValue, otherLabel, setSel, setOther) {
+    var box = h("div", { class: "body" });
+    var chips = h("div", { class: "chips", role: "radiogroup", "aria-label": "Choices" });
+    opts.forEach(function (o) {
+      var v = typeof o === "string" ? o : o.v, l = typeof o === "string" ? o : o.label;
+      chips.appendChild(chip("radio", name, v, l, selected === v && !otherValue, function () { setSel(v); renderAll(true); }));
+    });
+    box.appendChild(chips);
+    box.appendChild(textField(name + "-other", otherLabel, otherValue, "", 80, function (t) { setOther(t); softRefresh(); }));
+    return box;
+  }
+
+  var STEP_BUILDERS = {};
+
+  STEP_BUILDERS.A1 = function () {
+    var a = S.A;
+    card("Part A · My learning ecology · 1 of 9", "What is something you know well that you did not learn only in school?", "If you shared something in the warm-up, it is a great place to start.", [
+      singleWithOther(A1_OPTS, "a1", a.topicChoice, a.topicText, "or write your own",
+        function (v) { a.topicChoice = v; a.topicText = ""; saveState(); },
+        function (t) { a.topicText = t; if (t.trim()) a.topicChoice = ""; saveState(); })
+    ]);
+    nav("Next");
+  };
+  STEP_BUILDERS.A2 = function () {
+    var a = S.A;
+    var chips = h("div", { class: "chips", role: "radiogroup", "aria-label": "Where the interest was sparked" });
+    A2_OPTS.forEach(function (o) { chips.appendChild(chip("radio", "a2", o, o, a.spark.choice === o, function () { a.spark.choice = o; saveState(); renderAll(true); })); });
+    card("Part A · My learning ecology · 2 of 9", "Where was your interest first sparked?", "", [
+      chips, textField("a2-text", "What exactly happened? (optional)", a.spark.text, "", 140, function (t) { a.spark.text = t; saveState(); softRefresh(); })
+    ], "This is the first phase of interest, when something catches your attention (Hidi & Renninger, 2006).");
+    nav("Next");
+  };
+  STEP_BUILDERS.A3 = function () {
+    var a = S.A;
+    var chips = h("div", { class: "chips" });
+    A3_OPTS.forEach(function (o) {
+      chips.appendChild(chip("checkbox", "a3", o, o, a.kept.choices.indexOf(o) >= 0, function (on) {
+        var i = a.kept.choices.indexOf(o); if (on && i < 0) a.kept.choices.push(o); if (!on && i >= 0) a.kept.choices.splice(i, 1); saveState(); renderAll(true);
+      }));
+    });
+    card("Part A · My learning ecology · 3 of 9", "What kept you going in the early days?", "Choose any that fit.", [
+      chips, textField("a3-text", "or add your own", a.kept.text, "", 100, function (t) { a.kept.text = t; saveState(); softRefresh(); })
+    ], "Early on, interest usually needs support from people and settings around us. This is the second phase, when the task or setting keeps you engaged (Hidi & Renninger, 2006).");
+    nav("Next");
+  };
+  STEP_BUILDERS.A4 = function () {
+    var a = S.A, MAXP = 6;
+    var chips = h("div", { class: "chips" });
+    function has(label) { return a.places.some(function (p) { return p.label === label; }); }
+    A4_OPTS.forEach(function (o) {
+      chips.appendChild(chip("checkbox", "a4", o, o, has(o), function (on) {
+        if (on && a.places.length >= MAXP) { renderAll(true); return; }
+        if (on && !has(o)) a.places.push({ id: nextUid(), label: o });
+        if (!on) a.places = a.places.filter(function (p) { return p.label !== o; });
+        pruneLinks(); saveState(); renderAll(true);
+      }));
+    });
+    a.places.forEach(function (p) {
+      if (A4_OPTS.indexOf(p.label) >= 0) return;
+      chips.appendChild(chip("checkbox", "a4c", p.id, p.label, true, function () { a.places = a.places.filter(function (x) { return x.id !== p.id; }); pruneLinks(); saveState(); renderAll(true); }));
+    });
+    var addId = "a4-add";
+    var addInp = h("input", { type: "text", id: addId, maxlength: 40, placeholder: "for example: my grandmother’s kitchen", autocomplete: "off" });
+    function add() {
+      var t = addInp.value.trim(); if (!t || a.places.length >= MAXP || has(t)) return;
+      a.places.push({ id: nextUid(), label: t }); saveState(); renderAll(true);
+      var again = $(addId); if (again) again.focus();
+    }
+    addInp.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); add(); } });
+    card("Part A · My learning ecology · 4 of 9", "Where did this learning happen?", "Choose any that fit. Each choice becomes a garden bed on your map (up to six).", [
+      chips,
+      a.places.length >= MAXP ? h("p", { class: "note", text: "Your garden holds up to six places. Remove one if you would like to add another." }) : null,
+      h("div", null, [h("label", { class: "fieldlbl", for: addId, text: "or add your own" }), h("div", { class: "addrow" }, [addInp, h("button", { class: "btn", type: "button", text: "Add", onclick: add })])])
+    ]);
+    nav("Next");
+  };
+  STEP_BUILDERS.A5 = function () {
+    var a = S.A, MAXPEOPLE = 6;
+    var chips = h("div", { class: "chips" });
+    ROLES.forEach(function (r) {
+      var n = a.people.filter(function (p) { return p.role === r.id; }).length;
+      var id = "r-" + r.id;
+      var b = h("button", { type: "button", class: "chip", id: id, "aria-label": "Add " + r.label + (n ? ", " + n + " added" : "") }, [h("span", { text: "＋ " + r.label + (n ? " (" + n + ")" : ""), style: "display:inline-block;border:1.5px solid var(--line);border-radius:999px;padding:6px 14px;background:" + (n ? "var(--green-soft)" : "var(--ground)") + ";" + (n ? "border-color:var(--green);font-weight:700;" : "") })]);
+      b.style.cssText = "border:0;background:none;padding:0;";
+      b.addEventListener("click", function () {
+        if (a.people.length >= MAXPEOPLE) return;
+        a.people.push({ id: nextUid(), role: r.id, label: "" }); a.noPeople = false; saveState(); renderAll(true);
+        var again = $("r-" + r.id); if (again) again.focus();
+      });
+      chips.appendChild(b);
+    });
+    chips.appendChild(chip("checkbox", "a5none", "none", "no one really", a.noPeople, function (on) { a.noPeople = on; if (on) a.people = []; saveState(); renderAll(true); }));
+    var rows = h("div", { class: "people-rows" });
+    a.people.forEach(function (p) {
+      var r = roleOf(p.role);
+      var lab = h("input", { type: "text", maxlength: 24, placeholder: "optional label, e.g. my aunt", autocomplete: "off", "aria-label": "Short label for " + r.label });
+      lab.value = p.label; lab.addEventListener("input", function () { p.label = lab.value; saveState(); softRefresh(); });
+      rows.appendChild(h("div", { class: "prow" }, [
+        h("img", { src: IMG_BASE + IMG_KEYS[r.animal] + ".webp", alt: "" }),
+        h("div", null, [h("span", { class: "who", text: r.short }), lab]),
+        h("button", { class: "btn small ghost", type: "button", text: "Remove", "aria-label": "Remove " + r.short, onclick: function () { a.people = a.people.filter(function (x) { return x.id !== p.id; }); saveState(); renderAll(true); var again = $("r-" + p.role); if (again) again.focus(); } })
+      ]));
+    });
+    card("Part A · My learning ecology · 5 of 9", "Who was part of it?", "Add as many as you like (up to six). You do not need first names.", [chips, a.people.length >= MAXPEOPLE ? h("p", { class: "note", text: "Your garden holds up to six people. Remove one if you would like to add another." }) : null, rows]);
+    nav("Next");
+  };
+  STEP_BUILDERS.A6 = function () {
+    var a = S.A, body = [];
+    var chips = h("div", { class: "chips", role: "radiogroup", "aria-label": "Learning broker" });
+    A6_OPTS.forEach(function (o) { chips.appendChild(chip("radio", "a6", o[0], o[1], a.broker.choice === o[0], function () { a.broker.choice = o[0]; saveState(); renderAll(true); })); });
+    body.push(chips);
+    if (a.broker.choice === "yes") body.push(textField("a6-text", "Who was it, and what did they open up for you?", a.broker.text, "for example: my aunt, who found me a weekend class", 120, function (t) { a.broker.text = t; saveState(); softRefresh(); }));
+    card("Part A · My learning ecology · 6 of 9", "Did anyone act as a learning broker for you?", "In Barron’s study, Craig’s mother said she knew little about technology, but she found clubs and camps and got him there. A learning broker finds opportunities and connects you to them (Barron, 2006, p. 214).", body);
+    nav("Next");
+  };
+  STEP_BUILDERS.A7 = function () {
+    var a = S.A, list = h("div", { class: "body" });
+    STRATS.forEach(function (st) {
+      var id = "s" + st.n, inp = h("input", { type: "checkbox", id: id, checked: a.strategies.indexOf(st.n) >= 0 });
+      inp.addEventListener("change", function () {
+        var i = a.strategies.indexOf(st.n); if (inp.checked && i < 0) a.strategies.push(st.n); if (!inp.checked && i >= 0) a.strategies.splice(i, 1);
+        a.strategies.sort(); saveState(); renderAll(true);
+      });
+      list.appendChild(h("label", { class: "chip block", for: id }, [inp, h("span", null, [st.name, h("small", { text: st.desc })])]));
+    });
+    card("Part A · My learning ecology · 7 of 9", "Which ways of learning did you use?", "Barron’s five self-initiated strategies (Table 1, p. 203). Choose any that fit.", [list]);
+    nav("Next");
+  };
+  STEP_BUILDERS.A8 = function () {
+    var a = S.A, body = [];
+    if (a.places.length < 2) {
+      body.push(h("p", { text: a.places.length === 0 ? "You have not added any places yet. You can go back to question 4 to add some, or skip this one." : "Your learning happened mostly in one place. That is worth noticing too." }));
+    } else {
+      var list = h("div", { class: "pair-list" });
+      for (var i = 0; i < a.places.length; i++) for (var j = i + 1; j < a.places.length; j++) (function (p, q) {
+        var key = pairKey(p.id, q.id);
+        list.appendChild(chip("checkbox", "a8", key, p.label + " ↔ " + q.label, a.links.indexOf(key) >= 0, function (on) {
+          var k = a.links.indexOf(key); if (on && k < 0) a.links.push(key); if (!on && k >= 0) a.links.splice(k, 1); saveState(); renderAll(true);
+        }, "block"));
+      })(a.places[i], a.places[j]);
+      body.push(list);
+    }
+    card("Part A · My learning ecology · 8 of 9", "Did something you learned in one place show up in another?", a.places.length < 2 ? "" : "Tick the pairs that fed into each other.", body, "Barron calls this boundary crossing. These links between settings are what Bronfenbrenner (1979) called the mesosystem.");
+    nav("Next");
+  };
+  STEP_BUILDERS.A9 = function () {
+    var a = S.A, chips = h("div", { class: "body", role: "radiogroup", "aria-label": "Where is your interest now" });
+    PHASES.forEach(function (p) {
+      var id = "ph" + p.v, inp = h("input", { type: "radio", name: "a9", id: id, value: p.v, checked: a.phase === p.v });
+      inp.addEventListener("change", function () { a.phase = p.v; saveState(); renderAll(true); });
+      chips.appendChild(h("label", { class: "chip block", for: id }, [inp, h("span", { text: p.label })]));
+    });
+    card("Part A · My learning ecology · 9 of 9", "Where is your interest now?", "These are the four phases of interest (Hidi & Renninger, 2006). Your tree will grow to match.", [chips]);
+    nav("Next");
+  };
+  STEP_BUILDERS.Aend = function () {
+    card("Part A · Done", "Here is your learning ecology.", "Take a moment to look at it before we bring AI in.", [h("p", { class: "muted", text: "You can go back to change any answer, and your garden will rebuild." })]);
+    nav("Replay it with AI");
+  };
+
+  /* ---- Part B ---- */
+  STEP_BUILDERS.Bintro = function () {
+    card("Part B · Replay it with AI", "Imagine starting to learn this today.", "", [
+      h("p", { text: "Imagine you were starting to learn this today, with an AI tool such as ChatGPT or Claude always at hand. We will go through each piece of your map, one at a time. For each one, decide what AI would do to it, and say how or why in a sentence or two." }),
+      h("p", { class: "muted", text: pieceList().length ? "There are " + pieceList().length + " pieces to look at." : "Your map has no pieces yet. You can go back and add some, or continue." })
+    ]);
+    nav(pieceList().length ? "Begin" : "Continue");
+  };
+  function buildPieceStep(pid) {
+    var plist = pieceList(), piece = null, idx = 0;
+    plist.forEach(function (p, i) { if (p.id === pid) { piece = p; idx = i; } });
+    if (!piece) { goStep("Bres"); return; }
+    var cur = S.B.marks[pid] || "";
+    var marks = h("div", { class: "marks", role: "radiogroup", "aria-label": "What would AI do to this piece" });
+    MARKS.forEach(function (m) {
+      var id = "mk-" + m.v, inp = h("input", { type: "radio", name: "mark", id: id, value: m.v, checked: cur === m.v });
+      inp.addEventListener("change", function () { S.B.marks[pid] = m.v; saveState(); showNote(m.v); refreshNext(); applyFoldTargets(); softRefresh(); kick(); });
+      marks.appendChild(h("label", { class: "mark", for: id }, [inp, h("span", null, [h("b", { text: m.title }), m.desc ? h("small", { text: m.desc }) : null])]));
+    });
+    var PROMPT = { replace: "How could AI replace this? What would it do?", stronger: "How would AI make this stronger?", cannot: "Why could AI not give you this?", unsure: "What are you unsure about? (optional)" };
+    var noteWrap = h("div", { class: "note-wrap", id: "note-wrap" });
+    function showNote(mark) {
+      noteWrap.innerHTML = ""; noteWrap.hidden = !mark; if (!mark) return;
+      noteWrap.appendChild(textField("mk-note", PROMPT[mark], S.B.notes[pid] || "", "A sentence or two is plenty.", 300, function (t) { S.B.notes[pid] = t; saveState(); refreshNext(); }, true));
+    }
+    var need = h("p", { class: "help", id: "need-note", "aria-live": "polite" });
+    var nextBtn = null;
+    function refreshNext() {
+      var m = S.B.marks[pid], hasNote = (S.B.notes[pid] || "").trim().length > 0, ok = !!m && (m === "unsure" || hasNote);
+      if (nextBtn) nextBtn.disabled = !ok;
+      need.textContent = !m ? "Choose one of the options above to continue." : (ok ? "" : "Please write a sentence about " + (m === "cannot" ? "why" : "how") + " to continue.");
+    }
+    showNote(cur);
+    var pic = piece.img ? h("img", { src: IMG_BASE + IMG_KEYS[piece.img] + ".webp", alt: "" }) : h("div", { class: "bed-icon", "aria-hidden": "true" });
+    var head = h("div", { class: "piece" }, [pic, h("div", null, [h("div", { class: "pname", text: piece.name }), h("div", { class: "pkind", text: piece.kind === "spark" ? "Where it started: " + short(piece.detail, 60) : piece.detail })])]);
+    card("Part B · Replay it with AI · piece " + (idx + 1) + " of " + plist.length, "What would AI do to this piece?", "", [head, marks, noteWrap, need]);
+    nav("Next");
+    nextBtn = $("qcard").querySelector(".qnav .btn.primary"); refreshNext();
+  }
+  STEP_BUILDERS.Bres = function () { /* handled by the compare view */ };
+
+  /* ---- Part C ---- */
+  STEP_BUILDERS.Cintro = function () {
+    card("Part C · My learners", "Now step into your designer’s shoes.", "", [h("p", { text: "Now step into your designer’s shoes and think about the learners you work with or design for." })]);
+    nav("Begin", {});
+  };
+  STEP_BUILDERS.C1 = function () {
+    var c = S.C, chips = h("div", { class: "chips" });
+    C1_OPTS.forEach(function (o) {
+      chips.appendChild(chip("checkbox", "c1", o, o, c.learners.choices.indexOf(o) >= 0, function (on) {
+        var i = c.learners.choices.indexOf(o); if (on && i < 0) c.learners.choices.push(o); if (!on && i >= 0) c.learners.choices.splice(i, 1); saveState(); renderAll(true);
+      }));
+    });
+    card("Part C · My learners · 1 of 5", "Who are your learners?", "Choose any that fit.", [chips, textField("c1-text", "or write your own", c.learners.text, "", 60, function (t) { c.learners.text = t; saveState(); softRefresh(); })]);
+    nav("Next");
+  };
+  STEP_BUILDERS.C2 = function () {
+    var c = S.C, chips = h("div", { class: "chips" });
+    C2_OPTS.forEach(function (o) {
+      chips.appendChild(chip("checkbox", "c2", o.v, o.label, c.has.indexOf(o.v) >= 0, function (on) {
+        var i = c.has.indexOf(o.v); if (on && i < 0) c.has.push(o.v); if (!on && i >= 0) c.has.splice(i, 1); saveState(); renderAll(true);
+      }));
+    });
+    card("Part C · My learners · 2 of 5", "In your context, which of these do your learners usually have?", "Choose any that fit.", [chips]);
+    nav("Next");
+  };
+  STEP_BUILDERS.C3 = function () {
+    var c = S.C, chips = h("div", { class: "chips", role: "radiogroup", "aria-label": "Most often missing" });
+    var ordered = C2_OPTS.filter(function (o) { return c.has.indexOf(o.v) < 0; }).concat(C2_OPTS.filter(function (o) { return c.has.indexOf(o.v) >= 0; }));
+    ordered.forEach(function (o) { chips.appendChild(chip("radio", "c3", o.v, o.label, c.missing === o.v, function () { c.missing = o.v; saveState(); renderAll(true); })); });
+    card("Part C · My learners · 3 of 5", "Which one is most often missing?", "Choose one. The ones you did not tick are listed first.", [chips]);
+    nav("Next");
+  };
+  STEP_BUILDERS.C4 = function () {
+    var c = S.C, chips = h("div", { class: "chips", role: "radiogroup", "aria-label": "Could AI help" });
+    C4_OPTS.forEach(function (o) { chips.appendChild(chip("radio", "c4", o, o, c.aiHelp === o, function () { c.aiHelp = o; saveState(); renderAll(true); })); });
+    var m = C2_OPTS.filter(function (o) { return o.v === c.missing; })[0];
+    card("Part C · My learners · 4 of 5", "Could AI help with that missing piece?", m ? "The missing piece you chose: " + m.label + "." : "", [chips, textField("c4-why", "Why? (optional)", c.aiWhy, "", 140, function (t) { c.aiWhy = t; saveState(); })]);
+    nav("Next");
+  };
+  STEP_BUILDERS.C5 = function () {
+    var c = S.C, chips = h("div", { class: "body", role: "radiogroup", "aria-label": "Design ideas" });
+    var area = textField("c5-text", "Adapt the idea, or write your own", c.moveText, "", 220, function (t) { c.moveText = t; saveState(); }, true);
+    C5_OPTS.forEach(function (o, i) {
+      var id = "c5-" + i, inp = h("input", { type: "radio", name: "c5", id: id, value: String(i), checked: c.moveChoice === i });
+      inp.addEventListener("change", function () { c.moveChoice = i; c.moveText = o; saveState(); var ta = $("c5-text"); if (ta) ta.value = o; });
+      chips.appendChild(h("label", { class: "chip block", for: id }, [inp, h("span", { text: o })]));
+    });
+    card("Part C · My learners · 5 of 5", "One design move you could make.", "Pick an idea to start from, and reword it however you like.", [chips, area]);
+    nav("Make my share card");
+  };
+
+  /* ---- Share ---- */
+  STEP_BUILDERS.Share = function () { /* handled by the share view */ };
+
+  function pairKey(a, b) { return a < b ? a + "|" + b : b + "|" + a; }
+  function pruneLinks() {
+    var ids = {}; S.A.places.forEach(function (p) { ids[p.id] = true; });
+    S.A.links = S.A.links.filter(function (k) { var p = k.split("|"); return ids[p[0]] && ids[p[1]]; });
+  }
+
+  /* ================= garden scenes ================= */
+  var IM = {};
+  var LAYOUT = {
+    land: {
+      W: 1400, H: 960, fs: 35,
+      sun: { x: 20, y: 10, w: 170, h: 170 }, sunLabel: { x: 20, y: 186, w: 300, a: "left" },
+      tree: { cx: 560, bottom: 520, k: 0.79 }, treeLabel: { cx: 560, y: 528, w: 330 },
+      can: { x: 40, y: 330, w: 150, h: 130 }, canLabel: { x: 20, y: 468, w: 300, a: "left" },
+      broker: { cx: 895, bottom: 515, w: 190, h: 190 }, brokerLabel: { cx: 895, y: 522, w: 210 },
+      gh: { cx: 905, y: 6, w: 300, h: 270 }, ghLabel: { cx: 905, y: 278, w: 240 },
+      shed: { cx: 1205, y: 15, w: 270, h: 255 }, shedLabel: { cx: 1205, y: 278, w: 330 },
+      tools: { x: 1030, y0: 340, pitch: 112, box: 88, lx: 1128, lw: 262 },
+      beds: function (i) { return { cx: 100 + 160 * i, cy: 640, rx: 70, ry: 26, lw: 180, ly: 672 }; },
+      people: function (i) { return { cx: 100 + 160 * i, bottom: 868, w: 146, h: 128, lw: 180, ly: 874 }; },
+      stoneLift: function (a, b) { return 38 + 22 * Math.abs(a - b); }
+    },
+    port: {
+      W: 900, H: 1760, fs: 34,
+      sun: { x: 20, y: 10, w: 150, h: 150 }, sunLabel: { x: 182, y: 24, w: 440, a: "left" },
+      shed: { cx: 765, y: 8, w: 220, h: 208 }, shedLabel: { cx: 765, y: 220, w: 270 },
+      tools: { port: true, y: 290, pitch: 180, box: 100, lw: 172, ly: 396, x0: 90 },
+      tree: { cx: 450, bottom: 940, k: 0.7 }, treeLabel: { cx: 450, y: 948, w: 300 },
+      can: { x: 28, y: 770, w: 140, h: 120 }, canLabel: { x: 14, y: 900, w: 250, a: "left" },
+      broker: { cx: 770, bottom: 930, w: 160, h: 160 }, brokerLabel: { cx: 770, y: 938, w: 200 },
+      gh: { cx: 765, y: 470, w: 230, h: 215 }, ghLabel: { cx: 765, y: 690, w: 260 },
+      beds: function (i) { var r = Math.floor(i / 3), c = i % 3; return { cx: 150 + 300 * c, cy: 1085 + 150 * r, rx: 74, ry: 27, lw: 280, ly: 1118 + 150 * r }; },
+      people: function (i) { var r = Math.floor(i / 3), c = i % 3; return { cx: 150 + 300 * c, bottom: 1500 + 200 * r, w: 150, h: 130, lw: 280, ly: 1506 + 200 * r }; },
+      stoneLift: function (a, b) { return 40 + 18 * Math.abs(a - b); }
+    }
+  };
+  var anim = { born: {}, fold: {}, target: {}, raf: 0, last: 0, initial: true };
+  var reduceMotion = false;
+  try { reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
+
+  function isDark() {
+    var r = document.documentElement.getAttribute("data-theme");
+    if (r === "dark") return true; if (r === "light") return false;
+    try { return window.matchMedia("(prefers-color-scheme: dark)").matches; } catch (e) { return false; }
+  }
+  function fit(key, bw, bh) {
+    var im = IM[key]; if (!im || !im.naturalWidth) return { w: bw, h: bh || bw };
+    var k = Math.min(bw / im.naturalWidth, (bh || 1e9) / im.naturalHeight);
+    return { w: im.naturalWidth * k, h: im.naturalHeight * k };
+  }
+  function ease(t) { t = Math.max(0, Math.min(1, t)); return 1 - Math.pow(1 - t, 3); }
+
+  /* Build the draw list for one garden. opts: layout, mode (mine | live | ai | learners), fold map, focus, mini, now */
+  function buildScene(o) {
+    var L = LAYOUT[o.layout], fsz = L.fs * (o.mini ? 1.28 : 1), ops = [], now = o.now;
+    var effects = o.mode === "live" || o.mode === "ai";
+    var A = S.A;
+    function bornAlpha(id) {
+      if (o.static) return 1;
+      if (anim.born[id] === undefined) anim.born[id] = anim.initial ? -1e9 : now;
+      return reduceMotion ? 1 : ease((now - anim.born[id]) / 450);
+    }
+    function mk(pid) { return effects ? S.B.marks[pid] : null; }
+    function fo(pid) { return effects ? (o.mode === "ai" ? (S.B.marks[pid] === "replace" ? 1 : 0) : (o.fold[pid] || 0)) : 0; }
+    // thumbnails inside the greenhouse for pieces marked "replace"
+    var replaced = [];
+    if (effects) pieceList().forEach(function (p) { if (S.B.marks[p.id] === "replace" || (o.mode === "live" && (o.fold[p.id] || 0) > 0.001)) replaced.push(p.id); });
+    var GH = fit("greenhouse", L.gh.w, L.gh.h);
+    function thumbPos(pid) {   // a tidy grid inside the glass: 3 columns, 2 rows; more than six fade out and are counted
+      var k = replaced.indexOf(pid), kk = Math.max(0, Math.min(k, 5)), col = kk % 3, row = Math.floor(kk / 3);
+      return { x: L.gh.cx + (col - 1) * GH.w * 0.27, y: L.gh.y + GH.h * (0.6 + 0.25 * row), size: GH.w * 0.25, over: k > 5 };
+    }
+    function place(pid, cx, cy, w, h) {   // fold: drift into the greenhouse and settle as a small icon inside the glass
+      var f = ease(fo(pid)), tp = effects && f > 0 ? thumbPos(pid) : null;
+      if (!tp) return { cx: cx, cy: cy, w: w, h: h, f: 0, fade: 0 };
+      var sc = 1 + (tp.size / Math.max(w, h) - 1) * f;
+      return { cx: cx + (tp.x - cx) * f, cy: cy + (tp.y - cy) * f, w: w * sc, h: h * sc, f: f, fade: tp.over ? f : 0 };
+    }
+    function badges(pid, cx, cy, w, h) {
+      var m = mk(pid), f = fo(pid); if (!m || f > 0.2) return;
+      if (m === "stronger") ops.push({ t: "plus", cx: cx + w / 2 - 6, cy: cy - h / 2 + 6, id: "bd:" + pid });
+      if (m === "cannot") ops.push({ t: "flower", cx: cx + w / 2 - 6, cy: cy + h / 2 - 8, id: "bd:" + pid });
+    }
+    ops.push({ t: "backdrop", dark: o.dark });
+    if (effects) ops.push({ t: "img", key: "greenhouse", cx: L.gh.cx, cy: L.gh.y + GH.h / 2, w: GH.w, h: GH.h, alpha: 1, id: "gh" });
+
+    // --- tree
+    var ph = phaseObj(), treeKey = ph ? ph.tree : "sprout", T = L.tree;
+    var tim = fit(treeKey, 9999, 9999), tw = (IM[treeKey] && IM[treeKey].naturalWidth ? IM[treeKey].naturalWidth : 400) * T.k, th = (IM[treeKey] && IM[treeKey].naturalHeight ? IM[treeKey].naturalHeight : 400) * T.k;
+
+    // --- links (stepping stones), under everything
+    var placeIdx = {}; A.places.slice(0, 6).forEach(function (p, i) { placeIdx[p.id] = i; });
+    A.links.forEach(function (k) {
+      var p = k.split("|"); if (placeIdx[p[0]] === undefined || placeIdx[p[1]] === undefined) return;
+      var a = L.beds(placeIdx[p[0]]), b = L.beds(placeIdx[p[1]]);
+      var alpha = 1 - Math.max(ease(fo("place:" + p[0])), ease(fo("place:" + p[1])));
+      ops.push({ t: "stones", x1: a.cx, y1: a.cy, x2: b.cx, y2: b.cy, lift: L.stoneLift(placeIdx[p[0]], placeIdx[p[1]]), alpha: alpha * bornAlpha("lk:" + k), id: "lk:" + k });
+    });
+
+    // --- beds + labels
+    A.places.slice(0, 6).forEach(function (p, i) {
+      var b = L.beds(i), pid = "place:" + p.id, a = bornAlpha(pid), pl = place(pid, b.cx, b.cy, b.rx * 2, b.ry * 2);
+      ops.push({ t: "bed", cx: pl.cx, cy: pl.cy, rx: pl.w / 2, ry: pl.h / 2, alpha: a * (1 - pl.fade), id: pid, pid: pid });
+      if (pl.f < 1) ops.push({ t: "label", text: p.label, cx: b.cx, y: b.ly, w: b.lw, size: fsz * 0.86, lines: 2, maxH: 78, alpha: a * (1 - pl.f), id: "lb:" + pid, concept: "Place" });
+      badges(pid, b.cx, b.cy, b.rx * 2, b.ry * 2);
+      if (o.focus === pid) ops.push({ t: "ring", cx: b.cx, cy: b.cy, w: b.rx * 2 + 30, h: b.ry * 2 + 40 });
+    });
+    // tree op
+    ops.push({ t: "tree", key: treeKey, cx: T.cx, bottom: T.bottom, w: tw, h: th, alpha: 1, id: "tree:" + treeKey });
+    ops.push({ t: "label", text: "Me + " + topicShow() + (ph ? " · " + (ph.v === "moved" ? "resting" : "phase " + ph.v + " of 4") : ""), cx: L.treeLabel.cx, y: L.treeLabel.y, w: L.treeLabel.w + 40, size: fsz, lines: 2, bold: true, alpha: 1, id: "lb:tree", concept: "" });
+
+    // --- sun (spark)
+    if (hasSpark()) {
+      var a1 = bornAlpha("spark"), sp = place("spark", L.sun.x + L.sun.w / 2, L.sun.y + L.sun.h / 2, L.sun.w, L.sun.h);
+      ops.push({ t: "img", key: "sun", cx: sp.cx, cy: sp.cy, w: sp.w, h: sp.h, alpha: a1 * (1 - sp.fade), id: "spark", pid: "spark" });
+      if (sp.f < 1) ops.push({ t: "label", text: "Spark: " + short(sparkText(), 34), x: L.sunLabel.x, y: L.sunLabel.y, w: L.sunLabel.w, a: L.sunLabel.a, size: fsz * 0.9, lines: o.mini ? 2 : 3, alpha: a1 * (1 - sp.f), id: "lb:spark", concept: "Spark" });
+      badges("spark", sp.cx, sp.cy, L.sun.w, L.sun.h);
+      if (o.focus === "spark") ops.push({ t: "ring", cx: L.sun.x + L.sun.w / 2, cy: L.sun.y + L.sun.h / 2, w: L.sun.w + 30, h: L.sun.h + 30 });
+    }
+    // --- watering can (what kept me going)
+    if (hasCan()) {
+      var a2 = bornAlpha("can"), kl = keptList(), txt = "Kept me going: " + short(kl[0], 26) + (kl.length > 1 ? " + " + (kl.length - 1) + " more" : "");
+      ops.push({ t: "img", key: "can", cx: L.can.x + L.can.w / 2, cy: L.can.y + L.can.h / 2, w: L.can.w, h: L.can.h, alpha: a2, id: "can" });
+      ops.push({ t: "label", text: txt, x: L.canLabel.x, y: L.canLabel.y, w: L.canLabel.w, a: L.canLabel.a, size: fsz * 0.9, lines: o.mini ? 2 : 3, alpha: a2, id: "lb:can", concept: "Early support" });
+    }
+    // --- shed + tools (five strategies)
+    if (A.strategies.length) {
+      var a3 = bornAlpha("shed");
+      ops.push({ t: "img", key: "shed", cx: L.shed.cx, cy: L.shed.y + L.shed.h / 2, w: L.shed.w, h: L.shed.h, alpha: a3, id: "shed" });
+      ops.push({ t: "label", text: "My ways of learning", cx: L.shedLabel.cx, y: L.shedLabel.y, w: L.shedLabel.w, size: fsz * 0.92, lines: 1, bold: true, alpha: a3, id: "lb:shed", concept: "Strategies" });
+      A.strategies.forEach(function (n, i) {
+        var st = STRATS[n - 1], pid = "strat:" + n, aa = bornAlpha(pid), tx, ty, lab;
+        if (L.tools.port) { tx = L.tools.x0 + L.tools.pitch * (n - 1); ty = L.tools.y + L.tools.box / 2; lab = { cx: tx, y: L.tools.ly, w: L.tools.lw, a: "center" }; }
+        else { tx = L.tools.x + L.tools.box / 2; ty = L.tools.y0 + L.tools.pitch * (n - 1) + L.tools.box / 2; lab = { x: L.tools.lx, y: ty - 30, w: L.tools.lw, a: "left" }; }
+        var sz = fit(st.img, L.tools.box, L.tools.box), pl = place(pid, tx, ty, sz.w, sz.h);
+        ops.push({ t: "img", key: st.img, cx: pl.cx, cy: pl.cy, w: pl.w, h: pl.h, alpha: aa * (1 - pl.fade), id: pid, pid: pid });
+        if (pl.f < 1) ops.push({ t: "label", text: st.name, x: lab.x, cx: lab.cx, y: lab.y, w: lab.w, a: lab.a, size: fsz * 0.82, lines: L.tools.port ? 3 : 2, alpha: aa * (1 - pl.f), id: "lb:" + pid, concept: "Strategy " + n });
+        badges(pid, tx, ty, sz.w, sz.h);
+        if (o.focus === pid) ops.push({ t: "ring", cx: tx, cy: ty, w: sz.w + 24, h: sz.h + 24 });
+      });
+    }
+    // --- people
+    A.people.slice(0, 6).forEach(function (pe, i) {
+      var r = roleOf(pe.role), pos = L.people(i), pid = "person:" + pe.id, aa = bornAlpha(pid);
+      var sz = fit(r.animal, pos.w, pos.h), pl = place(pid, pos.cx, pos.bottom - sz.h / 2, sz.w, sz.h);
+      ops.push({ t: "img", key: r.animal, cx: pl.cx, cy: pl.cy, w: pl.w, h: pl.h, alpha: aa * (1 - pl.fade), id: pid, pid: pid });
+      if (pl.f < 1) ops.push({ t: "label", text: r.short + (pe.label ? ": " + short(pe.label, 18) : ""), cx: pos.cx, y: pos.ly, w: pos.lw, size: fsz * 0.8, lines: 2, maxH: L.H - pos.ly - 8, alpha: aa * (1 - pl.f), id: "lb:" + pid, concept: "Person" });
+      badges(pid, pos.cx, pos.bottom - sz.h / 2, sz.w, sz.h);
+      if (o.focus === pid) ops.push({ t: "ring", cx: pos.cx, cy: pos.bottom - sz.h / 2, w: sz.w + 24, h: sz.h + 24 });
+    });
+    // --- broker
+    if (hasBroker()) {
+      var ab = bornAlpha("broker"), bs = fit("squirrel", L.broker.w, L.broker.h), bp = place("broker", L.broker.cx, L.broker.bottom - bs.h / 2, bs.w, bs.h);
+      ops.push({ t: "img", key: "squirrel", cx: bp.cx, cy: bp.cy, w: bp.w, h: bp.h, alpha: ab * (1 - bp.fade), id: "broker", pid: "broker", gold: true, goldRX: bp.w * 0.52, goldRY: bp.h * 0.52 });
+      if (bp.f < 1) ops.push({ t: "label", text: "Learning broker: " + brokerLabel(), cx: L.brokerLabel.cx, y: L.brokerLabel.y, w: L.brokerLabel.w, size: fsz * 0.82, lines: 3, alpha: ab * (1 - bp.f), id: "lb:broker", concept: "Broker" });
+      badges("broker", L.broker.cx, L.broker.bottom - bs.h / 2, bs.w, bs.h);
+      if (o.focus === "broker") ops.push({ t: "ring", cx: L.broker.cx, cy: L.broker.bottom - bs.h / 2, w: bs.w + 30, h: bs.h + 30 });
+    }
+    // --- greenhouse label
+    if (effects) {
+      ops.push({ t: "label", text: replaced.length ? "AI: " + replaced.length + " folded in" : "AI", cx: L.ghLabel.cx, y: L.ghLabel.y, w: L.ghLabel.w, size: fsz * 0.9, lines: 1, bold: true, alpha: 1, id: "lb:gh", concept: "AI" });
+    }
+    if (o.dark) { }
+    return ops;
+  }
+
+  function sceneForLearners(o) {
+    var L = LAYOUT[o.layout], C = S.C, ops = [], fsz = L.fs * (o.mini ? 1.28 : 1), now = o.now;
+    ops.push({ t: "backdrop", dark: o.dark });
+    var land = o.layout === "land";
+    var lt = C.learners.text.trim() || C.learners.choices[0] || "my learners";
+    var treeKey = "young", tw = (IM[treeKey] && IM[treeKey].naturalWidth ? IM[treeKey].naturalWidth : 380) * (land ? 0.82 : 0.66), th = (IM[treeKey] && IM[treeKey].naturalHeight ? IM[treeKey].naturalHeight : 560) * (land ? 0.82 : 0.66);
+    var tcx = land ? 280 : 450, tb = land ? 640 : 470;
+    ops.push({ t: "tree", key: treeKey, cx: tcx, bottom: tb, w: tw, h: th, alpha: 1, id: "ltree" });
+    ops.push({ t: "label", text: (C.learners.text.trim() || C.learners.choices.length) ? "My learners: " + short(lt, 30) : "My learners", cx: tcx, y: tb + 10, w: 420, size: fsz, lines: 2, bold: true, alpha: 1, id: "lb:ltree", concept: "Learners" });
+    var cells = land
+      ? [[680, 20], [1000, 20], [680, 440], [1000, 440], [680, 20], [1000, 20]]
+      : [[20, 500], [320, 500], [620, 500], [20, 860], [320, 860], [620, 860]];
+    // grid: land 3 cols x 2 rows on the right (x 560..1380), port 3 cols x 2 rows below the tree
+    var gx = land ? [610, 890, 1170] : [150, 450, 750], gy = land ? [170, 560] : [760, 1160];
+    C2_OPTS.forEach(function (opt, i) {
+      var cx = gx[i % 3], cy = gy[Math.floor(i / 3)], has = C.has.indexOf(opt.v) >= 0, missing = C.missing === opt.v;
+      var key = { spark: "sun", early: "can", broker: "squirrel", places: null, links: null, peers: "fox" }[opt.v];
+      var a = 1;
+      var box = land ? 175 : 150;
+      if (has && key) { var sz = fit(key, box, box); ops.push({ t: "img", key: key, cx: cx, cy: cy, w: sz.w, h: sz.h, alpha: a, id: "c:" + opt.v }); }
+      else if (has && (opt.v === "places" || opt.v === "links")) {
+        ops.push({ t: "bed", cx: cx - 46, cy: cy + 20, rx: 46, ry: 20, alpha: a, id: "c:" + opt.v + "a" });
+        ops.push({ t: "bed", cx: cx + 46, cy: cy + 20, rx: 46, ry: 20, alpha: a, id: "c:" + opt.v + "b" });
+        if (opt.v === "links") ops.push({ t: "stones", x1: cx - 46, y1: cy + 20, x2: cx + 46, y2: cy + 20, lift: 34, alpha: 1, id: "c:links" });
+      } else {
+        ops.push({ t: "emptybed", cx: cx, cy: cy + 24, rx: 80, ry: 30, missing: missing, id: "c:" + opt.v });
+      }
+      if (missing) ops.push({ t: "sign", cx: cx, cy: cy - (has ? 100 : 22), text: "most often missing", size: fsz * 0.66, id: "sg:" + opt.v });
+      ops.push({ t: "label", text: opt.label, cx: cx, y: cy + (land ? 100 : 94), w: land ? 266 : 280, size: fsz * 0.92, lines: 3, maxH: 130, alpha: has ? 1 : 0.9, id: "lb:c:" + opt.v, concept: "" });
+    });
+    return ops;
+  }
+
+  /* ---------- canvas drawing ---------- */
+  function wrapText(ctx, text, maxW, maxLines) {
+    var words = String(text).split(/\s+/), lines = [], cur = "";
+    for (var i = 0; i < words.length; i++) {
+      var t = cur ? cur + " " + words[i] : words[i];
+      if (ctx.measureText(t).width <= maxW || !cur) cur = t; else { lines.push(cur); cur = words[i]; }
+    }
+    if (cur) lines.push(cur);
+    return lines;
+  }
+  var FONT_BODY = "Calibri, Carlito, 'Atkinson Hyperlegible', 'Trebuchet MS', system-ui, sans-serif";
+  var FONT_DISPLAY = "Georgia, 'Newsreader', 'Times New Roman', serif";
+  function rrect(ctx, x, y, w, h, r) {
+    ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+  }
+  var curK = 0;   // css pixels per logical unit of the canvas being painted; 0 = no minimum (images that are exported)
+  function drawLabel(ctx, op) {
+    var size = op.size, lines, maxLines = op.lines || 2, bold = op.bold, pad, lh, tw, bh, minS = curK ? 13 / curK : 0;
+    for (var tries = 0; tries < 12; tries++) {
+      pad = size * 0.32; ctx.font = (bold ? "700 " : "600 ") + Math.round(size) + "px " + FONT_BODY;
+      lines = wrapText(ctx, op.text, op.w - pad * 2, maxLines);
+      tw = 0; lines.forEach(function (l) { tw = Math.max(tw, ctx.measureText(l).width); });
+      lh = size * 1.18; bh = Math.min(lines.length, maxLines) * lh + pad * 1.3;
+      if (lines.length <= maxLines && tw <= op.w - pad * 2 + 0.5 && (!op.maxH || bh <= op.maxH)) break;
+      if (size * 0.92 < minS) break;
+      size *= 0.92;
+    }
+    if (minS && size < minS) { size = minS; pad = size * 0.32; ctx.font = (bold ? "700 " : "600 ") + Math.round(size) + "px " + FONT_BODY; lines = wrapText(ctx, op.text, op.w - pad * 2, maxLines); lh = size * 1.18; }
+    if (lines.length > maxLines) { lines = lines.slice(0, maxLines); lines[maxLines - 1] += "…"; }
+    lines = lines.map(function (l) { var t = l; while (ctx.measureText(t).width > op.w - pad * 2 + 0.5 && t.length > 2) t = t.slice(0, -2) + "…"; return t; });
+    tw = 0; lines.forEach(function (l) { tw = Math.max(tw, ctx.measureText(l).width); });
+    bh = lines.length * lh + pad * 1.3;
+    var bw = tw + pad * 2, x = op.a === "left" ? op.x : (op.cx - bw / 2), y = op.y;
+    ctx.save(); ctx.globalAlpha = Math.max(0, Math.min(1, op.alpha === undefined ? 1 : op.alpha));
+    rrect(ctx, x, y, bw, bh, size * 0.4); ctx.fillStyle = "rgba(255,253,248,0.9)"; ctx.fill();
+    ctx.lineWidth = 1.5; ctx.strokeStyle = "rgba(90,66,48,0.35)"; ctx.stroke();
+    ctx.fillStyle = "#2A1C18"; ctx.textBaseline = "middle"; ctx.textAlign = "left";
+    lines.forEach(function (l, i) { ctx.fillText(l, x + pad, y + pad * 0.65 + lh * (i + 0.5)); });
+    ctx.restore();
+    return bh;
+  }
+  function drawCover(ctx, im, W, H) {
+    if (!im || !im.naturalWidth) { ctx.fillStyle = "#cfe0b6"; ctx.fillRect(0, 0, W, H); return; }
+    var k = Math.max(W / im.naturalWidth, H / im.naturalHeight), w = im.naturalWidth * k, h = im.naturalHeight * k;
+    ctx.drawImage(im, (W - w) / 2, (H - h) / 2, w, h);
+  }
+  function star(ctx, cx, cy, r, color) {
+    ctx.beginPath();
+    for (var i = 0; i < 8; i++) { var a = Math.PI / 4 * i - Math.PI / 2, rr2 = i % 2 === 0 ? r : r * 0.35; ctx.lineTo(cx + Math.cos(a) * rr2, cy + Math.sin(a) * rr2); }
+    ctx.closePath(); ctx.fillStyle = color; ctx.fill();
+  }
+  function drawOps(ctx, ops, L, now) {
+    ops.forEach(function (op) {
+      var a = op.alpha === undefined ? 1 : op.alpha;
+      if (op.t === "backdrop") { drawCover(ctx, IM[op.dark ? "night" : "day"], L.W, L.H); return; }
+      if (op.t === "label") { drawLabel(ctx, op); return; }
+      ctx.save(); ctx.globalAlpha = Math.max(0, Math.min(1, a));
+      if (op.t === "img" || op.t === "tree") {
+        var im = IM[op.key];
+        if (im && im.naturalWidth) {
+          var sc = a < 1 && !reduceMotion ? 0.85 + 0.15 * a : 1, w = op.w * sc, h = op.h * sc;
+          var cx = op.cx, cy = op.t === "tree" ? op.bottom - op.h / 2 : op.cy;
+          if (op.gold) { ctx.beginPath(); ctx.ellipse(cx, cy, op.goldRX, op.goldRY, 0, 0, Math.PI * 2); ctx.lineWidth = 7; ctx.strokeStyle = "#E3B100"; ctx.stroke(); }
+          ctx.drawImage(im, cx - w / 2, cy - h / 2, w, h);
+        }
+      } else if (op.t === "bed") {
+        var sc2 = a < 1 && !reduceMotion ? 0.85 + 0.15 * a : 1;
+        ctx.beginPath(); ctx.ellipse(op.cx, op.cy, op.rx * sc2, op.ry * sc2, 0, 0, Math.PI * 2);
+        var g = ctx.createRadialGradient(op.cx, op.cy - op.ry * 0.3, 2, op.cx, op.cy, Math.max(op.rx, 4));
+        g.addColorStop(0, "#8a6845"); g.addColorStop(1, "#5b4128"); ctx.fillStyle = g; ctx.fill();
+        ctx.lineWidth = Math.max(2, op.ry * 0.16); ctx.strokeStyle = "#3b2a1a"; ctx.stroke();
+        ctx.fillStyle = "rgba(60,40,24,0.55)";
+        for (var s = 0; s < 7; s++) { ctx.beginPath(); ctx.arc(op.cx + (((s * 37) % 100) / 100 - 0.5) * op.rx * 1.3, op.cy + (((s * 53) % 100) / 100 - 0.5) * op.ry * 1.1, Math.max(1.5, op.ry * 0.07), 0, Math.PI * 2); ctx.fill(); }
+      } else if (op.t === "emptybed") {
+        ctx.beginPath(); ctx.ellipse(op.cx, op.cy, op.rx, op.ry, 0, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(110,84,56,0.35)"; ctx.fill(); ctx.setLineDash([10, 8]); ctx.lineWidth = op.missing ? 5 : 3; ctx.strokeStyle = op.missing ? "#E3B100" : "rgba(80,58,38,0.7)"; ctx.stroke(); ctx.setLineDash([]);
+      } else if (op.t === "stones") {
+        var mx = (op.x1 + op.x2) / 2, my = Math.min(op.y1, op.y2) - op.lift, n = Math.max(4, Math.round(Math.hypot(op.x2 - op.x1, op.lift * 2) / 34));
+        for (var i = 1; i < n; i++) {
+          var t = i / n, x = (1 - t) * (1 - t) * op.x1 + 2 * (1 - t) * t * mx + t * t * op.x2, y = (1 - t) * (1 - t) * op.y1 + 2 * (1 - t) * t * my + t * t * op.y2;
+          ctx.beginPath(); ctx.ellipse(x, y, 10, 6, (t - 0.5) * 0.8, 0, Math.PI * 2); ctx.fillStyle = "#e9e3d5"; ctx.fill(); ctx.lineWidth = 1.5; ctx.strokeStyle = "#9c917c"; ctx.stroke();
+        }
+      } else if (op.t === "plus") {
+        star(ctx, op.cx - 24, op.cy - 12, 13, "#FFCC00"); star(ctx, op.cx + 20, op.cy - 26, 9, "#FFE066");
+        ctx.beginPath(); ctx.arc(op.cx, op.cy, 21, 0, Math.PI * 2); ctx.fillStyle = "#4F7F4E"; ctx.fill(); ctx.lineWidth = 3; ctx.strokeStyle = "#FFFDF8"; ctx.stroke();
+        ctx.fillStyle = "#FFFDF8"; ctx.font = "700 28px " + FONT_BODY; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText("＋", op.cx, op.cy + 1);
+      } else if (op.t === "flower") {
+        var fi = IM.flower; if (fi && fi.naturalWidth) { var fw = 44, fh = fi.naturalHeight / fi.naturalWidth * fw; ctx.drawImage(fi, op.cx - fw / 2, op.cy - fh / 2, fw, fh); }
+      } else if (op.t === "ring") {
+        ctx.setLineDash([12, 9]); ctx.lineWidth = 5; ctx.strokeStyle = "#E3B100"; ctx.beginPath(); ctx.ellipse(op.cx, op.cy, op.w / 2, op.h / 2, 0, 0, Math.PI * 2); ctx.stroke(); ctx.setLineDash([]);
+      } else if (op.t === "sign") {
+        ctx.font = '700 ' + Math.round(op.size) + 'px ' + FONT_BODY; var sw = ctx.measureText(op.text).width + 28, sh = op.size * 1.6;
+        ctx.fillStyle = "#b98a54"; rrect(ctx, op.cx - sw / 2, op.cy - sh / 2, sw, sh, 6); ctx.fill(); ctx.lineWidth = 3; ctx.strokeStyle = "#6b4a2a"; ctx.stroke();
+        ctx.fillStyle = "#2A1C18"; ctx.font = "700 " + Math.round(op.size) + "px " + FONT_BODY; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText(op.text, op.cx, op.cy + 1);
+      }
+      ctx.restore();
+    });
+  }
+
+  function sizeCanvas(c, minW) {
+    var cssW = c.clientWidth || minW || 600, kind = cssW < 560 ? "port" : "land", L = LAYOUT[kind];
+    var cssH = Math.round(cssW * L.H / L.W), dpr = Math.min(2, window.devicePixelRatio || 1);
+    c.style.height = cssH + "px"; var pw = Math.round(cssW * dpr), ph = Math.round(cssH * dpr);
+    if (c.width !== pw || c.height !== ph) { c.width = pw; c.height = ph; }
+    return { kind: kind, L: L, k: pw / L.W };
+  }
+  function paintScene(c, mode, extra) {
+    var m = sizeCanvas(c, 600), ctx = c.getContext("2d"), now = performance.now();
+    var o = { layout: m.kind, mode: mode, fold: anim.fold, focus: extra && extra.focus, mini: extra && extra.mini, now: now, dark: isDark() };
+    var ops = mode === "learners" ? sceneForLearners(o) : buildScene(o);
+    ctx.setTransform(m.k, 0, 0, m.k, 0, 0); ctx.clearRect(0, 0, m.L.W, m.L.H);
+    curK = (c.clientWidth || 600) / m.L.W; drawOps(ctx, ops, m.L, now); curK = 0;
+    return ops;
+  }
+
+  /* ---------- animation ---------- */
+  function applyFoldTargets() {
+    var marks = S.B.marks;
+    pieceList().forEach(function (p) { anim.target[p.id] = marks[p.id] === "replace" ? 1 : 0; });
+    if (reduceMotion) Object.keys(anim.target).forEach(function (k) { anim.fold[k] = anim.target[k]; });
+  }
+  function kick() { if (!anim.raf) { anim.last = performance.now(); anim.raf = requestAnimationFrame(tick); } }
+  function tick(ts) {
+    anim.raf = 0;
+    var dt = Math.min(64, ts - anim.last); anim.last = ts;
+    var busy = false;
+    Object.keys(anim.target).forEach(function (k) {
+      var cur = anim.fold[k] || 0, tg = anim.target[k];
+      if (Math.abs(cur - tg) > 0.002) { cur += Math.sign(tg - cur) * dt / 1100; if ((tg - cur) * (tg - (anim.fold[k] || 0)) < 0) cur = tg; anim.fold[k] = cur; busy = true; } else anim.fold[k] = tg;
+    });
+    Object.keys(anim.born).forEach(function (k) { if (performance.now() - anim.born[k] < 480) busy = true; });
+    redraw();
+    if (busy) anim.raf = requestAnimationFrame(tick);
+  }
+
+  var lastOps = [];
+  function redraw() {
+    var step = S.step, kind = $("screen-app").hidden ? null : (step === "Bres" ? "cmp" : step === "Share" ? "share" : "main");
+    if (kind === "main") {
+      var c = $("garden"); if (c.clientWidth > 0) {
+        var part = partOf(step), mode = part === "B" ? "live" : part === "C" ? "learners" : "mine";
+        var focus = step.indexOf("B:") === 0 ? step.slice(2) : null;
+        lastOps = paintScene(c, mode, { focus: focus });
+      }
+    } else if (kind === "cmp") {
+      paintScene($("cmp-mine"), "mine", { mini: true });
+      paintScene($("cmp-ai"), "ai", { mini: true });
+    } else if (kind === "share") { drawShareCard($("share-canvas"), false); }
+    if (anim.initial) anim.initial = false;
+  }
+  function softRefresh() { redraw(); updateCaption(); kick(); }
+
+  /* ---------- caption, legend ---------- */
+  function updateCaption() {
+    var part = partOf(S.step), cap = $("gcap"), list = $("legend-list");
+    if (!cap) return;
+    var items = [];
+    if (part === "C") {
+      items.push("Tree: my learners (" + (S.C.learners.text.trim() || S.C.learners.choices.join(", ") || "not chosen yet") + ")");
+      C2_OPTS.forEach(function (o) { items.push(o.label + ": " + (S.C.has.indexOf(o.v) >= 0 ? "planted in the garden" : (S.C.missing === o.v ? "an empty bed, marked as most often missing" : "an empty bed"))); });
+      cap.textContent = "A simpler garden for your learners. What they usually have is planted, and empty beds show what is missing.";
+    } else {
+      var ph = phaseObj();
+      items.push("Tree: me + " + topicShow() + (ph ? ", grown to match “" + ph.label + "”" : " (the tree grows when you say where your interest is now)"));
+      if (hasSpark()) items.push("Sunbeam: where my interest was sparked, " + sparkText());
+      if (hasCan()) items.push("Watering can: what kept me going, " + keptList().join(", "));
+      S.A.places.forEach(function (p) { items.push("Garden bed: a place, " + p.label); });
+      S.A.people.forEach(function (p) { items.push(roleOf(p.role).short + " (" + roleOf(p.role).animal + "): a person" + (p.label ? ", " + p.label : "")); });
+      if (hasBroker()) items.push("Squirrel with a wheelbarrow and gold ring: learning broker, " + brokerLabel());
+      S.A.strategies.forEach(function (n) { items.push("Garden shed tool: Barron’s strategy, " + STRATS[n - 1].name); });
+      S.A.links.forEach(function (k) { var p = k.split("|"), a = S.A.places.filter(function (x) { return x.id === p[0]; })[0], b = S.A.places.filter(function (x) { return x.id === p[1]; })[0]; if (a && b) items.push("Stepping stones (boundary crossing, the mesosystem): a link between " + a.label + " and " + b.label); });
+      if (part === "B") {
+        var marks = S.B.marks, n = { replace: 0, stronger: 0, cannot: 0 };
+        pieceList().forEach(function (pc) { var mv = marks[pc.id]; if (n[mv] !== undefined) n[mv]++; });
+        items.push("Glass greenhouse (AI): " + n.replace + " pieces folded in; " + n.stronger + " made stronger (＋); " + n.cannot + " AI could not give me (flower badge)");
+      }
+      cap.textContent = part === "B" ? "Pieces you mark “AI could replace this” drift into the greenhouse." : (items.length > 1 ? "Your garden grows as you answer." : "Your garden will grow as you answer.");
+    }
+    list.innerHTML = ""; items.forEach(function (t) { list.appendChild(h("li", { text: t })); });
+    var c = $("garden"); if (c) c.setAttribute("aria-label", cap.textContent + " " + items.join(". "));
+  }
+
+  /* ================= compare view ================= */
+  function counts() {
+    var pl = S.A.places, pe = S.A.people, rep = function (id) { return S.B.marks[id] === "replace"; };
+    var placesAI = pl.filter(function (p) { return !rep("place:" + p.id); });
+    var peopleAI = pe.filter(function (p) { return !rep("person:" + p.id); });
+    var idsAI = {}; placesAI.forEach(function (p) { idsAI[p.id] = true; });
+    var linksAI = S.A.links.filter(function (k) { var q = k.split("|"); return idsAI[q[0]] && idsAI[q[1]]; });
+    return { pl: pl.length, plAI: placesAI.length, pe: pe.length, peAI: peopleAI.length, lk: S.A.links.length, lkAI: linksAI.length };
+  }
+  function renderCompare() {
+    var c = counts(), t = $("counts");
+    t.innerHTML = "<thead><tr><th></th><th>My ecology</th><th>With AI at hand</th></tr></thead><tbody>" +
+      "<tr><td>Places</td><td>" + c.pl + "</td><td>" + c.plAI + "</td></tr>" +
+      "<tr><td>People</td><td>" + c.pe + "</td><td>" + c.peAI + "</td></tr>" +
+      "<tr><td>Links between places</td><td>" + c.lk + "</td><td>" + c.lkAI + "</td></tr></tbody>";
+    var fl = $("folded"); fl.innerHTML = "";
+    var folded = pieceList().filter(function (p) { return S.B.marks[p.id] === "replace"; });
+    if (!folded.length) fl.appendChild(h("p", { class: "muted", text: "Nothing was folded in: you did not mark any piece “AI could replace this”." }));
+    else {
+      fl.appendChild(h("div", { class: "fl", text: "Folded into the greenhouse:" }));
+      var ul = h("ul");
+      folded.forEach(function (p) { ul.appendChild(h("li", null, [p.img ? h("img", { src: IMG_BASE + IMG_KEYS[p.img] + ".webp", alt: "" }) : h("span", { class: "dot", "aria-hidden": "true" }), p.name])); });
+      fl.appendChild(ul);
+    }
+    $("counts-note").textContent = "Links are the stepping stones between your garden beds, the places where something you learned in one place showed up in another (Part A, question 8)." + (S.A.places.length < 2 ? " You chose fewer than two places, so there are no links to draw." : "") + " A link disappears from the second garden when one of its two places was folded into AI.";
+    var n = $("cmp-nav"); n.innerHTML = "";
+    n.appendChild(h("button", { class: "btn", type: "button", text: "Back", onclick: goBack }));
+    n.appendChild(h("div", { class: "right" }, [
+      h("button", { class: "btn", type: "button", text: "Skip Part C and see my card and report", onclick: function () { goStep("Share"); } }),
+      h("button", { class: "btn primary", type: "button", text: "Continue to Part C", onclick: goNext })
+    ]));
+  }
+
+  /* ================= share card ================= */
+  function wrapLines(ctx, text, maxW, maxLines) {
+    var lines = wrapText(ctx, text, maxW, maxLines);
+    if (lines.length > maxLines) { lines = lines.slice(0, maxLines); lines[maxLines - 1] = lines[maxLines - 1].replace(/.{0,2}$/, "…"); }
+    return lines;
+  }
+  function drawShareCard(c, forExport) {
+    var W = 1600, H = 900, dpr = forExport ? 1 : Math.min(2, window.devicePixelRatio || 1);
+    var cssW = forExport ? W : (c.clientWidth || 1000), scale = cssW / W;
+    if (!forExport) { c.style.height = Math.round(cssW * H / W) + "px"; c.width = Math.round(cssW * dpr); c.height = Math.round(cssW * H / W * dpr); }
+    else { c.width = W; c.height = H; }
+    var ctx = c.getContext("2d"), k = forExport ? 1 : (c.width / W);
+    ctx.setTransform(k, 0, 0, k, 0, 0);
+    drawCover(ctx, IM.day, W, H);
+    ctx.fillStyle = "rgba(255,253,248,0.9)"; rrect(ctx, 24, 14, W - 48, 70, 16); ctx.fill();
+    ctx.fillStyle = "#2A1C18"; ctx.textBaseline = "middle"; ctx.textAlign = "left";
+    ctx.font = "26px " + FONT_BODY; var tagW = ctx.measureText("EDUC 565A · Week 7").width;
+    ctx.font = "700 40px " + FONT_DISPLAY; var ttl = "My learning ecology · " + topicShow(), maxT = W - 96 - tagW - 30, full = ttl;
+    while (ctx.measureText(ttl).width > maxT && ttl.length > 12) ttl = ttl.slice(0, -2);
+    if (ttl !== full) ttl = ttl.replace(/\s+$/, "") + "…";
+    ctx.fillText(ttl, 48, 50);
+    ctx.font = "26px " + FONT_BODY; ctx.fillStyle = "#6B5D55"; ctx.textAlign = "right"; ctx.fillText("EDUC 565A · Week 7", W - 48, 50); ctx.textAlign = "left";
+    // two small gardens
+    var gW = 740, gH = Math.round(gW * LAYOUT.land.H / LAYOUT.land.W), gy = 150, gxs = [40, 820];
+    [["My garden", "mine"], ["With AI at hand", "ai"]].forEach(function (g, i) {
+      ctx.save(); ctx.translate(gxs[i], gy); rrect(ctx, 0, 0, gW, gH, 14); ctx.clip();
+      var kk = gW / LAYOUT.land.W; ctx.scale(kk, kk);
+      var ops = buildScene({ layout: "land", mode: g[1], fold: anim.fold, mini: true, now: performance.now(), dark: false, static: true });
+      drawOps(ctx, ops, LAYOUT.land, 0);
+      ctx.restore();
+      ctx.fillStyle = "rgba(255,253,248,0.92)"; rrect(ctx, gxs[i], 94, 300, 46, 12); ctx.fill();
+      ctx.fillStyle = "#2A1C18"; ctx.font = "700 30px " + FONT_DISPLAY; ctx.textAlign = "left"; ctx.textBaseline = "middle"; ctx.fillText(g[0], gxs[i] + 18, 118);
+    });
+    // sentences
+    var sy = gy + gH + 14, hasMove = !!S.C.moveText.trim();
+    var grp = { replace: [], stronger: [], cannot: [] };
+    pieceList().forEach(function (p) { var m = S.B.marks[p.id]; if (grp[m]) grp[m].push(short(p.name, 26)); });
+    var gl = [];
+    if (grp.replace.length) gl.push("AI could replace (" + grp.replace.length + "): " + grp.replace.join(", "));
+    if (grp.stronger.length) gl.push("AI would make stronger (" + grp.stronger.length + "): " + grp.stronger.join(", "));
+    if (grp.cannot.length) gl.push("AI could not give me (" + grp.cannot.length + "): " + grp.cannot.join(", "));
+    var s1 = gl.length ? gl.join("\n") : "(I have not replayed my map with AI yet)";
+    function sentenceBox(x, y, w, head, text) {
+      ctx.fillStyle = "rgba(255,253,248,0.92)"; rrect(ctx, x, y, w, H - y - 22, 16); ctx.fill();
+      ctx.fillStyle = "#6B5D55"; ctx.font = "700 24px " + FONT_BODY; ctx.textBaseline = "alphabetic"; ctx.fillText(head, x + 22, y + 38);
+      ctx.fillStyle = "#2A1C18"; var size = 30, lines; ctx.textBaseline = "alphabetic";
+      for (var t = 0; t < 10; t++) {
+        ctx.font = size + "px " + FONT_BODY; lines = [];
+        String(text).split("\n").forEach(function (para) { wrapText(ctx, para, w - 44, 99).forEach(function (l) { lines.push(l); }); });
+        if (lines.length * size * 1.25 <= H - y - 22 - 62 || size < 16) break; size -= 2;
+      }
+      lines.forEach(function (l, i) { ctx.fillText(l, x + 22, y + 78 + i * size * 1.25); });
+      ctx.textBaseline = "middle";
+    }
+    if (hasMove) {
+      sentenceBox(40, sy, 740, "What AI would do to my ecology:", s1);
+      sentenceBox(820, sy, 740, "For my learners, one design move:", S.C.moveText.trim());
+    } else sentenceBox(40, sy, 1520, "What AI would do to my ecology:", s1);
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+  }
+  /* ---- report: built once as data, shown on the page and offered as text ---- */
+  function markTitle(v) { for (var i = 0; i < MARKS.length; i++) if (MARKS[i].v === v) return MARKS[i].title; return "(not answered)"; }
+  function noteLabel(v) { return v === "replace" ? "How" : v === "stronger" ? "How" : v === "cannot" ? "Why" : v === "unsure" ? "Note" : ""; }
+  function buildReport() {
+    var A = S.A, C = S.C, R = [];
+    var phase = phaseObj();
+    var a = [["Something I know well", topicOf()], ["Where my interest was first sparked", sparkText()], ["What kept me going", keptList().join("; ")],
+      ["Where I learned it", A.places.map(function (p) { return p.label; }).join("; ")],
+      ["Who was part of it", A.noPeople ? "no one really" : A.people.map(function (p) { return roleOf(p.role).short + (p.label ? " (" + p.label + ")" : ""); }).join("; ")],
+      ["Learning broker", A.broker.choice === "yes" ? "yes" + (A.broker.text.trim() ? ": " + A.broker.text.trim() : "") : A.broker.choice === "self" ? "I was my own broker" : A.broker.choice === "no" ? "not really" : ""],
+      ["Ways of learning (Barron’s five strategies)", A.strategies.map(function (n) { return STRATS[n - 1].name; }).join("; ")],
+      ["Links between places", A.links.map(function (k) { var q = k.split("|"), x = A.places.filter(function (p) { return p.id === q[0]; })[0], y = A.places.filter(function (p) { return p.id === q[1]; })[0]; return x && y ? x.label + " ↔ " + y.label : ""; }).filter(Boolean).join("; ")],
+      ["Where my interest is now", phase ? phase.label : ""]];
+    R.push({ h: "Part A · My learning ecology", kv: a.filter(function (r) { return r[1]; }) });
+    var rows = pieceList().map(function (p) {
+      var m = S.B.marks[p.id] || "";
+      return { piece: p.id === "spark" ? "The spark: " + short(p.detail, 80) : p.name, mark: m, choice: markTitle(m), why: (S.B.notes[p.id] || "").trim(), label: noteLabel(m) };
+    });
+    var c = counts();
+    R.push({ h: "Part B · Replaying it with AI", table: rows, counts: [["Places", c.pl, c.plAI], ["People", c.pe, c.peAI], ["Links between places", c.lk, c.lkAI]] });
+    var learners = (C.learners.choices.concat(C.learners.text.trim() ? [C.learners.text.trim()] : [])).join("; ");
+    var has = C2_OPTS.filter(function (o) { return C.has.indexOf(o.v) >= 0; }).map(function (o) { return o.label; }).join("; ");
+    var miss = C2_OPTS.filter(function (o) { return o.v === C.missing; }).map(function (o) { return o.label; })[0] || "";
+    var cc = [["My learners", learners], ["What they usually have", has], ["Most often missing", miss], ["Could AI help with that?", C.aiHelp + (C.aiWhy.trim() ? " (" + C.aiWhy.trim() + ")" : "")], ["One design move", C.moveText.trim()]].filter(function (r) { return r[1] && r[1] !== " "; });
+    if (cc.length) R.push({ h: "Part C · My learners", kv: cc });
+    return R;
+  }
+  function reportText() {
+    var out = ["MY LEARNING ECOLOGY · " + topicShow(), "EDUC 565A · Week 7", ""];
+    buildReport().forEach(function (sec) {
+      out.push(sec.h.toUpperCase());
+      (sec.kv || []).forEach(function (r) { out.push(r[0] + ": " + r[1]); });
+      if (sec.table) {
+        sec.table.forEach(function (r) { out.push("- " + r.piece + ": " + r.choice + (r.why ? ". " + r.label + ": " + r.why : "")); });
+        out.push("Counts (my ecology → with AI at hand):");
+        sec.counts.forEach(function (r) { out.push("  " + r[0] + ": " + r[1] + " → " + r[2]); });
+      }
+      out.push("");
+    });
+    return out.join("\n").replace(/\n+$/, "\n");
+  }
+  function renderReport() {
+    var box = $("report"); box.innerHTML = "";
+    box.appendChild(h("div", null, [h("h3", { text: "My learning ecology · " + topicShow() }), h("p", { class: "muted", text: "EDUC 565A · Week 7" })]));
+    buildReport().forEach(function (sec) {
+      var d = h("div", null, [h("h3", { text: sec.h })]);
+      if (sec.kv) { var dl = h("dl"); sec.kv.forEach(function (r) { dl.appendChild(h("dt", { text: r[0] })); dl.appendChild(h("dd", { text: r[1] })); }); d.appendChild(dl); }
+      if (sec.table) {
+        if (!sec.table.length) d.appendChild(h("p", { class: "muted", text: "No pieces on the map yet." }));
+        else {
+          var tb = h("table"), tbody = h("tbody");
+          tb.appendChild(h("thead", null, [h("tr", null, [h("th", { text: "Piece of my map" }), h("th", { text: "What AI would do" }), h("th", { text: "How or why" })])]));
+          sec.table.forEach(function (r) {
+            tbody.appendChild(h("tr", null, [h("td", { text: r.piece }), h("td", { class: "ch tag-" + r.mark, text: r.choice }), h("td", { text: r.why ? r.why : "—" })]));
+          });
+          tb.appendChild(tbody); d.appendChild(h("div", { class: "tw" }, [tb]));
+        }
+        var ct = h("table", { style: "margin-top:12px;max-width:560px" }), cb = h("tbody");
+        ct.appendChild(h("thead", null, [h("tr", null, [h("th", { text: "Count" }), h("th", { text: "My ecology" }), h("th", { text: "With AI at hand" })])]));
+        sec.counts.forEach(function (r) { cb.appendChild(h("tr", null, [h("td", { text: r[0] }), h("td", { text: String(r[1]) }), h("td", { text: String(r[2]) })])); });
+        ct.appendChild(cb); d.appendChild(h("div", { class: "tw" }, [ct]));
+      }
+      box.appendChild(d);
+    });
+    $("rep-text").value = reportText();
+  }
+  function copyReport() {
+    var st = $("rep-status"), text = reportText(), ta = $("rep-text");
+    function fallback() { $("rep-details").open = true; ta.focus(); ta.select(); st.textContent = "The text is selected below. Press Ctrl+C (or Cmd+C) to copy it."; }
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { st.textContent = "Copied. You can paste it into a document or a message."; }, fallback);
+      else fallback();
+    } catch (e) { fallback(); }
+  }
+  function saveReport() {
+    var st = $("rep-status"), blob = new Blob([reportText()], { type: "text/plain" }), filename = "my-learning-ecology-report.txt";
+    function fallback() {
+      try { var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = filename; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1000); } catch (e) {}
+      st.textContent = "If nothing downloaded, use “Copy report” instead.";
+    }
+    var use; try { use = window.claude && window.claude.use ? window.claude.use("downloads") : Promise.resolve(null); } catch (e) { use = Promise.resolve(null); }
+    Promise.resolve(use).then(function (dl) {
+      if (!dl) { fallback(); return; }
+      return dl.save({ filename: filename, data: blob }).then(function () { st.textContent = "Saved."; }, function (err) { st.textContent = err && err.code === "declined" ? "No problem. You can use “Copy report” instead." : "It could not be saved here. Please use “Copy report” instead."; });
+    }).catch(function () { fallback(); });
+  }
+  function renderShare() { drawShareCard($("share-canvas"), false); renderReport(); }
+  function openFull() {
+    var ov = $("fsov"), c = $("fs-canvas"); ov.hidden = false;
+    var holder = c.parentNode, w = Math.min(holder.clientWidth || 1200, 1600), hgt = Math.min(holder.clientHeight || 700, 900);
+    var scale = Math.min(w / 1600, hgt / 900); c.style.width = Math.round(1600 * scale) + "px"; c.style.height = Math.round(900 * scale) + "px";
+    var tmp = document.createElement("canvas"); drawShareCard(tmp, true);
+    c.width = 1600; c.height = 900; c.getContext("2d").drawImage(tmp, 0, 0);
+    try { $("fs-close").focus(); } catch (e) {}
+  }
+  function closeFull() { $("fsov").hidden = true; try { $("share-full").focus(); } catch (e) {} }
+  function saveImage() {
+    var status = $("share-status"); status.textContent = "Making your picture…";
+    var c = document.createElement("canvas"); drawShareCard(c, true);
+    var url; try { url = c.toDataURL("image/png"); } catch (e) { status.textContent = "Sorry, the picture could not be made in this browser."; return; }
+    $("share-preview-img").src = url; $("share-preview").hidden = false;
+    c.toBlob(function (blob) {
+      var filename = "my-learning-ecology.png";
+      function fallback() {
+        try { var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = filename; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1000); } catch (e) {}
+        status.textContent = "Your picture is below. If it did not download, press and hold it (or right-click) to save it.";
+      }
+      if (!blob) { status.textContent = "Your picture is below. Press and hold it (or right-click) to save it."; return; }
+      var use; try { use = window.claude && window.claude.use ? window.claude.use("downloads") : Promise.resolve(null); } catch (e) { use = Promise.resolve(null); }
+      Promise.resolve(use).then(function (dl) {
+        if (!dl) { fallback(); return; }
+        return dl.save({ filename: filename, data: blob }).then(function () { status.textContent = "Saved. The picture is also shown below."; },
+          function (err) { status.textContent = err && err.code === "declined" ? "No problem. Your picture is below if you would like it." : "Your picture is below. Press and hold it (or right-click) to save it."; });
+      }).catch(function () { fallback(); });
+    }, "image/png");
+  }
+
+  /* ================= render ================= */
+  function renderProgress() {
+    var ol = $("progress"); ol.innerHTML = "";
+    var cur = partOf(S.step);
+    [["A", "Part A", "My learning ecology", "A1"], ["B", "Part B", "Replay it with AI", "Bintro"], ["C", "Part C", "My learners", "Cintro"], ["S", "Share", "Card and report", "Share"]].forEach(function (p) {
+      var li = h("li"), b = h("button", { type: "button", class: S.reached[p[0]] && p[0] !== cur ? "done" : "" }, [p[1], h("small", { text: p[2] })]);
+      if (p[0] === cur) b.setAttribute("aria-current", "step");
+      if (!S.reached[p[0]]) b.disabled = true;
+      b.addEventListener("click", function () { goStep(p[3]); });
+      li.appendChild(b); ol.appendChild(li);
+    });
+  }
+  function renderAll(keepFocus) {
+    if (!S.started) return;
+    var step = S.step, special = step === "Bres" || step === "Share";
+    $("main").hidden = special; $("compare").hidden = step !== "Bres"; $("share").hidden = step !== "Share";
+    renderProgress();
+    if (step === "Bres") renderCompare();
+    else if (step === "Share") renderShare();
+    else {
+      var fn = step.indexOf("B:") === 0 ? function () { buildPieceStep(step.slice(2)); } : STEP_BUILDERS[step];
+      var ae = keepFocus ? document.activeElement : null, aid = ae && ae.id ? ae.id : null, aname = ae && ae.name ? ae.name : null, aval = ae && ae.value;
+      fn();
+      if (aid && $(aid)) { try { $(aid).focus(); } catch (e) {} }
+      else if (aname && aval !== undefined) { var m = document.querySelector('[name="' + aname + '"][value="' + String(aval).replace(/"/g, '\\"') + '"]'); if (m) try { m.focus(); } catch (e) {} }
+    }
+    // garden strip open/closed by width
+    var gs = $("gstrip"); if (window.innerWidth > 900) gs.open = true; else if (!gs.getAttribute("data-init")) { gs.open = false; gs.setAttribute("data-init", "1"); }
+    applyFoldTargets(); updateCaption(); redraw(); kick();
+  }
+
+  /* ================= start ================= */
+  function showScreen(which) { $("screen-start").hidden = which !== "start"; $("screen-app").hidden = which !== "app"; $("startover").hidden = which !== "app"; }
+  var armed = false;
+
+  function boot() {
+    var saved = loadState();
+    S = saved || freshState();
+    $("btn-continue").hidden = !(saved && saved.started);
+    $("btn-start").textContent = saved && saved.started ? "Start a new map" : "Start my map";
+    $("btn-start").addEventListener("click", function () {
+      if (saved && saved.started && !armed) { armed = true; $("btn-start").textContent = "Click again to clear my saved answers"; setTimeout(function () { armed = false; $("btn-start").textContent = "Start a new map"; }, 4000); return; }
+      armed = false; S = freshState(); S.started = true; saveState(); anim.born = {}; anim.fold = {}; anim.target = {}; anim.initial = false; showScreen("app"); renderAll(); window.scrollTo(0, 0); focusHeading();
+    });
+    $("btn-continue").addEventListener("click", function () { showScreen("app"); renderAll(); window.scrollTo(0, 0); focusHeading(); });
+    $("startover").addEventListener("click", function () {
+      var b = $("startover");
+      if (!armed) { armed = true; b.textContent = "Click again to start over"; setTimeout(function () { armed = false; b.textContent = "Start over"; }, 4000); return; }
+      armed = false; b.textContent = "Start over"; S = freshState(); saveState(); showScreen("start"); $("btn-continue").hidden = true; $("btn-start").textContent = "Start my map"; saved = null;
+    });
+    $("rep-copy").addEventListener("click", copyReport);
+    $("rep-save").addEventListener("click", saveReport);
+    $("share-full").addEventListener("click", openFull);
+    $("fs-close").addEventListener("click", closeFull);
+    document.addEventListener("keydown", function (e) {
+      if ($("fsov").hidden) return;
+      if (e.key === "Escape") closeFull(); else if (e.key === "Tab") { e.preventDefault(); $("fs-close").focus(); }
+    });
+    $("share-save").addEventListener("click", saveImage);
+    $("share-edit").addEventListener("click", function () { goStep("A1"); });
+    $("gstrip").addEventListener("toggle", function () { redraw(); });
+    window.addEventListener("resize", function () { redraw(); });
+    try { window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", redraw); } catch (e) {}
+    try { new MutationObserver(redraw).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] }); } catch (e) {}
+    try { if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { if (S && S.started) redraw(); }); } catch (e) {}
+    showScreen("start");
+    // load illustrations, then redraw
+    var keys = Object.keys(IMG_KEYS), left = keys.length;
+    keys.forEach(function (k) {
+      var im = new Image(); im.onload = im.onerror = function () { left--; IM[k] = im.naturalWidth ? im : null; if (left === 0 || (left % 6 === 0)) { if (S.started && !$("screen-app").hidden) redraw(); } };
+      im.src = IMG_BASE + IMG_KEYS[k] + ".webp"; IM[k] = im;
+    });
+  }
+  boot();
+})();
+</script>
+
+</body>
+</html>
