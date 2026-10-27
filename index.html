@@ -324,7 +324,9 @@ section { scroll-margin-top: 20px; display: grid; gap: 18px; }
     4: "1FQI9sxyGxkHUKy8oXhLHBjqywWFawFUbeZULBn_QrBE",
     5: "1UAM6IPwe3VR1Nq7QF7ubeoR8RGNISoQO1xHiOQeIfOg",
     6: "1s0hc204L0UrPdLsP23wnb3-UYseGCrIOPyt7YWG7vK0",
-    7: "1vnTRvn_ITjuiYta_64X9OxH4iInVZq_45tE-dibb3gs"
+    7: "1vnTRvn_ITjuiYta_64X9OxH4iInVZq_45tE-dibb3gs",
+    8: "16-IswW7fU8E3hgBRoECCRf_j5Fv73qhWTRvbIrxl6vE",
+    9: "1UhYrUCrVhTcrnluNdz722iBWrBJZWPDh8qo4ZVHUR5M"
   };
   const PAGES = [
     { type: "act", w: 1, title: "Jigsaw Reading: Xu et al. (2021)", desc: "Group reading in a shared Google Doc.", href: DOC + "1Hb7mKO1FsVSg1NVlPIrYJwqWAlxBD63LJQw-Sidcap8", ext: true },
@@ -338,6 +340,7 @@ section { scroll-margin-top: 20px; display: grid; gap: 18px; }
     { type: "walk", w: 6, title: "Working with AI, Step by Step", desc: "Workflows, the four step types, and what slips through when the checks disappear.", href: "w06/workflow/" },
     { type: "act", w: 6, title: "The Learning Mode Kitchen", desc: "Design a learning mode for one learner, then taste-test it.", href: "w06/kitchen/", img: "w06/kitchen/image/web/01-kitchen-hero.jpg" },
     { type: "act", w: 7, title: "My Learning Ecology", desc: "Map your own learning ecology as a garden, replay it with AI at hand, and think about your own learners.", href: "w07/my-learning-ecology/", img: "w07/my-learning-ecology/image/w07-garden/web/03-hero-garden-gate.webp" },
+    { type: "act", w: 9, title: "Learner Persona Studio", desc: "Interview an AI-simulated learner, then design with them. The GPT’s instructions and knowledge files, and the plugin to download.", href: "https://github.com/yuqingxing22/learner-persona-studio", ext: true, src: "GitHub" },
     { type: "ref", w: 0, title: "EDUC 565A Prompt Library", desc: "Our shared prompts, including the learning modes from Week 6.", href: DOC + "1eURwCrZEK8svP0fzvDYJlc4_No-TdOMSbNq48MxmWog", ext: true }
   ];
   // Slides join the library as items too.
@@ -383,7 +386,7 @@ section { scroll-margin-top: 20px; display: grid; gap: 18px; }
     <div class="body">
       <h3>${esc(W[4])}</h3>
       ${dueNow.map(d => { const c = d[1] ? countdown(d[1]) : { label: "In class" }; return `<div class="duebar"><span class="when">${c.label}</span><span class="what"><b>${esc(d[2])}</b>${d[1] ? " · " + fmt(d[1]) : ""}${d[3] ? " · " + esc(d[3]) : ""}</span></div>`; }).join("")}
-      ${mats.length ? `<div class="actions">${mats.map(p => `<a class="action t-${p.type}" href="${p.href}"${tgt(p)}><span class="ic">${ICON[p.type]}</span><span><b>${p.slides ? "Open the slides" : esc(p.title)}</b><span>${KIND[p.type]}${p.ext ? " · USC sign-in" : ""}</span></span></a>`).join("")}</div>`
+      ${mats.length ? `<div class="actions">${mats.map(p => `<a class="action t-${p.type}" href="${p.href}"${tgt(p)}><span class="ic">${ICON[p.type]}</span><span><b>${p.slides ? "Open the slides" : esc(p.title)}</b><span>${KIND[p.type]}${p.ext ? " · " + (p.src || "USC sign-in") : ""}</span></span></a>`).join("")}</div>`
         : `<p class="empty">Slides and class pages for this week will appear here after the live session.</p>`}
     </div>`;
 
@@ -440,7 +443,7 @@ section { scroll-margin-top: 20px; display: grid; gap: 18px; }
       .sort((a, b) => (b.w - a.w) || a.type.localeCompare(b.type));
     lib.innerHTML = items.length ? items.map(p => `<a class="tile t-${p.type}" href="${p.href}"${tgt(p)}>
         <span class="art">${p.img ? `<img src="${p.img}" alt="" loading="lazy">` : `<span class="big">${p.w ? String(p.w).padStart(2, "0") : "★"}</span>`}<span class="ic">${ICON[p.type]}</span>${p.w ? `<span class="wtag">Week ${p.w}</span>` : `<span class="wtag">All weeks</span>`}</span>
-        <span class="txt"><span class="kind">${KIND[p.type]}</span><b>${esc(p.title)}</b><p>${esc(p.desc)}</p>${p.ext ? `<span class="ext">${p.slides ? "Google Slides" : "Google Doc"} · USC sign-in</span>` : ""}</span>
+        <span class="txt"><span class="kind">${KIND[p.type]}</span><b>${esc(p.title)}</b><p>${esc(p.desc)}</p>${p.ext ? `<span class="ext">${p.src || (p.slides ? "Google Slides" : "Google Doc") + " · USC sign-in"}</span>` : ""}</span>
       </a>`).join("") : `<p class="noresult">Nothing matches that search.</p>`;
   }
   fEl.addEventListener("click", e => {
