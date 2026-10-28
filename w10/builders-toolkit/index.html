@@ -198,8 +198,9 @@ footer{font-size:.85rem;color:var(--ink-3)}
     <li><a href="#online"><small>04 · Rooms 1–2 · optional</small>Put it online</a></li>
     <li><a href="#games"><small>05 · Room 2</small>Games</a></li>
     <li><a href="#assist"><small>06 · Room 3</small>AI assistants</a></li>
-    <li><a href="#resources"><small>07</small>Resources</a></li>
-    <li><a href="#help"><small>08</small>Help</a></li>
+    <li><a href="#skills"><small>07 · Room 3</small>Skills</a></li>
+    <li><a href="#resources"><small>08</small>Resources</a></li>
+    <li><a href="#help"><small>09</small>Help</a></li>
   </ol>
   <div class="out"><span>Other pages</span><a href="https://yuqingxing22.github.io/educ565a/w10/design-studio/" target="_blank" rel="noopener">Workshop</a></div>
 </nav>
@@ -208,18 +209,19 @@ footer{font-size:.85rem;color:var(--ink-3)}
 <header>
   <div class="eyebrow"><b>//</b> EDUC 565A · Week 10 · Design Studio</div>
   <h1>Builder’s Toolkit</h1>
-  <p class="lede">For turning your design into a prototype: choosing a format, a worked example of building with AI (for pages and games), building an AI assistant, and where to find tools, inspiration and help.</p>
+  <p class="lede">For turning your design into a prototype: choosing a format, a worked example of building with AI (for pages and games), building an AI assistant or a skill, and where to find tools, inspiration and help.</p>
 </header>
 
 <section id="format" aria-labelledby="fmt-h">
   <div class="eyebrow"><b>//</b> 01</div>
   <h2 id="fmt-h">Choosing a format</h2>
   <p>The format follows from when, where and on what device your learner will meet it. A phone-friendly page suits a late-night break at work; an assistant suits a learner who gets stuck at odd hours.</p>
-  <p>Three formats, each with its own breakout room. Mixed formats are welcome; go to the room for the hardest part.</p>
+  <p>Four formats in three breakout rooms; AI assistants and skills share Room 3. Mixed formats are welcome; go to the room for the hardest part.</p>
   <div class="formats">
     <div class="fmt"><span class="rn">Room 1</span><h3>Pages</h3><p>A week’s course page, a lesson, an interactive explanation. Opens on any phone; an AI writes the code with you.</p><a href="#workflow">Workflow sample ↓</a></div>
     <div class="fmt"><span class="rn">Room 2</span><h3>Games</h3><p>A challenge, a scenario with choices, a quiz with feedback. Built with AI like a page, with a few decisions of its own.</p><a href="#games">Games ↓</a></div>
     <div class="fmt"><span class="rn">Room 3</span><h3>AI assistants</h3><p>A course assistant the learner talks to: a GPT, or a chatbot built on an API.</p><a href="#assist">AI assistants ↓</a></div>
+    <div class="fmt"><span class="rn">Room 3</span><h3>Skills</h3><p>A folder of instructions the learner adds to their own AI, like a study coach for one unit. Works in Claude, ChatGPT and Codex.</p><a href="#skills">Skills ↓</a></div>
   </div>
 </section>
 
@@ -625,8 +627,67 @@ Tone: [for example: warm, brief, one question at a time].</pre></div>
 
 </section>
 
-<section id="resources" aria-labelledby="res-h">
+<section id="skills" aria-labelledby="sk-h">
   <div class="eyebrow"><b>//</b> 07</div>
+  <h2 id="sk-h">Skills</h2>
+  <p>A skill is a small folder of instructions that someone adds to their own AI. The AI uses it whenever a task fits, in any chat. The Learner Persona Studio you used is a skill. For a course, a skill could be a study coach for one unit, a feedback checker for an assignment, or a practice partner. Unlike a course assistant, the learner doesn’t visit a separate chatbot: they bring the skill into the AI they already use.</p>
+
+  <article class="wstep">
+    <header><h3>What a skill contains</h3></header>
+    <ul>
+      <li>A folder named after the skill, in lowercase words joined by hyphens, for example <code>stats-study-coach</code>.</li>
+      <li>Inside it, a file called <code>SKILL.md</code>: a short header with the same name and a description, then the instructions.</li>
+      <li>The description says what the skill does and when to use it. The AI reads it to decide when to bring the skill in. Keep it under 200 characters so it works in every tool.</li>
+      <li>Optional: a <code>references</code> folder with longer material the instructions point to, such as examples or a rubric.</li>
+    </ul>
+    <div class="code"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="path">SKILL.md · template</span><button class="copy" type="button">Copy</button></div><pre class="wrap">---
+name: [skill-name, same as the folder]
+description: [What it does and when to use it, in one sentence under 200 characters.]
+---
+
+# [Skill title]
+
+Who uses this: [the learner, and the course or week it belongs to]
+
+When this skill is used:
+1. [the first thing the AI does, for example ask which problem the learner is working on]
+2. [what it does next]
+3. [how it ends, for example ask the learner to explain the idea in their own words]
+
+Always:
+- [for example: give hints before answers; one question at a time]
+
+Never:
+- [for example: give answers to graded work]
+
+Hand the learner to a real person when: [ ]. Say who that person is: [placeholder].
+At the start, say in one sentence that this is an AI skill and what it can help with.</pre></div>
+  </article>
+
+  <article class="wstep">
+    <header><h3>Making one in Claude, ChatGPT or Codex</h3></header>
+    <p>The same <code>SKILL.md</code> works in all of them. The easiest start is to describe the skill in a chat and let the built-in skill creator ask you questions and write the files.</p>
+    <div class="types4">
+      <div><span class="k">Claude · app or claude.ai</span><p>Describe the skill in a new chat; Claude’s skill creator builds it. To add a skill you already have: <span class="ui">Customize → Skills → + → Create skill → Upload a skill</span>, as a ZIP of the skill folder. <span class="ui">Code execution and file creation</span> must be on in settings. Sharing a skill inside Claude needs a Team or Enterprise plan; otherwise send the ZIP.</p></div>
+      <div><span class="k">ChatGPT</span><p>Ask ChatGPT to save a workflow as a skill (“Save this as a skill called stats-study-coach”), or type <code>@skill-creator</code>. Skills are under <span class="ui">Customize → Skills</span>; use one by typing <code>@</code> and its name. Whether you can create skills depends on your plan and workspace, so check for Skills under Customize first.</p></div>
+      <div><span class="k">Codex</span><p>Put the skill folder in <code>.agents/skills</code> inside your project (or <code>.agents/skills</code> in your home folder for every project). Use it with <code>$skill-name</code> or <code>/skills</code>. The built-in <code>$skill-creator</code> can write one with you.</p></div>
+      <div><span class="k">Claude Code</span><p>Put the skill folder in <code>.claude/skills</code> inside your project (or <code>~/.claude/skills</code> for every project). Use it with <code>/skill-name</code>, or let Claude bring it in when the description fits.</p></div>
+    </div>
+  </article>
+
+  <article class="wstep">
+    <header><h3>Test it as your learner</h3></header>
+    <ul>
+      <li>An ordinary request: does the skill start, and does it follow your steps?</li>
+      <li>A request it should turn down or hand to a person: does it?</li>
+      <li>A request where it shouldn’t start at all: if it starts anyway, make the description more specific.</li>
+    </ul>
+    <p>Screenshots of these tests, together with your <code>SKILL.md</code>, are your prototype.</p>
+  </article>
+</section>
+
+<section id="resources" aria-labelledby="res-h">
+  <div class="eyebrow"><b>//</b> 08</div>
   <h2 id="res-h">Resources</h2>
   <p>A habit that saves trouble later: keep the source link for every image or sound you use, and credit it when the licence asks.</p>
   <div class="res">
@@ -667,7 +728,7 @@ Tone: [for example: warm, brief, one question at a time].</pre></div>
 </section>
 
 <section id="help" aria-labelledby="help-h">
-  <div class="eyebrow"><b>//</b> 08</div>
+  <div class="eyebrow"><b>//</b> 09</div>
   <h2 id="help-h">Help</h2>
   <p>Questions about your format: go to that format’s breakout room. For an error message, paste it to your AI and ask: “Explain this problem in plain words, then fix it.”</p>
 </section>
