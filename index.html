@@ -152,6 +152,7 @@ section { scroll-margin-top: 20px; display: grid; gap: 18px; }
 .wk.past .no { color: var(--ink); }
 .wk.future { background: transparent; border-style: dashed; }
 .wk.future h4 { color: var(--muted); font-weight: 400; }
+.wk .offnote { margin: 0; font-size: 14px; font-style: italic; color: var(--muted); }
 .wk.cur { border: 2px solid var(--cardinal); box-shadow: var(--shadow); }
 .wk.cur .no { color: var(--cardinal); }
 .wk .now { position: absolute; top: -10px; right: 12px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: #fff; background: var(--cardinal); padding: 2px 8px; border-radius: 3px; }
@@ -295,11 +296,11 @@ section { scroll-margin-top: 20px; display: grid; gap: 18px; }
     [9, "Oct 19", "Oct 25", "2026-10-19", "Synchronous vs. Asynchronous Learning with AI"],
     [10, "Oct 26", "Nov 1", "2026-10-26", "AI Tools for Content and Assessment"],
     [11, "Nov 2", "Nov 8", "2026-11-02", "Prototyping the Learning Experience"],
-    [12, "Nov 9", "Nov 15", "2026-11-09", "Design Ethics & Justification"],
-    [13, "Nov 16", "Nov 22", "2026-11-16", "Evaluation with and of AI"],
-    [14, "Nov 23", "Nov 29", "2026-11-23", "Prototype Presentations, Part 1"],
-    [15, "Nov 30", "Dec 6", "2026-11-30", "Prototype Presentations, Part 2"],
-    [16, "Dec 7", "Dec 13", "2026-12-07", "Innovation and Futures Thinking"]
+    [12, "Nov 9", "Nov 15", "2026-11-09", "Veteran’s Day Holiday", "off"],
+    [13, "Nov 16", "Nov 22", "2026-11-16", "Design Ethics & Justification"],
+    [14, "Nov 23", "Nov 29", "2026-11-23", "Thanksgiving Break", "off"],
+    [15, "Nov 30", "Dec 6", "2026-11-30", "Evaluation with and of AI"],
+    [16, "Dec 7", "Dec 13", "2026-12-07", "AI-Augmented Learning Prototype Presentations"]
   ];
   // [week, ISO date or "", title, note]
   const DUE = [
@@ -313,9 +314,7 @@ section { scroll-margin-top: 20px; display: grid; gap: 18px; }
     [10, "2026-11-01", "Media Critique Op-Ed", ""],
     [12, "2026-11-15", "Reflection 5", ""],
     [13, "2026-11-22", "AI-Augmented Learning Prototype", "Written part"],
-    [14, "", "Prototype presentations", "In class, Thanksgiving week"],
-    [15, "", "Prototype presentations", "In class"],
-    [16, "", "Final reflections", "Bring topics to discuss"]
+    [16, "", "AI-Augmented Learning Prototype presentations", "Small groups, pre-recorded or in class"]
   ];
   const DECKS = {
     1: "1nxuuqQkOVbi6MmZlLwkZ66ftIBimsMen8i6ghpCMrng",
@@ -393,7 +392,7 @@ section { scroll-margin-top: 20px; display: grid; gap: 18px; }
       <h3>${esc(W[4])}</h3>
       ${dueNow.map(d => { const c = d[1] ? countdown(d[1]) : { label: "In class" }; return `<div class="duebar"><span class="when">${c.label}</span><span class="what"><b>${esc(d[2])}</b>${d[1] ? " · " + fmt(d[1]) : ""}${d[3] ? " · " + esc(d[3]) : ""}</span></div>`; }).join("")}
       ${mats.length ? `<div class="actions">${mats.map(p => `<a class="action t-${p.type}" href="${p.href}"${tgt(p)}><span class="ic">${ICON[p.type]}</span><span><b>${p.slides ? "Open the slides" : esc(p.title)}</b><span>${KIND[p.type]}${p.ext ? " · " + (p.src || "USC sign-in") : ""}</span></span></a>`).join("")}</div>`
-        : `<p class="empty">Slides and class pages for this week will appear here after the live session.</p>`}
+        : W[5] ? `<p class="empty">No live session this week.</p>` : `<p class="empty">Slides and class pages for this week will appear here after the live session.</p>`}
     </div>`;
 
   /* Deadlines */
@@ -419,10 +418,10 @@ section { scroll-margin-top: 20px; display: grid; gap: 18px; }
   WEEKS.forEach(w => { const m = iso(w[3]).toLocaleDateString("en-US", { month: "long" }); (byMonth[m] = byMonth[m] || []).push(w); });
   document.getElementById("months").innerHTML = Object.keys(byMonth).map(m => `<div class="month"><h3>${m}</h3><div class="weekgrid">${byMonth[m].map(w => {
     const n = w[0], st = state(n), ms = weekMats(n), du = DUE.filter(d => d[0] === n);
-    return `<article class="wk ${st}" id="week-${n}">
+    return `<article class="wk ${st}${w[5] ? " off" : ""}" id="week-${n}">
       ${st === "cur" ? '<span class="now">This week</span>' : ""}
       <div class="top"><span class="no">${String(n).padStart(2, "0")}</span><span class="dates">${w[1]} to ${w[2]}</span></div>
-      <h4>${esc(w[4])}</h4>
+      <h4>${esc(w[4])}</h4>${w[5] ? '<p class="offnote">No live session</p>' : ""}
       ${du.map(d => `<p class="due"><b>Due:</b> ${esc(d[2])}${d[1] ? ", " + iso(d[1]).toLocaleDateString("en-US", { month: "short", day: "numeric" }) : ""}</p>`).join("")}
       ${ms.length ? `<div class="mats">${ms.map(p => `<a class="mini t-${p.type}" href="${p.href}"${tgt(p)}>${ICON[p.type]}${p.slides ? "Slides" : esc(p.title)}</a>`).join("")}</div>`
         : (st === "future" ? "" : `<span class="later">No slides or pages for this week</span>`)}
