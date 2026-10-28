@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>[hidden]{display:none!important}img{max-width:100%}</style>
+<title>Design Studio Workshop</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one column (max 1000px): the scenario, how the room works, then five steps as a vertical flowchart. Steps where the learner persona takes part are filled in accent. Individual work throughout. Glass Box tokens (_shared/design/00-system.md). */
+:root{
+  --paper:#EDEFEE; --surface:#F8FAF9; --raised:#FFFFFF;
+  --ink:#121A18; --ink-2:#4C5854; --ink-3:#6E7C78;
+  --line:#C6CFCB; --line-soft:#DDE3E0;
+  --accent:#0E6E68; --accent-ink:#FFFFFF; --accent-soft:#D6E8E5;
+  --load:#9A5C0E; --load-soft:#F2E4CE;
+  --pass:#1B6B4C; --pass-soft:#D8EBE2;
+  --stop:#A32E22; --stop-soft:#F5DED9;
+  --shadow:0 1px 2px rgba(18,26,24,.06),0 6px 18px rgba(18,26,24,.07);
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --r:3px; --rm:9px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#0C1211; --surface:#141C1A; --raised:#1B2523;
+  --ink:#E2E8E6; --ink-2:#A3B0AC; --ink-3:#7F8E8A;
+  --line:#2E3A37; --line-soft:#1E2726;
+  --accent:#4FC7BC; --accent-ink:#0C1211; --accent-soft:#17332F;
+  --load:#E0A44A; --load-soft:#33260F;
+  --pass:#4ECF9A; --pass-soft:#122E25;
+  --stop:#FF7A62; --stop-soft:#331C18;
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 6px 18px rgba(0,0,0,.3);
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#0C1211; --surface:#141C1A; --raised:#1B2523;
+  --ink:#E2E8E6; --ink-2:#A3B0AC; --ink-3:#7F8E8A;
+  --line:#2E3A37; --line-soft:#1E2726;
+  --accent:#4FC7BC; --accent-ink:#0C1211; --accent-soft:#17332F;
+  --load:#E0A44A; --load-soft:#33260F;
+  --pass:#4ECF9A; --pass-soft:#122E25;
+  --stop:#FF7A62; --stop-soft:#331C18;
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 6px 18px rgba(0,0,0,.3);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;padding-block:40px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:64px}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1,h2,h3{font-weight:600;line-height:1.2;margin:0}
+h1{font-size:2.6rem;letter-spacing:-.015em}
+h2{font-size:1.8rem}
+h3{font-size:1.2rem}
+p{margin:0}
+section{display:grid;gap:22px}
+.eyebrow{font:500 .74rem/1.2 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2)}
+.eyebrow b{color:var(--accent);font-weight:500}
+.lede{font-size:1.1rem;color:var(--ink-2)}
+.mark{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:var(--r);background:var(--accent);color:var(--accent-ink);font:500 .95rem var(--mono)}
+.brand{display:flex;align-items:center;gap:12px}
+header.top{display:grid;gap:18px}
+.facts{display:flex;flex-wrap:wrap;gap:8px}
+.fact{font:500 .8rem var(--mono);padding:5px 10px;border-radius:var(--r);background:var(--raised);border:1px solid var(--line);color:var(--ink-2)}
+.fact b{color:var(--ink);font-weight:500}
+.tk{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;background:var(--raised);border:1px solid var(--accent);border-left:4px solid var(--accent);border-radius:var(--rm);padding:16px 20px;box-shadow:var(--shadow)}
+.tk div{display:grid;gap:2px}
+.tk .k{font:500 .7rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.tk p{color:var(--ink-2);font-size:.95rem}
+.tk a{font:500 .9rem var(--mono);padding:9px 16px;border-radius:var(--r);background:var(--accent);color:var(--accent-ink);text-decoration:none;white-space:nowrap}
+.tkfloat{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:5;font:500 .85rem var(--mono);padding:10px 14px;border-radius:var(--r);background:var(--accent);color:var(--accent-ink);text-decoration:none;box-shadow:var(--shadow)}
+
+/* scenario */
+.frame{background:var(--raised);border:1px solid var(--line);border-radius:var(--rm);box-shadow:var(--shadow);padding:18px 20px;display:grid;gap:8px;align-content:start}
+.brief3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.frame .k,.lms .k{font:500 .7rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.lms{background:var(--surface);border:1px solid var(--line);border-radius:var(--rm);padding:16px 20px;display:grid;gap:10px}
+.lms ul{margin:0;padding-left:1.1em;display:grid;gap:4px}
+.lms p{font-size:.93rem;color:var(--ink-2)}
+.tbl{overflow-x:auto;background:var(--raised);border:1px solid var(--line);border-radius:var(--rm)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:.93rem}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+tr:last-child td{border-bottom:none}
+th{font:500 .7rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);background:var(--surface)}
+td:first-child{font-weight:600;white-space:nowrap}
+td .sub{display:block;font-weight:400;font-size:.85rem;color:var(--ink-2);white-space:normal}
+.site{font:500 .82rem var(--mono);white-space:nowrap}
+td .who{display:block;font:400 .78rem var(--mono);color:var(--accent);font-weight:500}
+
+/* rooms */
+.rooms3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.rn{font:500 .7rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.room{background:var(--raised);border:1px solid var(--line);border-radius:var(--rm);padding:18px 20px;display:grid;gap:10px;align-content:start}
+.room.main{border-top:4px solid var(--accent)}
+.room.br{border-top:4px solid var(--line)}
+.roomlist{display:flex;flex-wrap:wrap;gap:8px}
+.roomlist span{font:500 .85rem var(--sans);padding:6px 12px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line)}
+
+/* flow */
+.overview{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:var(--rm);padding:14px 16px}
+.ov{font:500 .92rem var(--sans);padding:7px 12px;border-radius:var(--r);border:1px solid var(--line);background:var(--raised);white-space:nowrap}
+.ov b{font:500 .8rem var(--mono);color:var(--accent);margin-right:6px}
+.ov.learner{background:var(--accent-soft);border-color:var(--accent)}
+.ov.after{border-style:dashed}
+.arr{font:500 1rem var(--mono);color:var(--ink-3)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.85rem;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{display:inline-block;width:14px;height:14px;border-radius:2px;border:1px solid var(--line);background:var(--raised)}
+.sw.learner{background:var(--accent-soft);border-color:var(--accent)}
+.sw.after{border-style:dashed}
+ol.wf{list-style:none;margin:0;padding:0;display:grid}
+.wstep{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;position:relative;padding-bottom:20px}
+.wstep::before{content:"";position:absolute;left:21px;top:44px;bottom:0;width:2px;background:var(--line)}
+.wstep.last::before{display:none}
+.node{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font:600 1.05rem var(--mono);background:var(--raised);border:2px solid var(--line);color:var(--ink);position:relative;z-index:1}
+.node.learner{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.node.after{border-style:dashed}
+.wbody{background:var(--raised);border:1px solid var(--line);border-radius:var(--rm);box-shadow:var(--shadow);padding:20px 22px;display:grid;gap:14px;min-width:0}
+.wbody header{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px}
+.where{font:500 .7rem var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);color:var(--ink-2)}
+.where.learner{background:var(--accent-soft);border-color:var(--accent);color:var(--ink)}
+ul.do{margin:0;padding-left:1.1em;display:grid;gap:8px}
+ul.do ul{margin:6px 0 0;padding-left:1.1em;display:grid;gap:4px;color:var(--ink-2)}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.lk{font:500 .88rem var(--mono);padding:8px 14px;border-radius:var(--r);border:1px solid var(--accent);color:var(--accent);text-decoration:none;background:var(--raised)}
+.lk:hover{background:var(--accent-soft)}
+.lk.todo{border-style:dashed;color:var(--ink-3)}
+code.t{font:500 .9rem var(--mono);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:2px 7px;color:var(--ink)}
+.cod{background:var(--accent-soft);border:1px solid var(--accent);border-radius:var(--rm);padding:18px 20px;display:grid;gap:14px}
+.cod h3{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.req{font:500 .68rem var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:var(--r);background:var(--accent);color:var(--accent-ink)}
+.cod3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.cod3 div{background:var(--raised);border-radius:6px;padding:12px 14px;display:grid;gap:6px;align-content:start}
+.cod3 .k{font:500 .68rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.cod3 p{font-size:.95rem}
+.say{display:grid;gap:8px}
+.say p{background:var(--raised);border-left:3px solid var(--accent);padding:8px 12px;border-radius:0 6px 6px 0;font-size:.96rem}
+.note{font-size:.93rem;color:var(--ink-2);border-left:3px solid var(--load);padding:2px 0 2px 12px}
+.script{background:var(--surface);border:1px solid var(--line);border-radius:6px;min-width:0}
+.sbar{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 10px;border-bottom:1px solid var(--line-soft);font:400 .72rem var(--mono);color:var(--ink-3)}
+.script pre{margin:0;padding:12px 14px;font:400 .86rem/1.6 var(--mono);white-space:pre-wrap;overflow-wrap:anywhere;color:var(--ink)}
+.copy{font:500 .72rem var(--mono);padding:3px 9px;border-radius:var(--r);border:1px solid var(--line);background:var(--raised);color:var(--ink);cursor:pointer}
+.copy:active{transform:translateY(1px)}
+footer{font-size:.85rem;color:var(--ink-3)}
+
+@media (max-width:760px){.rooms3,.cod3,.brief3{grid-template-columns:1fr}}
+@media (max-width:560px){
+  h1{font-size:2rem} h2{font-size:1.5rem}
+  .wstep{grid-template-columns:34px minmax(0,1fr);gap:10px}
+  .node{width:34px;height:34px;font-size:.9rem}
+  .wstep::before{left:16px;top:34px}
+  .wbody{padding:16px}
+}
+</style>
+
+<div class="wrap">
+
+<header class="top">
+  <div class="brand"><span class="mark" aria-hidden="true">›_</span><span class="eyebrow"><b>//</b> EDUC 565A · Week 10 · Design Studio</span></div>
+  <h1>Design Studio: Designing for an Existing Online Course</h1>
+  <p class="lede">You design one piece of an online course for one learner, on your own, as the designer and the researcher. You talk with the learner, design with them, and build a prototype.</p>
+  <div class="facts"><span class="fact"><b>Individual</b> work</span><span class="fact">Any topic, <b>your choice</b></span><span class="fact">Minimum: <b>a design log</b></span><span class="fact">Share <b>after class</b></span></div>
+  <div class="tk"><div><span class="k">Builder’s Toolkit</span><p>Keep it open in another tab: formats and rooms, a workflow sample for building with AI, setup notes, templates and resources.</p></div><a href="https://yuqingxing22.github.io/educ565a/w10/builders-toolkit/" target="_blank" rel="noopener">Open the Toolkit ↗</a></div>
+</header>
+
+<section aria-labelledby="sc-h">
+  <div class="eyebrow"><b>//</b> Scenario</div>
+  <h2 id="sc-h">Your task: design one piece of an existing asynchronous course</h2>
+  <div class="brief3">
+    <div class="frame"><span class="k">The courses</span><p>Each topic is one online course that is already running. All four are fully asynchronous: learners work on their own schedule, with no live class meetings.</p></div>
+    <div class="frame"><span class="k">Your task</span><p>Design <b>one piece</b> of one course, so that learners feel the course is a community, using AI where it helps. The piece can be any size: part of one module (a game for one lesson), a whole week, or something that runs through the whole course (a course assistant). Keep it small enough to prototype in class.</p></div>
+    <div class="frame"><span class="k">The course sites</span><p>Each course is built as a mock course site in a learning management system (LMS), like Brightspace or Canvas. It gives you the basics: what the course teaches and how it runs now. Use it as background. You don’t have to use its content, and your design can change or add whatever it needs.</p></div>
+  </div>
+  <div class="lms">
+    <span class="k">What each course site contains</span>
+    <ul>
+      <li><b>Home</b> and <b>Announcements</b>: what learners see first, and the instructor’s messages so far.</li>
+      <li><b>Syllabus</b>: the schedule, policies and grading.</li>
+      <li><b>Modules</b>: one page per week, every week complete, with readings, lecture videos and tasks.</li>
+      <li><b>Discussions</b>, <b>Quizzes</b> (they check your answers) and <b>People</b>.</li>
+    </ul>
+    <p>The institutions, instructors and classmates are fictional. The readings are real open resources. Lecture videos are listed by title but not included.</p>
+  </div>
+  <div class="tbl"><table>
+    <tr><th>Topic</th><th>Where</th><th>Cost to the learner</th><th>The course as it runs now</th><th>Course site</th></tr>
+    <tr><td>Intro to Statistics<span class="who">Learner: Adam</span></td><td>A public community college</td><td>Tuition; many students use financial aid</td><td>16 weeks. Text announcements, readings, auto-graded weekly quizzes. Learners rarely hear from the instructor directly.</td><td><a class="site" href="https://yuqingxing22.github.io/educ565a/w10/courses/statistics/" target="_blank" rel="noopener">Open ↗</a></td></tr>
+    <tr><td>Intro to Sociology<span class="who">Learner: Nora</span></td><td>A large public university; a required general-education course</td><td>Part of tuition</td><td>One semester, about 200 students. Weekly readings and a discussion post with replies.</td><td><a class="site" href="https://yuqingxing22.github.io/educ565a/w10/courses/sociology/" target="_blank" rel="noopener">Open ↗</a></td></tr>
+    <tr><td>Online M.Ed. course<span class="sub">Technology Integration in K–12 Classrooms</span><span class="who">Learner: Sarah</span></td><td>A university’s online master’s in Educational Technology</td><td>Graduate tuition, paid per course</td><td>8 weeks, one cohort. Readings, discussion posts, a project; most students work full time.</td><td><a class="site" href="https://yuqingxing22.github.io/educ565a/w10/courses/med-tech-integration/" target="_blank" rel="noopener">Open ↗</a></td></tr>
+    <tr><td>AP Computer Science A<span class="who">Learner: Malik</span></td><td>A school district’s virtual program</td><td>Free to students</td><td>Self-paced modules with auto-graded code checks. Students come from many schools and rarely meet.</td><td><a class="site" href="https://yuqingxing22.github.io/educ565a/w10/courses/ap-cs/" target="_blank" rel="noopener">Open ↗</a></td></tr>
+  </table></div>
+</section>
+
+<section aria-labelledby="room-h">
+  <div class="eyebrow"><b>//</b> How class runs</div>
+  <h2 id="room-h">Main room and breakout rooms</h2>
+  <div class="room main">
+    <h3>Main room</h3>
+    <p>Everyone works here, on their own prototype. Questions that don’t fit a room below can be asked here too.</p>
+  </div>
+  <p>Three breakout rooms, one per format. Go to your room when you have a question, or to work next to others making the same kind of thing. You are also welcome to visit any other room, just to see a format you are curious about. Come and go as you like; the instructors move between rooms. For a mixed format, such as a page with an AI assistant in it, choose the room for the hardest part.</p>
+  <div class="rooms3">
+    <div class="room br"><span class="rn">Room 1</span><h3>Pages</h3><p>An AI writes the code: a week’s course page, a lesson, an interactive explanation.</p></div>
+    <div class="room br"><span class="rn">Room 2</span><h3>Games</h3><p>An AI writes the code: a challenge, a scenario with choices, a quiz with feedback.</p></div>
+    <div class="room br"><span class="rn">Room 3</span><h3>AI assistants</h3><p>A course assistant the learner talks to: a GPT, or a chatbot built on an API.</p></div>
+  </div>
+</section>
+
+<section aria-labelledby="flow-h">
+  <div class="eyebrow"><b>//</b> Workflow</div>
+  <h2 id="flow-h">The five workshop steps</h2>
+  <div class="overview" role="img" aria-label="Choose a topic, talk with your learner, design with co-design, build a prototype and design log, then share and comment after class.">
+    <span class="ov"><b>1</b>Choose a topic</span><span class="arr" aria-hidden="true">→</span>
+    <span class="ov learner"><b>2</b>Interview your learner</span><span class="arr" aria-hidden="true">→</span>
+    <span class="ov learner"><b>3</b>Design, with co-design</span><span class="arr" aria-hidden="true">→</span>
+    <span class="ov"><b>4</b>Build</span><span class="arr" aria-hidden="true">→</span>
+    <span class="ov after"><b>5</b>Share and comment</span>
+  </div>
+  <div class="legend"><span><i class="sw learner"></i>with your learner persona</span><span><i class="sw"></i>on your own</span><span><i class="sw after"></i>after class</span></div>
+
+  <ol class="wf">
+    <li class="wstep">
+      <span class="node" aria-hidden="true">1</span>
+      <div class="wbody">
+        <header><h3>Step 1 · Choose a topic and read the learner persona</h3><span class="where">Learner personas doc</span></header>
+        <ul class="do">
+          <li>Choose the topic you are most interested in. There is no limit per topic and nothing to sign up for.</li>
+          <li>Read your topic’s learner persona. It does not need to be the learner you interviewed last week.</li>
+        </ul>
+        <div class="links"><a class="lk" href="https://docs.google.com/document/d/1U_cIMf7pRRsg9hMO5Mm89kLM-Z-Dvgy98cpM6_eI6TE/edit?tab=t.2lkvlx7gpo5j" target="_blank" rel="noopener">Learner personas →</a></div>
+      </div>
+    </li>
+    <li class="wstep">
+      <span class="node learner" aria-hidden="true">2</span>
+      <div class="wbody">
+        <header><h3>Step 2 · Interview your learner again</h3><span class="where learner">Learner Persona Studio</span></header>
+        <ul class="do">
+          <li>Open Learner Persona Studio and start with <code class="t">Interview [Name]</code>.</li>
+          <li>Ask anything the persona profile does not already tell you. Questions about the part of the course you are designing, the people in their course, and how they feel about AI are a good place to start, but any question is fair.</li>
+          <li>Type <code class="t">End interview</code> when you are done.</li>
+        </ul>
+      </div>
+    </li>
+    <li class="wstep">
+      <span class="node learner" aria-hidden="true">3</span>
+      <div class="wbody">
+        <header><h3>Step 3 · Design, including co-design</h3><span class="where">On your own, AI welcome</span><span class="where learner">Co-design with your learner</span></header>
+        <p>There are no set steps here. Brainstorm on paper, with an AI chat, or both. The Builder’s Toolkit shows one way to think a design through with AI before building anything.</p>
+        <div class="links"><a class="lk" href="https://yuqingxing22.github.io/educ565a/w10/builders-toolkit/#s1" target="_blank" rel="noopener">Think it through with AI →</a></div>
+
+        <div class="cod">
+          <h3>Co-design <span class="req">Required</span></h3>
+          <div class="cod3">
+            <div><span class="k">What it is</span><p>Designing <i>with</i> the learner, not only <i>for</i> them. While the design can still change, you show them ideas, sketches or options and let their reactions shape it.</p></div>
+            <div><span class="k">Why it matters</span><p>Learners notice what designers miss: when they would really open it, what they would skip, what feels like a real person and what feels automated. Finding that out before you build costs little.</p></div>
+            <div><span class="k">How</span><p>In Learner Persona Studio, type <code class="t">Design with [Name]</code>. In the same chat right after the interview, your learner remembers what they told you. Show your idea in plain words or paste a sketch, listen, ask follow-up questions. Type <code class="t">End design session</code> when done.</p></div>
+          </div>
+          <p>You stay the designer and the researcher. What the learner says is evidence, not instructions: they may ask for something that would not help them learn, or prefer what is familiar. Their needs and your judgment both count; write down what you changed because of them, and what you kept anyway, and why.</p>
+          <div class="say">
+            <p>“Here are two ways this could start: [A] or [B]. Which would you actually open first, and why?”</p>
+            <p>“In this version, your instructor drafts feedback with AI and then edits it. Would you want to know that? How would you want to find out?”</p>
+          </div>
+          <p class="note">Two examples only. Ask in your own words, about whatever you need to find out.</p>
+        </div>
+      </div>
+    </li>
+    <li class="wstep">
+      <span class="node" aria-hidden="true">4</span>
+      <div class="wbody">
+        <header><h3>Step 4 · Build a prototype and a design log</h3><span class="where">Any format · Builder’s Toolkit</span></header>
+        <ul class="do">
+          <li>Any format: a page, a game, an AI assistant, or a mix.</li>
+          <li>It does not have to be complete. At minimum you have a design log; a partial prototype or a sketch next to it is better.</li>
+        </ul>
+        <div class="links"><a class="lk" href="https://yuqingxing22.github.io/educ565a/w10/builders-toolkit/" target="_blank" rel="noopener">Builder’s Toolkit →</a></div>
+        <div class="script">
+          <div class="sbar"><span>Design log template</span><button class="copy" type="button">Copy</button></div>
+<pre>DESIGN LOG
+Topic, learner, and the part of the course I designed (part of a module, a week, or course-wide):
+Format:
+
+What I learned from talking with my learner (not in the persona profile):
+
+MY DESIGN
+What the learner does, in order:
+Where real people appear, and what AI does:
+Why this fits my learner:
+
+CO-DESIGN
+What I showed my learner:
+What they said:
+What I changed because of it:
+What I kept anyway, and why:
+
+PROTOTYPE
+Link or file:
+What is finished, what is a sketch:
+Where a viewer should start:
+
+Feedback I would like (one or two questions):</pre>
+        </div>
+      </div>
+    </li>
+    <li class="wstep last">
+      <span class="node after" aria-hidden="true">5</span>
+      <div class="wbody">
+        <header><h3>Step 5 · Share your prototype and comment on a classmate’s</h3><span class="where">Discussion board · after class</span></header>
+        <ul class="do">
+          <li>Post your prototype (a link, a file or screenshots) and your design log to the discussion board.</li>
+          <li>Make it easy to look at. Feedback is only as good as what people can find:
+            <ul><li>say where to start and what each part is;</li><li>say what is finished and what is a sketch;</li><li>end with the one or two questions you want feedback on.</li></ul></li>
+          <li>Comment on at least one classmate’s prototype. Answer their questions first, then name one thing that would work for their learner and one thing you would question.</li>
+        </ul>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<a class="tkfloat" href="https://yuqingxing22.github.io/educ565a/w10/builders-toolkit/" target="_blank" rel="noopener">Toolkit ↗</a>
+
+<footer><p>EDUC 565A · Fall 2026 · Week 10. Both instructors are on call for the whole session.</p></footer>
+
+</div>
+
+<script>
+document.querySelectorAll(".copy").forEach(btn=>btn.addEventListener("click",()=>{
+  const pre=btn.closest(".script").querySelector("pre");
+  const done=()=>{btn.textContent="Copied";setTimeout(()=>btn.textContent="Copy",1500)};
+  const fallback=()=>{const r=document.createRange();r.selectNodeContents(pre);const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent="Selected: press Ctrl/Cmd+C";setTimeout(()=>btn.textContent="Copy",2500)};
+  try{navigator.clipboard.writeText(pre.innerText).then(done,fallback)}catch(e){fallback()}
+}));
+</script>

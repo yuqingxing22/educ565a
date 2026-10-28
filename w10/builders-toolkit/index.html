@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>[hidden]{display:none!important}img{max-width:100%}</style>
+<title>Builder’s Toolkit</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a left panel lists the sections and follows the scroll; on narrow screens it becomes a sticky row of links at the top. Sections are reference blocks, read in any order. Glass Box tokens (_shared/design/00-system.md). */
+:root{
+  --paper:#EDEFEE; --surface:#F8FAF9; --raised:#FFFFFF;
+  --ink:#121A18; --ink-2:#4C5854; --ink-3:#6E7C78;
+  --line:#C6CFCB; --line-soft:#DDE3E0;
+  --accent:#0E6E68; --accent-ink:#FFFFFF; --accent-soft:#D6E8E5;
+  --load:#9A5C0E; --load-soft:#F2E4CE;
+  --stop:#A32E22; --stop-soft:#F5DED9;
+  --pass:#1B6B4C; --pass-soft:#D8EBE2;
+  --code-bg:#14201E; --code-ink:#DCE6E3;
+  --shadow:0 1px 2px rgba(18,26,24,.06),0 6px 18px rgba(18,26,24,.07);
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --r:3px; --rm:9px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#0C1211; --surface:#141C1A; --raised:#1B2523;
+  --ink:#E2E8E6; --ink-2:#A3B0AC; --ink-3:#7F8E8A;
+  --line:#2E3A37; --line-soft:#1E2726;
+  --accent:#4FC7BC; --accent-ink:#0C1211; --accent-soft:#17332F;
+  --load:#E0A44A; --load-soft:#33260F;
+  --stop:#FF7A62; --stop-soft:#331C18;
+  --pass:#4ECF9A; --pass-soft:#122E25;
+  --code-bg:#0A100F; --code-ink:#DCE6E3;
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 6px 18px rgba(0,0,0,.3);
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#0C1211; --surface:#141C1A; --raised:#1B2523;
+  --ink:#E2E8E6; --ink-2:#A3B0AC; --ink-3:#7F8E8A;
+  --line:#2E3A37; --line-soft:#1E2726;
+  --accent:#4FC7BC; --accent-ink:#0C1211; --accent-soft:#17332F;
+  --load:#E0A44A; --load-soft:#33260F;
+  --stop:#FF7A62; --stop-soft:#331C18;
+  --pass:#4ECF9A; --pass-soft:#122E25;
+  --code-bg:#0A100F; --code-ink:#DCE6E3;
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 6px 18px rgba(0,0,0,.3);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.shell{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;grid-template-columns:230px minmax(0,1fr);gap:48px}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1,h2,h3,h4{font-weight:600;line-height:1.2;margin:0}
+h1{font-size:2.3rem;letter-spacing:-.01em}
+h2{font-size:1.65rem}
+h3{font-size:1.15rem}
+h4{font-size:1rem}
+p{margin:0}
+.eyebrow{font:500 .74rem/1.2 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2)}
+.eyebrow b{color:var(--accent);font-weight:500}
+.mark{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:var(--r);background:var(--accent);color:var(--accent-ink);font:500 .85rem var(--mono);flex:none}
+
+/* side panel */
+nav.side{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;padding-block:32px;display:grid;gap:18px;max-height:100vh;overflow-y:auto}
+.side .brand{display:flex;align-items:center;gap:10px;font:600 1rem var(--sans)}
+.side ol{list-style:none;margin:0;padding:0;display:grid;gap:2px;border-left:1px solid var(--line)}
+.side a{display:flex;flex-direction:column;padding:7px 12px;margin-left:-1px;border-left:2px solid transparent;color:var(--ink-2);text-decoration:none;font-size:.95rem;line-height:1.3;white-space:nowrap}
+.side a small{font:400 .68rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.side a:hover{color:var(--ink)}
+.side a[aria-current="true"]{border-left-color:var(--accent);color:var(--ink);font-weight:500}
+.side .out{display:grid;gap:6px;font-size:.88rem}
+.side .out span{font:500 .68rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+
+main{padding-block:40px 80px;display:grid;gap:64px;min-width:0}
+main>header{display:grid;gap:14px}
+.lede{color:var(--ink-2);font-size:1.05rem}
+section{display:grid;gap:20px;min-width:0}
+.opt{font:500 .7rem var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);color:var(--ink-2);margin-left:8px;vertical-align:middle}
+
+/* formats */
+.formats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.fmt{background:var(--raised);border:1px solid var(--line-soft);border-radius:var(--rm);padding:16px;display:grid;gap:6px;align-content:start}
+.fmt h3{font-size:1rem}
+.fmt p{font-size:.93rem;color:var(--ink-2)}
+.fmt a{font:500 .85rem var(--mono)}
+.rn{font:500 .7rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+
+/* workflow sample */
+.sample{background:var(--raised);border:1px solid var(--line);border-radius:var(--rm);padding:16px 20px;display:grid;gap:6px;border-left:4px solid var(--accent)}
+.sample .k{font:500 .68rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.overview{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:var(--rm);padding:14px 16px}
+.ov{font:500 .9rem var(--sans);padding:7px 12px;border-radius:var(--r);border:1px solid var(--line);background:var(--raised);white-space:nowrap;text-decoration:none;color:var(--ink)}
+.ov:hover{border-color:var(--accent)}
+.ov b{font:500 .78rem var(--mono);color:var(--accent);margin-right:6px}
+.ov.dash{border-style:dashed}
+.loop{display:flex;flex-wrap:wrap;align-items:center;gap:8px;border:1.5px dashed var(--accent);border-radius:var(--rm);padding:14px 10px 8px;position:relative}
+.loop .lbl{position:absolute;top:-9px;left:10px;background:var(--surface);padding:0 6px;font:500 .66rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.arr{font:500 1rem var(--mono);color:var(--ink-3)}
+.wstep{background:var(--raised);border:1px solid var(--line);border-radius:var(--rm);box-shadow:var(--shadow);padding:20px 22px;display:grid;gap:14px;min-width:0;scroll-margin-top:24px}
+.wstep header{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.num{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font:600 .9rem var(--mono);border:2px solid var(--line);flex:none}
+.num.dash{border-style:dashed;border-color:var(--accent)}
+.wstep ul{margin:0;padding-left:1.1em;display:grid;gap:6px}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.box{border-radius:6px;padding:14px 16px;display:grid;gap:8px;align-content:start;background:var(--surface);border:1px solid var(--line-soft)}
+.box .k{font:500 .68rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+.box.yes{background:var(--pass-soft);border-color:transparent}.box.yes .k{color:var(--pass)}
+.box.no{background:var(--load-soft);border-color:transparent}.box.no .k{color:var(--load)}
+.box ul{font-size:.95rem}
+.types{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.types div{background:var(--surface);border:1px solid var(--line-soft);border-radius:6px;padding:12px 14px;display:grid;gap:4px;align-content:start}
+.types .k{font:500 .7rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.types p{font-size:.92rem;color:var(--ink-2)}
+.types4{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.types4 div{background:var(--surface);border:1px solid var(--line-soft);border-radius:6px;padding:12px 14px;display:grid;gap:4px;align-content:start}
+.types4 .k{font:500 .7rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.types4 p{font-size:.92rem;color:var(--ink-2)}
+.product{border:1.5px dashed var(--line);border-radius:var(--rm);padding:18px 20px;display:grid;gap:6px;color:var(--ink-2);background:var(--surface)}
+
+/* tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:6px;border-bottom:1px solid var(--line)}
+.tab{font:500 .92rem var(--sans);padding:10px 14px;border:1px solid transparent;border-bottom:none;border-radius:var(--r) var(--r) 0 0;background:transparent;color:var(--ink-2);cursor:pointer;margin-bottom:-1px}
+.tab small{display:block;font:400 .7rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.tab[aria-selected="true"]{background:var(--raised);border-color:var(--line);color:var(--ink)}
+.tab[aria-selected="true"] small{color:var(--accent)}
+.panel{background:var(--raised);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--rm) var(--rm);padding:24px;display:grid;gap:20px;box-shadow:var(--shadow)}
+.plan{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:baseline;font-size:.93rem;color:var(--ink-2)}
+.tag{font:500 .72rem var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:var(--r);background:var(--accent-soft);color:var(--ink)}
+ol.steps{margin:0;padding:0;list-style:none;counter-reset:s;display:grid;gap:14px}
+ol.steps>li{counter-increment:s;display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;align-items:start}
+ol.steps>li::before{content:counter(s);display:grid;place-items:center;width:28px;height:28px;border-radius:var(--r);border:1px solid var(--line);font:500 .85rem var(--mono);color:var(--accent);background:var(--surface)}
+ol.steps>li>div{display:grid;gap:8px;min-width:0}
+kbd{font:500 .8rem var(--mono);padding:1px 6px;border:1px solid var(--line);border-bottom-width:2px;border-radius:var(--r);background:var(--surface)}
+.ui{font-weight:600}
+.note{font-size:.92rem;color:var(--ink-2);border-left:3px solid var(--load);padding:2px 0 2px 12px}
+
+/* code + prompts */
+.code{position:relative;background:var(--code-bg);color:var(--code-ink);border-radius:6px;min-width:0}
+.code .bar{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,.08);font:400 .75rem var(--mono);color:#93A19D}
+.code .dots{display:flex;gap:5px}
+.code .dots i{width:9px;height:9px;border-radius:50%;background:#3A4744;display:block}
+.code .bar span.path{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.code pre{margin:0;padding:14px 16px;overflow-x:auto;font:400 .86rem/1.6 var(--mono);white-space:pre}
+.code pre.wrap{white-space:pre-wrap}
+.copy{font:500 .75rem var(--mono);padding:4px 10px;border-radius:var(--r);border:1px solid #3A4744;background:transparent;color:#DCE6E3;cursor:pointer}
+.copy:hover{border-color:#4FC7BC}
+.copy:active{transform:translateY(1px)}
+
+/* github */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.card{background:var(--raised);border:1px solid var(--line);border-radius:var(--rm);padding:20px;display:grid;gap:14px;align-content:start;box-shadow:var(--shadow);min-width:0}
+.warnbox{background:var(--stop-soft);border-radius:var(--rm);padding:14px 16px;display:grid;gap:4px}
+.warnbox strong{color:var(--stop)}
+details{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--rm);padding:12px 16px}
+details[open]{display:grid;gap:12px}
+summary{cursor:pointer;font-weight:500}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+th{font:500 .72rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.tbl{overflow-x:auto}
+
+/* resources */
+.res{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px 28px}
+.res div{display:grid;gap:8px;align-content:start}
+.res ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.res li{font-size:.94rem;color:var(--ink-2)}
+.res li a{font-weight:500}
+footer{font-size:.85rem;color:var(--ink-3)}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:minmax(0,1fr);gap:0}
+  nav.side{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;padding-block:10px;background:var(--paper);border-bottom:1px solid var(--line);max-height:none;overflow:visible}
+  .side .brand,.side .out{display:none}
+  .side ol{display:flex;gap:4px;overflow-x:auto;border-left:none;scrollbar-width:none}
+  .side a{margin-left:0;border-left:none;border-bottom:2px solid transparent;padding:6px 10px}
+  .side a small{display:none}
+  .side a[aria-current="true"]{border-bottom-color:var(--accent)}
+  html{scroll-padding-top:64px}
+  main{padding-top:28px}
+}
+@media (max-width:640px){h1{font-size:1.8rem}.panel{padding:18px}.tab{padding:8px 10px}.cols,.types,.types4{grid-template-columns:1fr}.wstep{padding:16px}}
+</style>
+
+<div class="shell">
+
+<nav class="side" aria-label="Sections">
+  <div class="brand"><span class="mark" aria-hidden="true">›_</span>Builder’s Toolkit</div>
+  <ol>
+    <li><a href="#format"><small>01</small>Format</a></li>
+    <li><a href="#workflow"><small>02 · Rooms 1–2</small>Workflow sample</a></li>
+    <li><a href="#agents"><small>03 · Rooms 1–2 · optional</small>Set up an AI agent</a></li>
+    <li><a href="#online"><small>04 · Rooms 1–2 · optional</small>Put it online</a></li>
+    <li><a href="#games"><small>05 · Room 2</small>Games</a></li>
+    <li><a href="#assist"><small>06 · Room 3</small>AI assistants</a></li>
+    <li><a href="#resources"><small>07</small>Resources</a></li>
+    <li><a href="#help"><small>08</small>Help</a></li>
+  </ol>
+  <div class="out"><span>Other pages</span><a href="https://yuqingxing22.github.io/educ565a/w10/design-studio/" target="_blank" rel="noopener">Workshop</a></div>
+</nav>
+
+<main>
+<header>
+  <div class="eyebrow"><b>//</b> EDUC 565A · Week 10 · Design Studio</div>
+  <h1>Builder’s Toolkit</h1>
+  <p class="lede">For turning your design into a prototype: choosing a format, a worked example of building with AI (for pages and games), building an AI assistant, and where to find tools, inspiration and help.</p>
+</header>
+
+<section id="format" aria-labelledby="fmt-h">
+  <div class="eyebrow"><b>//</b> 01</div>
+  <h2 id="fmt-h">Choosing a format</h2>
+  <p>The format follows from when, where and on what device your learner will meet it. A phone-friendly page suits a late-night break at work; an assistant suits a learner who gets stuck at odd hours.</p>
+  <p>Three formats, each with its own breakout room. Mixed formats are welcome; go to the room for the hardest part.</p>
+  <div class="formats">
+    <div class="fmt"><span class="rn">Room 1</span><h3>Pages</h3><p>A week’s course page, a lesson, an interactive explanation. Opens on any phone; an AI writes the code with you.</p><a href="#workflow">Workflow sample ↓</a></div>
+    <div class="fmt"><span class="rn">Room 2</span><h3>Games</h3><p>A challenge, a scenario with choices, a quiz with feedback. Built with AI like a page, with a few decisions of its own.</p><a href="#games">Games ↓</a></div>
+    <div class="fmt"><span class="rn">Room 3</span><h3>AI assistants</h3><p>A course assistant the learner talks to: a GPT, or a chatbot built on an API.</p><a href="#assist">AI assistants ↓</a></div>
+  </div>
+</section>
+
+<section id="workflow" aria-labelledby="wf-h">
+  <div class="eyebrow"><b>//</b> 02</div>
+  <h2 id="wf-h">Workflow sample: building a page or a game with AI</h2>
+  <p>One way to work with an AI agent, shown on a small sample project. The same steps work for pages (Room 1) and games (Room 2), with any AI tool you are comfortable with. For a game, see also section 05.</p>
+  <div class="sample"><span class="k">The sample project</span><p>Week 1 of a free, four-week online course run by a public library: “Spreadsheets for Your Budget,” for adults who are coming back to learning. The page is the week’s home page.</p></div>
+
+  <div class="overview" role="img" aria-label="1 Think it through, then plan; 2 Explore templates (optional); 3 Set preferences; 4 First version and test; then repeat 5 Revise; then 6 Share.">
+    <a class="ov" href="#s1"><b>1</b>Think it through</a><span class="arr" aria-hidden="true">→</span>
+    <a class="ov dash" href="#s2"><b>2</b>Explore · optional</a><span class="arr" aria-hidden="true">→</span>
+    <a class="ov" href="#s3"><b>3</b>Set preferences</a><span class="arr" aria-hidden="true">→</span>
+    <a class="ov" href="#s4"><b>4</b>First version + test</a><span class="arr" aria-hidden="true">→</span>
+    <span class="loop"><span class="lbl">↻ Until final</span><a class="ov" href="#s5"><b>5</b>Revise by type</a></span><span class="arr" aria-hidden="true">→</span>
+    <a class="ov" href="#s6"><b>6</b>Share</a>
+  </div>
+
+  <article class="wstep" id="s1">
+    <header><span class="num">1</span><h3>Think it through with AI, then plan</h3></header>
+    <p>Prompting is a back-and-forth, and the plan takes shape in the conversation. Treat the AI as a colleague to think with, not only a tool that builds. Start broad, say you want to discuss before anything is built, and let the idea, and the format, become clearer as you talk. Your own thinking usually gets clearer too.</p>
+    <div class="code"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="path">prompt · opening · sample</span><button class="copy" type="button">Copy</button></div><pre class="wrap">I’m designing part of an online course for a specific learner. Don’t build anything yet; I want to think it through with you first. Here is where I’m starting: [your broad idea, and what you know about the learner].</pre></div>
+    <div class="cols">
+      <div class="box"><span class="k">You lead the conversation</span><ul>
+        <li>Bring what you know about your learner; the AI has never met them.</li>
+        <li>Ask for options, comparisons and objections: “What else could this be?” “What would go wrong for this learner?”</li>
+        <li>This colleague agrees easily. Ask it to argue the other side.</li>
+        <li>The design is yours; the AI suggests and questions.</li>
+      </ul></div>
+      <div class="box"><span class="k">Close with a plan</span><ul>
+        <li>Ask: “Summarize what we decided as plan.md.”</li>
+        <li>Edit it yourself. Long conversations lose details; the file keeps them for every later step.</li>
+        <li>Check that the plan covers the learner and their context; what it teaches; what the learner does, in order; where people and AI show up; the format and its limits.</li>
+      </ul></div>
+    </div>
+    <p>What a plan can look like at the end of the conversation:</p>
+    <div class="code"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="path">plan.md · sample</span><button class="copy" type="button">Copy</button></div><pre class="wrap"># Plan: Week 1, “Spreadsheets for Your Budget”
+
+Learner: adults in a free online course from a public library. Many have not studied in years. They open the course on a phone in the evening, often for 15–20 minutes at a time.
+
+This week: set up a simple monthly budget sheet (income, expenses, a total with SUM). About one hour across the week.
+
+What the learner does:
+1. Watches a short welcome from the librarian who teaches the course.
+2. Fills in a five-row budget in a ready-made sheet.
+3. Posts one thing that surprised them, and replies to one classmate.
+
+People and AI:
+- A weekly roadmap at the top, written by the librarian.
+- On Friday the librarian writes a short shout-out naming a few posts and the most common mistake. She uses AI to sort the posts; she writes the note herself.
+- An AI formula helper answers questions about formulas and points out errors. It is labeled as AI.
+- A short “How AI is used in this course” box at the top.
+
+Format: one web page, phone first, plain language, no login.</pre></div>
+  </article>
+
+  <article class="wstep" id="s2">
+    <header><span class="num" style="border-style:dashed">2</span><h3>Explore templates and examples <span class="opt">Optional</span></h3></header>
+    <p>Look at what already works before you build. Look for two kinds of inspiration: how a page looks and moves (UI), and how good learning content is organized (what comes first, how instructions are written, where people show up).</p>
+    <div class="cols">
+      <div class="box"><span class="k">UI inspiration</span><ul>
+        <li><a href="https://land-book.com" target="_blank" rel="noopener">Land-book</a> and <a href="https://www.lapa.ninja" target="_blank" rel="noopener">Lapa Ninja</a>: galleries of real web pages.</li>
+        <li><a href="https://dribbble.com/search/online-course" target="_blank" rel="noopener">Dribbble</a>: design mockups; search “online course” or “lesson.”</li>
+        <li><a href="https://h5p.org/content-types-and-applications" target="_blank" rel="noopener">H5P examples</a>: interactive activities you can try.</li>
+      </ul></div>
+      <div class="box"><span class="k">Content inspiration</span><ul>
+        <li><a href="https://www.khanacademy.org" target="_blank" rel="noopener">Khan Academy</a>: short explanations with practice right after.</li>
+        <li><a href="https://openstax.org" target="_blank" rel="noopener">OpenStax</a> and <a href="https://oercommons.org" target="_blank" rel="noopener">OER Commons</a>: open lessons to reuse or adapt.</li>
+        <li>Courses you have taken: which week page did you actually read, and why?</li>
+      </ul></div>
+    </div>
+    <p>A screenshot of a page you like, pasted into the AI with “use this layout idea,” works better than describing it.</p>
+  </article>
+
+  <article class="wstep" id="s3">
+    <header><span class="num">3</span><h3>Set your preferences</h3></header>
+    <p>You can give the AI a template, or let it decide the look. Either way, write a short preferences file in your project folder: the AI reads it at the start of every session, so it remembers what you like and what to avoid, even in a new chat.</p>
+    <div class="tbl"><table>
+      <tr><th>Tool</th><th>File name</th></tr>
+      <tr><td>Claude Code (any of its apps)</td><td><code>CLAUDE.md</code></td></tr>
+      <tr><td>Codex</td><td><code>AGENTS.md</code></td></tr>
+      <tr><td>A chat in the browser</td><td>Paste it at the start of each new chat, or into a Project’s instructions</td></tr>
+    </table></div>
+    <div class="code"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="path">CLAUDE.md or AGENTS.md · sample</span><button class="copy" type="button">Copy</button></div><pre class="wrap"># Preferences for this project
+
+This is a learning design prototype for a graduate course. Read plan.md before every change; it holds the design.
+
+## Always
+- One self-contained index.html.
+- Phone first: it must work well at 375 px wide.
+- Plain language, short paragraphs, clear headings.
+- Accessible: headings in order, good color contrast, alt text, works with a keyboard.
+- Where a real person speaks (video, message, feedback), leave a visible placeholder like [LIBRARIAN VIDEO: welcome, about 1 minute]. Never write words for a real person.
+- Label anything AI does directly for the learner.
+- After each change, tell me in two or three lines what you changed.
+
+## Look
+- Calm and warm. One accent color. Large buttons.
+
+## Avoid
+- No invented names, numbers, quotes or student data.
+- No logins, tracking, or forms that send data anywhere.
+- Don’t change parts I didn’t ask about.</pre></div>
+  </article>
+
+  <article class="wstep" id="s4">
+    <header><span class="num">4</span><h3>First version, then test</h3></header>
+    <div class="code"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="path">prompt · first version</span><button class="copy" type="button">Copy</button></div><pre class="wrap">Read plan.md and CLAUDE.md. Before building, describe the page you will make, section by section, in plain words, so I can check it. When I say go, build index.html and open it in my browser if you can.
+
+(In a browser chat without files: paste your plan and preferences above this prompt, and ask for the complete code in one code block.)</pre></div>
+    <p>Then open the page as your learner would: make the browser window narrow, or open it on your phone.</p>
+    <div class="cols">
+      <div class="box yes"><span class="k">Check now</span><ul>
+        <li>It opens and nothing is broken.</li>
+        <li>On a phone, it is readable and easy to tap.</li>
+        <li>The learner can tell what to do first and about how long it takes. In a game: the goal is clear on the first screen, and the feedback teaches something.</li>
+        <li>The main ideas of your plan are visible on the page.</li>
+        <li>Real-person parts are placeholders, and nothing is invented.</li>
+      </ul></div>
+      <div class="box no"><span class="k">Don’t get stuck on</span><ul>
+        <li>Exact colors, fonts and spacing.</li>
+        <li>Perfect wording; content changes in the next rounds anyway.</li>
+        <li>Animation and decoration.</li>
+        <li>Real images; placeholders are fine in a prototype.</li>
+        <li>Small glitches in parts your design doesn’t depend on.</li>
+      </ul></div>
+    </div>
+  </article>
+
+  <article class="wstep" id="s5">
+    <header><span class="num dash">5</span><h3>Revise, one type of change at a time</h3></header>
+    <p>Group your changes by type. Mixing a couple in one message is fine at this scale; what matters is keeping each message short. An AI’s memory of a long conversation is weaker than it seems, so when a session gets long or starts forgetting, open a new one: <code>plan.md</code> and your preferences file carry what matters.</p>
+    <div class="types">
+      <div><span class="k">UI</span><p>How it looks and fits: layout, size, order, phone view.</p></div>
+      <div><span class="k">Function</span><p>What it does: buttons, quizzes, feedback, navigation.</p></div>
+      <div><span class="k">Content</span><p>What it says: instructions, explanations, the real person’s words.</p></div>
+    </div>
+    <div class="code"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="path">prompts · samples</span><button class="copy" type="button">Copy</button></div><pre class="wrap">UI: On a phone the weekly roadmap takes a whole screen. Make it a short list with the three tasks and their times, and make the buttons bigger.
+
+Function: The formula helper does nothing yet. When the learner clicks it, show the three most common SUM mistakes and how to fix each one. No real AI needed in the prototype; keep the “AI helper” label.
+
+Content: Replace the welcome text with the text below. Keep the librarian video placeholder.
+[your text]</pre></div>
+    <p>Repeat steps 4 and 5 until the page is your final version. When the design changes, ask the AI to update <code>plan.md</code> too.</p>
+  </article>
+
+  <article class="wstep" id="s6">
+    <header><span class="num">6</span><h3>Share, and make it easy to give feedback</h3></header>
+    <p>Feedback is only as good as what people can find. Before you post, make the page and your post easy to navigate:</p>
+    <ul>
+      <li>a clear starting point, and a label on each part saying what it is;</li>
+      <li>what is finished and what is a sketch or placeholder;</li>
+      <li>the one or two questions you want feedback on.</li>
+    </ul>
+    <p>To share a web page by link, see <a href="#online">Put it online</a>; screenshots or the file itself also work on the discussion board.</p>
+  </article>
+
+  <div class="product"><strong>The sample product</strong><p>The finished sample page, built with the files above, will appear here.</p></div>
+</section>
+
+<section id="agents" aria-labelledby="ag-h">
+  <div class="eyebrow"><b>//</b> 03</div>
+  <h2 id="ag-h">Set up an AI agent <span class="opt">Optional</span></h2>
+  <p>Skip this if you already have a tool you like: any AI you are comfortable with works for this workshop. These are setup notes for anyone who wants an AI agent that writes files on their computer.</p>
+
+  <div class="tabs" role="tablist" aria-label="Tool">
+    <button class="tab" role="tab" type="button" id="t-cd" aria-controls="p-cd" data-t="cd"><small>Claude</small>Desktop app</button>
+    <button class="tab" role="tab" type="button" id="t-cv" aria-controls="p-cv" data-t="cv"><small>Claude</small>VS Code</button>
+    <button class="tab" role="tab" type="button" id="t-ct" aria-controls="p-ct" data-t="ct"><small>Claude</small>Terminal</button>
+    <button class="tab" role="tab" type="button" id="t-xd" aria-controls="p-xd" data-t="xd"><small>Codex</small>Desktop app</button>
+    <button class="tab" role="tab" type="button" id="t-xv" aria-controls="p-xv" data-t="xv"><small>Codex</small>VS Code</button>
+    <button class="tab" role="tab" type="button" id="t-br" aria-controls="p-br" data-t="br"><small>Free · no install</small>In the browser</button>
+  </div>
+
+  <div class="panel" role="tabpanel" id="p-cd" aria-labelledby="t-cd">
+    <div class="plan"><span class="tag">Claude Pro or Max</span><span>Claude Code is not part of the free plan. Mac and Windows.</span></div>
+    <ol class="steps">
+      <li><div><p>Download the Claude app from <a href="https://claude.ai/download" target="_blank" rel="noopener">claude.ai/download</a>, install it, and sign in.</p></div></li>
+      <li><div><p>Make an empty folder for the project, for example on your Desktop, named <code>my-lesson</code>.</p></div></li>
+      <li><div><p>Click <span class="ui">Code</span> at the top of the sidebar. (If the sidebar shows only icons, hover to see the names.)</p></div></li>
+      <li><div><p>In the row under the prompt box, open the environment menu and pick the top entry under <span class="ui">Local</span>. Then click the folder control next to it, choose <span class="ui">Open folder…</span>, and select your project folder.</p></div></li>
+      <li><div><p>Type your first prompt and press <kbd>Enter</kbd>. When Claude asks to create or edit files, allow it. The permission mode <span class="ui">Accept edits</span> stops it from asking for every file.</p></div></li>
+      <li><div><p>Open <code>index.html</code> from your folder to see the page in your browser. Ask for changes in the same session, then refresh the browser.</p></div></li>
+    </ol>
+    <p class="note">On Windows, if the app says Git is required, update the app first. Newer versions only need Git for advanced features.</p>
+  </div>
+
+  <div class="panel" role="tabpanel" id="p-cv" aria-labelledby="t-cv" hidden>
+    <div class="plan"><span class="tag">Claude Pro or Max</span><span>VS Code 1.94 or newer. Mac and Windows.</span></div>
+    <ol class="steps">
+      <li><div><p>Install VS Code from <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">code.visualstudio.com</a>.</p></div></li>
+      <li><div><p>Open Extensions (<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd> on Mac, <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd> on Windows), search <span class="ui">Claude Code</span>, and install the one published by Anthropic.</p></div></li>
+      <li><div><p>Make an empty folder named <code>my-lesson</code>, then in VS Code choose <span class="ui">File → Open Folder…</span> and select it.</p></div></li>
+      <li><div><p>Open the Claude panel with the Spark icon (✻): in the left Activity Bar, or at the top right of the editor when a file is open. The first time, click <span class="ui">Sign in</span> and finish in the browser.</p></div></li>
+      <li><div><p>Type your first prompt and press <kbd>Enter</kbd>. Claude shows each file change; accept it.</p></div></li>
+      <li><div><p>To see the page, right-click <code>index.html</code> in the file list, choose <span class="ui">Reveal in Finder</span> (Mac) or <span class="ui">Reveal in File Explorer</span> (Windows), and double-click it.</p></div></li>
+    </ol>
+    <p class="note">If the extension does not appear, restart VS Code or run <span class="ui">Developer: Reload Window</span> from the Command Palette.</p>
+  </div>
+
+  <div class="panel" role="tabpanel" id="p-ct" aria-labelledby="t-ct" hidden>
+    <div class="plan"><span class="tag">Claude Pro or Max</span><span>macOS 13+ or Windows 10+. No other software needed.</span></div>
+    <ol class="steps">
+      <li><div><p>Open a terminal: <span class="ui">Terminal</span> on Mac (search with <kbd>Cmd</kbd>+<kbd>Space</kbd>), <span class="ui">Windows PowerShell</span> on Windows. Paste the install line for your computer and press <kbd>Enter</kbd>.</p>
+        <div class="code"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="path">Mac · Terminal</span><button class="copy" type="button">Copy</button></div><pre>curl -fsSL https://claude.ai/install.sh | bash</pre></div>
+        <div class="code"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="path">Windows · PowerShell</span><button class="copy" type="button">Copy</button></div><pre>irm https://claude.ai/install.ps1 | iex</pre></div></div></li>
+      <li><div><p>Close the terminal and open a new one. Check that it worked; you should see a version number.</p>
+        <div class="code"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="path">Mac and Windows</span><button class="copy" type="button">Copy</button></div><pre>claude --version</pre></div></div></li>
+      <li><div><p>Make the project folder, go into it, and start Claude. The first time, it opens the browser so you can log in.</p>
+        <div class="code"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="path">Mac and Windows</span><button class="copy" type="button">Copy</button></div><pre>mkdir my-lesson
+cd my-lesson
+claude</pre></div></div></li>
+      <li><div><p>Type your first prompt and press <kbd>Enter</kbd>. Claude asks before it creates files; answer yes.</p></div></li>
+      <li><div><p>Ask Claude to open the page for you (“Open index.html in my browser”), or type <code>exit</code> and run <code>open index.html</code> (Mac) or <code>start index.html</code> (Windows).</p></div></li>
+    </ol>
+    <p class="note">The folder is made in your home folder. On Mac that is your user folder in Finder; on Windows it is <code>C:\Users\your-name</code>.</p>
+  </div>
+
+  <div class="panel" role="tabpanel" id="p-xd" aria-labelledby="t-xd" hidden>
+    <div class="plan"><span class="tag">ChatGPT Free and up</span><span>Free covers quick tasks; OpenAI does not publish the exact limit. Mac (Apple Silicon) and Windows.</span></div>
+    <ol class="steps">
+      <li><div><p>Codex now lives inside the <span class="ui">ChatGPT desktop app</span>. Download it from <a href="https://learn.chatgpt.com/docs/app" target="_blank" rel="noopener">learn.chatgpt.com/docs/app</a> (on Windows it comes from the Microsoft Store) and sign in with your ChatGPT account.</p></div></li>
+      <li><div><p>Click <span class="ui">Codex</span> in the sidebar.</p></div></li>
+      <li><div><p>Make an empty folder named <code>my-lesson</code> and open it as a project (on Windows: <span class="ui">Add new project</span>, or <kbd>Ctrl</kbd>+<kbd>O</kbd>).</p></div></li>
+      <li><div><p>Type your first prompt and send it. Approve the file changes when Codex asks.</p></div></li>
+      <li><div><p>Open <code>index.html</code> from your folder to see the page. Ask for changes in the same chat, then refresh the browser.</p></div></li>
+    </ol>
+    <p class="note">If you reach the Free limit in the middle of the workshop, the “In the browser” tab works with any account.</p>
+  </div>
+
+  <div class="panel" role="tabpanel" id="p-xv" aria-labelledby="t-xv" hidden>
+    <div class="plan"><span class="tag">ChatGPT plan</span><span>Sign in with your ChatGPT account. Mac and Windows.</span></div>
+    <ol class="steps">
+      <li><div><p>Install VS Code from <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">code.visualstudio.com</a>.</p></div></li>
+      <li><div><p>Open Extensions (<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd> on Mac, <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd> on Windows), search <span class="ui">Codex</span>, and install the one published by OpenAI.</p></div></li>
+      <li><div><p>Make an empty folder named <code>my-lesson</code>, then choose <span class="ui">File → Open Folder…</span> and select it.</p></div></li>
+      <li><div><p>Open Codex with its icon in the sidebar, or from the Command Palette (<kbd>Cmd</kbd>/<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>) run <span class="ui">Codex: Open Codex Sidebar</span>. Sign in with ChatGPT when asked.</p></div></li>
+      <li><div><p>Type your first prompt and send it. Approve the file changes.</p></div></li>
+      <li><div><p>Right-click <code>index.html</code>, choose <span class="ui">Reveal in Finder</span> or <span class="ui">Reveal in File Explorer</span>, and double-click it.</p></div></li>
+    </ol>
+    <p class="note">If the extension asks you to upgrade, the Codex desktop app or the “In the browser” tab will work instead.</p>
+  </div>
+
+  <div class="panel" role="tabpanel" id="p-br" aria-labelledby="t-br" hidden>
+    <div class="plan"><span class="tag">Free</span><span>Works with a free Claude, ChatGPT or Gemini account. Nothing to install.</span></div>
+    <ol class="steps">
+      <li><div><p>Open <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>, <a href="https://chatgpt.com" target="_blank" rel="noopener">chatgpt.com</a> or <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> and start a new chat.</p></div></li>
+      <li><div><p>Paste your plan and preferences, then your prompt, and ask for “the complete code in one code block.”</p></div></li>
+      <li><div><p>Copy the whole code block (the copy button on the block).</p></div></li>
+      <li><div><p>Save it as a file named <code>index.html</code>:</p>
+        <div class="tbl"><table>
+          <tr><th>Mac</th><td>Open TextEdit, choose <span class="ui">Format → Make Plain Text</span>, paste, then <span class="ui">File → Save</span> as <code>index.html</code>. If it asks, choose <span class="ui">Use .html</span>.</td></tr>
+          <tr><th>Windows</th><td>Open Notepad, paste, then <span class="ui">File → Save as</span>. Set “Save as type” to <span class="ui">All files</span> and the name to <code>index.html</code>.</td></tr>
+        </table></div></div></li>
+      <li><div><p>Double-click <code>index.html</code> to open it in your browser. For changes, ask in the same chat, copy the new code, and save over the file.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section id="online" aria-labelledby="gh-h">
+  <div class="eyebrow"><b>//</b> 04</div>
+  <h2 id="gh-h">Put it online with GitHub Pages <span class="opt">Optional</span></h2>
+  <p>Right now your page is a file on your computer, so only you can open it. GitHub Pages, a free service, puts it online and gives it a link anyone can open. You can ask your AI agent to do it for you, or do it yourself on the GitHub website. Both ways are below.</p>
+  <div class="warnbox" role="note"><strong>A Pages site is public.</strong><span>Anyone with the link can see it. No real student names, grades or personal data, only the learner persona.</span></div>
+  <div class="two">
+    <div class="card">
+      <h3>With your agent</h3>
+      <ol class="steps">
+        <li><div><p>Create a free GitHub account at <a href="https://github.com/signup" target="_blank" rel="noopener">github.com/signup</a>.</p></div></li>
+        <li><div><p>One time only: ask the agent to set up the tools. You will approve a few installs and log in to GitHub in the browser with a one-time code.</p>
+          <div class="code"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="path">prompt · setup</span><button class="copy" type="button">Copy</button></div><pre class="wrap">Help me set up Git and the GitHub CLI (gh) on this computer, then log me in to GitHub with gh auth login. Check first what is already installed. Explain each step in plain words and wait for me when I need to do something in the browser.</pre></div></div></li>
+        <li><div><p>Ask it to publish:</p>
+          <div class="code"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="path">prompt · publish</span><button class="copy" type="button">Copy</button></div><pre class="wrap">Publish this folder as a public GitHub Pages site. Create a public repository named my-lesson, push everything on the main branch, turn on GitHub Pages from main at the root, and give me the site link. Ask me before you do anything I need to approve.</pre></div></div></li>
+        <li><div><p>Open the link it gives you, which looks like <code>https://your-username.github.io/my-lesson/</code>. The first time can take up to 10 minutes.</p></div></li>
+        <li><div><p>After changes, ask: “Commit and push my changes to GitHub.” The site updates within a few minutes.</p></div></li>
+      </ol>
+      <details>
+        <summary>What the agent runs</summary>
+        <p>For the curious. You never need to type these; this is what you will see the agent ask to run.</p>
+        <div class="code"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="path">terminal</span><button class="copy" type="button">Copy</button></div><pre>git init
+git add .
+git commit -m "First version"
+git branch -M main
+gh repo create my-lesson --public --source . --push
+gh api -X POST "repos/{owner}/{repo}/pages" \
+  -f "source[branch]=main" -f "source[path]=/"</pre></div>
+        <p class="note">The last command turns on Pages. <code>gh</code> fills in <code>{owner}</code> and <code>{repo}</code> from the folder’s repository.</p>
+      </details>
+    </div>
+    <div class="card">
+      <h3>Through the GitHub website</h3>
+      <ol class="steps">
+        <li><div><p>On GitHub, click <span class="ui">New repository</span>. Name it <code>my-lesson</code>, choose <span class="ui">Public</span>, turn on <span class="ui">Add README</span>, and click <span class="ui">Create repository</span>.</p></div></li>
+        <li><div><p>Click <span class="ui">Add file → Upload files</span>, drag in <code>index.html</code> and any images, and commit.</p></div></li>
+        <li><div><p>Open <span class="ui">Settings → Pages</span>. Under <span class="ui">Build and deployment</span>, set Source to <span class="ui">Deploy from a branch</span>, branch <span class="ui">main</span>, folder <span class="ui">/ (root)</span>, and click <span class="ui">Save</span>.</p></div></li>
+        <li><div><p>Wait up to 10 minutes, then open <code>https://your-username.github.io/my-lesson/</code>.</p></div></li>
+      </ol>
+      <h3>If the link does not work</h3>
+      <div class="tbl"><table>
+        <tr><th>You see</th><th>Check</th></tr>
+        <tr><td>404</td><td>The file is named exactly <code>index.html</code> (lowercase) and sits at the top of the repository, not in a subfolder. Pages is turned on.</td></tr>
+        <tr><td>The old version</td><td>Wait a few minutes, then refresh with <kbd>Cmd</kbd>/<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd>.</td></tr>
+        <tr><td>Missing images</td><td>The images were uploaded too, and the file names match exactly, including capital letters.</td></tr>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<section id="games" aria-labelledby="gm-h">
+  <div class="eyebrow"><b>//</b> 05</div>
+  <h2 id="gm-h">Games</h2>
+  <p>A learning game puts the learner in a situation where they act, make choices and see what happens. Build it with the workflow in section 02; this section adds what is specific to games.</p>
+
+  <article class="wstep">
+    <header><h3>Kinds of games that fit an online course</h3></header>
+    <div class="types4">
+      <div><span class="k">Branching scenario</span><p>The learner makes decisions in a realistic situation and sees where each one leads. For example, a new teacher handling a parent email, step by step.</p></div>
+      <div><span class="k">Challenge with levels</span><p>Short rounds that get harder, each practicing one skill. For example, find the bug in five lines of Java, then in ten.</p></div>
+      <div><span class="k">Simulation</span><p>The learner changes something and watches the result. For example, change the sample size and see the margin of error move.</p></div>
+      <div><span class="k">Puzzle or escape room</span><p>The next step unlocks only when the learner applies the idea. For example, match each claim to the study design that could support it.</p></div>
+    </div>
+  </article>
+
+  <article class="wstep">
+    <header><h3>Decide before you build</h3></header>
+    <ul>
+      <li><b>The learning goal.</b> What the learner can do after playing. The main action in the game should practice exactly that, not decorate it.</li>
+      <li><b>The goal and rules.</b> Can the learner tell what they are trying to do from the first screen?</li>
+      <li><b>The challenge.</b> What makes it hard, and how it gets harder.</li>
+      <li><b>The feedback.</b> After each move, the learner learns why it worked or didn’t, not only “right” or “wrong.”</li>
+      <li><b>A reason to play again.</b> A new case, a better score, a different path.</li>
+      <li><b>People.</b> Where other people show up, if anywhere: comparing choices with classmates, a class-wide score, the instructor’s note on the hardest level.</li>
+      <li><b>Length.</b> A round fits a few minutes on a phone.</li>
+    </ul>
+    <div class="code"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="path">game plan · template · add to plan.md</span><button class="copy" type="button">Copy</button></div><pre class="wrap">## The game
+Kind: [branching scenario / challenge with levels / simulation / puzzle]
+Learning goal: after playing, the learner can [ ].
+Goal and rules, as the learner reads them on the first screen: [ ]
+What makes it hard, and how it gets harder: [ ]
+Feedback after each move: [what the learner sees, and what it teaches]
+Reason to play again: [ ]
+Where people show up: [ ]
+One round takes about: [ ] minutes</pre></div>
+  </article>
+
+  <article class="wstep">
+    <header><h3>Build small, then play it</h3></header>
+    <div class="code"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="path">prompt · first round</span><button class="copy" type="button">Copy</button></div><pre class="wrap">Read plan.md. Build only the first round of the game as one index.html that works on a phone, so I can play it before you add more. Describe how it will work before you build it.</pre></div>
+    <div class="cols">
+      <div class="box yes"><span class="k">Check when you play</span><ul>
+        <li>The goal is clear within a few seconds.</li>
+        <li>A wrong move teaches something.</li>
+        <li>You can finish a round on a phone, in a few minutes.</li>
+        <li>Playing it practices the learning goal.</li>
+      </ul></div>
+      <div class="box no"><span class="k">Don’t get stuck on</span><ul>
+        <li>Graphics, sound and animation.</li>
+        <li>Perfectly balanced scores or difficulty.</li>
+        <li>More levels before the first one works.</li>
+      </ul></div>
+    </div>
+    <p>Without code: <a href="https://twinery.org" target="_blank" rel="noopener">Twine</a> makes branching scenarios, and <a href="https://h5p.org" target="_blank" rel="noopener">H5P</a> has ready-made quiz and branching formats. More in <a href="#resources">Resources</a>.</p>
+  </article>
+</section>
+
+<section id="assist" aria-labelledby="as-h">
+  <div class="eyebrow"><b>//</b> 06</div>
+  <h2 id="as-h">AI assistants</h2>
+  <p>A course assistant the learner talks to, for the whole course or for one week or module of it.</p>
+
+  <article class="wstep">
+    <header><h3>Building a course assistant</h3></header>
+    <p>An assistant answers the learner directly, without a person checking each reply. The prototype has three parts: its instructions, a few sample conversations, and what the learner is told about it.</p>
+    <div class="code"><div class="bar"><span class="dots"><i></i><i></i><i></i></span><span class="path">assistant instructions · template</span><button class="copy" type="button">Copy</button></div><pre class="wrap">You are the course assistant for [course] [or for one week or module of it: what it covers].
+The learners: [who they are, when and on what device they use the course].
+
+What you do:
+- [for example: explain the course's ideas in plain words, give practice questions, point to the right reading]
+
+What you never do:
+- [for example: give answers to graded work, guess at grades or deadlines]
+
+Hand the learner to a real person when: [for example: they mention falling behind, feeling lost, or a personal problem]. Say who that person is and how to reach them: [placeholder].
+
+At the start of every conversation, say in one sentence that you are an AI assistant and what you can help with.
+Tone: [for example: warm, brief, one question at a time].</pre></div>
+    <div class="cols">
+      <div class="box"><span class="k">As a GPT</span><ul>
+        <li>In ChatGPT with your USC account or a personal account, open <span class="ui">GPTs</span> → <span class="ui">Create</span>. If your account doesn’t show <span class="ui">Create</span>, use your USC account.</li>
+        <li>Paste your instructions into <span class="ui">Configure → Instructions</span>, and test it in the preview next to it.</li>
+        <li>Share the GPT’s link, or screenshots of your test conversations.</li>
+      </ul></div>
+      <div class="box"><span class="k">As a chatbot built on an API</span><ul>
+        <li>A chat page the learner opens, which sends each message to a model through an API (OpenAI, Anthropic or Google), with your instructions as its system prompt.</li>
+        <li>Ask a coding agent to build it (the setup notes in section 03 work for this too). You need an API key from the provider’s developer platform; use is billed per message.</li>
+        <li>Keep the key private: run the chatbot on your own computer, and never put a key in a page you publish or in a public GitHub repository.</li>
+      </ul></div>
+    </div>
+    <p>Before building either, a quick test: paste your instructions as the first message of a new chat in any AI, beginning with “For the rest of this chat, act as the assistant described below,” and talk to it as your learner.</p>
+    <p>Test it as your learner, with at least three conversations: an ordinary question about the course, a moment that should go to a real person, and an attempt to get the answers to graded work. Screenshots or copied text of these conversations are your prototype.</p>
+    <p class="note">OpenAI is retiring custom GPTs in favor of plugins. Keep your instructions in a file of their own, so the assistant can be rebuilt in another tool.</p>
+  </article>
+
+</section>
+
+<section id="resources" aria-labelledby="res-h">
+  <div class="eyebrow"><b>//</b> 07</div>
+  <h2 id="res-h">Resources</h2>
+  <p>A habit that saves trouble later: keep the source link for every image or sound you use, and credit it when the licence asks.</p>
+  <div class="res">
+    <div><h3>Images and icons</h3><ul>
+      <li><a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> and <a href="https://www.pexels.com" target="_blank" rel="noopener">Pexels</a>. Free photos.</li>
+      <li><a href="https://pixabay.com" target="_blank" rel="noopener">Pixabay</a>. Photos and illustrations.</li>
+      <li><a href="https://openverse.org" target="_blank" rel="noopener">Openverse</a>. Openly licensed images and audio; check each licence.</li>
+      <li><a href="https://lucide.dev" target="_blank" rel="noopener">Lucide</a> and <a href="https://fonts.google.com/icons" target="_blank" rel="noopener">Material Symbols</a>. Free icons.</li>
+    </ul></div>
+    <div><h3>Design and accessibility</h3><ul>
+      <li><a href="https://fonts.google.com" target="_blank" rel="noopener">Google Fonts</a>. Free typefaces.</li>
+      <li><a href="https://coolors.co" target="_blank" rel="noopener">Coolors</a>. Color palettes.</li>
+      <li><a href="https://webaim.org/resources/contrastchecker/" target="_blank" rel="noopener">WebAIM Contrast Checker</a>. Is the text readable on its background?</li>
+      <li><a href="https://wave.webaim.org" target="_blank" rel="noopener">WAVE</a>. Paste a page link to see accessibility problems.</li>
+    </ul></div>
+    <div><h3>Interactive pieces and games</h3><ul>
+      <li><a href="https://h5p.org" target="_blank" rel="noopener">H5P</a>. Interactive videos, quizzes, drag and drop.</li>
+      <li><a href="https://twinery.org" target="_blank" rel="noopener">Twine</a>. Branching, choose-your-path stories and scenarios.</li>
+      <li>Google Forms. Quick checks and reflections.</li>
+      <li><a href="https://padlet.com" target="_blank" rel="noopener">Padlet</a>. A shared wall; the free plan has 3 padlets.</li>
+      <li><a href="https://wayground.com" target="_blank" rel="noopener">Wayground</a> (formerly Quizizz) and <a href="https://kahoot.com" target="_blank" rel="noopener">Kahoot</a>. Quizzes and games.</li>
+    </ul></div>
+    <div><h3>Open content</h3><ul>
+      <li><a href="https://oercommons.org" target="_blank" rel="noopener">OER Commons</a> and <a href="https://www.merlot.org" target="_blank" rel="noopener">MERLOT</a>. Open lessons and materials.</li>
+      <li><a href="https://openstax.org" target="_blank" rel="noopener">OpenStax</a>. Free textbooks, including Introduction to Sociology and Introductory Statistics.</li>
+      <li><a href="https://www.khanacademy.org" target="_blank" rel="noopener">Khan Academy</a>. Videos and practice.</li>
+    </ul></div>
+    <div><h3>Design guidance</h3><ul>
+      <li><a href="https://udlguidelines.cast.org" target="_blank" rel="noopener">CAST UDL Guidelines 3.0</a>. Universal Design for Learning.</li>
+      <li><a href="https://www.qualitymatters.org/qa-resources/rubric-standards/higher-ed-rubric" target="_blank" rel="noopener">Quality Matters Higher Education Rubric</a>. Standards for online course design.</li>
+      <li><a href="https://www.w3.org/WAI/tips/designing/" target="_blank" rel="noopener">W3C WAI design tips</a>. Short accessibility guidance.</li>
+    </ul></div>
+    <div><h3>Other places to host</h3><ul>
+      <li><a href="https://app.netlify.com/drop" target="_blank" rel="noopener">Netlify Drop</a>. Drag a folder in for an instant link; claim it with an account to keep it.</li>
+      <li><a href="https://sites.google.com" target="_blank" rel="noopener">Google Sites</a>. No code at all; school accounts may limit public sharing.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="help" aria-labelledby="help-h">
+  <div class="eyebrow"><b>//</b> 08</div>
+  <h2 id="help-h">Help</h2>
+  <p>Questions about your format: go to that format’s breakout room. For an error message, paste it to your AI and ask: “Explain this problem in plain words, then fix it.”</p>
+</section>
+
+<footer><p>EDUC 565A · Fall 2026 · Week 10. Tool steps checked against the official Claude, OpenAI and GitHub documentation on October 27, 2026. Menus change often; if a label looks different, the AI can help you find the new one.</p></footer>
+</main>
+</div>
+
+<script>
+(function(){
+  const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+  const tabs=[...document.querySelectorAll(".tab")];
+  function select(t, focus){
+    tabs.forEach(b=>{const on=b.dataset.t===t;b.setAttribute("aria-selected",String(on));b.tabIndex=on?0:-1;document.getElementById(b.getAttribute("aria-controls")).hidden=!on;if(on&&focus)b.focus();});
+    store.set("w10-tab",t);
+  }
+  tabs.forEach((b,i)=>{
+    b.addEventListener("click",()=>select(b.dataset.t));
+    b.addEventListener("keydown",e=>{
+      let j=null;
+      if(e.key==="ArrowRight")j=(i+1)%tabs.length;
+      if(e.key==="ArrowLeft")j=(i-1+tabs.length)%tabs.length;
+      if(j!==null){e.preventDefault();select(tabs[j].dataset.t,true);}
+    });
+  });
+  const saved=store.get("w10-tab");
+  select(tabs.some(b=>b.dataset.t===saved)?saved:"cd");
+
+  document.querySelectorAll(".copy").forEach(btn=>btn.addEventListener("click",()=>{
+    const pre=btn.closest(".code").querySelector("pre");
+    const done=()=>{btn.textContent="Copied";setTimeout(()=>btn.textContent="Copy",1500)};
+    const fallback=()=>{const r=document.createRange();r.selectNodeContents(pre);const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent="Selected: press Ctrl/Cmd+C";setTimeout(()=>btn.textContent="Copy",2500)};
+    try{navigator.clipboard.writeText(pre.innerText).then(done,fallback)}catch(e){fallback()}
+  }));
+
+  const links=[...document.querySelectorAll("nav.side ol a")];
+  const secs=links.map(a=>document.querySelector(a.getAttribute("href")));
+  function spy(){
+    let cur=0;
+    secs.forEach((s,i)=>{if(s.getBoundingClientRect().top<140)cur=i});
+    links.forEach((a,i)=>a.setAttribute("aria-current",String(i===cur)));
+    const act=links[cur], ol=act.closest("ol");
+    if(ol.scrollWidth>ol.clientWidth){const l=act.offsetLeft-ol.offsetLeft;if(l<ol.scrollLeft||l+act.offsetWidth>ol.scrollLeft+ol.clientWidth)ol.scrollLeft=l-16}
+  }
+  addEventListener("scroll",spy,{passive:true});spy();
+})();
+</script>
