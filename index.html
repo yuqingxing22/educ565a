@@ -140,7 +140,7 @@ section { scroll-margin-top: 20px; display: grid; gap: 18px; }
 .weekgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
 .wk {
   display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; align-content: start; padding: 16px; border-radius: 10px; background: var(--surface);
-  border: 1.5px solid var(--line); position: relative; scroll-margin-top: 20px;
+  border: 1.5px solid var(--line); position: relative; scroll-margin-top: 20px; min-height: 270px;
 }
 .wk .top { display: flex; align-items: baseline; gap: 10px; }
 .wk .no { font-family: var(--display); font-size: 30px; font-weight: 700; line-height: 1; color: var(--muted); font-variant-numeric: tabular-nums; }
@@ -158,7 +158,9 @@ section { scroll-margin-top: 20px; display: grid; gap: 18px; }
 .wk .now { position: absolute; top: -10px; right: 12px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: #fff; background: var(--cardinal); padding: 2px 8px; border-radius: 3px; }
 .wk.flash { animation: flash 1.4s ease; }
 @keyframes flash { 0%, 100% { box-shadow: var(--shadow); } 30% { box-shadow: 0 0 0 6px var(--gold-soft), var(--shadow); } }
-.mini { display: inline-flex; align-items: center; gap: 5px; font-size: 13px; font-weight: 700; text-decoration: none; padding: 4px 9px; border-radius: 5px; background: var(--cs); color: var(--ink); border: 1px solid var(--c); max-width: 100%; line-height: 1.3; overflow-wrap: anywhere; }
+.mini { display: inline-flex; align-items: center; gap: 5px; font-size: 13px; font-weight: 700; text-decoration: none; padding: 4px 9px; border-radius: 5px; background: var(--cs); color: var(--ink); border: 1px solid var(--c); max-width: 100%; white-space: nowrap; }
+.mini .lbl { overflow: hidden; text-overflow: ellipsis; }
+.mini.more { --c: var(--line); --cs: transparent; color: var(--cardinal); font-weight: 700; cursor: pointer; font-family: inherit; }
 .mini svg { width: 12px; height: 12px; flex: none; color: var(--c); }
 .mini:hover { background: var(--surface); }
 .later { font-size: 13px; color: var(--muted); font-style: italic; }
@@ -366,6 +368,8 @@ section { scroll-margin-top: 20px; display: grid; gap: 18px; }
   const before = today < iso(WEEKS[0][3]);
   if (!cur) cur = before ? 1 : 16;
   const state = n => n === cur ? "cur" : (n < cur ? "past" : "future");
+  // Week cards show at most this many links, so every card keeps the same size; the rest sit behind "+N more".
+  const MAX_CHIPS = 3;
   const weekMats = n => PAGES.filter(p => p.w === n).sort((a, b) => (a.slides ? -1 : 0) - (b.slides ? -1 : 0));
   function countdown(d) {
     const diff = Math.round((iso(d) - today) / day);
@@ -423,7 +427,7 @@ section { scroll-margin-top: 20px; display: grid; gap: 18px; }
       <div class="top"><span class="no">${String(n).padStart(2, "0")}</span><span class="dates">${w[1]} to ${w[2]}</span></div>
       <h4>${esc(w[4])}</h4>${w[5] ? '<p class="offnote">No live session</p>' : ""}
       ${du.map(d => `<p class="due"><b>Due:</b> ${esc(d[2])}${d[1] ? ", " + iso(d[1]).toLocaleDateString("en-US", { month: "short", day: "numeric" }) : ""}</p>`).join("")}
-      ${ms.length ? `<div class="mats">${ms.map(p => `<a class="mini t-${p.type}" href="${p.href}"${tgt(p)}>${ICON[p.type]}${p.slides ? "Slides" : esc(p.title)}</a>`).join("")}</div>`
+      ${ms.length ? `<div class="mats">${(ms.length > MAX_CHIPS ? ms.slice(0, MAX_CHIPS - 1) : ms).map(p => `<a class="mini t-${p.type}" href="${p.href}"${tgt(p)} title="${esc(p.slides ? "Slides" : p.title)}">${ICON[p.type]}<span class="lbl">${p.slides ? "Slides" : esc(p.title)}</span></a>`).join("")}${ms.length > MAX_CHIPS ? `<button type="button" class="mini more" data-more="${n}">+${ms.length - MAX_CHIPS + 1} more</button>` : ""}</div>`
         : (st === "future" ? "" : `<span class="later">No slides or pages for this week</span>`)}
     </article>`;
   }).join("")}</div></div>`).join("");
@@ -443,8 +447,8 @@ section { scroll-margin-top: 20px; display: grid; gap: 18px; }
     return `<button type="button" data-k="${k}" aria-pressed="${k === "all"}">${KINDS_PLURAL[k]} <span class="ct">${n}</span></button>`;
   }).join("");
   function drawLib() {
-    const term = q.value.trim().toLowerCase();
-    const items = PAGES.filter(p => (kind === "all" || p.type === kind) && (!term || (p.title + " " + p.desc + " week " + p.w).toLowerCase().includes(term)))
+    const term = q.value.trim().toLowerCase(), wk = term.match(/^week (\d+)$/);
+    const items = PAGES.filter(p => (kind === "all" || p.type === kind) && (!term || (wk ? p.w === +wk[1] : (p.title + " " + p.desc + " week " + p.w).toLowerCase().includes(term))))
       .sort((a, b) => (b.w - a.w) || a.type.localeCompare(b.type));
     lib.innerHTML = items.length ? items.map(p => `<a class="tile t-${p.type}" href="${p.href}"${tgt(p)}>
         <span class="art">${p.img ? `<img src="${p.img}" alt="" loading="lazy">` : `<span class="big">${p.w ? String(p.w).padStart(2, "0") : "★"}</span>`}<span class="ic">${ICON[p.type]}</span>${p.w ? `<span class="wtag">Week ${p.w}</span>` : `<span class="wtag">All weeks</span>`}</span>
@@ -458,6 +462,14 @@ section { scroll-margin-top: 20px; display: grid; gap: 18px; }
     drawLib();
   });
   q.addEventListener("input", drawLib);
+  // "+N more" on a week card opens that week in the library.
+  document.addEventListener("click", e => {
+    const b = e.target.closest("button[data-more]"); if (!b) return;
+    q.value = "Week " + b.dataset.more;
+    kind = "all"; fEl.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x.dataset.k === "all"));
+    drawLib();
+    document.getElementById("materials").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  });
   drawLib();
 
   /* Sidebar: mark the section in view */
