@@ -92,7 +92,8 @@ td .who{display:block;font:400 .78rem var(--mono);color:var(--accent);font-weigh
 
 /* rooms */
 .fmts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-.fmts .site{margin-top:4px}
+.fmts .room{min-width:0}
+.fmts .site{margin-top:4px;white-space:normal;overflow-wrap:anywhere}
 .rn{font:500 .7rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
 .room{background:var(--raised);border:1px solid var(--line);border-radius:var(--rm);padding:18px 20px;display:grid;gap:10px;align-content:start}
 .room.main{border-top:4px solid var(--accent)}
