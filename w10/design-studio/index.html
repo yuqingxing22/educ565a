@@ -91,7 +91,8 @@ td .sub{display:block;font-weight:400;font-size:.85rem;color:var(--ink-2);white-
 td .who{display:block;font:400 .78rem var(--mono);color:var(--accent);font-weight:500}
 
 /* rooms */
-.rooms3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.fmts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.fmts .site{margin-top:4px}
 .rn{font:500 .7rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
 .room{background:var(--raised);border:1px solid var(--line);border-radius:var(--rm);padding:18px 20px;display:grid;gap:10px;align-content:start}
 .room.main{border-top:4px solid var(--accent)}
@@ -146,7 +147,9 @@ code.t{font:500 .9rem var(--mono);background:var(--surface);border:1px solid var
 .copy:active{transform:translateY(1px)}
 footer{font-size:.85rem;color:var(--ink-3)}
 
-@media (max-width:760px){.rooms3,.cod3,.brief3{grid-template-columns:1fr}}
+@media (max-width:900px){.fmts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.cod3,.brief3{grid-template-columns:1fr}}
+@media (max-width:520px){.fmts{grid-template-columns:1fr}}
 @media (max-width:560px){
   h1{font-size:2rem} h2{font-size:1.5rem}
   .wstep{grid-template-columns:34px minmax(0,1fr);gap:10px}
@@ -191,21 +194,6 @@ footer{font-size:.85rem;color:var(--ink-3)}
     <tr><td>Online M.Ed. course<span class="sub">Technology Integration in K–12 Classrooms</span><span class="who">Learner: Sarah</span></td><td>A university’s online master’s in Educational Technology</td><td>Graduate tuition, paid per course</td><td>8 weeks, one cohort. Readings, discussion posts, a project; most students work full time.</td><td><a class="site" href="https://yuqingxing22.github.io/educ565a/w10/courses/med-tech-integration/" target="_blank" rel="noopener">Open ↗</a></td></tr>
     <tr><td>AP Computer Science A<span class="who">Learner: Malik</span></td><td>A school district’s virtual program</td><td>Free to students</td><td>Self-paced modules with auto-graded code checks. Students come from many schools and rarely meet.</td><td><a class="site" href="https://yuqingxing22.github.io/educ565a/w10/courses/ap-cs/" target="_blank" rel="noopener">Open ↗</a></td></tr>
   </table></div>
-</section>
-
-<section aria-labelledby="room-h">
-  <div class="eyebrow"><b>//</b> How class runs</div>
-  <h2 id="room-h">Main room and breakout rooms</h2>
-  <div class="room main">
-    <h3>Main room</h3>
-    <p>Everyone works here, on their own prototype. Questions that don’t fit a room below can be asked here too.</p>
-  </div>
-  <p>Three breakout rooms, one per format. Go to your room when you have a question, or to work next to others making the same kind of thing. You are also welcome to visit any other room, just to see a format you are curious about. Come and go as you like; the instructors move between rooms. For a mixed format, such as a page with an AI assistant in it, choose the room for the hardest part.</p>
-  <div class="rooms3">
-    <div class="room br"><span class="rn">Room 1</span><h3>Pages</h3><p>An AI writes the code: a week’s course page, a lesson, an interactive explanation.</p></div>
-    <div class="room br"><span class="rn">Room 2</span><h3>Games</h3><p>An AI writes the code: a challenge, a scenario with choices, a quiz with feedback.</p></div>
-    <div class="room br"><span class="rn">Room 3</span><h3>AI assistants and skills</h3><p>A course assistant the learner talks to (a GPT, or a chatbot built on an API), or a skill the learner adds to their own AI.</p></div>
-  </div>
 </section>
 
 <section aria-labelledby="flow-h">
@@ -317,6 +305,23 @@ Feedback I would like (one or two questions):</pre>
     </li>
   </ol>
 </section>
+
+<section aria-labelledby="fmt-h">
+  <div class="eyebrow"><b>//</b> Prototype</div>
+  <h2 id="fmt-h">Prototype formats</h2>
+  <p>Choose the format that fits your learner and your idea. Mixed formats are welcome, for example a page with an AI assistant in it. The Builder’s Toolkit has a section for each.</p>
+  <div class="fmts">
+    <div class="room br"><span class="rn">Room 1</span><h3>Page</h3><p>A week’s course page, a lesson, an interactive explanation. An AI writes the code with you.</p><a class="site" href="https://yuqingxing22.github.io/educ565a/w10/builders-toolkit/#workflow" target="_blank" rel="noopener">Toolkit · workflow sample ↗</a></div>
+    <div class="room br"><span class="rn">Room 2</span><h3>Game</h3><p>A challenge, a scenario with choices, a quiz with feedback. Built with AI like a page.</p><a class="site" href="https://yuqingxing22.github.io/educ565a/w10/builders-toolkit/#games" target="_blank" rel="noopener">Toolkit · games ↗</a></div>
+    <div class="room br"><span class="rn">Room 3</span><h3>AI assistant</h3><p>A course assistant the learner talks to: a GPT, or a chatbot built on an API.</p><a class="site" href="https://yuqingxing22.github.io/educ565a/w10/builders-toolkit/#assist" target="_blank" rel="noopener">Toolkit · AI assistants ↗</a></div>
+    <div class="room br"><span class="rn">Room 3</span><h3>Skill</h3><p>A folder of instructions the learner adds to their own AI, like a study coach for one unit.</p><a class="site" href="https://yuqingxing22.github.io/educ565a/w10/builders-toolkit/#skills" target="_blank" rel="noopener">Toolkit · skills ↗</a></div>
+  </div>
+</section>
+
+<div class="lms" role="note">
+  <span class="k">Note · Main room and breakout rooms</span>
+  <p>Everyone works in the main room. There are three breakout rooms by format: Room 1 for pages, Room 2 for games, Room 3 for AI assistants and skills. Go to your room when you have a question, or to work next to others making the same kind of thing; any room is open to visit if you are curious about a format. For a mixed format, choose the room for the hardest part. The instructors move between rooms.</p>
+</div>
 
 <a class="tkfloat" href="https://yuqingxing22.github.io/educ565a/w10/builders-toolkit/" target="_blank" rel="noopener">Toolkit ↗</a>
 
