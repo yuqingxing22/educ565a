@@ -1,0 +1,603 @@
+SOC 101 Introduction to Sociology · Fall 2026 (Aug 24 – Dec 11)
+Calder State University · Department of Sociology · General Education Program
+CourseSpace course site (fictional course copy for EDUC 565A; people and posts are fictional, readings are real; videos listed but not included)
+Fully online, asynchronous · 15 weeks plus finals week · required general-education course · About 200 students (online section 01)
+
+============================================================
+HOME
+============================================================
+Welcome to SOC 101: Introduction to Sociology. This course introduces the major concepts, theories, and research methods of sociology and shows how they help us understand everyday life, from family and school to inequality and social change.
+
+This is a fully online, asynchronous course with about 200 students. Each week you will read sections of the free OpenStax textbook, watch two short lecture videos, and take part in the weekly discussion. A few weeks include a short reading check, and there is a midterm exam and a final essay.
+
+Please read the syllabus carefully, especially the sections on late work, AI use, and how to contact your TA. Your two Teaching Assistants, Marcus Hale and Priya Venkataraman, are your first point of contact for questions. I hold virtual office hours on Thursdays.
+
+I am glad you are here and look forward to the semester.
+— Dr. Rosalind Pettigrew
+
+============================================================
+ANNOUNCEMENTS
+============================================================
+
+Week 10 is open (Oct 26, 2026, Dr. Rosalind Pettigrew)
+Good morning everyone. Week 10 (Global Inequality) is now open. Please read Sections 10.1 and 10.2 and watch both lectures. Your initial discussion post is due Wednesday at 11:59 pm and your two replies are due Sunday at 11:59 pm.
+
+Midterm grades are posted in the gradebook. If you have a question about your score, please email your TA. Thank you for your hard work.
+
+Grade posted: Midterm Exam (Weeks 1–7) (Oct 22, 2026, Course notification (automatic))
+A grade has been posted for Midterm Exam (Weeks 1–7). To view your grade and feedback, open Grades.
+
+Midterm results and regrade requests (Oct 19, 2026, Dr. Rosalind Pettigrew)
+The midterm has been graded. The class average was 78%. Questions about individual items should be emailed to your TA within seven days, with the question number and your reasoning. TAs will respond within 48 hours on weekdays.
+
+Please do not email me directly about grades; your TA will bring any issues to me.
+
+Midterm review materials (Oct 7, 2026, Dr. Rosalind Pettigrew)
+The midterm covers Weeks 1–7. The review lecture and review sheet are posted in Week 8. The exam opens Thursday, October 15 at 12:00 am and closes Sunday, October 18 at 11:59 pm. You have 75 minutes once you start and one attempt. Please check your browser before you begin.
+
+Reminder about the AI policy (Sep 21, 2026, Dr. Rosalind Pettigrew)
+A reminder that, as stated in the syllabus, AI use must be disclosed. Students who have questions about the policy should review the syllabus or contact their TA. Undisclosed AI use will be handled under the University Academic Integrity Policy.
+
+How to get help: TA email (Sep 8, 2026, Dr. Rosalind Pettigrew)
+With about 200 students in this section, please email your TA first with questions about assignments or grades. Include your full name, student ID, and the assignment name. Your TA will respond within 48 hours on weekdays.
+
+To help us respond quickly, TAs use standard replies for common questions. For example: 'Thank you for your email. Please see the Course Policies section of the syllabus for information about late work. If you still have questions after reviewing it, please reply to this message.'
+
+Welcome to SOC 101 (Aug 24, 2026, Dr. Rosalind Pettigrew)
+Welcome to Introduction to Sociology. Please read the syllabus and complete the Week 1 discussion by Wednesday night. All lecture videos and readings are available now.
+
+I look forward to a great semester.
+
+============================================================
+SYLLABUS
+============================================================
+Course description
+An introduction to the sociological study of society. Topics include sociological theory and research methods, culture, socialization, groups and organizations, deviance, social stratification, race and ethnicity, gender, family, education, and social change. Students learn to use the sociological perspective to analyze social issues. This course satisfies the university's general-education requirement in social and behavioral sciences.
+
+Instructor: Dr. Rosalind Pettigrew, Associate Professor of Sociology · rpettigrew@calderstate.example
+Office hours: Thursdays 2:00–3:00 pm ET by Zoom, first come first served; link on the Home page. Questions about grades and assignments should go to your TA first.
+Response time: Within 48 hours on weekdays (TAs answer first)
+Teaching Assistant (last names A–L): Marcus Hale · mhale@calderstate.example
+Teaching Assistant (last names M–Z): Priya Venkataraman · pvenkataraman@calderstate.example
+
+Learning outcomes
+- Define and apply key sociological concepts such as the sociological imagination, culture, socialization, and stratification.
+- Compare the functionalist, conflict, and symbolic interactionist perspectives and use them to analyze social issues.
+- Describe the main methods sociologists use to study social life and evaluate basic research claims.
+- Explain how social inequalities based on class, race, and gender are produced and maintained.
+- Communicate sociological ideas clearly in writing and in online discussion.
+
+Course materials
+- Conerly, T. R., Holmes, K., & Lal Tamang, A. (2021). Introduction to sociology 3e. OpenStax. https://openstax.org/books/introduction-sociology-3e/pages/1-introduction https://openstax.org/books/introduction-sociology-3e/pages/1-introduction (Required; free online. A free PDF and low-cost print copy are also available from OpenStax.)
+
+How a week works
+Weeks open on Monday at 8:00 am ET. Read the assigned OpenStax sections and watch the two lecture videos early in the week. Initial discussion posts are due Wednesday at 11:59 pm ET, and two replies are due Sunday at 11:59 pm ET. Reading checks, in the weeks that have them, are due Sunday at 11:59 pm ET. There is no discussion in midterm week or finals week.
+
+Grading
+- Weekly discussions (14 × 10 points): 30%
+- Reading checks (6 × 10 points): 15%
+- Midterm exam: 25%
+- Final essay: 30%
+A 93–100, A- 90–92, B+ 87–89, B 83–86, B- 80–82, C+ 77–79, C 73–76, C- 70–72, D 60–69, F below 60.
+
+Policies
+Late work: Discussion posts submitted late lose 20% of the available points and are not accepted more than 48 hours after the deadline. Reading checks close at the deadline and are not reopened except for documented emergencies. The final essay loses 10% per day late.
+Discussion participation: Each week you must write one initial post by Wednesday 11:59 pm ET and reply to two classmates by Sunday 11:59 pm ET. Posts should be respectful, use course concepts, and be written in clear, professional English. Posts that do not meet the length requirement may lose points.
+Contacting the teaching team: Email your TA first. TAs will respond within 48 hours on weekdays. Emails sent on weekends will be answered the following Monday or Tuesday. Please check the syllabus and the announcements before emailing. The instructor handles grade appeals after you have contacted your TA.
+Academic integrity: All work must be your own. Plagiarism, unauthorized collaboration, and submitting work written by someone or something else without disclosure are violations of the University Academic Integrity Policy and may result in a failing grade for the assignment or the course.
+Accessibility and accommodations: Students with documented disabilities should contact the Office of Accessibility Services at the start of the term so accommodations can be arranged. Lecture videos have captions. Transcripts are available on request.
+Technology: You need a reliable internet connection and a recent browser. Technical problems are not an excuse for late work unless reported to the IT Help Desk with a ticket number before the deadline.
+Use of AI tools: AI use must be disclosed. If you use generative AI tools in any work for this course, you must disclose that use to the instructor. Failure to disclose AI use will be treated as a violation of the University Academic Integrity Policy. Work you submit must be your own. If you are unsure about this policy, please contact your TA.
+
+============================================================
+MODULES
+============================================================
+
+--- Week 1: What Is Sociology? (Aug 24 – Aug 30) ---
+This week introduces sociology as the systematic study of groups and group interactions and the sociological imagination. You will also meet the three major theoretical perspectives that we return to all semester. Read the syllabus before you post.
+This week you will:
+- Define sociology and the sociological imagination.
+- Describe the functionalist, conflict, and symbolic interactionist perspectives.
+- Explain how personal experiences connect to larger social forces.
+Readings:
+- 1.1 What Is Sociology? (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/1-1-what-is-sociology
+- 1.3 Theoretical Perspectives in Sociology (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/1-3-theoretical-perspectives-in-sociology
+Watch / listen:
+- Week 1 lecture: What Is Sociology? (video, 18 min, Recorded Fall 2021; the same video is used in every section. Captions available. Examples refer to remote learning in 2021 as a recent change.)
+- Week 1 lecture: Three Theoretical Perspectives (video, 22 min, Recorded Fall 2021; the same video is used in every section. Captions available.)
+- Week 1 slides (slides, PDF, about 25 slides, Lecture slides from the Fall 2021 recording. Download only; no speaker notes.)
+
+[Discussion] Discussion 1: Introductions and the Sociological Imagination · Due Initial post Wed Aug 26, 11:59 pm; two replies Sun Aug 30, 11:59 pm · 10 points
+Prompt: Introduce yourself to the class (name you prefer, major, and where you are logging in from). Then use the sociological imagination to explain how one personal choice you have made, such as choosing to attend college, was shaped by larger social forces.
+Requirements: Initial post of 150–200 words by Wednesday 11:59 pm ET. Reply to two classmates (at least 75 words each) by Sunday 11:59 pm ET. Use at least one key term from the week's reading. Posts are graded on content, use of course concepts, and clear, professional writing (5 points for the initial post, 2.5 points for each reply). Late posts lose 20%.
+168 posts in this discussion; showing 3
+  Aaliyah T. (Aug 26, 11:22 pm): Hello everyone! My name is Aaliyah, and I am a first-year student majoring in nursing. Using the sociological imagination, I can see that my decision to attend college is not only a personal choice, but is also shaped by larger social forces such as my family's expectations and the current economy. Furthermore, the rising cost of tuition shows how social structures influence individual lives. Overall, the sociological imagination helps me understand that my personal troubles are connected to public issues. I look forward to learning from all of you this semester!
+    Reply from Ethan P. (Aug 30, 8:14 pm): Great post, Aaliyah! I agree with your point about the economy. Thank you for sharing!
+  Brandon K. (Aug 26, 11:47 pm): Hi everyone, my name is Brandon and I am a sophomore studying business. In today's society, many people believe that choosing a college is a purely individual decision. However, the sociological imagination shows that my choice was influenced by social factors such as my parents' education and the job market in my hometown. Furthermore, this perspective helps me see that individual experiences are connected to broader social patterns. In conclusion, I am excited to explore these ideas in this course.
+  Camila R. (Aug 26, 11:56 pm): Hello classmates! I am Camila, a first-year student who is still undeclared. Through the lens of the sociological imagination, my decision to attend a public university was shaped by social forces such as financial aid policies and the expectations of my community. Overall, this concept helps me see that my personal story is part of a larger social context. I am looking forward to a great semester with everyone!
+
+--- Week 2: Sociological Research (Aug 31 – Sep 6) ---
+Sociologists use a range of methods to study the social world. This week covers research approaches, the main research methods, and the ethical rules researchers follow. Reading Check 1 covers Weeks 1 and 2.
+This week you will:
+- Distinguish quantitative and qualitative approaches.
+- Identify the strengths and limits of surveys, experiments, field research, and secondary data analysis.
+- Describe why informed consent and confidentiality matter in research.
+Readings:
+- 2.1 Approaches to Sociological Research (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/2-1-approaches-to-sociological-research
+- 2.2 Research Methods (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/2-2-research-methods
+- 2.3 Ethical Concerns (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/2-3-ethical-concerns
+Watch / listen:
+- Week 2 lecture: Asking Sociological Questions (video, 20 min, Recorded Fall 2021; the same video is used in every section. Captions available.)
+- Week 2 lecture: Methods and Ethics (video, 24 min, Recorded Fall 2021; the same video is used in every section. Captions available. Includes a brief clip from a 1970s film that is not captioned in the original.)
+- Week 2 slides (slides, PDF, about 25 slides, Lecture slides from the Fall 2021 recording. Download only; no speaker notes.)
+
+[Quiz] Reading Check 1: Weeks 1–2 · Due Sun Sep 6, 11:59 pm · 10 points
+10 questions drawn from a pool, auto-graded; 2 attempts, 20 minutes each, highest score kept. Questions are multiple choice. The questions shown here are examples from the pool.
+1. Which thinker is credited with coining the term 'sociology' in 1838?
+   a) Karl Marx
+   b) Auguste Comte
+   c) Max Weber
+   d) Herbert Spencer
+2. C. Wright Mills used the term 'sociological imagination' to describe the ability to:
+   a) Predict future social trends with statistics
+   b) See the connection between personal experiences and larger social forces
+   c) Imagine how a perfect society would work
+   d) Study social groups without any bias
+3. A researcher spends a year living in a neighborhood, taking notes on daily life and joining community events. This is an example of:
+   a) A controlled experiment
+   b) A mail survey
+   c) Participant observation (field research)
+   d) Secondary data analysis
+4. In research, 'reliability' refers to:
+   a) Whether a measure captures the concept it claims to measure
+   b) Whether a measure gives consistent results when repeated
+   c) Whether the sample is large enough
+   d) Whether participants were told the purpose of the study
+
+[Discussion] Discussion 2: Choosing a Research Method · Due Initial post Wed Sep 2, 11:59 pm; two replies Sun Sep 6, 11:59 pm · 10 points
+Prompt: Think of a question about college life that a sociologist could study (for example, how first-year students make friends). Which research method from this week's reading would you use to study it, and why? Name one ethical concern you would need to address.
+Requirements: Initial post of 150–200 words by Wednesday 11:59 pm ET. Reply to two classmates (at least 75 words each) by Sunday 11:59 pm ET. Use at least one key term from the week's reading. Posts are graded on content, use of course concepts, and clear, professional writing (5 points for the initial post, 2.5 points for each reply). Late posts lose 20%.
+157 posts in this discussion; showing 3
+  Daniel M. (Sep 2, 11:31 pm): In today's society, college students face many pressures, so I would like to study how first-year students make friends. I would use a survey because it allows a researcher to collect data from a large number of students. Furthermore, a survey could be analyzed statistically to identify patterns. However, one ethical concern is confidentiality, since students may share personal information. In conclusion, researchers must protect participants' privacy and obtain informed consent.
+    Reply from Grace L. (Sep 6, 9:02 pm): Great post, Daniel! I agree that a survey would work well. Thanks for sharing your thoughts!
+    Reply from Isabella C. (Sep 6, 10:25 pm): I like your point about confidentiality. Nice job!
+  Fatima A. (Sep 2, 11:44 pm): I would study how first-year students make friends using field research. Through participant observation, a sociologist could see how friendships form in dorms and classrooms. Furthermore, this method provides rich, detailed information that a survey might miss. Overall, an important ethical concern is informed consent, because the people being observed should know that they are part of a study. This week's reading shows that ethics is a central part of sociological research.
+  Hiroshi M. (Sep 2, 11:53 pm): A sociologist could study how first-year students make friends by conducting interviews. Interviews allow researchers to understand students' experiences in their own words. Furthermore, this qualitative approach can reveal patterns that numbers alone cannot show. One ethical concern is protecting the identity of participants. In conclusion, choosing the right method depends on the research question.
+
+--- Week 3: Culture (Sep 7 – Sep 13) ---
+Culture is the shared set of values, beliefs, norms, symbols, and practices of a group. This week looks at what culture is, its elements, and how the three theoretical perspectives explain it.
+This week you will:
+- Define culture and distinguish material from nonmaterial culture.
+- Explain values, norms, sanctions, and symbols.
+- Apply the three perspectives to a cultural practice.
+Readings:
+- 3.1 What Is Culture? (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/3-1-what-is-culture
+- 3.2 Elements of Culture (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/3-2-elements-of-culture
+- 3.4 Theoretical Perspectives on Culture (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/3-4-theoretical-perspectives-on-culture
+Watch / listen:
+- Week 3 lecture: What Is Culture? (video, 19 min, Recorded Fall 2021; the same video is used in every section. Captions available. Includes examples from social media platforms popular in 2021.)
+- Week 3 lecture: Norms, Values, and Cultural Change (video, 21 min, Recorded Fall 2021; the same video is used in every section. Captions available.)
+- Week 3 slides (slides, PDF, about 25 slides, Lecture slides from the Fall 2021 recording. Download only; no speaker notes.)
+
+[Discussion] Discussion 3: A Cultural Practice Through a Sociological Lens · Due Initial post Wed Sep 9, 11:59 pm; two replies Sun Sep 13, 11:59 pm · 10 points
+Prompt: Describe one norm, value, or ritual from a culture or subculture you belong to. Analyze it using one of the three theoretical perspectives from Week 1.
+Requirements: Initial post of 150–200 words by Wednesday 11:59 pm ET. Reply to two classmates (at least 75 words each) by Sunday 11:59 pm ET. Use at least one key term from the week's reading. Posts are graded on content, use of course concepts, and clear, professional writing (5 points for the initial post, 2.5 points for each reply). Late posts lose 20%.
+152 posts in this discussion; showing 3
+  Jordan W. (Sep 9, 11:18 pm): One norm in my family's culture is gathering for a large meal every Sunday. From a functionalist perspective, this ritual serves an important function because it strengthens family bonds and passes on shared values. Furthermore, the practice creates stability for family members. In conclusion, this week's reading shows how cultural practices help society function smoothly.
+  Kayla S. (Sep 9, 11:39 pm): In today's society, one value in my culture is respect for elders. Using the conflict perspective, we can see that this value also reinforces a hierarchy in which older family members hold more power. Furthermore, this shows how culture can serve the interests of some groups. Overall, analyzing culture through different perspectives helps us understand it more deeply.
+    Reply from Liam D. (Sep 13, 7:45 pm): Great post, Kayla! I never thought about respect for elders as a form of power. Thanks for sharing!
+  Mei-Ling Z. (Sep 9, 11:58 pm): A ritual in my community is celebrating Lunar New Year with specific foods and greetings. According to symbolic interactionism, these foods and greetings are symbols that carry shared meanings. Furthermore, people create and recreate culture through everyday interactions. In conclusion, this ritual shows how symbols help members of a culture understand one another.
+
+--- Week 4: Society and the Social Construction of Reality (Sep 14 – Sep 20) ---
+This week we move from culture to society. We compare types of societies and examine how people create and maintain what they take to be real through social interaction. Reading Check 2 covers Weeks 3 and 4.
+This week you will:
+- Describe how societies differ by technology and economy.
+- Explain the idea that reality is socially constructed.
+- Give an example of a socially constructed category.
+Readings:
+- 4.1 Types of Societies (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/4-1-types-of-societies
+- 4.3 Social Constructions of Reality (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/4-3-social-constructions-of-reality
+Watch / listen:
+- Week 4 lecture: Types of Societies (video, 17 min, Recorded Fall 2021; the same video is used in every section. Captions available.)
+- Week 4 lecture: How Reality Is Constructed (video, 23 min, Recorded Fall 2021; the same video is used in every section. Captions available. Contains a segment on 'digital natives' that reflects 2021 technology.)
+- Week 4 slides (slides, PDF, about 25 slides, Lecture slides from the Fall 2021 recording. Download only; no speaker notes.)
+
+[Quiz] Reading Check 2: Weeks 3–4 · Due Sun Sep 20, 11:59 pm · 10 points
+10 questions drawn from a pool, auto-graded; 2 attempts, 20 minutes each, highest score kept. Questions are multiple choice. The questions shown here are examples from the pool.
+1. Which of the following is an example of nonmaterial culture?
+   a) A smartphone
+   b) A university campus
+   c) The belief in individual freedom
+   d) A traditional wedding dress
+2. Wearing pajamas to a formal lecture would most likely be a violation of a:
+   a) Law
+   b) Folkway
+   c) Taboo
+   d) Value
+3. Judging another culture by the standards of your own culture is called:
+   a) Cultural relativism
+   b) Ethnocentrism
+   c) Xenocentrism
+   d) Cultural diffusion
+4. Sociologists say that race and gender are 'socially constructed.' This means that:
+   a) They have no effect on people's lives
+   b) Their meanings are created and maintained through social interaction rather than being fixed by biology alone
+   c) They were invented by sociologists in the twentieth century
+   d) They are the same in every society
+
+[Discussion] Discussion 4: What Seems Natural but Is Socially Constructed? · Due Initial post Wed Sep 16, 11:59 pm; two replies Sun Sep 20, 11:59 pm · 10 points
+Prompt: Choose one thing that many people think of as natural or fixed (for example, gender roles, money, or the idea of 'adulthood'). Explain how it is socially constructed, using at least one idea from this week's reading.
+Requirements: Initial post of 150–200 words by Wednesday 11:59 pm ET. Reply to two classmates (at least 75 words each) by Sunday 11:59 pm ET. Use at least one key term from the week's reading. Posts are graded on content, use of course concepts, and clear, professional writing (5 points for the initial post, 2.5 points for each reply). Late posts lose 20%.
+149 posts in this discussion; showing 3
+  Noah B. (Sep 16, 11:27 pm): In today's society, many people believe that money has value naturally. However, according to this week's reading, the value of money is socially constructed because it depends on a shared agreement among people. Furthermore, if people stopped trusting a currency, it would lose its value. Overall, this example shows how social interaction creates and maintains what we consider to be real.
+  Olivia H. (Sep 16, 11:49 pm): One thing that seems natural is the idea that certain jobs are for men and others are for women. This week's reading helps us see that gender roles are socially constructed through socialization and everyday interaction. Furthermore, these roles vary across cultures and change over time. In conclusion, understanding social construction allows us to question what we take for granted.
+    Reply from Priya V. (Sep 20, 6:30 pm): Great post, Olivia! I agree that gender roles change over time. Thanks for sharing!
+  Samuel J. (Sep 16, 11:57 pm): The concept of adulthood is often viewed as a natural stage of life. Yet the reading shows that societies define adulthood differently, for example at 18 or at marriage. Furthermore, these definitions are created through laws and cultural expectations. Overall, adulthood is a social construction rather than a purely biological fact.
+
+--- Week 5: Socialization (Sep 21 – Sep 27) ---
+How do we become members of society? This week covers classic theories of self-development and the main agents of socialization: family, school, peers, and media.
+This week you will:
+- Summarize Cooley's looking-glass self and Mead's stages of self-development.
+- Identify the agents of socialization.
+- Explain how socialization shapes identity.
+Readings:
+- 5.1 Theories of Self-Development (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/5-1-theories-of-self-development
+- 5.3 Agents of Socialization (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/5-3-agents-of-socialization
+Watch / listen:
+- Week 5 lecture: Becoming a Self (video, 20 min, Recorded Fall 2021; the same video is used in every section. Captions available.)
+- Week 5 lecture: Agents of Socialization (video, 18 min, Recorded Fall 2021; the same video is used in every section. Captions available. Examples about peer groups mention platforms that have since changed.)
+- Week 5 slides (slides, PDF, about 25 slides, Lecture slides from the Fall 2021 recording. Download only; no speaker notes.)
+
+[Discussion] Discussion 5: Your Agents of Socialization · Due Initial post Wed Sep 23, 11:59 pm; two replies Sun Sep 27, 11:59 pm · 10 points
+Prompt: Which agent of socialization (family, school, peers, mass media, or another) has had the biggest influence on who you are today? Use one theory of self-development from the reading to explain how.
+Requirements: Initial post of 150–200 words by Wednesday 11:59 pm ET. Reply to two classmates (at least 75 words each) by Sunday 11:59 pm ET. Use at least one key term from the week's reading. Posts are graded on content, use of course concepts, and clear, professional writing (5 points for the initial post, 2.5 points for each reply). Late posts lose 20%.
+146 posts in this discussion; showing 3
+  Tyler N. (Sep 23, 11:33 pm): The agent of socialization that has influenced me most is my family. According to Cooley's looking-glass self, we develop our sense of self based on how we think others see us. Furthermore, my parents' expectations taught me to value hard work. In conclusion, my family played the biggest role in shaping my identity.
+    Reply from Aaliyah T. (Sep 27, 8:50 pm): Great post, Tyler! I agree that family is very influential. Thanks for sharing!
+  Zara F. (Sep 23, 11:45 pm): In today's society, mass media is a powerful agent of socialization. Through social media, I learned what is considered popular and acceptable. Furthermore, Mead's idea of the generalized other explains how I take into account the expectations of a larger community. Overall, media has shaped how I see myself and others.
+  Ben C. (Sep 23, 11:59 pm): Peers have had the biggest influence on me. Using Mead's theory, I learned to take the role of others by playing on a team in high school. Furthermore, my teammates taught me about cooperation and fairness. In conclusion, peer groups are a key agent of socialization.
+
+--- Week 6: Groups and Organizations (Sep 28 – Oct 4) ---
+Much of social life takes place in groups. This week covers primary and secondary groups, in-groups and out-groups, and formal organizations, including Weber's bureaucracy. Reading Check 3 covers Weeks 5 and 6.
+This week you will:
+- Distinguish primary and secondary groups.
+- Describe the characteristics of a bureaucracy.
+- Explain the idea of McDonaldization.
+Readings:
+- 6.1 Types of Groups (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/6-1-types-of-groups
+- 6.3 Formal Organizations (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/6-3-formal-organizations
+Watch / listen:
+- Week 6 lecture: Groups in Social Life (video, 19 min, Recorded Fall 2021; the same video is used in every section. Captions available.)
+- Week 6 lecture: Bureaucracy and Formal Organizations (video, 22 min, Recorded Fall 2021; the same video is used in every section. Captions available.)
+- Week 6 slides (slides, PDF, about 25 slides, Lecture slides from the Fall 2021 recording. Download only; no speaker notes.)
+
+[Quiz] Reading Check 3: Weeks 5–6 · Due Sun Oct 4, 11:59 pm · 10 points
+10 questions drawn from a pool, auto-graded; 2 attempts, 20 minutes each, highest score kept. Questions are multiple choice. The questions shown here are examples from the pool.
+1. Charles Horton Cooley's concept of the 'looking-glass self' suggests that our sense of self develops from:
+   a) Our genetic makeup
+   b) How we imagine others see and judge us
+   c) Formal schooling alone
+   d) Our position in the economy
+2. In George Herbert Mead's theory, the 'generalized other' refers to:
+   a) A specific person who is important to us
+   b) Our awareness of the norms and expectations of society as a whole
+   c) A person who is very different from us
+   d) The part of the self that is purely biological
+3. Which best describes a primary group?
+   a) A large, impersonal group formed to achieve a goal
+   b) A small, long-lasting group with strong emotional ties, such as a family
+   c) A group of strangers waiting for a bus
+   d) A group that people leave after a short time
+4. The term 'McDonaldization' describes:
+   a) The spread of American restaurants worldwide only
+   b) The process by which principles of efficiency, calculability, predictability, and control come to dominate more areas of society
+   c) The decline of bureaucracy
+   d) A form of primary group
+
+[Discussion] Discussion 6: Primary and Secondary Groups in Your Life · Due Initial post Wed Sep 30, 11:59 pm; two replies Sun Oct 4, 11:59 pm · 10 points
+Prompt: Compare one primary group and one secondary group you belong to. Then explain one way in which a formal organization you deal with (for example, your university) reflects the features of a bureaucracy.
+Requirements: Initial post of 150–200 words by Wednesday 11:59 pm ET. Reply to two classmates (at least 75 words each) by Sunday 11:59 pm ET. Use at least one key term from the week's reading. Posts are graded on content, use of course concepts, and clear, professional writing (5 points for the initial post, 2.5 points for each reply). Late posts lose 20%.
+151 posts in this discussion
+
+--- Week 7: Deviance and Social Control (Oct 5 – Oct 11) ---
+Deviance is behavior that violates social norms, and what counts as deviant varies by time and place. This week introduces how the three perspectives explain deviance and crime.
+This week you will:
+- Define deviance and social control.
+- Compare functionalist, conflict, and symbolic interactionist explanations of deviance.
+- Explain strain theory and labeling theory.
+Readings:
+- 7.1 Deviance and Control (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/7-1-deviance-and-control
+- 7.2 Theoretical Perspectives on Deviance and Crime (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/7-2-theoretical-perspectives-on-deviance-and-crime
+Watch / listen:
+- Week 7 lecture: What Counts as Deviant? (video, 18 min, Recorded Fall 2021; the same video is used in every section. Captions available.)
+- Week 7 lecture: Theories of Deviance (video, 25 min, Recorded Fall 2021; the same video is used in every section. Captions available.)
+- Week 7 slides (slides, PDF, about 25 slides, Lecture slides from the Fall 2021 recording. Download only; no speaker notes.)
+
+[Discussion] Discussion 7: Deviant Here, Normal There · Due Initial post Wed Oct 7, 11:59 pm; two replies Sun Oct 11, 11:59 pm · 10 points
+Prompt: Choose a behavior that is considered deviant in one context but not in another (for example, in different time periods or cultures). Analyze why using one theory from this week's reading.
+Requirements: Initial post of 150–200 words by Wednesday 11:59 pm ET. Reply to two classmates (at least 75 words each) by Sunday 11:59 pm ET. Use at least one key term from the week's reading. Posts are graded on content, use of course concepts, and clear, professional writing (5 points for the initial post, 2.5 points for each reply). Late posts lose 20%.
+143 posts in this discussion; showing 3
+  Chloe R. (Oct 7, 11:25 pm): Tattoos were once considered deviant in many parts of American society but are now widely accepted. According to labeling theory, deviance is not inherent in an act but depends on how others react to it. Furthermore, as more people got tattoos, the label changed. In conclusion, this example shows that deviance is socially defined.
+  Marcus D. (Oct 7, 11:42 pm): In today's society, staying up all night to study is often praised, while skipping class is seen as deviant. Using functionalism, deviance can clarify moral boundaries. Furthermore, Durkheim argued that deviance can unite a community in response. Overall, context determines what we see as deviant.
+    Reply from Sophia L. (Oct 11, 9:15 pm): Great post, Marcus! I agree that context matters. Thanks for sharing!
+  Elena V. (Oct 7, 11:55 pm): Using marijuana is a good example because it is legal in some states but illegal in others. From a conflict perspective, laws reflect the interests of powerful groups. Furthermore, enforcement has not been equal across social groups. In conclusion, this example shows how power shapes what is labeled deviant.
+
+--- Week 8: Midterm Exam (Oct 12 – Oct 18) ---
+There are no new readings or discussion this week. Review Weeks 1–7 using the review lecture and your notes. The midterm opens Thursday and closes Sunday.
+This week you will:
+- Review the key concepts and theories from Weeks 1–7.
+Watch / listen:
+- Midterm review lecture (video, 28 min, Recorded Fall 2021; the same video is used in every section. Captions available. Covers Weeks 1–7 only.)
+- Midterm review sheet (slides, PDF, 4 pages, List of key terms and theorists. Not a study guide with answers.)
+
+[Quiz] Midterm Exam (Weeks 1–7) · Due Sun Oct 18, 11:59 pm · 100 points
+Opens Thu Oct 15, 12:00 am. 40 multiple-choice questions drawn from a pool, one attempt, 75 minutes once started, auto-graded. Open notes, no proctoring software. The five questions shown are posted practice items.
+1. Which statement best describes the symbolic interactionist perspective?
+   a) Society is a system of parts that work together to create stability
+   b) Society is shaped by conflict over scarce resources
+   c) Society is created and maintained through everyday interactions and shared meanings
+   d) Society is determined by biology
+2. In a study testing whether hours of sleep affect exam scores, the independent variable is:
+   a) Exam scores
+   b) Hours of sleep
+   c) The students' majors
+   d) The semester
+3. Which principle of research ethics requires that participants know the purpose and risks of a study and agree to take part?
+   a) Replication
+   b) Informed consent
+   c) Validity
+   d) Random sampling
+4. Labeling theory argues that deviance:
+   a) Is a characteristic of certain kinds of people from birth
+   b) Results from how others define and react to an act
+   c) Occurs only in poor communities
+   d) Is always harmful to society
+5. A student adopts the slang and dress of a new friend group to fit in. This is best described as socialization by:
+   a) The mass media
+   b) Peer groups
+   c) A total institution
+   d) The family of orientation
+
+--- Week 9: Social Stratification (Oct 19 – Oct 25) ---
+Social stratification is the system of ranking people in society by wealth, power, and prestige. This week focuses on the United States: class, mobility, and the theoretical perspectives. Reading Check 4 covers Weeks 7 and 9.
+This week you will:
+- Distinguish caste and class systems.
+- Define social mobility and describe its types.
+- Compare how functionalists and conflict theorists explain inequality.
+Readings:
+- 9.1 What Is Social Stratification? (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/9-1-what-is-social-stratification
+- 9.2 Social Stratification and Mobility in the United States (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/9-2-social-stratification-and-mobility-in-the-united-states
+- 9.4 Theoretical Perspectives on Social Stratification (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/9-4-theoretical-perspectives-on-social-stratification
+Watch / listen:
+- Week 9 lecture: Systems of Stratification (video, 21 min, Recorded Fall 2021; the same video is used in every section. Captions available. Income and wealth figures in the lecture are from 2020.)
+- Week 9 lecture: Mobility and Theory (video, 23 min, Recorded Fall 2021; the same video is used in every section. Captions available.)
+- Week 9 slides (slides, PDF, about 25 slides, Lecture slides from the Fall 2021 recording. Download only; no speaker notes.)
+
+[Quiz] Reading Check 4: Weeks 7 and 9 · Due Sun Oct 25, 11:59 pm · 10 points
+10 questions drawn from a pool, auto-graded; 2 attempts, 20 minutes each, highest score kept. Questions are multiple choice. The questions shown here are examples from the pool.
+1. According to Durkheim, deviance can be functional for society because it:
+   a) Reduces the need for laws
+   b) Clarifies moral boundaries and can promote social unity
+   c) Always leads to social collapse
+   d) Ensures everyone is equal
+2. A person who accepts the cultural goal of financial success but turns to illegal means to reach it fits Merton's category of:
+   a) Conformity
+   b) Innovation
+   c) Ritualism
+   d) Retreatism
+3. Moving from one social class to another during your own lifetime is called:
+   a) Intergenerational mobility
+   b) Intragenerational mobility
+   c) Structural mobility
+   d) Horizontal mobility
+4. Which best describes a caste system?
+   a) Social standing is based mainly on individual achievement
+   b) Social standing is determined by birth, and moving between castes is very limited
+   c) Everyone has equal social standing
+   d) Social standing changes every generation by law
+5. The Davis-Moore thesis, a functionalist argument, claims that stratification:
+   a) Is unnecessary in modern societies
+   b) Ensures that the most important positions are filled by the most qualified people
+   c) Exists only because of discrimination
+   d) Is created by the mass media
+
+[Discussion] Discussion 9: Social Class and Opportunity · Due Initial post Wed Oct 21, 11:59 pm; two replies Sun Oct 25, 11:59 pm · 10 points
+Prompt: Reflect on how your family's social class position has shaped one opportunity or constraint in your life. Connect your example to at least one concept from the reading (for example, social mobility, cultural capital, or meritocracy).
+Requirements: Initial post of 150–200 words by Wednesday 11:59 pm ET. Reply to two classmates (at least 75 words each) by Sunday 11:59 pm ET. Use at least one key term from the week's reading. Posts are graded on content, use of course concepts, and clear, professional writing (5 points for the initial post, 2.5 points for each reply). Late posts lose 20%.
+139 posts in this discussion; showing 3
+  Rachel Q. (Oct 21, 11:36 pm): My family's social class has shaped my educational opportunities. Because my parents could afford to live in a good school district, I had access to advanced classes. Furthermore, the reading's discussion of social mobility shows that class position at birth strongly influences adult outcomes. In conclusion, my experience reflects how stratification affects opportunities.
+  Victor A. (Oct 21, 11:51 pm): In today's society, many people believe in meritocracy, the idea that success is based on effort and talent. However, my experience as a first-generation student shows that family resources matter. Furthermore, conflict theorists argue that stratification benefits those already in power. Overall, class shapes opportunity in ways we often overlook.
+    Reply from Camila R. (Oct 25, 7:10 pm): Thanks for sharing, Victor! I agree with your points about meritocracy.
+  Hannah G. (Oct 21, 11:58 pm): Class has shaped my access to internships. Because I need to work during the summer, I cannot take unpaid positions that build a resume. Furthermore, this shows how economic resources translate into opportunities. In conclusion, stratification affects the paths that students can take.
+
+--- Week 10: Global Inequality (Oct 26 – Nov 1) ---
+This week widens the lens from the United States to the world. We look at how nations are classified, what poverty means in different places, and how global inequality is measured.
+This week you will:
+- Describe how nations are classified by income and development.
+- Distinguish absolute and relative poverty.
+- Explain why global inequality persists.
+Readings:
+- 10.1 Global Stratification and Classification (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/10-1-global-stratification-and-classification
+- 10.2 Global Wealth and Poverty (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/10-2-global-wealth-and-poverty
+Watch / listen:
+- Week 10 lecture: Classifying Nations (video, 19 min, Recorded Fall 2021; the same video is used in every section. Captions available. Uses country classifications and poverty statistics from 2020.)
+- Week 10 lecture: Wealth and Poverty Worldwide (video, 22 min, Recorded Fall 2021; the same video is used in every section. Captions available.)
+- Week 10 slides (slides, PDF, about 25 slides, Lecture slides from the Fall 2021 recording. Download only; no speaker notes.)
+
+[Discussion] Discussion 10: Global Inequality in Everyday Life · Due Initial post Wed Oct 28, 11:59 pm; two replies Sun Nov 1, 11:59 pm · 10 points
+Prompt: Choose one everyday item (such as a phone, a shirt, or a cup of coffee) and trace one way it connects you to global inequality. Use at least one concept from this week's reading.
+Requirements: Initial post of 150–200 words by Wednesday 11:59 pm ET. Reply to two classmates (at least 75 words each) by Sunday 11:59 pm ET. Use at least one key term from the week's reading. Posts are graded on content, use of course concepts, and clear, professional writing (5 points for the initial post, 2.5 points for each reply). Late posts lose 20%.
+133 posts in this discussion; showing 3
+  Nathan E. (Oct 28, 11:14 pm): A smartphone connects me to global inequality because many of its parts are made in countries where workers earn low wages. According to the reading, wealthy nations often benefit from the labor of people in poorer nations. Furthermore, this shows that global stratification is tied to the global economy. Overall, everyday products reveal larger patterns of inequality.
+  Mia T. (Oct 28, 11:40 pm): In today's society, my morning coffee is an example of global inequality. Coffee is grown in low-income countries but often sold at much higher prices in wealthy nations. Furthermore, the farmers who grow the coffee receive a small share of the profit. In conclusion, this example illustrates how global stratification works.
+  Oscar L. (Oct 28, 11:52 pm): My clothing connects me to global inequality because many garments are manufactured in countries with low labor costs. Furthermore, absolute poverty makes workers willing to accept dangerous conditions. Overall, understanding this connection helps me think about my role as a consumer.
+
+--- Week 11: Race and Ethnicity (Nov 2 – Nov 8) ---
+This week covers how sociologists define race, ethnicity, and minority groups, and how prejudice, discrimination, and racism operate. Please read carefully and keep discussion respectful. Reading Check 5 covers Weeks 10 and 11.
+This week you will:
+- Define race, ethnicity, and minority group in sociological terms.
+- Distinguish prejudice, discrimination, and institutional racism.
+- Describe patterns of race and ethnicity in the United States.
+Readings:
+- 11.1 Racial, Ethnic, and Minority Groups (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/11-1-racial-ethnic-and-minority-groups
+- 11.3 Prejudice, Discrimination, and Racism (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/11-3-prejudice-discrimination-and-racism
+- 11.5 Race and Ethnicity in the United States (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/11-5-race-and-ethnicity-in-the-united-states
+Watch / listen:
+- Week 11 lecture: Race, Ethnicity, and Minority Groups (video, 21 min, Recorded Fall 2021; the same video is used in every section. Captions available. Statistics are from the 2010 Census.)
+- Week 11 lecture: Prejudice and Discrimination (video, 24 min, Recorded Fall 2021; the same video is used in every section. Captions available.)
+- Week 11 slides (slides, PDF, about 25 slides, Lecture slides from the Fall 2021 recording. Download only; no speaker notes.)
+
+[Quiz] Reading Check 5: Weeks 10–11 · Due Sun Nov 8, 11:59 pm · 10 points
+10 questions drawn from a pool, auto-graded; 2 attempts, 20 minutes each, highest score kept. Questions are multiple choice. The questions shown here are examples from the pool.
+1. Absolute poverty is best described as:
+   a) Having less than the average person in your society
+   b) Being unable to meet basic needs such as food, clean water, and shelter
+   c) Being unemployed for a year
+   d) Living in a rural area
+2. Sociologists define race as:
+   a) A biological category with clear genetic boundaries
+   b) A socially constructed category based on perceived physical differences
+   c) Another word for ethnicity
+   d) The same as nationality
+3. A landlord refuses to rent an apartment to a family because of their race. This is an example of:
+   a) Prejudice only
+   b) Discrimination
+   c) Assimilation
+   d) Ethnocentrism
+4. Institutional racism refers to:
+   a) Racist attitudes held by an individual
+   b) Racial inequality built into the policies and practices of social institutions
+   c) Racism only in government agencies
+   d) Racism that no longer exists
+5. In sociology, a minority group is defined primarily by:
+   a) Its small size
+   b) Its relative lack of power and differential treatment
+   c) Its recent arrival in a country
+   d) Its religion
+
+[Discussion] Discussion 11: Race as a Social Construction · Due Initial post Wed Nov 4, 11:59 pm; two replies Sun Nov 8, 11:59 pm · 10 points
+Prompt: Using an example from this week's reading, explain what it means to say that race is socially constructed. Please keep your posts respectful.
+Requirements: Initial post of 150–200 words by Wednesday 11:59 pm ET. Reply to two classmates (at least 75 words each) by Sunday 11:59 pm ET. Use at least one key term from the week's reading. Posts are graded on content, use of course concepts, and clear, professional writing (5 points for the initial post, 2.5 points for each reply). Late posts lose 20%.
+0 posts in this discussion
+
+--- Week 12: Gender and Sexuality (Nov 9 – Nov 15) ---
+This week distinguishes sex, gender, identity, and expression, and examines gender inequality and sexuality as social topics.
+This week you will:
+- Distinguish sex from gender.
+- Explain how gender inequality shows up in work and education.
+- Apply a theoretical perspective to gender.
+Readings:
+- 12.1 Sex, Gender, Identity, and Expression (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/12-1-sex-gender-identity-and-expression
+- 12.2 Gender and Gender Inequality (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/12-2-gender-and-gender-inequality
+Watch / listen:
+- Week 12 lecture: Sex and Gender (video, 20 min, Recorded Fall 2021; the same video is used in every section. Captions available. Terminology used in the lecture has changed since 2021.)
+- Week 12 lecture: Gender Inequality (video, 22 min, Recorded Fall 2021; the same video is used in every section. Captions available.)
+- Week 12 slides (slides, PDF, about 25 slides, Lecture slides from the Fall 2021 recording. Download only; no speaker notes.)
+
+[Discussion] Discussion 12: Gender Expectations · Due Initial post Wed Nov 11, 11:59 pm; two replies Sun Nov 15, 11:59 pm · 10 points
+Prompt: Describe one gender expectation you have encountered in school, work, or media. Explain how socialization helps maintain it.
+Requirements: Initial post of 150–200 words by Wednesday 11:59 pm ET. Reply to two classmates (at least 75 words each) by Sunday 11:59 pm ET. Use at least one key term from the week's reading. Posts are graded on content, use of course concepts, and clear, professional writing (5 points for the initial post, 2.5 points for each reply). Late posts lose 20%.
+0 posts in this discussion
+
+--- Week 13: Family (Nov 16 – Nov 22) ---
+This week asks what counts as a family and a marriage and how those definitions vary and change. We also look at challenges families face today. Reading Check 6 covers Weeks 12 and 13.
+This week you will:
+- Define marriage and family from a sociological perspective.
+- Describe common family forms and kinship patterns.
+- Identify challenges facing contemporary families.
+Readings:
+- 14.1 What Is Marriage? What Is a Family? (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/14-1-what-is-marriage-what-is-a-family
+- 14.3 Challenges Families Face (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/14-3-challenges-families-face
+Watch / listen:
+- Week 13 lecture: Defining Marriage and Family (video, 18 min, Recorded Fall 2021; the same video is used in every section. Captions available.)
+- Week 13 lecture: Challenges Families Face (video, 20 min, Recorded Fall 2021; the same video is used in every section. Captions available. Includes pandemic-era examples of working and schooling from home.)
+- Week 13 slides (slides, PDF, about 25 slides, Lecture slides from the Fall 2021 recording. Download only; no speaker notes.)
+
+[Quiz] Reading Check 6: Weeks 12–13 · Due Sun Nov 22, 11:59 pm · 10 points
+10 questions drawn from a pool, auto-graded; 2 attempts, 20 minutes each, highest score kept. Questions are multiple choice. The questions shown here are examples from the pool.
+1. In sociology, 'sex' refers to biological characteristics, while 'gender' refers to:
+   a) The same biological characteristics
+   b) The social and cultural meanings attached to being male, female, or another gender
+   c) A person's sexual orientation only
+   d) Hormone levels
+2. A society in which men hold most of the power and authority is called a:
+   a) Matriarchy
+   b) Patriarchy
+   c) Egalitarian society
+   d) Oligarchy
+3. A family consisting of two parents and their children living together is called a:
+   a) Extended family
+   b) Nuclear family
+   c) Blended family
+   d) Kin network
+4. In a society where descent is traced through the mother's side of the family, the kinship system is:
+   a) Patrilineal
+   b) Matrilineal
+   c) Polygynous
+   d) Monogamous
+
+[Discussion] Discussion 13: What Counts as a Family? · Due Initial post Wed Nov 18, 11:59 pm; two replies Sun Nov 22, 11:59 pm · 10 points
+Prompt: How has the definition of family changed in your lifetime or in your own family's history? Use one idea from this week's reading in your answer.
+Requirements: Initial post of 150–200 words by Wednesday 11:59 pm ET. Reply to two classmates (at least 75 words each) by Sunday 11:59 pm ET. Use at least one key term from the week's reading. Posts are graded on content, use of course concepts, and clear, professional writing (5 points for the initial post, 2.5 points for each reply). Late posts lose 20%.
+0 posts in this discussion
+
+--- Week 14: Education (Nov 23 – Nov 29) ---
+This week applies the theoretical perspectives to schools and looks at issues such as inequality in education. Thanksgiving is Thursday, so the initial post is due Tuesday instead of Wednesday.
+This week you will:
+- Compare functionalist, conflict, and symbolic interactionist views of education.
+- Explain the hidden curriculum.
+- Identify issues in U.S. education such as unequal funding.
+Readings:
+- 16.2 Theoretical Perspectives on Education (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/16-2-theoretical-perspectives-on-education
+- 16.3 Issues in Education (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/16-3-issues-in-education
+Watch / listen:
+- Week 14 lecture: Perspectives on Education (video, 21 min, Recorded Fall 2021; the same video is used in every section. Captions available.)
+- Week 14 lecture: Issues in Education (video, 19 min, Recorded Fall 2021; the same video is used in every section. Captions available. Discusses remote learning in 2020–2021.)
+- Week 14 slides (slides, PDF, about 25 slides, Lecture slides from the Fall 2021 recording. Download only; no speaker notes.)
+
+[Discussion] Discussion 14: Sociology of a School Policy · Due Initial post Tue Nov 24, 11:59 pm; two replies Sun Nov 29, 11:59 pm · 10 points
+Prompt: Choose one school policy (such as standardized testing, dress codes, or grade-based tracking). Apply the functionalist and conflict perspectives to explain its purpose and its effects.
+Requirements: Initial post of 150–200 words by Wednesday 11:59 pm ET. Reply to two classmates (at least 75 words each) by Sunday 11:59 pm ET. Use at least one key term from the week's reading. Posts are graded on content, use of course concepts, and clear, professional writing (5 points for the initial post, 2.5 points for each reply). Late posts lose 20%.
+0 posts in this discussion
+
+--- Week 15: Social Movements and Social Change (Nov 30 – Dec 6) ---
+In our last content week we look at how social movements form, how they develop, and what drives social change. The final essay prompt is posted this week and is due in finals week.
+This week you will:
+- Describe types and stages of social movements.
+- Identify causes of social change.
+- Synthesize course concepts for the final essay.
+Readings:
+- 21.2 Social Movements (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/21-2-social-movements
+- 21.3 Social Change (OpenStax Introduction to Sociology 3e; required) https://openstax.org/books/introduction-sociology-3e/pages/21-3-social-change
+Watch / listen:
+- Week 15 lecture: Social Movements (video, 20 min, Recorded Fall 2021; the same video is used in every section. Captions available. Examples end in 2021.)
+- Week 15 lecture: Social Change and Course Wrap-Up (video, 17 min, Recorded Fall 2021; the same video is used in every section. Captions available.)
+- Week 15 slides (slides, PDF, about 25 slides, Lecture slides from the Fall 2021 recording. Download only; no speaker notes.)
+
+[Discussion] Discussion 15: A Social Movement and Its Life Cycle · Due Initial post Wed Dec 2, 11:59 pm; two replies Sun Dec 6, 11:59 pm · 10 points
+Prompt: Pick a social movement (past or present). Identify its type and describe where it is in the stages of a social movement described in the reading.
+Requirements: Initial post of 150–200 words by Wednesday 11:59 pm ET. Reply to two classmates (at least 75 words each) by Sunday 11:59 pm ET. Use at least one key term from the week's reading. Posts are graded on content, use of course concepts, and clear, professional writing (5 points for the initial post, 2.5 points for each reply). Late posts lose 20%.
+0 posts in this discussion
+
+--- Finals Week: Finals Week (Dec 7 – Dec 11) ---
+There are no new readings, lectures, or discussions this week. The final essay is due Wednesday. TAs will respond to final essay questions by email within 48 hours on weekdays.
+This week you will:
+- Apply sociological perspectives and concepts to a contemporary social issue.
+
+[Assignment] Final Essay: Sociological Analysis of a Social Issue · Due Wed Dec 9, 11:59 pm · 100 points
+Write an essay of 1,800–2,000 words (about 6–7 double-spaced pages) that analyzes one contemporary social issue of your choice (for example, student debt, housing costs, or online harassment) using at least two of the three theoretical perspectives from the course. Your essay should: (1) state a clear thesis; (2) define the issue and explain why it is a social, not only a personal, problem; (3) apply two perspectives and compare what each emphasizes; (4) draw on at least four sections of the assigned OpenStax reading and at least two additional credible sources; and (5) use APA 7 in-text citations and a reference list. Submit as a Word or PDF file through the assignment link. Disclose any AI use in a note at the end of your essay, as described in the syllabus. Essays are checked for text similarity when submitted.
+Rubric:
+- Thesis and focus: 15 points
+- Accurate use of sociological concepts: 25 points
+- Application and comparison of two theoretical perspectives: 25 points
+- Use of evidence and sources: 15 points
+- Organization and clarity of writing: 10 points
+- APA 7 citations and references: 10 points
+
+============================================================
+PEOPLE
+============================================================
+Dr. Rosalind Pettigrew · Associate Professor of Sociology
+Marcus Hale · Teaching Assistant (last names A–L)
+Priya Venkataraman · Teaching Assistant (last names M–Z)
+About 200 students (online section 01) (student roster hidden in this copy)

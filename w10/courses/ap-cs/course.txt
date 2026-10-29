@@ -1,0 +1,1109 @@
+VP-CS301 AP Computer Science A (Java) · 2026-27 school year (self-paced; enrollment open September through October)
+Marlow Ridge Unified School District · Marlow Ridge Virtual Program
+CourseSpace course site (fictional course copy for EDUC 565A; people and posts are fictional, readings are real; videos listed but not included)
+Fully online, self-paced modules · 11 modules · free to district students · 118 students from 9 schools across the district
+
+============================================================
+HOME
+============================================================
+Welcome to AP Computer Science A with the Marlow Ridge Virtual Program. This course is free to all Marlow Ridge students and is meant for students whose home school does not offer AP CS A, or whose schedule does not fit it. You will learn to program in Java and prepare for the AP exam in May.
+
+The course is self-paced. Each module has readings, short videos, auto-graded code checks, and a short multiple-choice quiz. Work through the modules in order. The suggested pace is about one module every two weeks, so you finish Modules 1 through 10 by the end of March and use April for exam review in Module 11.
+
+I support about 120 students across the district, so the best way to get help fast is the course forum or the Thursday lunch Zoom. You can also email me. Please do not wait until you are far behind to ask. Good luck, and welcome.
+
+Mr. Whitcombe
+— Mr. Andre Whitcombe
+
+============================================================
+ANNOUNCEMENTS
+============================================================
+
+Welcome to AP CS A (Sep 8, 2026, Mr. Whitcombe)
+Welcome, everyone. Start with Module 1 and the Tour of the district coding environment video. If you cannot sign in to the coding environment from a school computer, try from home and email the help desk.
+
+The Thursday lunch Zoom starts next week.
+
+Pair project matching for Module 3 (Oct 12, 2026, Mr. Whitcombe)
+If you are starting Module 3, the pair project partner matching happens on the 1st and 15th of each month. Check the Module 3 page for the sign-up form. Matching is done by pace, not by school.
+
+You will not be matched with someone from your own school.
+
+Reminder: AP exam ordering (Oct 20, 2026, Mr. Whitcombe)
+Please talk to your home school's AP coordinator about ordering the AP CS A exam for May. Deadlines are set by each school, and the virtual program cannot order the exam for you.
+
+Code Check autograder updated (Oct 26, 2026, Course notification (automatic))
+The autograder for Module 4 and Module 5 code checks was updated. If you passed a check before the update, your score has not changed.
+
+============================================================
+SYLLABUS
+============================================================
+Course description
+AP Computer Science A is an introductory college-level course in computer programming using the Java language. Students learn to design, write, and test programs using objects, selection, iteration, classes, arrays, ArrayList, 2D arrays, searching, sorting, and recursion. The course follows the College Board's four-unit AP Computer Science A course description (Unit 1: Using Objects and Methods; Unit 2: Selection and Iteration; Unit 3: Class Creation; Unit 4: Data Collections) and prepares students for the AP exam in May 2027.
+
+Instructor: Mr. Andre Whitcombe, Virtual Program Teacher (AP Computer Science) · awhitcombe@marlowridge.fictional.edu
+Office hours: Optional lunchtime Zoom help session, Thursdays 12:10 to 12:40 pm Eastern. The link is in the Help page. Email any time.
+Response time: Within 2 school days. Code check questions sent after 3 pm may wait until the next school day.
+Technical support (logins, course site, IDE access): District Virtual Program Help Desk · vp-helpdesk@marlowridge.fictional.edu
+
+Learning outcomes
+- Write, test, and debug Java programs that use variables, conditionals, loops, and methods.
+- Design and implement classes with private data, constructors, and methods.
+- Use arrays, ArrayList, and 2D arrays to store and process collections of data.
+- Trace and analyze code, including searching, sorting, and recursive algorithms.
+- Discuss the ethical and social impacts of computing and data use.
+- Prepare for the AP Computer Science A exam.
+
+Course materials
+- Hoffman, B. (2025). CSAwesome2: AP CSA Java curriculum [Online textbook]. Runestone Academy. https://runestone.academy/ns/books/published/csawesome2/csawesome2.html (Free online interactive textbook. Main reading for every module. Source code repository: https://github.com/bhoffman0/CSAwesome2)
+- Oracle. (n.d.). The Java tutorials. https://docs.oracle.com/javase/tutorial/ https://docs.oracle.com/javase/tutorial/ (Free online. Optional second explanation for many topics.)
+- Oracle. (n.d.). Java Platform, Standard Edition 17 API specification. https://docs.oracle.com/en/java/javase/17/docs/api/index.html https://docs.oracle.com/en/java/javase/17/docs/api/index.html (Free online reference for String, Math, and ArrayList.)
+- College Board. (n.d.). AP Computer Science A. AP Central. https://apcentral.collegeboard.org/courses/ap-computer-science-a https://apcentral.collegeboard.org/courses/ap-computer-science-a (Official course and exam information.)
+
+How a week works
+There is no fixed weekly schedule. A typical module takes about two weeks: read the textbook topics, watch the videos if you need them, try the code checks (unlimited attempts), then take the module quiz. Mr. Whitcombe checks the forum and email on school days, and the optional help Zoom runs Thursdays at lunch. Pair project matching happens on the 1st and 15th of each month.
+
+Grading
+- Code checks, Modules 1-10 (20): 40%
+- Module quizzes, Modules 1-10 (10): 25%
+- Pair project (Module 3): 10%
+- Module 11 review (2 free-response style code checks and the practice quiz): 25%
+A 90-100, B 80-89, C 70-79, D 60-69, F below 60. Course grade is reported to your home school at the end of each semester.
+
+Policies
+Pacing and deadlines: There are no weekly deadlines. The suggested pace is about one module every 2 weeks, with all modules finished by the end of April. Your home school's semester grade deadlines still apply, so check with your counselor. If you are more than 3 modules behind the suggested pace, Mr. Whitcombe may email you and your counselor.
+Code checks and quizzes: Code checks can be retried as many times as you like. Quizzes allow 2 attempts and keep your highest score. The autograder checks output and behavior; it cannot give hints about why a test failed.
+Help sessions: An optional Zoom help session runs Thursdays 12:10 to 12:40 pm Eastern. Attendance is not graded and sessions are not recorded.
+Pair project: Module 3 includes a pair programming project with a partner from another school. If you cannot find a partner or your partner stops responding, email Mr. Whitcombe and you may finish the project alone.
+Academic honesty: Submit your own work. Copying code from classmates or from the internet and submitting it as your own is not allowed. For the pair project, both partners should understand and be able to explain all of the code.
+Technology and access: You need a computer with a modern web browser and an internet connection. Some school networks block the coding environment or video sites. If a resource is blocked at school, try from home or contact the help desk. The course is built for computers; phones can work for readings and quizzes but not for code checks.
+Use of AI tools: AI tools such as chatbots may be used to help you understand a concept or to explain an error message. Do not paste a whole code check or the pair project prompt into an AI tool and submit what it writes. Code you submit must be code you understand and can explain. Some AI sites are blocked on district networks; you are not expected to use a VPN or other workaround to reach them. If you use an AI tool to help with a code check, add a one-line comment at the top of your code saying which tool you used. Mr. Whitcombe may ask you to explain your code if it looks different from your earlier work. AI use is not allowed on module quizzes.
+
+============================================================
+MODULES
+============================================================
+
+--- Module 1: Variables, Expressions, and Primitive Types (self-paced) ---
+Welcome to Java. In this module you set up your coding environment, write your first programs, and learn how Java stores numbers and text in variables. You will also see why 7 / 2 is not 3.5 and what casting does about it. Suggested pace: about 2 weeks.
+This week you will:
+- Declare and initialize variables of type int, double, boolean, and String.
+- Evaluate arithmetic expressions, including integer division and the remainder operator.
+- Use assignment, compound assignment (+=, ++), and casting correctly.
+Readings:
+- CSAwesome2 Unit 1: Using Objects and Methods, topics 1.1 to 1.6 (algorithms, variables, expressions, assignment, casting, compound operators) (CSAwesome2 (Runestone Academy); Required. Open the book and pick the unit from the left-hand menu.) https://runestone.academy/ns/books/published/csawesome2/csawesome2.html
+- Variables (The Java Tutorials (Oracle); Optional second explanation) https://docs.oracle.com/javase/tutorial/java/nutsandbolts/variables.html
+- Primitive Data Types (The Java Tutorials (Oracle); Optional second explanation) https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html
+- Operators (The Java Tutorials (Oracle); Optional second explanation) https://docs.oracle.com/javase/tutorial/java/nutsandbolts/operators.html
+Watch / listen:
+- Module 1 lecture: Your first Java program (video, 16 min, Recorded 2023 in a different IDE than the one you will use; captions are auto-generated and sometimes wrong on code terms.)
+- Module 1 lecture: Types and integer division (video, 21 min, Slides plus screen recording. The last 4 minutes cover topics from the pre-2025 course description that are no longer on the exam.)
+- Tour of the district coding environment (video, 9 min, Screen recording. Some school networks block the sign-in page; if so, try from home.)
+
+[Discussion] Course Forum: Introduce yourself and ask questions · 0 points
+Prompt: Say hello to your classmates. Tell us which school you attend, why you are taking AP CS A, and one thing you hope to build someday. You can also use this forum for any Java question.
+Requirements: Ungraded and optional. Be respectful. Do not paste full solutions to graded code checks.
+1 posts in this discussion; showing 1
+  Tasha M. (Sep 14, 2026, 9:12 pm): hi, I'm Tasha, I go to a school that doesn't have a CS class so I'm doing this online. Is anyone else having trouble with the Java IDE not loading on a school computer? It just shows a blank page.
+
+[Code check] Code Check 1.1: Rectangle Info · 10 points
+Auto-graded, unlimited attempts, best score kept. Tests run when you press Check.
+Finish the program so it calculates the area and perimeter of the rectangle and prints each on its own line, in the format shown in the test list.
+Starter code:
+public class RectangleInfo {
+    public static void main(String[] args) {
+        int width = 12;
+        int height = 5;
+
+        // TODO: calculate the area and the perimeter
+        // TODO: print "Area: " followed by the area on one line
+        // TODO: print "Perimeter: " followed by the perimeter on the next line
+    }
+}
+The autograder checks:
+- Output line 1 is exactly: Area: 60
+- Output line 2 is exactly: Perimeter: 34
+- Hidden test: width 7 and height 3 prints Area: 21 and Perimeter: 20
+- Variables width and height are not changed from their starting values
+
+[Code check] Code Check 1.2: Quiz Average · 10 points
+Auto-graded, unlimited attempts, best score kept. Tests run when you press Check.
+The program below prints an average that is wrong because of integer division. Change the code so it prints the true average as a double. Do not change the three quiz values.
+Starter code:
+public class QuizAverage {
+    public static void main(String[] args) {
+        int quiz1 = 88;
+        int quiz2 = 92;
+        int quiz3 = 79;
+
+        double average = (quiz1 + quiz2 + quiz3) / 3;
+        System.out.println("Average: " + average);
+    }
+}
+The autograder checks:
+- Output starts with: Average: 86.3333
+- Output is not Average: 86.0
+- Source still declares quiz1, quiz2, quiz3 as int
+- Source uses a cast or a double literal (for example 3.0)
+
+[Quiz] Quiz 1: Variables and Expressions · 10 points
+Auto-graded, 2 attempts, no time limit, highest score kept. Closes when you mark the module complete.
+1. What is the value of x after this statement? int x = 7 / 2;
+   a) 3
+   b) 3.5
+   c) 4
+   d) 3.0
+2. What is the value of 10 % 4?
+   a) 0
+   b) 1
+   c) 2
+   d) 2.5
+3. Which line correctly declares a variable that holds the price 4.99?
+   a) int price = 4.99;
+   b) double price = 4.99;
+   c) String price = 4.99;
+   d) boolean price = 4.99;
+4. After the following code runs, what is n?
+int n = 5;
+n += 3;
+n++;
+   a) 8
+   b) 9
+   c) 10
+   d) 53
+
+--- Module 2: Objects, Methods, Strings, and Math (self-paced) ---
+Java programs are built from objects. This module shows you how to create objects with constructors, call their methods, and read documentation for classes you did not write. You will work with String methods and the Math class, including random numbers. Suggested pace: about 2 weeks.
+This week you will:
+- Create objects with new and call instance methods and static (class) methods.
+- Use String methods such as length, substring, indexOf, and charAt.
+- Use Math.random and casting to generate integers in a given range.
+Readings:
+- CSAwesome2 Unit 1: Using Objects and Methods, topics 1.7 to 1.15 (APIs, method signatures, class methods, Math, objects, constructors, instance methods, Strings) (CSAwesome2 (Runestone Academy); Required. Open the book and pick the unit from the left-hand menu.) https://runestone.academy/ns/books/published/csawesome2/csawesome2.html
+- Strings (The Java Tutorials (Oracle); Optional second explanation) https://docs.oracle.com/javase/tutorial/java/data/strings.html
+- Numbers (includes the Math class) (The Java Tutorials (Oracle); Optional second explanation) https://docs.oracle.com/javase/tutorial/java/data/numbers.html
+- Math class API documentation (The Java Tutorials (Oracle); Optional. Good practice reading real API docs, which the exam expects.) https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Math.html
+Watch / listen:
+- Module 2 lecture: Objects and constructors (video, 19 min, Recorded 2023. Uses a Turtle graphics example that is not in the current textbook.)
+- Module 2 lecture: String methods (video, 14 min, Screen recording with live coding; captions auto-generated.)
+
+[Code check] Code Check 2.1: Name Tool · 10 points
+Auto-graded, unlimited attempts, best score kept. Tests run when you press Check.
+Use String methods to finish the program. Print the name in uppercase, then its length, then the first word (everything before the first space). Assume the string always contains exactly one space.
+Starter code:
+public class NameTool {
+    public static void main(String[] args) {
+        String name = "robot arm";
+
+        // TODO: print the name in uppercase
+        // TODO: print the length of the name
+        // TODO: print the first word, using indexOf and substring
+    }
+}
+The autograder checks:
+- Output line 1: ROBOT ARM
+- Output line 2: 9
+- Output line 3: robot
+- Hidden test with name = "line follower" prints LINE FOLLOWER, 13, line
+- Source calls indexOf and substring
+
+[Code check] Code Check 2.2: Dice Roller · 10 points
+Auto-graded, unlimited attempts, best score kept. Tests run when you press Check.
+Complete rollDie so it returns a random integer from 1 to 6, inclusive, using Math.random.
+Starter code:
+public class Dice {
+    public static int rollDie() {
+        // TODO: return a random int from 1 to 6, inclusive
+        return 0;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("You rolled: " + rollDie());
+    }
+}
+The autograder checks:
+- rollDie() is called 1000 times and every result is between 1 and 6
+- All six values 1 through 6 appear at least once in those 1000 calls
+- Source uses Math.random
+- Source does not use the Random class
+
+[Quiz] Quiz 2: Objects, Strings, and Math · 10 points
+Auto-graded, 2 attempts, no time limit, highest score kept. Closes when you mark the module complete.
+1. What does "Hello".substring(1, 3) return?
+   a) He
+   b) el
+   c) ell
+   d) ello
+2. What type of value does Math.pow(2, 3) return?
+   a) int, with value 8
+   b) double, with value 8.0
+   c) int, with value 6
+   d) double, with value 9.0
+3. Which values can (int)(Math.random() * 5) produce?
+   a) 1 to 5
+   b) 0 to 5
+   c) 0 to 4
+   d) 1 to 4
+4. What does the following code print?
+String s = "AP CSA";
+System.out.println(s.indexOf("CSA"));
+   a) 2
+   b) 3
+   c) 4
+   d) -1
+
+--- Module 3: Boolean Expressions and Selection, and the Pair Project (self-paced) ---
+Programs make decisions. You will learn boolean expressions, relational and logical operators, and if, else if, and else statements, including nested and compound conditions. You will also practice De Morgan's laws for simplifying conditions. Suggested pace: about 2 weeks. This module also includes the course's one pair programming project: you will be matched with a student from another school and write and test a small decision-making program together. Allow about 3 weeks for this module, because pairs have to coordinate.
+This week you will:
+- Write boolean expressions using ==, !=, <, >, <=, >=, &&, ||, and !.
+- Trace and write if / else if / else statements, including nested ones.
+- Apply De Morgan's laws to rewrite a condition.
+- Collaborate with a remote partner to write, test, and document code.
+Readings:
+- CSAwesome2 Unit 2: Selection and Iteration, topics 2.1 to 2.6 (algorithms, booleans, if statements, nested ifs, compound conditions, comparing booleans) (CSAwesome2 (Runestone Academy); Required. Open the book and pick the unit from the left-hand menu.) https://runestone.academy/ns/books/published/csawesome2/csawesome2.html
+- The if-then and if-then-else Statements (The Java Tutorials (Oracle); Optional second explanation) https://docs.oracle.com/javase/tutorial/java/nutsandbolts/if.html
+- Operators (relational and conditional operators) (The Java Tutorials (Oracle); Optional. See the section on equality, relational, and conditional operators.) https://docs.oracle.com/javase/tutorial/java/nutsandbolts/operators.html
+Watch / listen:
+- Module 3 lecture: If statements and boolean logic (video, 22 min, Recorded 2023; captions auto-generated.)
+- Truth tables and De Morgan's laws (slides, 11 min, Slides only, narrated.)
+- Pair project walkthrough and partner tips (video, 8 min, Recorded fall 2025 by Mr. Whitcombe. Covers how matching works and how to split the work.)
+
+[Code check] Code Check 3.1: Ticket Price · 10 points
+Auto-graded, unlimited attempts, best score kept. Tests run when you press Check.
+Complete ticketPrice so that children under 5 are free, ages 5 to 12 pay 8, ages 65 and over pay 9, and everyone else pays 14.
+Starter code:
+public class Tickets {
+    public static int ticketPrice(int age) {
+        // TODO: return the correct price for this age
+        return 0;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(ticketPrice(30));
+    }
+}
+The autograder checks:
+- ticketPrice(3) returns 0
+- ticketPrice(5) returns 8 and ticketPrice(12) returns 8
+- ticketPrice(13) returns 14 and ticketPrice(64) returns 14
+- ticketPrice(65) returns 9
+
+[Code check] Code Check 3.2: Leap Year · 10 points
+Auto-graded, unlimited attempts, best score kept. Tests run when you press Check.
+Complete isLeapYear. A year is a leap year if it is divisible by 4, except years divisible by 100 are not leap years unless they are also divisible by 400.
+Starter code:
+public class LeapYear {
+    public static boolean isLeapYear(int year) {
+        // TODO: use one boolean expression or an if statement
+        return false;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isLeapYear(2024));
+    }
+}
+The autograder checks:
+- isLeapYear(2024) returns true
+- isLeapYear(2026) returns false
+- isLeapYear(1900) returns false
+- isLeapYear(2000) returns true
+
+[Assignment] Pair Project: Club Event Ticket Checker · Due Self-paced. Pairs are matched on the 1st and 15th of each month; finish within 2 weeks of being matched. · 50 points
+You will be matched with a partner from a different school. Together you will write a program that a school club could use at the door of an event.
+
+Partner A writes a static method isEligible(int age, boolean hasPermissionSlip, boolean isMember) that returns true if the student may attend: members always may; non-members need to be 14 or older or have a permission slip. Partner B writes a static method ticketPrice(int age, boolean isMember) that uses if / else if / else: members pay $2, students under 14 pay $3, everyone else pays $5. Together, write a main method that tests both methods with at least 6 cases and prints the results. Swap roles for the second half: each partner rewrites the other's method using a different but equivalent condition (De Morgan's laws are allowed).
+
+Stay in touch using the district student email or the Pair Project message board. Choose a shared editor that works on both of your school networks. When you are done, each partner submits the same final code file and a short individual reflection (4 to 6 sentences): what you built, what your partner did well, and one thing you would do differently.
+
+If your partner does not respond within 5 school days, email Mr. Whitcombe and you will be rematched or allowed to finish solo.
+Rubric:
+- isEligible returns the correct result for every rule: 12 points
+- ticketPrice uses if / else if / else correctly: 12 points
+- main tests at least 6 cases, including edge ages (13, 14): 8 points
+- Code is readable (comments, clear names) and both partners' names are in the header: 8 points
+- Individual reflection: 10 points
+
+[Quiz] Quiz 3: Selection · 10 points
+Auto-graded, 2 attempts, no time limit, highest score kept. Closes when you mark the module complete.
+1. Which condition is equivalent to !(a || b)?
+   a) !a || !b
+   b) !a && !b
+   c) a && b
+   d) a || !b
+2. Which condition correctly tests whether the int variable x equals 5?
+   a) x = 5
+   b) x == 5
+   c) x === 5
+   d) x.equals(5)
+3. What is the value of g after this code runs?
+int score = 85;
+String g;
+if (score >= 90) g = "A";
+else if (score >= 80) g = "B";
+else g = "C";
+   a) A
+   b) B
+   c) C
+   d) The code does not compile
+4. What is the value of the expression (7 > 3) && !(2 == 2)?
+   a) true
+   b) false
+   c) 7
+   d) The code does not compile
+
+--- Module 4: Iteration: while and for Loops (self-paced) ---
+Loops let a program repeat work. This module covers while loops, for loops, common loop algorithms such as sums and counts, loops over Strings, and nested loops. Tracing loops by hand is a skill the exam tests heavily. Suggested pace: about 2 weeks.
+This week you will:
+- Write while and for loops with correct initialization, test, and update.
+- Apply loop algorithms: accumulate a sum, count matches, and find a maximum.
+- Trace nested loops and state how many times the inner body runs.
+Readings:
+- CSAwesome2 Unit 2: Selection and Iteration, topics 2.7 to 2.12 (while loops, for loops, loop algorithms, Strings and loops, nested loops, loop analysis) (CSAwesome2 (Runestone Academy); Required. Open the book and pick the unit from the left-hand menu.) https://runestone.academy/ns/books/published/csawesome2/csawesome2.html
+- The while and do-while Statements (The Java Tutorials (Oracle); Optional second explanation) https://docs.oracle.com/javase/tutorial/java/nutsandbolts/while.html
+- The for Statement (The Java Tutorials (Oracle); Optional second explanation) https://docs.oracle.com/javase/tutorial/java/nutsandbolts/for.html
+Watch / listen:
+- Module 4 lecture: while and for loops (video, 24 min, Recorded 2023; captions auto-generated.)
+- Tracing nested loops (video, 13 min, Hand-drawn trace tables on a tablet. Audio is quiet in the first minute.)
+
+[Discussion] Course Forum: Loop trace challenge (optional) · 0 points
+Prompt: Post a short loop and ask classmates to trace it, or try one someone else posted.
+Requirements: Ungraded and optional.
+0 posts in this discussion
+
+[Code check] Code Check 4.1: Sum of Evens · 10 points
+Auto-graded, unlimited attempts, best score kept. Tests run when you press Check.
+Complete sumEvens so it returns the sum of all even numbers from 1 up to and including n.
+Starter code:
+public class LoopPractice {
+    public static int sumEvens(int n) {
+        // TODO: use a loop to add up the even numbers from 1 to n
+        return 0;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(sumEvens(10));
+    }
+}
+The autograder checks:
+- sumEvens(10) returns 30
+- sumEvens(1) returns 0
+- sumEvens(7) returns 12
+- Source contains a for or while loop
+
+[Code check] Code Check 4.2: Count Vowels · 10 points
+Auto-graded, unlimited attempts, best score kept. Tests run when you press Check.
+Complete countVowels so it returns how many letters in the string are vowels (a, e, i, o, u). Uppercase vowels count too.
+Starter code:
+public class Vowels {
+    public static int countVowels(String s) {
+        int count = 0;
+        // TODO: loop over the characters of s using charAt
+        return count;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(countVowels("Programming"));
+    }
+}
+The autograder checks:
+- countVowels("Programming") returns 3
+- countVowels("rhythm") returns 0
+- countVowels("AEIOU") returns 5
+- countVowels("") returns 0
+
+[Quiz] Quiz 4: Loops · 10 points
+Auto-graded, 2 attempts, no time limit, highest score kept. Closes when you mark the module complete.
+1. How many times does the body of this loop run?
+for (int i = 0; i < 5; i++) { ... }
+   a) 4
+   b) 5
+   c) 6
+   d) It runs forever
+2. What is count after this code runs?
+int count = 0;
+for (int i = 1; i <= 10; i += 3) { count++; }
+   a) 3
+   b) 4
+   c) 5
+   d) 10
+3. How many times does the loop body run?
+int x = 20;
+while (x > 0) { x = x / 2; }
+   a) 3
+   b) 4
+   c) 5
+   d) 6
+4. How many stars are printed?
+for (int i = 0; i < 3; i++) {
+  for (int j = 0; j < 2; j++) {
+    System.out.print("*");
+  }
+}
+   a) 5
+   b) 6
+   c) 3
+   d) 2
+
+--- Module 5: Writing Classes: Anatomy, Constructors, and Methods (self-paced) ---
+Until now you have used classes other people wrote. Now you write your own. You will learn how a class is organized (private instance variables, constructors, accessors, mutators), how methods take parameters and return values, and why we hide data behind methods. Suggested pace: about 2 weeks.
+This week you will:
+- Write a class with private instance variables, constructors, and public methods.
+- Write accessor (getter) and mutator (setter-style) methods and explain encapsulation.
+- Describe how parameters are passed and how return values work.
+Readings:
+- CSAwesome2 Unit 3: Class Creation, topics 3.1 to 3.5 (abstraction, impacts of programs, anatomy of a class, constructors, methods) (CSAwesome2 (Runestone Academy); Required. Open the book and pick the unit from the left-hand menu.) https://runestone.academy/ns/books/published/csawesome2/csawesome2.html
+- Classes (The Java Tutorials (Oracle); Optional second explanation) https://docs.oracle.com/javase/tutorial/java/javaOO/classes.html
+- Providing Constructors for Your Classes (The Java Tutorials (Oracle); Optional second explanation) https://docs.oracle.com/javase/tutorial/java/javaOO/constructors.html
+- Defining Methods (The Java Tutorials (Oracle); Optional second explanation) https://docs.oracle.com/javase/tutorial/java/javaOO/methods.html
+Watch / listen:
+- Module 5 lecture: Anatomy of a class (video, 26 min, Recorded 2023. The Dog class example is used throughout; captions auto-generated.)
+- Writing constructors and getters (video, 12 min, Screen recording.)
+
+[Code check] Code Check 5.1: Student Class · 10 points
+Auto-graded, unlimited attempts, best score kept. Tests run when you press Check.
+Complete the Student class. The constructor sets both fields. promote() adds 1 to the grade level but never goes above 12.
+Starter code:
+public class Student {
+    private String name;
+    private int gradeLevel;
+
+    public Student(String name, int gradeLevel) {
+        // TODO: set the instance variables
+    }
+
+    public String getName() {
+        // TODO
+        return "";
+    }
+
+    public int getGradeLevel() {
+        // TODO
+        return 0;
+    }
+
+    public void promote() {
+        // TODO: add 1 to gradeLevel, but never above 12
+    }
+
+    public static void main(String[] args) {
+        Student s = new Student("Ari", 11);
+        s.promote();
+        s.promote();
+        System.out.println(s.getName() + " is in grade " + s.getGradeLevel());
+    }
+}
+The autograder checks:
+- new Student("Ari", 11).getName() returns Ari
+- After two calls to promote on a grade 11 student, getGradeLevel returns 12
+- A grade 9 student promoted once is grade 10
+- Instance variables name and gradeLevel are still private
+
+[Code check] Code Check 5.2: Bank Account · 10 points
+Auto-graded, unlimited attempts, best score kept. Tests run when you press Check.
+Complete BankAccount. deposit adds money. withdraw removes money and returns true only if the balance is large enough; otherwise it leaves the balance alone and returns false.
+Starter code:
+public class BankAccount {
+    private double balance;
+
+    public BankAccount(double startingBalance) {
+        // TODO
+    }
+
+    public void deposit(double amount) {
+        // TODO
+    }
+
+    public boolean withdraw(double amount) {
+        // TODO
+        return false;
+    }
+
+    public double getBalance() {
+        // TODO
+        return 0.0;
+    }
+
+    public static void main(String[] args) {
+        BankAccount a = new BankAccount(50.0);
+        a.deposit(25.0);
+        System.out.println(a.withdraw(100.0) + " " + a.getBalance());
+    }
+}
+The autograder checks:
+- new BankAccount(50) then getBalance returns 50.0
+- After deposit(25.0) the balance is 75.0
+- withdraw(100.0) on a balance of 75.0 returns false and the balance stays 75.0
+- withdraw(30.0) on a balance of 75.0 returns true and the balance is 45.0
+
+[Quiz] Quiz 5: Writing Classes · 10 points
+Auto-graded, 2 attempts, no time limit, highest score kept. Closes when you mark the module complete.
+1. Why are instance variables usually declared private?
+   a) So they run faster
+   b) So other classes can only change them through the class's methods
+   c) So the class does not need a constructor
+   d) So they can be used without creating an object
+2. Which statement about a constructor is true?
+   a) It has the same name as the class and no return type
+   b) It must be declared void
+   c) It must be declared static
+   d) It can only be called once per program
+3. A method is declared public int total(). Which must be true?
+   a) It must contain a return statement that returns an int
+   b) It must print an int
+   c) It must have at least one parameter
+   d) It can only be called from main
+4. A class Point has the constructor Point(int x, int y). Which line creates a Point object?
+   a) Point p = Point(3, 4);
+   b) Point p = new Point(3, 4);
+   c) new Point p = (3, 4);
+   d) Point p = new Point;
+
+--- Module 6: Class Creation II: static, Scope, and this (self-paced) ---
+This module finishes the Class Creation unit: static variables and methods, scope and access, and the this keyword. Suggested pace: about 2 weeks.
+This week you will:
+- Explain the difference between instance and static variables and methods.
+- Describe variable scope and use the this keyword to refer to the current object.
+Readings:
+- CSAwesome2 Unit 3: Class Creation, topics 3.6 to 3.9 (methods and references, static variables and methods, scope and access, this) (CSAwesome2 (Runestone Academy); Required. Open the book and pick the unit from the left-hand menu.) https://runestone.academy/ns/books/published/csawesome2/csawesome2.html
+- Understanding Class Members (The Java Tutorials (Oracle); Optional second explanation) https://docs.oracle.com/javase/tutorial/java/javaOO/classvars.html
+- Controlling Access to Members of a Class (The Java Tutorials (Oracle); Optional second explanation) https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html
+- Using the this Keyword (The Java Tutorials (Oracle); Optional second explanation) https://docs.oracle.com/javase/tutorial/java/javaOO/thiskey.html
+Watch / listen:
+- Module 6 lecture: static and scope (video, 20 min, Recorded 2023; captions auto-generated.)
+
+[Code check] Code Check 6.1: Ticket IDs · 10 points
+Auto-graded, unlimited attempts, best score kept. Tests run when you press Check.
+Each Ticket should get its own id number, starting at 1 and going up by 1 for every new Ticket. Use a static variable to remember the next id.
+Starter code:
+public class Ticket {
+    private static int nextId = 1;
+    private int id;
+
+    public Ticket() {
+        // TODO: give this ticket the next id, then advance nextId
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public static void main(String[] args) {
+        Ticket a = new Ticket();
+        Ticket b = new Ticket();
+        System.out.println(a.getId() + " " + b.getId());
+    }
+}
+The autograder checks:
+- The first Ticket created has id 1
+- The third Ticket created has id 3
+- Two Tickets never share an id
+- nextId is declared static
+
+[Code check] Code Check 6.2: Temperature and this · 10 points
+Auto-graded, unlimited attempts, best score kept. Tests run when you press Check.
+The constructor has a bug: the parameter hides the instance variable, so the object's degrees never change. Fix it with the this keyword. Then complete isHigherThan.
+Starter code:
+public class Temperature {
+    private double degrees;
+
+    public Temperature(double degrees) {
+        degrees = degrees;
+    }
+
+    public double getDegrees() {
+        return degrees;
+    }
+
+    public boolean isHigherThan(Temperature other) {
+        // TODO: return true if this temperature is greater than other's
+        return false;
+    }
+
+    public static void main(String[] args) {
+        Temperature t = new Temperature(72.5);
+        System.out.println(t.getDegrees());
+    }
+}
+The autograder checks:
+- new Temperature(72.5).getDegrees() returns 72.5
+- Source uses this.degrees in the constructor
+- new Temperature(80).isHigherThan(new Temperature(70)) returns true
+- new Temperature(60).isHigherThan(new Temperature(60)) returns false
+
+[Quiz] Quiz 6: static, Scope, and this · 10 points
+Auto-graded, 2 attempts, no time limit, highest score kept. Closes when you mark the module complete.
+1. Which statement about a static method is true?
+   a) It can directly access instance variables
+   b) It belongs to the class and cannot directly access instance variables
+   c) It can only be called after an object is created
+   d) It must be private
+2. A variable is declared inside the body of a for loop. Where can it be used?
+   a) Anywhere in the class
+   b) Anywhere in the method
+   c) Only inside that loop body
+   d) Only in main
+3. Inside an instance method, what does the keyword this refer to?
+   a) The class itself
+   b) The object the method was called on
+   c) The previous object created
+   d) The main method
+4. What is Cnt.c after this code runs?
+class Cnt { static int c = 0; Cnt() { c++; } }
+...
+new Cnt(); new Cnt(); new Cnt();
+   a) 0
+   b) 1
+   c) 3
+   d) It does not compile
+
+--- Module 7: Data Sets, Data Ethics, and Arrays (self-paced) ---
+Programs often work with lots of data at once. This module starts with how data is collected and the ethical questions around it, then introduces one-dimensional arrays: creating them, traversing them with loops, and common algorithms such as finding a maximum or reversing. Suggested pace: about 2 weeks.
+This week you will:
+- Describe privacy and bias concerns that arise when collecting and using data.
+- Create, initialize, and traverse arrays with for and enhanced for loops.
+- Apply array algorithms: sum, average, maximum, and reversing.
+Readings:
+- CSAwesome2 Unit 4: Data Collections, topics 4.1 to 4.5 (data ethics, data sets, array basics, traversal, array algorithms) (CSAwesome2 (Runestone Academy); Required. Open the book and pick the unit from the left-hand menu.) https://runestone.academy/ns/books/published/csawesome2/csawesome2.html
+- Arrays (The Java Tutorials (Oracle); Optional second explanation) https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html
+Watch / listen:
+- Module 7 lecture: Arrays (video, 23 min, Recorded 2023; captions auto-generated.)
+- Data ethics short talk (slides, 10 min, Slides, narrated. Added in fall 2025 to cover the new course description.)
+
+[Code check] Code Check 7.1: Class Average · 10 points
+Auto-graded, unlimited attempts, best score kept. Tests run when you press Check.
+Complete average so it returns the average of the values in the array as a double. Assume the array has at least one element.
+Starter code:
+public class ArrayPractice {
+    public static double average(int[] scores) {
+        // TODO
+        return 0.0;
+    }
+
+    public static void main(String[] args) {
+        int[] data = {90, 85, 77, 100};
+        System.out.println(average(data));
+    }
+}
+The autograder checks:
+- average(new int[]{90, 85, 77, 100}) returns 88.0
+- average(new int[]{5}) returns 5.0
+- average(new int[]{1, 2}) returns 1.5
+- Source uses a loop or enhanced for loop
+
+[Code check] Code Check 7.2: Reverse in Place · 10 points
+Auto-graded, unlimited attempts, best score kept. Tests run when you press Check.
+Complete reverse so it reverses the order of the elements inside the same array. Do not create a second array.
+Starter code:
+public class ReverseIt {
+    public static void reverse(int[] arr) {
+        // TODO: swap elements from the two ends toward the middle
+    }
+
+    public static void main(String[] args) {
+        int[] a = {1, 2, 3, 4, 5};
+        reverse(a);
+        System.out.println(java.util.Arrays.toString(a));
+    }
+}
+The autograder checks:
+- {1, 2, 3, 4, 5} becomes {5, 4, 3, 2, 1}
+- {1, 2, 3, 4} becomes {4, 3, 2, 1}
+- An array of length 1 is unchanged
+- Source does not use the new keyword inside reverse
+
+[Quiz] Quiz 7: Arrays and Data Ethics · 10 points
+Auto-graded, 2 attempts, no time limit, highest score kept. Closes when you mark the module complete.
+1. What are the values in a after this statement runs? int[] a = new int[4];
+   a) null, null, null, null
+   b) 0, 0, 0, 0
+   c) 1, 1, 1, 1
+   d) They are undefined
+2. What does arr[arr.length] do when arr has 3 elements?
+   a) Returns the last element
+   b) Returns 0
+   c) Throws an ArrayIndexOutOfBoundsException
+   d) Returns null
+3. What is the index of the last element of an array named nums?
+   a) nums.length
+   b) nums.length - 1
+   c) nums.length + 1
+   d) nums.size() - 1
+4. Which is an example of a privacy concern with collecting data?
+   a) Data collected for one purpose is reused for another without users knowing
+   b) The data set is stored in an array
+   c) The data is sorted before use
+   d) The program uses a loop to read the data
+
+--- Module 8: Text Files, Wrapper Classes, and ArrayList (self-paced) ---
+Arrays have a fixed size. ArrayList can grow and shrink. In this module you will learn to read data from text files with Scanner, use wrapper classes such as Integer and Double, and add, remove, and traverse ArrayList objects. Removing items while looping is a classic place for bugs. Suggested pace: about 2 weeks.
+This week you will:
+- Read values from a text source with Scanner.
+- Explain autoboxing and why ArrayList holds objects, not primitives.
+- Add, get, set, and remove elements in an ArrayList and traverse it safely.
+Readings:
+- CSAwesome2 Unit 4: Data Collections, topics 4.6 to 4.10 (reading input files, wrapper classes, ArrayList basics, traversal, algorithms) (CSAwesome2 (Runestone Academy); Required. Open the book and pick the unit from the left-hand menu.) https://runestone.academy/ns/books/published/csawesome2/csawesome2.html
+- Scanning (The Java Tutorials (Oracle); Optional second explanation) https://docs.oracle.com/javase/tutorial/essential/io/scanning.html
+- Autoboxing and Unboxing (The Java Tutorials (Oracle); Optional second explanation) https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html
+- The List Interface (The Java Tutorials (Oracle); Optional, and goes beyond what the exam asks. Skim the examples.) https://docs.oracle.com/javase/tutorial/collections/interfaces/list.html
+- ArrayList API documentation (The Java Tutorials (Oracle); Optional reference.) https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html
+Watch / listen:
+- Module 8 lecture: ArrayList (video, 27 min, Recorded 2023; captions auto-generated. Longest video in the course.)
+- Reading files with Scanner (video, 12 min, Screen recording. Uses a file path that only works on Windows.)
+
+[Discussion] Course Forum: Share a debugging story (optional) · 0 points
+Prompt: Tell the class about a bug that took you a long time to find, and how you found it.
+Requirements: Ungraded and optional.
+0 posts in this discussion
+
+[Code check] Code Check 8.1: Remove Short Words · 10 points
+Auto-graded, unlimited attempts, best score kept. Tests run when you press Check.
+Complete removeShort so it removes every word with fewer than minLength characters from the list. Be careful: removing an element shifts the elements after it.
+Starter code:
+import java.util.ArrayList;
+
+public class WordFilter {
+    public static void removeShort(ArrayList<String> words, int minLength) {
+        // TODO
+    }
+
+    public static void main(String[] args) {
+        ArrayList<String> w = new ArrayList<String>();
+        w.add("a");
+        w.add("to");
+        w.add("java");
+        w.add("is");
+        removeShort(w, 3);
+        System.out.println(w);
+    }
+}
+The autograder checks:
+- [a, to, java, is] with minLength 3 becomes [java]
+- [cat, dog] with minLength 3 stays [cat, dog]
+- Two short words in a row are both removed (for example [a, b, cat] becomes [cat])
+- An empty list stays empty without an error
+
+[Code check] Code Check 8.2: Sum of Numbers in Text · 10 points
+Auto-graded, unlimited attempts, best score kept. Tests run when you press Check.
+Complete sumInts so it uses a Scanner to read every integer in the given text (numbers are separated by spaces or line breaks) and returns their sum. In the textbook you read from a file; this check uses a String so it can run in the autograder.
+Starter code:
+import java.util.Scanner;
+
+public class TextSum {
+    public static int sumInts(String data) {
+        Scanner sc = new Scanner(data);
+        int total = 0;
+        // TODO: loop while sc has another int, and add it to total
+        sc.close();
+        return total;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(sumInts("4 8 15\n16 23 42"));
+    }
+}
+The autograder checks:
+- sumInts("4 8 15\n16 23 42") returns 108
+- sumInts("7") returns 7
+- sumInts("") returns 0
+- Source uses hasNextInt and nextInt
+
+[Quiz] Quiz 8: ArrayList · 10 points
+Auto-graded, 2 attempts, no time limit, highest score kept. Closes when you mark the module complete.
+1. What does the list contain after this code runs?
+ArrayList<Integer> list = new ArrayList<Integer>();
+list.add(5);
+list.add(10);
+list.add(1, 7);
+   a) [5, 7, 10]
+   b) [5, 10, 7]
+   c) [7, 5, 10]
+   d) [1, 5, 10]
+2. list is [3, 4, 5]. What is list after list.remove(0)?
+   a) [4, 5]
+   b) [3, 4]
+   c) [3, 5]
+   d) [0, 4, 5]
+3. Why does ArrayList<int> not compile?
+   a) ArrayList cannot hold numbers
+   b) The type argument must be an object type such as Integer
+   c) int is a reserved word
+   d) ArrayList needs a size
+4. How do you find the number of elements in an ArrayList named list?
+   a) list.length
+   b) list.length()
+   c) list.size()
+   d) list.count
+
+--- Module 9: 2D Arrays (self-paced) ---
+A 2D array is an array of arrays, useful for grids, images, game boards, and tables. You will create 2D arrays, traverse them in row-major and column-major order, and write common 2D algorithms. Suggested pace: about 2 weeks.
+This week you will:
+- Declare, initialize, and access elements of a 2D array.
+- Traverse a 2D array with nested loops in row-major order.
+- Write methods that compute row, column, or whole-array results.
+Readings:
+- CSAwesome2 Unit 4: Data Collections, topics 4.11 to 4.13 (2D arrays, traversal, algorithms) (CSAwesome2 (Runestone Academy); Required. Open the book and pick the unit from the left-hand menu.) https://runestone.academy/ns/books/published/csawesome2/csawesome2.html
+- Arrays (see the section on multidimensional arrays) (The Java Tutorials (Oracle); Optional.) https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html
+Watch / listen:
+- Module 9 lecture: 2D arrays (video, 18 min, Recorded 2023; captions auto-generated.)
+- Row-major traversal animation (video, 6 min, Short animation, no narration.)
+
+[Code check] Code Check 9.1: Row Sums · 10 points
+Auto-graded, unlimited attempts, best score kept. Tests run when you press Check.
+Complete rowSums so it returns an array where each element is the sum of the matching row of grid.
+Starter code:
+public class Grid {
+    public static int[] rowSums(int[][] grid) {
+        // TODO: return a new array with one sum per row
+        return new int[0];
+    }
+
+    public static void main(String[] args) {
+        int[][] g = {{1, 2, 3}, {4, 5, 6}};
+        System.out.println(java.util.Arrays.toString(rowSums(g)));
+    }
+}
+The autograder checks:
+- {{1, 2, 3}, {4, 5, 6}} returns {6, 15}
+- {{0, 0}, {0, 0}, {1, 1}} returns {0, 0, 2}
+- A single row {{7}} returns {7}
+- Returned array length equals the number of rows
+
+[Code check] Code Check 9.2: Seat Chart · 10 points
+Auto-graded, unlimited attempts, best score kept. Tests run when you press Check.
+Complete countTaken so it returns how many seats in the chart are taken. A taken seat is the String "X"; an open seat is "-".
+Starter code:
+public class SeatChart {
+    public static int countTaken(String[][] seats) {
+        // TODO
+        return 0;
+    }
+
+    public static void main(String[] args) {
+        String[][] chart = {{"X", "-"}, {"-", "X"}, {"X", "X"}};
+        System.out.println(countTaken(chart));
+    }
+}
+The autograder checks:
+- The 3-by-2 chart in main returns 4
+- A chart with all "-" returns 0
+- A chart with all "X" returns its total number of seats
+- Source compares Strings with equals, not ==
+
+[Quiz] Quiz 9: 2D Arrays · 10 points
+Auto-graded, 2 attempts, no time limit, highest score kept. Closes when you mark the module complete.
+1. For int[][] g = new int[3][4]; what is g.length?
+   a) 3
+   b) 4
+   c) 7
+   d) 12
+2. In the expression g[1][2], what do the numbers mean?
+   a) column 1, row 2
+   b) row 1, column 2
+   c) row 2, column 1
+   d) the values 1 and 2
+3. What is the value of m[1][0]?
+int[][] m = {{1, 2}, {3, 4}};
+   a) 1
+   b) 2
+   c) 3
+   d) 4
+4. In a row-major traversal of g, which loop is the outer loop?
+   a) The loop over columns
+   b) The loop over rows
+   c) Either; the result is always the same
+   d) There is no outer loop
+
+--- Module 10: Searching, Sorting, and Recursion (self-paced) ---
+This module covers the classic algorithms the exam expects you to trace: linear and binary search, selection and insertion sort, and recursion. Recursion is often the hardest idea in the course, so plan extra time for the tracing practice. Suggested pace: about 2 to 3 weeks.
+This week you will:
+- Trace linear and binary search and state when binary search can be used.
+- Trace selection sort and insertion sort passes on a small array.
+- Write and trace a recursive method with a base case and a recursive call.
+Readings:
+- CSAwesome2 Unit 4: Data Collections, topics 4.14 to 4.17 (searching, sorting, recursion, recursive search and sort) (CSAwesome2 (Runestone Academy); Required. Open the book and pick the unit from the left-hand menu.) https://runestone.academy/ns/books/published/csawesome2/csawesome2.html
+Watch / listen:
+- Module 10 lecture: Searching and sorting (video, 25 min, Recorded 2023; captions auto-generated.)
+- Module 10 lecture: Recursion (video, 28 min, Recorded 2023. Uses factorial and Fibonacci; the audio has a fan noise throughout.)
+
+[Code check] Code Check 10.1: Binary Search · 10 points
+Auto-graded, unlimited attempts, best score kept. Tests run when you press Check.
+Complete binarySearch so it returns the index of target in the sorted array, or -1 if it is not found. Use binary search, not a linear scan.
+Starter code:
+public class Search {
+    public static int binarySearch(int[] sorted, int target) {
+        int low = 0;
+        int high = sorted.length - 1;
+        // TODO: repeat while low <= high, checking the middle element
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        int[] a = {2, 5, 8, 12, 16, 23};
+        System.out.println(binarySearch(a, 12));
+    }
+}
+The autograder checks:
+- binarySearch({2, 5, 8, 12, 16, 23}, 12) returns 3
+- binarySearch of the same array for 2 returns 0 and for 23 returns 5
+- binarySearch of the same array for 7 returns -1
+- Source computes a middle index and does not loop over every element
+
+[Code check] Code Check 10.2: Sum of Digits · 10 points
+Auto-graded, unlimited attempts, best score kept. Tests run when you press Check.
+Complete sumDigits recursively. For example, sumDigits(472) is 4 + 7 + 2 = 13. Do not use a loop.
+Starter code:
+public class Digits {
+    public static int sumDigits(int n) {
+        // TODO: write a base case and a recursive call
+        return 0;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(sumDigits(472));
+    }
+}
+The autograder checks:
+- sumDigits(472) returns 13
+- sumDigits(0) returns 0
+- sumDigits(9) returns 9
+- Source calls sumDigits from inside sumDigits and contains no for or while loop
+
+[Quiz] Quiz 10: Searching, Sorting, and Recursion · 10 points
+Auto-graded, 2 attempts, no time limit, highest score kept. Closes when you mark the module complete.
+1. What must be true about an array before binary search can be used on it?
+   a) It contains only positive numbers
+   b) It is sorted
+   c) It has an even length
+   d) It contains no duplicates
+2. About how many elements does binary search look at, at most, in a sorted array of 100 elements?
+   a) 100
+   b) 50
+   c) 7
+   d) 2
+3. What does mystery(4) return?
+public static int mystery(int n) {
+  if (n <= 1) return 1;
+  return n * mystery(n - 1);
+}
+   a) 4
+   b) 10
+   c) 24
+   d) It never stops
+4. The array is {5, 2, 9, 1}. What does it look like after the first pass of selection sort (ascending)?
+   a) {1, 2, 9, 5}
+   b) {2, 5, 9, 1}
+   c) {1, 5, 2, 9}
+   d) {2, 5, 1, 9}
+
+--- Module 11: AP Exam Review and Practice (self-paced) ---
+Use this last module to review all four units and practice in the style of the AP exam. You will work two free-response style problems and take a mixed practice quiz. Plan to finish by the end of April, then use the rest of your time before the May exam to go back over any module where your code check scores were low. Suggested pace: April.
+This week you will:
+- Solve free-response style problems on methods and control structures and on ArrayList.
+- Trace mixed multiple-choice questions from all four units.
+- Identify the units where you need more practice before the exam.
+Readings:
+- CSAwesome2, practice sections at the end of each unit, topics Unit 1 to Unit 4 (practice exams and free-response practice) (CSAwesome2 (Runestone Academy); Choose the practice sets for the units you are least sure about.) https://runestone.academy/ns/books/published/csawesome2/csawesome2.html
+- AP Computer Science A course page (units, exam information, past free-response questions) (College Board AP Central; Required: read the Exam tab so you know the format.) https://apcentral.collegeboard.org/courses/ap-computer-science-a
+Watch / listen:
+- Exam strategies for free-response (video, 17 min, Recorded spring 2024; some exam-format details may have changed, so check the College Board page.)
+- Walkthrough: Parking fees problem (video, 15 min, Screen recording.)
+
+[Code check] Code Check 11.1: FRQ Practice, Parking Fees · 10 points
+Auto-graded, unlimited attempts, best score kept. Tests run when you press Check.
+A parking garage charges nothing for the first 30 minutes. After that it charges 2 dollars for each 15 minutes or part of 15 minutes, up to a maximum of 20 dollars per visit. Complete parkingFee(int minutes).
+Starter code:
+public class Garage {
+    public static int parkingFee(int minutes) {
+        // TODO
+        return 0;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(parkingFee(46));
+    }
+}
+The autograder checks:
+- parkingFee(30) returns 0
+- parkingFee(31) returns 2 and parkingFee(45) returns 2
+- parkingFee(46) returns 4
+- parkingFee(600) returns 20
+
+[Code check] Code Check 11.2: FRQ Practice, Playlist · 10 points
+Auto-graded, unlimited attempts, best score kept. Tests run when you press Check.
+Complete removeTitlesStartingWith so it removes every title that starts with the given prefix from the playlist. Several matching titles can be next to each other.
+Starter code:
+import java.util.ArrayList;
+
+public class Playlist {
+    private ArrayList<String> titles;
+
+    public Playlist() {
+        titles = new ArrayList<String>();
+    }
+
+    public void add(String title) {
+        titles.add(title);
+    }
+
+    public void removeTitlesStartingWith(String prefix) {
+        // TODO
+    }
+
+    public ArrayList<String> getTitles() {
+        return titles;
+    }
+
+    public static void main(String[] args) {
+        Playlist p = new Playlist();
+        p.add("The Wave");
+        p.add("The Hill");
+        p.add("Sunrise");
+        p.removeTitlesStartingWith("The ");
+        System.out.println(p.getTitles());
+    }
+}
+The autograder checks:
+- After adding The Wave, The Hill, Sunrise and removing prefix "The ", titles is [Sunrise]
+- Removing a prefix that matches nothing leaves the list unchanged
+- Removing from an empty playlist does not throw an error
+- Source uses startsWith or substring
+
+[Quiz] Practice Quiz: Mixed Review · 10 points
+Auto-graded, 2 attempts, no time limit, highest score kept. Closes when you mark the module complete.
+1. What is a[2] after this code runs?
+int[] a = {3, 1, 4};
+for (int i = 0; i < a.length; i++) { a[i] *= 2; }
+   a) 4
+   b) 6
+   c) 8
+   d) 2
+2. What does "computer".substring(3) return?
+   a) com
+   b) puter
+   c) mputer
+   d) uter
+3. list is [1, 2, 3]. What is list after list.set(1, 9)?
+   a) [1, 9, 2, 3]
+   b) [1, 9, 3]
+   c) [9, 2, 3]
+   d) [1, 2, 9]
+4. What is the value of (5 > 3) && !(2 == 2)?
+   a) true
+   b) false
+   c) 5
+   d) The code does not compile
+5. What does f(4) return?
+public static int f(int n) {
+  if (n == 0) return 0;
+  return n + f(n - 1);
+}
+   a) 4
+   b) 6
+   c) 10
+   d) 24
+
+============================================================
+PEOPLE
+============================================================
+Mr. Andre Whitcombe · Virtual Program Teacher (AP Computer Science)
+District Virtual Program Help Desk · Technical support (logins, course site, IDE access)
+118 students from 9 schools across the district (student roster hidden in this copy)

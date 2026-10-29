@@ -1,0 +1,906 @@
+MATH 110 Introduction to Statistics · Fall 2026 (Aug 24 – Dec 11)
+East Valley Community College · Mathematics Department
+CourseSpace course site (fictional course copy for EDUC 565A; people and posts are fictional, readings are real; videos listed but not included)
+Fully online, asynchronous · 16 weeks · 38 students (section 04)
+
+============================================================
+HOME
+============================================================
+Welcome to MATH 110, Introduction to Statistics. This is a fully online, asynchronous course, which means you can complete the work on your own schedule as long as you meet the weekly deadlines.
+
+Each week has a module with readings from the free OpenStax textbook, a recorded lecture, a weekly quiz, and a discussion board. Quizzes are due on Sundays at 11:59 pm. Please check the Announcements page regularly for updates and reminders.
+
+Please read the syllabus carefully, including the policies on late work and academic integrity. You are responsible for knowing the deadlines and course policies. If you have questions, please check the syllabus first and then email me.
+
+I look forward to a great semester.
+— Carol Whitfield
+
+============================================================
+ANNOUNCEMENTS
+============================================================
+
+New content: Week 10 is now available (Oct 26, 2026, Course notification (automatic))
+New content has been added to your course: Week 10: The Normal Distribution.
+
+This is an automatic message from CourseSpace. Do not reply to this message.
+
+Due soon: Quiz 9 (Oct 25, 2026, Course notification (automatic))
+Quiz 9 is due today at 11:59 pm. Log in to CourseSpace to complete this item.
+
+This is an automatic message from CourseSpace. Do not reply to this message.
+
+Midterm grades posted (Oct 21, 2026, Carol Whitfield)
+Hello class,
+
+Midterm exam grades have been posted in the gradebook. Please review your grade and make sure you understand any questions you missed. The final exam will cover the entire course.
+
+If you have questions, email me.
+
+Professor Whitfield
+
+Midterm exam this week (Oct 12, 2026, Carol Whitfield)
+Hello class,
+
+The midterm exam is open this week. It covers Weeks 1-7. You will have one attempt and 75 minutes. Please make sure you have a stable internet connection. Use of AI tools to complete the exam is considered academic dishonesty.
+
+Good luck.
+
+Professor Whitfield
+
+Grade posted: Data Collection Project (Sep 14, 2026, Course notification (automatic))
+A grade has been posted for Data Collection Project. Log in to CourseSpace to view your grade and any feedback.
+
+This is an automatic message from CourseSpace. Do not reply to this message.
+
+Reminder: Discussion board expectations (Sep 7, 2026, Carol Whitfield)
+Hello class,
+
+A reminder that discussion posts are due Wednesday and replies are due Sunday. Posts should be substantive. Late posts will not be accepted. Please review the syllabus for the full policy.
+
+Professor Whitfield
+
+Welcome to MATH 110 (Aug 24, 2026, Carol Whitfield)
+Hello class,
+
+Welcome to Introduction to Statistics. Please read the syllabus and complete the Week 1 materials. All course materials are in CourseSpace. The textbook is free online.
+
+Professor Whitfield
+
+============================================================
+SYLLABUS
+============================================================
+Course description
+An introduction to the collection, organization, description, and analysis of data. Topics include sampling and experimental design, descriptive statistics, probability, discrete and continuous distributions, the Central Limit Theorem, confidence intervals, hypothesis testing for one and two samples, correlation and regression, and the chi-square test. Prerequisite: Intermediate Algebra or placement. Satisfies the general education quantitative reasoning requirement.
+
+Instructor: Carol Whitfield, Adjunct Instructor · cwhitfield@eastvalley.example.edu
+Office hours: Virtual office hours on Tuesdays 2:00-3:00 pm (Zoom link posted in the Week 1 module), or by appointment by email
+Response time: Within 48 hours on weekdays
+
+Learning outcomes
+- Students will be able to describe and summarize data using appropriate tables, graphs, and numerical measures.
+- Students will be able to apply basic rules of probability and work with discrete and normal probability distributions.
+- Students will be able to construct and interpret confidence intervals for means and proportions.
+- Students will be able to carry out and interpret hypothesis tests for one and two samples.
+- Students will be able to describe the relationship between two numerical variables using correlation and regression.
+- Students will be able to evaluate statistical claims found in everyday sources.
+
+Course materials
+- Illowsky, B., & Dean, S. (2023). Introductory statistics (2nd ed.). OpenStax. https://openstax.org/books/introductory-statistics-2e/pages/1-introduction https://openstax.org/books/introductory-statistics-2e/pages/1-introduction (Required. Free online; a printed copy is optional.)
+
+How a week works
+Each module opens on Monday at 12:00 am. Complete the readings and watch the lecture, post your initial discussion post by Wednesday at 11:59 pm, then reply to two classmates and finish the weekly quiz by Sunday at 11:59 pm. Assignments are also due on Sundays at 11:59 pm unless noted. The midterm is in Week 8 and the final exam is in Week 16.
+
+Grading
+- Weekly quizzes (14): 30%
+- Discussion boards (14): 15%
+- Assignments (4): 20%
+- Midterm exam (Week 8): 15%
+- Final exam (Week 16): 20%
+A 90-100%, B 80-89%, C 70-79%, D 60-69%, F below 60%
+
+Policies
+Late work: Assignments submitted late lose 10% per day, up to 3 days. After 3 days, no credit. Quizzes, exams, and discussion posts are not accepted late. Extensions are granted only for documented emergencies.
+Discussion boards: Each week you must write one initial post (due Wednesday 11:59 pm) and reply to two classmates (due Sunday 11:59 pm). Posts must be substantive. Posts that are not substantive will receive reduced credit.
+Quizzes and exams: Weekly quizzes are auto-graded and allow two attempts; your highest score is kept. The midterm and final exam allow one attempt. Technical problems must be reported to the college help desk before the deadline.
+Communication: Email is the best way to reach me. I respond within 48 hours on weekdays. Please check the Announcements page and your college email regularly. You are responsible for all announcements.
+Academic integrity: All work you submit must be your own. Cheating, plagiarism, and unauthorized collaboration will result in a zero on the assignment and may be reported to the Dean of Students.
+Withdrawals: The last day to withdraw with a W is Friday, November 6. It is your responsibility to withdraw. Please speak with the Financial Aid office before withdrawing, because it may affect your aid.
+Accessibility: Students who need accommodations should contact Disability Support Services and send me their accommodation letter during the first two weeks of the term.
+Use of AI tools: Use of AI tools to complete quizzes, exams, or discussion posts is considered academic dishonesty and will be treated as a violation of the academic integrity policy. Students are responsible for knowing what counts as unauthorized assistance.
+
+============================================================
+MODULES
+============================================================
+
+--- Week 1: Sampling and Data (Aug 24 – Aug 30) ---
+Welcome to the first module. This week introduces the basic vocabulary of statistics: population, sample, parameter, statistic, and the kinds of data you will work with all term. Read the assigned sections, watch the lecture, and complete the quiz and discussion by the due dates.
+This week you will:
+- Define population, sample, parameter, and statistic.
+- Classify variables as categorical or numerical, discrete or continuous.
+- Identify common sampling methods.
+Readings:
+- 1.1 Definitions of Statistics, Probability, and Key Terms (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/1-1-definitions-of-statistics-probability-and-key-terms
+- 1.2 Data, Sampling, and Variation in Data and Sampling (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/1-2-data-sampling-and-variation-in-data-and-sampling
+- Chapter 1 Introduction (OpenStax Introductory Statistics 2e; skim) https://openstax.org/books/introductory-statistics-2e/pages/1-introduction
+Watch / listen:
+- Week 1 lecture: Key terms and sampling (video, 22 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+- Week 1 lecture: Slides (PDF) (video, 18 slides, Same content as the lecture video. Fictional course media.)
+
+[Quiz] Quiz 1 · Due Sun Aug 30, 11:59 pm · 10 points
+2 attempts, 30 minutes, auto-graded, highest score kept
+1. A researcher surveys 200 randomly selected students from a college of 5,000 students to estimate the average number of hours students work each week. The 5,000 students are the:
+   a) sample
+   b) population
+   c) statistic
+   d) parameter
+2. A number that describes a characteristic of a sample is called a:
+   a) variable
+   b) statistic
+   c) population
+   d) parameter
+3. Which of the following is a categorical (qualitative) variable?
+   a) Height in inches
+   b) Commute time in minutes
+   c) Favorite NBA team
+   d) Number of siblings
+4. A researcher picks a random starting point on an alphabetical class roster and then selects every 10th student. This is an example of what kind of sample?
+   a) Simple random
+   b) Stratified
+   c) Systematic
+   d) Cluster
+5. Which of the following is a continuous variable?
+   a) Time, in minutes, a person takes to finish a quiz
+   b) Number of cars in a parking lot
+   c) Number of children in a family
+   d) Number of pets a person owns
+
+[Discussion] Discussion 1: Introduce yourself and find a sample · Due Initial post Wed Aug 26, 11:59 pm; two replies Sun Aug 30, 11:59 pm · 10 points
+Prompt: Introduce yourself to the class (name, major, and why you are taking this course). Then describe one situation from your job, school, or daily life where someone might use a sample to learn about a larger group. Say what the population is and what the sample would be.
+Requirements: Write an initial post of at least 150 words by Wednesday 11:59 pm. Then reply to two classmates by Sunday 11:59 pm. Your posts should be substantive and show that you have engaged with the week's material. Posts that are not substantive will receive reduced credit. Late posts are not accepted.
+76 posts in this discussion; showing 3
+  Jasmine R. (Aug 26, 11:41 pm): Hi everyone, I'm Jasmine, nursing major. I'm taking this because it's required for the program. At my clinic job they hand out a patient satisfaction survey but only to some patients at the front desk. The population would be all patients who come in and the sample is the ones who get handed the survey. I don't think its random though because the front desk gives it to people who look like they have time. So the results might be off.
+  Marcus T. (Aug 27, 12:10 am): Marcus, business major. I work at a warehouse. Quality control checks every 50th box off the line instead of all of them. Population is all the boxes that day, sample is the ones they check. Seems like systematic sampling from chapter 1.
+    Reply from Kayla P. (Aug 29, 9:05 pm): Good example Marcus, I didn't know that was called systematic. I agree, makes sense.
+  Devin S. (Aug 28, 10:22 pm): Devin here, undecided. Political polls are the obvious one. They call maybe 1,000 people to guess what the whole country thinks. Population is all voters, sample is the 1,000 people.
+
+--- Week 2: Levels of Measurement and Displaying Data (Aug 31 – Sep 6) ---
+This week covers how data are organized and described. You will learn frequency tables, the four levels of measurement, and your first graphs. Pay attention to which graph fits which kind of data.
+This week you will:
+- Build and read a frequency table with relative frequencies.
+- Identify the level of measurement of a variable.
+- Choose an appropriate graph for categorical and numerical data.
+Readings:
+- 1.3 Frequency, Frequency Tables, and Levels of Measurement (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/1-3-frequency-frequency-tables-and-levels-of-measurement
+- 2.1 Stem-and-Leaf Graphs (Stemplots), Line Graphs, and Bar Graphs (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/2-1-stem-and-leaf-graphs-stemplots-line-graphs-and-bar-graphs
+Watch / listen:
+- Week 2 lecture: Frequency tables and levels of measurement (video, 25 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+- Week 2 lecture: Stemplots and bar graphs (video, 14 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+
+[Quiz] Quiz 2 · Due Sun Sep 6, 11:59 pm · 10 points
+2 attempts, 30 minutes, auto-graded, highest score kept
+1. A race results list the finishers as 1st, 2nd, and 3rd, but not their finishing times. At what level of measurement is this variable?
+   a) Nominal
+   b) Ordinal
+   c) Interval
+   d) Ratio
+2. Temperature measured in degrees Fahrenheit is at which level of measurement?
+   a) Nominal
+   b) Ordinal
+   c) Interval
+   d) Ratio
+3. In a class of 20 students, 5 chose coffee as their favorite drink. What is the relative frequency of coffee?
+   a) 0.25
+   b) 5
+   c) 0.20
+   d) 0.05
+4. Which graph is most appropriate for showing how many students are in each of five different majors?
+   a) Scatter plot
+   b) Stem-and-leaf graph
+   c) Time series line graph
+   d) Bar graph
+
+[Discussion] Discussion 2: Graphs in the wild · Due Initial post Wed Sep 2, 11:59 pm; two replies Sun Sep 6, 11:59 pm · 10 points
+Prompt: Find one graph or chart in the news or on social media this week (not from the textbook). Post a link or describe it. What kind of data does it show? Is the type of graph a good choice for that data?
+Requirements: Write an initial post of at least 150 words by Wednesday 11:59 pm. Then reply to two classmates by Sunday 11:59 pm. Your posts should be substantive and show that you have engaged with the week's material. Posts that are not substantive will receive reduced credit. Late posts are not accepted.
+71 posts in this discussion; showing 2
+  Tyler B. (Sep 2, 11:50 pm): I found a bar chart on ESPN showing points per game for the top 10 scorers. It's numerical data but each bar is a player so its kind of categorical x axis. I think bar graph works fine here since you are comparing players.
+  Sofia G. (Sep 3, 8:15 pm): A line graph of gas prices over the last year from a local news site. Time series so a line makes sense. The y axis starts at $3.00 though so it makes the change look bigger than it is.
+
+--- Week 3: Experimental Design and Data Collection (Sep 7 – Sep 13) ---
+This week moves from describing data to collecting it. You will read about observational studies, experiments, and research ethics, then carry out a small data collection of your own. The Data Collection Project is due Sunday; please read the instructions in the assignment carefully.
+This week you will:
+- Distinguish an observational study from an experiment.
+- Explain why random assignment and control groups matter.
+- Describe basic ethical requirements for studies with people.
+Readings:
+- 1.4 Experimental Design and Ethics (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/1-4-experimental-design-and-ethics
+- 1.5 Data Collection Experiment (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/1-5-data-collection-experiment
+Watch / listen:
+- Week 3 lecture: Experiments, bias, and ethics (video, 27 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+- Week 3 lecture: Project walkthrough (video, 9 min, Recorded Fall 2021; walkthrough shows the earlier worksheet layout. Fictional course media.)
+
+[Quiz] Quiz 3 · Due Sun Sep 13, 11:59 pm · 10 points
+2 attempts, 30 minutes, auto-graded, highest score kept
+1. In an experiment testing a new study app, the group of students that does not receive the app (and continues studying as usual) is the:
+   a) population
+   b) control group
+   c) sample
+   d) treatment group
+2. Why do researchers randomly assign participants to groups in an experiment?
+   a) To make sure the treatment group is the larger group
+   b) To make the results easier to graph
+   c) To guarantee the treatment will work
+   d) To spread out other differences among participants so the groups are similar
+3. A researcher surveys college students about their exercise habits and then compares the responses with their GPAs, without assigning anyone to exercise. This is a(n):
+   a) census of the population
+   b) experiment
+   c) observational study
+   d) placebo-controlled trial
+4. Before taking part in a study, participants should be told about the risks and agree to take part. This is called:
+   a) random assignment
+   b) informed consent
+   c) blinding
+   d) stratification
+
+[Assignment] Data Collection Project · Due Sun Sep 13, 11:59 pm · 50 points
+In this project you will collect a small set of data and describe how you collected it.
+
+Step 1. Download the worksheet from the Week 3 Assignments folder. Students whose last name starts with M-Z should use the Version B worksheet.
+
+Step 2. Choose a question from the list on your worksheet and collect data from at least 15 people or items. Record the data in the table on the worksheet.
+
+Step 3. Answer the questions on the worksheet: identify the population and the sample, name the sampling method you used, classify each variable you recorded, and describe one possible source of bias in your data.
+
+Step 4. Write a short paragraph (5-7 sentences) on the ethical issues of collecting data from people. Upload your completed worksheet as a .docx or .pdf file. Submissions on the wrong worksheet or in other formats may not be graded.
+Rubric:
+- Data table complete (at least 15 entries): 10 points
+- Population, sample, and sampling method identified correctly: 12 points
+- Variables classified correctly: 8 points
+- Source of bias described: 10 points
+- Ethics paragraph: 10 points
+
+[Discussion] Discussion 3: Could we test this with an experiment? · Due Initial post Wed Sep 9, 11:59 pm; two replies Sun Sep 13, 11:59 pm · 10 points
+Prompt: Think of a claim you have heard (for example, "students who sleep more get better grades"). Could it be tested with an experiment, or only with an observational study? What would make it hard to run an experiment?
+Requirements: Write an initial post of at least 150 words by Wednesday 11:59 pm. Then reply to two classmates by Sunday 11:59 pm. Your posts should be substantive and show that you have engaged with the week's material. Posts that are not substantive will receive reduced credit. Late posts are not accepted.
+83 posts in this discussion; showing 3
+  Brianna L. (Sep 9, 10:58 pm): Claim: people who drink coffee are more productive. You could do an experiment by randomly giving some people coffee and some decaf and then measuring how much they get done. Hard part is people would know what they are drinking so it needs to be blind. Also productive is hard to measure.
+  Omar H. (Sep 10, 7:40 pm): For the assignment, does anyone know what the Version B thing means? The instructions say B is for M-Z but I don't see what A people are supposed to use or what's different between them. Last name starts with R.
+  Priya D. (Sep 10, 9:12 pm): @Omar the version is by last name. A is A to L and B is M to Z, so you'd use B. They have different question lists, B has the commuting ones and A has the sleep ones I think.
+    Reply from Omar H. (Sep 10, 9:30 pm): ok thanks that helps
+
+--- Week 4: Histograms, Percentiles, and Box Plots (Sep 14 – Sep 20) ---
+Now that you can collect data, this week is about summarizing a data set by its shape and by where values fall. You will make histograms, find quartiles and percentiles, and build box plots.
+This week you will:
+- Read and interpret a histogram.
+- Find quartiles, percentiles, and the IQR.
+- Construct and interpret a box plot from the five-number summary.
+Readings:
+- 2.2 Histograms, Frequency Polygons, and Time Series Graphs (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/2-2-histograms-frequency-polygons-and-time-series-graphs
+- 2.3 Measures of the Location of the Data (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/2-3-measures-of-the-location-of-the-data
+- 2.4 Box Plots (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/2-4-box-plots
+Watch / listen:
+- Week 4 lecture: Histograms and percentiles (video, 24 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+- Week 4 lecture: Building a box plot by hand (video, 16 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+
+[Quiz] Quiz 4 · Due Sun Sep 20, 11:59 pm · 10 points
+2 attempts, 30 minutes, auto-graded, highest score kept
+1. In a histogram, the height of each bar shows:
+   a) the number (or proportion) of data values in that interval
+   b) the mean of the values in that interval
+   c) the percentile of that interval
+   d) the largest value in that interval
+2. What is the median of the data set 3, 5, 8, 10, 14?
+   a) 9
+   b) 10
+   c) 8
+   d) 5
+3. Which of the following is NOT part of the five-number summary used to draw a box plot?
+   a) Mean
+   b) Minimum
+   c) First quartile (Q1)
+   d) Maximum
+4. For a data set, Q1 = 12 and Q3 = 20. What is the interquartile range (IQR)?
+   a) 4
+   b) 32
+   c) 16
+   d) 8
+
+[Discussion] Discussion 4: Where do you fall? · Due Initial post Wed Sep 16, 11:59 pm; two replies Sun Sep 20, 11:59 pm · 10 points
+Prompt: Choose a small set of 8-10 numbers from your own life (hours worked per week, daily steps, grocery bills, and so on). Find the median and quartiles and describe what the box plot would look like. What does it tell you that the average alone would not?
+Requirements: Write an initial post of at least 150 words by Wednesday 11:59 pm. Then reply to two classmates by Sunday 11:59 pm. Your posts should be substantive and show that you have engaged with the week's material. Posts that are not substantive will receive reduced credit. Late posts are not accepted.
+68 posts in this discussion; showing 2
+  Nate K. (Sep 16, 11:20 pm): My hours worked the last 9 weeks: 22, 25, 25, 28, 30, 30, 32, 38, 40. Median is 30, Q1 is 25, Q3 is 35 I think. The box would be pretty short on the left and the whiskers are about the same. Average is about 30 too so not a big difference for me.
+  Alicia M. (Sep 17, 9:47 pm): I used my screen time on my phone. Median was 4 hours and one day was 11 hours (the day I was sick) so that would be an outlier on the box plot. The average is higher than the median because of it.
+
+--- Week 5: Measures of Center and Spread (Sep 21 – Sep 27) ---
+This week you will compare the mean, median, and mode, learn how skewness pulls them apart, and measure spread with the standard deviation. Make sure you can calculate each by hand before using a calculator.
+This week you will:
+- Calculate the mean, median, and mode.
+- Explain how skewness and outliers affect measures of center.
+- Calculate and interpret the standard deviation.
+Readings:
+- 2.5 Measures of the Center of the Data (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/2-5-measures-of-the-center-of-the-data
+- 2.6 Skewness and the Mean, Median, and Mode (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/2-6-skewness-and-the-mean-median-and-mode
+- 2.7 Measures of the Spread of the Data (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/2-7-measures-of-the-spread-of-the-data
+Watch / listen:
+- Week 5 lecture: Center and skewness (video, 21 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+- Week 5 lecture: Standard deviation step by step (video, 26 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+
+[Quiz] Quiz 5 · Due Sun Sep 27, 11:59 pm · 10 points
+2 attempts, 30 minutes, auto-graded, highest score kept
+1. What is the mean of the data set 2, 4, 4, 6, 9?
+   a) 6
+   b) 5.5
+   c) 5
+   d) 4
+2. A distribution is skewed to the right. Which statement is most likely true?
+   a) The mode is greater than the mean
+   b) The mean equals the median
+   c) The mean is less than the median
+   d) The mean is greater than the median
+3. Which measure of center is least affected by a very extreme outlier?
+   a) Median
+   b) Standard deviation
+   c) Mean
+   d) Sum
+4. The standard deviation of a data set is best described as:
+   a) the typical distance of the data values from the mean
+   b) the most frequent value
+   c) the largest value minus the smallest value
+   d) the middle value of the data
+5. What is the standard deviation of the data set 10, 10, 10, 10?
+   a) 10
+   b) 5
+   c) 0
+   d) 1
+
+[Discussion] Discussion 5: Same average, different story · Due Initial post Wed Sep 23, 11:59 pm; two replies Sun Sep 27, 11:59 pm · 10 points
+Prompt: Describe two data sets (real or made up) that have the same mean but different spread. For example, two cafes with the same average wait time. Explain why knowing the spread matters.
+Requirements: Write an initial post of at least 150 words by Wednesday 11:59 pm. Then reply to two classmates by Sunday 11:59 pm. Your posts should be substantive and show that you have engaged with the week's material. Posts that are not substantive will receive reduced credit. Late posts are not accepted.
+70 posts in this discussion; showing 3
+  Chris W. (Sep 23, 10:35 pm): Two basketball players who both average 15 points. One scores 14, 15, 16 every game. The other scores 5 one night and 30 the next. Same average but the second one is a lot less predictable, so the standard deviation is bigger.
+  Luis V. (Sep 24, 11:58 pm): Two classes with an average of 75 on the same test. In one almost everyone got 70-80 and in the other half got 95 and half got 55. Spread matters because the average hides that.
+  Sofia G. (Sep 26, 8:02 pm): Commute times. Mine is the same on average as my friends but she has the freeway so some days its 20 and some days 70. I'd rather have the steady one.
+
+--- Week 6: Probability Basics (Sep 28 – Oct 4) ---
+This week begins the probability unit. You will learn the language of probability, the difference between independent and mutually exclusive events, and the addition and multiplication rules. A short Probability Lab is due this week.
+This week you will:
+- Compute simple probabilities from equally likely outcomes.
+- Distinguish independent from mutually exclusive events.
+- Apply the addition and multiplication rules.
+Readings:
+- 3.1 Terminology (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/3-1-terminology
+- 3.2 Independent and Mutually Exclusive Events (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/3-2-independent-and-mutually-exclusive-events
+- 3.3 Two Basic Rules of Probability (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/3-3-two-basic-rules-of-probability
+Watch / listen:
+- Week 6 lecture: Terminology and basic rules (video, 28 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+- Week 6 lecture: Independent vs. mutually exclusive (video, 12 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+
+[Quiz] Quiz 6 · Due Sun Oct 4, 11:59 pm · 10 points
+2 attempts, 30 minutes, auto-graded, highest score kept
+1. A fair six-sided die is rolled once. What is the probability of rolling an even number?
+   a) 1/6
+   b) 1/3
+   c) 1/2
+   d) 2/3
+2. Events A and B are independent with P(A) = 0.5 and P(B) = 0.4. What is P(A and B)?
+   a) 0.9
+   b) 0.2
+   c) 0.1
+   d) 0.45
+3. Events A and B are mutually exclusive with P(A) = 0.3 and P(B) = 0.2. What is P(A or B)?
+   a) 0.44
+   b) 0.1
+   c) 0.5
+   d) 0.06
+4. When a single card is drawn from a standard deck, which pair of events is mutually exclusive?
+   a) Drawing a heart and drawing a spade
+   b) Drawing a heart and drawing a king
+   c) Drawing a face card and drawing a heart
+   d) Drawing a red card and drawing a queen
+5. P(A) = 0.6, P(B) = 0.5, and P(A and B) = 0.3. What is P(A or B)?
+   a) 0.9
+   b) 0.3
+   c) 0.8
+   d) 1.1
+
+[Assignment] Probability Lab · Due Sun Oct 4, 11:59 pm · 30 points
+Roll a six-sided die 50 times (or use a free online dice roller) and record each result. Make a frequency table with relative frequencies. Compare your relative frequencies with the theoretical probability of 1/6 for each face. Write 4-5 sentences explaining any differences. Upload your table and paragraph as a .docx or .pdf.
+Rubric:
+- Frequency table with 50 rolls: 10 points
+- Relative frequencies calculated: 10 points
+- Comparison with theoretical probability: 10 points
+
+[Discussion] Discussion 6: Independent or mutually exclusive? · Due Initial post Wed Sep 30, 11:59 pm; two replies Sun Oct 4, 11:59 pm · 10 points
+Prompt: Give an everyday example of two events that are independent and an example of two events that are mutually exclusive. Explain how you know.
+Requirements: Write an initial post of at least 150 words by Wednesday 11:59 pm. Then reply to two classmates by Sunday 11:59 pm. Your posts should be substantive and show that you have engaged with the week's material. Posts that are not substantive will receive reduced credit. Late posts are not accepted.
+66 posts in this discussion; showing 2
+  Kayla P. (Sep 30, 11:12 pm): Independent: me getting a text and the bus being late. They have nothing to do with each other. Mutually exclusive: passing and failing this course, you can't do both.
+  Devin S. (Oct 1, 10:05 pm): Mutually exclusive: a coin flip being heads or tails. Independent: first flip and second flip of a coin.
+
+--- Week 7: Contingency Tables, Tree and Venn Diagrams (Oct 5 – Oct 11) ---
+This week you will organize probabilities with contingency tables, tree diagrams, and Venn diagrams. The midterm exam opens next Monday and covers Weeks 1-7, so use this week to review.
+This week you will:
+- Read a contingency table to find joint, marginal, and conditional probabilities.
+- Use a tree diagram for events that happen in stages.
+- Draw a Venn diagram for two events.
+Readings:
+- 3.4 Contingency Tables (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/3-4-contingency-tables
+- 3.5 Tree and Venn Diagrams (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/3-5-tree-and-venn-diagrams
+Watch / listen:
+- Week 7 lecture: Contingency tables (video, 19 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+- Week 7 lecture: Tree diagrams and Venn diagrams (video, 23 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+- Week 7 lecture: Midterm review session (video, 45 min, Recorded Fall 2022; covers Weeks 1-7. Fictional course media.)
+
+[Quiz] Quiz 7 · Due Sun Oct 11, 11:59 pm · 10 points
+2 attempts, 30 minutes, auto-graded, highest score kept
+1. A survey of 100 students gave these counts. Online students: 30 work full-time and 20 do not. In-person students: 10 work full-time and 40 do not. If one student is picked at random, what is the probability the student is an online student?
+   a) 0.20
+   b) 0.60
+   c) 0.50
+   d) 0.30
+2. Using the same survey (online: 30 full-time, 20 not; in-person: 10 full-time, 40 not), what is the probability that a student works full-time, given the student is online?
+   a) 0.75
+   b) 0.60
+   c) 0.40
+   d) 0.30
+3. Using the same survey, what is the probability that a randomly chosen student is online AND works full-time?
+   a) 0.30
+   b) 0.50
+   c) 0.60
+   d) 0.80
+4. Using the same survey, what is the probability that a randomly chosen student is online OR works full-time?
+   a) 0.90
+   b) 0.80
+   c) 0.60
+   d) 0.30
+5. A bag holds 3 red balls and 2 blue balls. Two balls are drawn one after the other without replacement. What is the probability both are red?
+   a) 0.36
+   b) 0.30
+   c) 0.60
+   d) 0.20
+
+[Discussion] Discussion 7: Tables that help decisions · Due Initial post Wed Oct 7, 11:59 pm; two replies Sun Oct 11, 11:59 pm · 10 points
+Prompt: Describe a situation where a business, school, or clinic could use a contingency table to make a decision. What two categorical variables would the table compare?
+Requirements: Write an initial post of at least 150 words by Wednesday 11:59 pm. Then reply to two classmates by Sunday 11:59 pm. Your posts should be substantive and show that you have engaged with the week's material. Posts that are not substantive will receive reduced credit. Late posts are not accepted.
+
+--- Week 8: Midterm Exam (Oct 12 – Oct 18) ---
+The midterm exam covers Weeks 1-7 (Chapters 1-3). It is available from Monday at 12:00 am until Sunday at 11:59 pm. You get one attempt and 75 minutes once you open it. There is no discussion board this week.
+This week you will:
+- Show understanding of sampling, data, descriptive statistics, and probability from Weeks 1-7.
+Readings:
+- Chapter 3 Chapter Review (OpenStax Introductory Statistics 2e; review) https://openstax.org/books/introductory-statistics-2e/pages/3-chapter-review
+Watch / listen:
+- Week 8 lecture: Midterm review session (same recording as Week 7) (video, 45 min, Recorded Fall 2022. Fictional course media.)
+
+[Quiz] Midterm Exam · Due Sun Oct 18, 11:59 pm · 50 points
+1 attempt, 75 minutes, auto-graded, open Mon Oct 12 12:00 am to Sun Oct 18 11:59 pm
+1. The average GPA of all 12,000 students at a college is 3.1. This number is a:
+   a) statistic
+   b) parameter
+   c) sample
+   d) variable
+2. A researcher divides students by class year (first, second, third, fourth) and then randomly selects 25 students from each class year. This sampling method is:
+   a) convenience
+   b) stratified
+   c) systematic
+   d) simple random
+3. For the data set 1, 2, 2, 3, 12, which statement is true?
+   a) The mean (4) is less than the median (2)
+   b) The mode is 12
+   c) The mean (4) is greater than the median (2)
+   d) The mean and the median are both 2
+4. Data set A is 10, 10, 10 and data set B is 5, 10, 15. Which statement is true?
+   a) Neither has a standard deviation
+   b) Both have the same standard deviation
+   c) Set B has the larger standard deviation
+   d) Set A has the larger standard deviation
+5. In a box plot, the box extends from Q1 to Q3. About what percent of the data lies inside the box?
+   a) 100%
+   b) 75%
+   c) 50%
+   d) 25%
+6. Events A and B are independent with P(A) = 0.4 and P(B) = 0.3. What is P(A and B)?
+   a) 0.70
+   b) 0.12
+   c) 0.10
+   d) 0.30
+7. P(A) = 0.5 and P(A and B) = 0.2. What is P(B | A)?
+   a) 0.25
+   b) 0.70
+   c) 0.40
+   d) 0.10
+8. The main reason to randomly assign participants to groups in an experiment is to:
+   a) avoid the need for informed consent
+   b) reduce the sample size needed
+   c) make sure everyone gets the same treatment
+   d) make the groups similar on other characteristics, on average
+
+--- Week 9: Discrete Random Variables and the Binomial Distribution (Oct 19 – Oct 25) ---
+After the midterm, we move to probability distributions. This week covers discrete random variables, expected value, and the binomial distribution.
+This week you will:
+- Decide whether a table is a valid probability distribution.
+- Compute the expected value of a discrete random variable.
+- Recognize a binomial setting and find its mean.
+Readings:
+- 4.1 Probability Distribution Function (PDF) for a Discrete Random Variable (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/4-1-probability-distribution-function-pdf-for-a-discrete-random-variable
+- 4.2 Mean or Expected Value and Standard Deviation (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/4-2-mean-or-expected-value-and-standard-deviation
+- 4.3 Binomial Distribution (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/4-3-binomial-distribution
+Watch / listen:
+- Week 9 lecture: Discrete distributions and expected value (video, 26 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+- Week 9 lecture: The binomial distribution (video, 29 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+
+[Quiz] Quiz 9 · Due Sun Oct 25, 11:59 pm · 10 points
+2 attempts, 30 minutes, auto-graded, highest score kept
+1. Which of these could be a probability distribution for a random variable X with values 0, 1, and 2?
+   a) 0.5, 0.4, 0.3
+   b) 0.6, 0.6, -0.2
+   c) 0.2, 0.5, 0.3
+   d) 0.3, 0.3, 0.3
+2. X takes the values 0, 1, 2 with probabilities 0.2, 0.5, 0.3. What is the expected value of X?
+   a) 0.5
+   b) 1.5
+   c) 1.1
+   d) 1.0
+3. Which description fits a binomial experiment?
+   a) Counting how many cars pass a corner in an hour
+   b) Measuring the heights of 30 students
+   c) Drawing cards without replacement until an ace appears
+   d) A fixed number of independent trials, each with the same probability of success
+4. For a binomial random variable with n = 10 and p = 0.5, what is the mean?
+   a) 0.5
+   b) 2.5
+   c) 5
+   d) 10
+5. A fair coin is flipped 3 times. What is the probability of getting exactly 3 heads?
+   a) 0.875
+   b) 0.5
+   c) 0.25
+   d) 0.125
+
+[Discussion] Discussion 8: Where does the binomial show up? · Due Initial post Wed Oct 21, 11:59 pm; two replies Sun Oct 25, 11:59 pm · 10 points
+Prompt: Describe a real situation that could be modeled with a binomial distribution (for example, free throws or customers who pay by card). Check the conditions: is the number of trials fixed, are the trials independent, and is the probability of success the same each time?
+Requirements: Write an initial post of at least 150 words by Wednesday 11:59 pm. Then reply to two classmates by Sunday 11:59 pm. Your posts should be substantive and show that you have engaged with the week's material. Posts that are not substantive will receive reduced credit. Late posts are not accepted.
+64 posts in this discussion; showing 2
+  Marcus T. (Oct 21, 11:36 pm): Free throws. Say a player shoots 10 and makes 70% of them. Fixed number of trials (10), two outcomes, same probability each time. I guess independent too, though some players get in a groove which might break that.
+  Jasmine R. (Oct 22, 10:49 pm): Number of patients out of 20 who show up for their appointment, if each has an 85% chance of showing. The conditions seem OK except maybe family members come together so they wouldn't be independent.
+
+--- Week 10: The Normal Distribution (Oct 26 – Nov 1) ---
+This week introduces the normal distribution and the standard normal (z) distribution. You will convert values to z-scores and use the empirical rule. Chapter 5 (continuous distributions) is not covered in this course.
+This week you will:
+- Describe the shape and properties of the normal distribution.
+- Compute and interpret z-scores.
+- Apply the empirical (68-95-99.7) rule.
+Readings:
+- 6.1 The Standard Normal Distribution (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/6-1-the-standard-normal-distribution
+- 6.2 Using the Normal Distribution (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/6-2-using-the-normal-distribution
+Watch / listen:
+- Week 10 lecture: The normal curve and z-scores (video, 31 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+- Week 10 lecture: Using the z table (video, 15 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+
+[Quiz] Quiz 10 · Due Sun Nov 1, 11:59 pm · 10 points
+2 attempts, 30 minutes, auto-graded, highest score kept
+1. In a normal distribution, about what percent of values fall within 1 standard deviation of the mean?
+   a) 50%
+   b) 68%
+   c) 95%
+   d) 99.7%
+2. On an exam with mean 70 and standard deviation 10, a student scores 85. What is the student's z-score?
+   a) 0.15
+   b) 1.5
+   c) 15
+   d) -1.5
+3. The standard normal distribution has:
+   a) mean 0 and standard deviation 1
+   b) mean 1 and standard deviation 1
+   c) mean 1 and standard deviation 0
+   d) mean 0 and standard deviation 0
+4. Adult heights in a town are approximately normal with mean 66 inches and standard deviation 3 inches. About 95% of adults are between which two heights?
+   a) 66 and 72 inches
+   b) 63 and 69 inches
+   c) 57 and 75 inches
+   d) 60 and 72 inches
+5. For the standard normal distribution, what is P(Z < 0)?
+   a) 1
+   b) 0.50
+   c) 0.25
+   d) 0
+
+[Discussion] Discussion 9: Normal or not normal? · Due Initial post Wed Oct 28, 11:59 pm; two replies Sun Nov 1, 11:59 pm · 10 points
+Prompt: Name something you think is roughly normally distributed and something you think is not. Explain your reasoning.
+Requirements: Write an initial post of at least 150 words by Wednesday 11:59 pm. Then reply to two classmates by Sunday 11:59 pm. Your posts should be substantive and show that you have engaged with the week's material. Posts that are not substantive will receive reduced credit. Late posts are not accepted.
+
+--- Week 11: The Central Limit Theorem (Nov 2 – Nov 8) ---
+This week covers sampling distributions and the Central Limit Theorem, one of the most important ideas in the course. It explains why sample means behave predictably.
+This week you will:
+- Describe the sampling distribution of the sample mean.
+- Compute the standard error of the mean.
+- Use the Central Limit Theorem to find probabilities for sample means.
+Readings:
+- 7.1 The Central Limit Theorem for Sample Means (Averages) (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/7-1-the-central-limit-theorem-for-sample-means-averages
+- 7.3 Using the Central Limit Theorem (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/7-3-using-the-central-limit-theorem
+Watch / listen:
+- Week 11 lecture: Sampling distributions (video, 27 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+- Week 11 lecture: Central Limit Theorem examples (video, 22 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+
+[Quiz] Quiz 11 · Due Sun Nov 8, 11:59 pm · 10 points
+2 attempts, 30 minutes, auto-graded, highest score kept
+1. According to the Central Limit Theorem, when the sample size is large, the distribution of sample means is approximately:
+   a) uniform
+   b) skewed
+   c) normal
+   d) binomial
+2. A population has mean 50. What is the mean of the sampling distribution of sample means?
+   a) 50
+   b) It cannot be determined
+   c) More than 50
+   d) Less than 50
+3. A population has standard deviation 12. For samples of size 36, what is the standard deviation of the sample means (the standard error)?
+   a) 0.33
+   b) 2
+   c) 6
+   d) 12
+4. If the sample size is increased from 25 to 100, the standard error of the mean:
+   a) stays the same
+   b) is doubled
+   c) is cut to one quarter
+   d) is cut in half
+
+[Discussion] Discussion 10: Why bigger samples? · Due Initial post Wed Nov 4, 11:59 pm; two replies Sun Nov 8, 11:59 pm · 10 points
+Prompt: In your own words, explain to a friend why a larger sample usually gives a more reliable estimate of an average.
+Requirements: Write an initial post of at least 150 words by Wednesday 11:59 pm. Then reply to two classmates by Sunday 11:59 pm. Your posts should be substantive and show that you have engaged with the week's material. Posts that are not substantive will receive reduced credit. Late posts are not accepted.
+
+--- Week 12: Confidence Intervals (Nov 9 – Nov 15) ---
+This week introduces confidence intervals for a population mean and a population proportion. A short Confidence Interval Worksheet is due Sunday.
+This week you will:
+- Construct a confidence interval for a mean and for a proportion.
+- Interpret a confidence level correctly.
+- Explain how sample size and confidence level affect the width of an interval.
+Readings:
+- 8.1 A Single Population Mean using the Normal Distribution (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/8-1-a-single-population-mean-using-the-normal-distribution
+- 8.2 A Single Population Mean using the Student t Distribution (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/8-2-a-single-population-mean-using-the-student-t-distribution
+- 8.3 A Population Proportion (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/8-3-a-population-proportion
+Watch / listen:
+- Week 12 lecture: Confidence intervals for a mean (video, 30 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+- Week 12 lecture: Confidence intervals for a proportion (video, 18 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+
+[Quiz] Quiz 12 · Due Sun Nov 15, 11:59 pm · 10 points
+2 attempts, 30 minutes, auto-graded, highest score kept
+1. A 95% confidence interval for a population mean is (46, 54). Which interpretation is best?
+   a) We are 95% confident that the population mean is between 46 and 54
+   b) The population mean is 50 for 95% of samples
+   c) There is a 95% chance the sample mean is between 46 and 54
+   d) 95% of individual values in the population are between 46 and 54
+2. A sample mean is 50 with a margin of error of 4. What is the confidence interval?
+   a) (42, 58)
+   b) (50, 54)
+   c) (48, 52)
+   d) (46, 54)
+3. If we change from a 95% confidence level to a 99% confidence level (same data), the interval becomes:
+   a) the same width
+   b) impossible to compute
+   c) wider
+   d) narrower
+4. The Student t distribution is used instead of the normal distribution for a confidence interval for a mean when:
+   a) the sample is a census
+   b) the sample size is exactly 30
+   c) the population standard deviation is unknown and estimated by the sample standard deviation
+   d) the data are categorical
+5. In a sample of 200 voters, 60 favor a proposal. What is the sample proportion?
+   a) 0.60
+   b) 0.30
+   c) 0.03
+   d) 3.33
+
+[Assignment] Confidence Interval Worksheet · Due Sun Nov 15, 11:59 pm · 30 points
+Download the Confidence Interval Worksheet from the Week 12 folder. Complete all four problems (two for a mean, two for a proportion). Show your work and write a one-sentence interpretation for each interval. Upload your completed worksheet as a .docx or .pdf.
+Rubric:
+- Intervals calculated correctly: 20 points
+- Interpretations written correctly: 10 points
+
+[Discussion] Discussion 11: Margin of error in the news · Due Initial post Wed Nov 11, 11:59 pm; two replies Sun Nov 15, 11:59 pm · 10 points
+Prompt: A poll reports that 52% of voters favor a proposal, with a margin of error of plus or minus 3 points. Explain what this means to a friend who has not taken statistics.
+Requirements: Write an initial post of at least 150 words by Wednesday 11:59 pm. Then reply to two classmates by Sunday 11:59 pm. Your posts should be substantive and show that you have engaged with the week's material. Posts that are not substantive will receive reduced credit. Late posts are not accepted.
+0 posts in this discussion
+
+--- Week 13: Hypothesis Testing with One Sample (Nov 16 – Nov 22) ---
+This week introduces hypothesis testing: how to state a null and an alternative hypothesis, what Type I and Type II errors are, and how to make a decision using a p-value.
+This week you will:
+- State null and alternative hypotheses from a claim.
+- Describe Type I and Type II errors.
+- Make a decision by comparing a p-value with the significance level.
+Readings:
+- 9.1 Null and Alternative Hypotheses (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/9-1-null-and-alternative-hypotheses
+- 9.2 Outcomes and the Type I and Type II Errors (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/9-2-outcomes-and-the-type-i-and-type-ii-errors
+- 9.3 Probability Distribution Needed for Hypothesis Testing (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/9-3-probability-distribution-needed-for-hypothesis-testing
+- 9.4 Rare Events, the Sample, Decision and Conclusion (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/9-4-rare-events-the-sample-decision-and-conclusion
+Watch / listen:
+- Week 13 lecture: Null and alternative hypotheses (video, 24 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+- Week 13 lecture: p-values and decisions (video, 28 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+
+[Quiz] Quiz 13 · Due Sun Nov 22, 11:59 pm · 10 points
+2 attempts, 30 minutes, auto-graded, highest score kept
+1. Which statement best describes a null hypothesis?
+   a) It states there is an effect or a difference
+   b) It states there is no effect or no difference (an equality)
+   c) It is always rejected
+   d) It is always the researcher's claim
+2. A researcher claims the mean commute time of students is more than 30 minutes. What is the alternative hypothesis?
+   a) mu is not 30
+   b) mu > 30
+   c) mu < 30
+   d) mu = 30
+3. A Type I error occurs when:
+   a) we fail to reject a null hypothesis that is actually false
+   b) the sample is too small
+   c) we reject a null hypothesis that is actually true
+   d) we accept the alternative hypothesis as certainly true
+4. A test gives a p-value of 0.03 with a significance level of 0.05. What is the correct decision?
+   a) Reject the null hypothesis
+   b) Fail to reject the null hypothesis
+   c) Accept the null hypothesis
+   d) Take a bigger sample before deciding
+5. A test gives a p-value of 0.12 with a significance level of 0.05. What is the correct decision?
+   a) Fail to reject the null hypothesis
+   b) The test is invalid
+   c) Reject the null hypothesis
+   d) Reject the alternative hypothesis
+
+[Discussion] Discussion 12: Test an ad · Due Initial post Wed Nov 18, 11:59 pm; two replies Sun Nov 22, 11:59 pm · 10 points
+Prompt: Find a claim from an advertisement or a news story (for example, "our battery lasts 20 hours"). Write the null and alternative hypotheses and describe what data you would collect to test it.
+Requirements: Write an initial post of at least 150 words by Wednesday 11:59 pm. Then reply to two classmates by Sunday 11:59 pm. Your posts should be substantive and show that you have engaged with the week's material. Posts that are not substantive will receive reduced credit. Late posts are not accepted.
+0 posts in this discussion
+
+--- Week 14: Hypothesis Testing with Two Samples (Nov 23 – Nov 29) ---
+This week extends hypothesis testing to compare two groups. You will learn when to use independent samples and when to use matched (paired) samples. Thanksgiving is Thursday; plan ahead, because the deadlines do not change.
+This week you will:
+- Choose between independent and matched samples.
+- State hypotheses for two population means.
+- Work with the differences in paired data.
+Readings:
+- 10.1 Two Population Means with Unknown Standard Deviations (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/10-1-two-population-means-with-unknown-standard-deviations
+- 10.4 Matched or Paired Samples (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/10-4-matched-or-paired-samples
+Watch / listen:
+- Week 14 lecture: Comparing two means (video, 26 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+- Week 14 lecture: Matched pairs (video, 17 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+
+[Quiz] Quiz 14 · Due Sun Nov 29, 11:59 pm · 10 points
+2 attempts, 30 minutes, auto-graded, highest score kept
+1. A study compares the mean commute time of 30 students at Campus A with the mean commute time of 30 different students at Campus B. What type of samples are these?
+   a) Independent samples
+   b) Matched (paired) samples
+   c) A census
+   d) Dependent samples
+2. The same 25 students take a pretest before a review course and a posttest after it. What type of samples are these?
+   a) Matched (paired) samples
+   b) Stratified samples
+   c) Independent samples
+   d) Convenience samples
+3. What is the null hypothesis for comparing the means of two independent populations?
+   a) mu1 > mu2
+   b) mu1 < mu2
+   c) mu1 is not equal to mu2
+   d) mu1 = mu2
+4. In a paired study, the differences (after minus before) for three students are 2, 4, and 6. What is the mean of the differences?
+   a) 12
+   b) 6
+   c) 4
+   d) 2
+
+[Discussion] Discussion 13: Independent or paired? · Due Initial post Wed Nov 25, 11:59 pm; two replies Sun Nov 29, 11:59 pm · 10 points
+Prompt: Describe a study where matched (paired) samples would be better than two independent samples. Why would pairing help?
+Requirements: Write an initial post of at least 150 words by Wednesday 11:59 pm. Then reply to two classmates by Sunday 11:59 pm. Your posts should be substantive and show that you have engaged with the week's material. Posts that are not substantive will receive reduced credit. Late posts are not accepted.
+
+--- Week 15: Correlation and Regression (Nov 30 – Dec 6) ---
+The last new content unit covers scatter plots, the line of best fit, and the correlation coefficient. A short Regression Report is due Sunday.
+This week you will:
+- Describe a scatter plot in terms of direction, form, and strength.
+- Use a regression equation to make a prediction.
+- Explain why correlation does not imply causation.
+Readings:
+- 12.2 Scatter Plots (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/12-2-scatter-plots
+- 12.3 The Regression Equation (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/12-3-the-regression-equation
+- 12.4 Testing the Significance of the Correlation Coefficient (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/12-4-testing-the-significance-of-the-correlation-coefficient
+Watch / listen:
+- Week 15 lecture: Scatter plots and correlation (video, 23 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+- Week 15 lecture: The regression line (video, 27 min, Recorded Fall 2021; auto-generated captions. Fictional course media.)
+
+[Quiz] Quiz 15 · Due Sun Dec 6, 11:59 pm · 10 points
+2 attempts, 30 minutes, auto-graded, highest score kept
+1. A scatter plot is used to show the relationship between:
+   a) one categorical variable and its frequency
+   b) a sample and a population
+   c) a median and a mean
+   d) two numerical variables
+2. A correlation coefficient of r = -0.9 indicates:
+   a) no relationship
+   b) a strong positive linear relationship
+   c) a strong negative linear relationship
+   d) a weak negative linear relationship
+3. A regression line is y-hat = 2 + 3x. What is the predicted value of y when x = 4?
+   a) 12
+   b) 14
+   c) 9
+   d) 20
+4. Ice cream sales and drowning deaths both rise in summer, and their correlation is r = 0.8. What is the best conclusion?
+   a) Ice cream causes drowning
+   b) A third factor, such as hot weather, probably affects both, so we cannot conclude causation
+   c) The data must have been collected incorrectly
+   d) Drowning causes people to buy ice cream
+5. Which of the following cannot be a value of the correlation coefficient r?
+   a) 1.4
+   b) 0.99
+   c) 0
+   d) -0.35
+
+[Assignment] Regression Report · Due Sun Dec 6, 11:59 pm · 40 points
+Using the data set in the Week 15 folder (hours studied and exam score for 20 students), make a scatter plot, find the correlation coefficient and the regression equation using a calculator or spreadsheet, and predict the exam score for a student who studies 6 hours. Write a short paragraph (5-7 sentences) interpreting your results. Upload as a .docx or .pdf.
+Rubric:
+- Scatter plot: 10 points
+- r and regression equation: 15 points
+- Prediction: 5 points
+- Interpretation paragraph: 10 points
+
+[Discussion] Discussion 14: Correlation in the media · Due Initial post Wed Dec 2, 11:59 pm; two replies Sun Dec 6, 11:59 pm · 10 points
+Prompt: Find an example of a correlation reported in the media. Is a causal claim being made? What other explanations could there be?
+Requirements: Write an initial post of at least 150 words by Wednesday 11:59 pm. Then reply to two classmates by Sunday 11:59 pm. Your posts should be substantive and show that you have engaged with the week's material. Posts that are not substantive will receive reduced credit. Late posts are not accepted.
+
+--- Week 16: Chi-Square Test, Review, and Final Exam (Dec 7 – Dec 11) ---
+The final week introduces the chi-square test of independence and prepares you for the final exam. The final exam covers the whole course and is available from Monday at 12:00 am until Friday, December 11 at 11:59 pm. You get one attempt and 90 minutes once you open it.
+This week you will:
+- Explain when a chi-square test of independence is used.
+- Review all major topics from Weeks 1-15.
+Readings:
+- 11.3 Test of Independence (OpenStax Introductory Statistics 2e; required) https://openstax.org/books/introductory-statistics-2e/pages/11-3-test-of-independence
+- Appendix B Practice Tests (1-4) and Final Exams (OpenStax Introductory Statistics 2e; optional: use the practice tests for review) https://openstax.org/books/introductory-statistics-2e/pages/b-practice-tests-1-4-and-final-exams
+Watch / listen:
+- Week 16 lecture: Final exam review (video, 52 min, Recorded Fall 2022. Fictional course media.)
+
+[Quiz] Final Exam · Due Fri Dec 11, 11:59 pm · 100 points
+1 attempt, 90 minutes, auto-graded, open Mon Dec 7 12:00 am to Fri Dec 11 11:59 pm
+1. Researchers randomly assign 60 students to one of two study methods and compare their quiz scores. This is a(n):
+   a) observational study
+   b) survey
+   c) census
+   d) experiment
+2. For the data set 4, 6, 6, 8, 36, which measure is the better description of a typical value, and why?
+   a) The range, because it shows spread
+   b) The mode, because it is the largest
+   c) The mean, because it uses all the values
+   d) The median (6), because the mean is pulled up by the extreme value 36
+3. IQ scores are normal with mean 100 and standard deviation 15. What is the z-score for a score of 130?
+   a) 0.5
+   b) 30
+   c) 2
+   d) 1
+4. A binomial random variable has n = 20 and p = 0.1. What is its mean?
+   a) 20
+   b) 10
+   c) 2
+   d) 0.1
+5. A population has standard deviation 20. For samples of size 100, what is the standard error of the sample mean?
+   a) 20
+   b) 10
+   c) 2
+   d) 0.2
+6. A sample mean is 72 with a margin of error of 3. What is the confidence interval?
+   a) (69, 75)
+   b) (72, 75)
+   c) (66, 78)
+   d) (70, 74)
+7. A hypothesis test gives a p-value of 0.01 at a significance level of 0.05. What is the correct conclusion?
+   a) The sample size is too small
+   b) Reject the null hypothesis; the data give evidence for the alternative
+   c) Accept the null hypothesis
+   d) Fail to reject the null hypothesis
+8. A chi-square test of independence is used to decide whether:
+   a) a correlation is negative
+   b) two categorical variables are related
+   c) data are normally distributed
+   d) two means are equal
+
+============================================================
+PEOPLE
+============================================================
+Carol Whitfield · Adjunct Instructor
+38 students (section 04) (student roster hidden in this copy)
